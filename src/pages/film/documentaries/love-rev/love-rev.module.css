@@ -1,0 +1,827 @@
+/* src/pages/film/documentaries/love-as-revolution/love-rev.module.css */
+
+/* ======================
+   LOVE AS REVOLUTION DOCUMENTARY PAGE
+   ====================== */
+
+.documentaryPage {
+  position: relative;
+  z-index: 10;
+  min-height: 100vh;
+  padding: 6vh 2rem 10vh;
+}
+
+/* Back Navigation */
+.backNavigation {
+  position: fixed;
+  top: 8rem;
+  left: 2rem;
+  z-index: 100;
+}
+
+.backLink {
+  display: inline-flex;
+  align-items: center;
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 300;
+  padding: 1rem 1.5rem;
+  background: transparent;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 25px;
+  transition: all 0.3s ease;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.backLink:hover {
+  color: white;
+  background: rgba(220, 20, 60, 0.4);
+  border-color: rgba(220, 20, 60, 0.5);
+  transform: translateX(-5px);
+}
+
+.backLink::before {
+  content: '';
+  width: 20px;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.8);
+  margin-right: 1rem;
+  transition: all 0.3s ease;
+}
+
+.backLink:hover::before {
+  width: 30px;
+  background: white;
+}
+
+/* Hero Section - UPDATED TO MATCH MURAL STYLE */
+.documentaryHero {
+  text-align: center;
+  margin-bottom: 6rem;
+  padding-top: 12vh;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.heroContent {
+  /* REMOVED: translucent bubble background */
+  position: relative;
+  padding: 2rem 0; /* Much smaller padding */
+}
+
+.documentaryTitle {
+  font-family: 'Poppins', sans-serif;
+  font-size: clamp(3rem, 8vw, 5rem); /* SAME SIZE AS MURAL TITLE */
+  font-weight: 100;
+  color: white;
+  margin-bottom: 2rem;
+  text-shadow: 0 0 40px rgba(220, 20, 60, 0.4);
+  line-height: 1.2;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  /* REMOVED: gradient text effect */
+  position: relative;
+  z-index: 2;
+}
+
+.documentaryMeta {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+  position: relative;
+  z-index: 2;
+}
+
+.metaItem {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.8);
+  font-weight: 300;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding: 0.5rem 1rem;
+  background: rgba(220, 20, 60, 0.1);
+  border: 1px solid rgba(220, 20, 60, 0.3);
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
+}
+
+.metaSeparator {
+  color: rgba(220, 20, 60, 0.6);
+  font-size: 1.2rem;
+}
+
+.roleInfo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 3rem;
+  position: relative;
+  z-index: 2;
+}
+
+.roleLabel {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.8rem;
+  color: rgba(220, 20, 60, 0.9);
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.roleValue {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 300;
+  letter-spacing: 0.05em;
+}
+
+/* Watch Film Button Section - UPDATED COLORS */
+.watchFilmSection {
+  position: relative;
+  z-index: 2;
+  margin-top: 3rem;
+}
+
+.watchFilmBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 1rem;
+  background: linear-gradient(135deg, rgba(220, 20, 60, 0.8) 0%, rgba(139, 0, 0, 0.8) 100%); /* REMOVED PINK */
+  border: 2px solid rgba(220, 20, 60, 0.5);
+  color: white;
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 1.5rem 3rem;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  backdrop-filter: blur(15px);
+  box-shadow: 0 8px 32px rgba(220, 20, 60, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.watchFilmBtn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.watchFilmBtn:hover::before {
+  left: 100%;
+}
+
+.watchFilmBtn:hover {
+  background: linear-gradient(135deg, rgba(220, 20, 60, 1) 0%, rgba(139, 0, 0, 1) 100%); /* REMOVED PINK */
+  border-color: rgba(255, 255, 255, 0.6);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 40px rgba(220, 20, 60, 0.5);
+}
+
+.playIcon {
+  font-size: 1.2rem;
+  margin-left: 0.2rem;
+}
+
+/* Section Styling */
+.sectionContent {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 3rem 2rem;
+  background: rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  margin-bottom: 3rem;
+}
+
+.sectionTitle {
+  font-family: 'Poppins', sans-serif;
+  font-size: 2rem;
+  font-weight: 200;
+  color: #DC143C;
+  margin-bottom: 2rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-align: center;
+  text-shadow: 0 0 20px rgba(220, 20, 60, 0.3);
+}
+
+.sectionSubtitle {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.4rem;
+  font-weight: 300;
+  color: rgba(220, 20, 60, 0.9);
+  margin-bottom: 2rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+/* Synopsis Section */
+.synopsis {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.9);
+  line-height: 1.8;
+  margin-bottom: 2rem;
+  font-weight: 300;
+  letter-spacing: 0.02em;
+  text-align: center;
+}
+
+.deeperDescription {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.8;
+  font-weight: 300;
+  letter-spacing: 0.02em;
+  font-style: italic;
+  text-align: center;
+  padding: 2rem;
+  background: rgba(220, 20, 60, 0.1);
+  border-left: 3px solid #DC143C;
+  border-radius: 8px;
+}
+
+/* Themes Section */
+.themesList {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.themeTag {
+  background: rgba(220, 20, 60, 0.2);
+  color: rgba(255, 255, 255, 0.9);
+  padding: 0.8rem 1.5rem;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 300;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border: 1px solid rgba(220, 20, 60, 0.4);
+  border-radius: 25px;
+  transition: all 0.3s ease;
+}
+
+.themeTag:hover {
+  background: rgba(220, 20, 60, 0.3);
+  border-color: rgba(220, 20, 60, 0.6);
+  transform: translateY(-2px);
+}
+
+/* Screenings Section */
+.screeningsList {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.screeningItem {
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  border: 1px solid rgba(220, 20, 60, 0.2);
+  transition: all 0.3s ease;
+}
+
+.screeningItem:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(220, 20, 60, 0.4);
+}
+
+.screeningHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.screeningVenue {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.2rem;
+  font-weight: 300;
+  color: white;
+  margin: 0;
+  letter-spacing: 0.05em;
+}
+
+.screeningDate {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.9rem;
+  color: rgba(220, 20, 60, 0.8);
+  font-weight: 300;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.screeningDetails {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.screeningAttendance {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.7);
+  font-weight: 300;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.screeningNotes {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.8);
+  font-weight: 300;
+  letter-spacing: 0.02em;
+  font-style: italic;
+}
+
+/* Artist Statement */
+.statementText {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.85);
+  line-height: 1.8;
+  font-weight: 300;
+  letter-spacing: 0.02em;
+  text-align: center;
+}
+
+/* Production Section */
+.productionText {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.8;
+  font-weight: 300;
+  letter-spacing: 0.02em;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.fundingInfo {
+  padding-top: 2rem;
+  border-top: 1px solid rgba(220, 20, 60, 0.3);
+}
+
+.fundingTitle {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+  color: rgba(220, 20, 60, 0.9);
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  text-align: center;
+}
+
+.fundingList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.fundingItem {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.8);
+  font-weight: 300;
+  letter-spacing: 0.02em;
+  text-align: center;
+}
+
+/* Quotes Section */
+.quotesList {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.quote {
+  margin: 0;
+  padding: 2rem;
+  background: rgba(220, 20, 60, 0.1);
+  border-left: 4px solid #DC143C;
+  border-radius: 8px;
+}
+
+.quoteText {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.9);
+  line-height: 1.7;
+  font-weight: 300;
+  letter-spacing: 0.02em;
+  font-style: italic;
+  margin-bottom: 1rem;
+}
+
+.quoteSpeaker {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.8rem;
+  color: rgba(220, 20, 60, 0.8);
+  font-weight: 300;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-style: normal;
+}
+
+/* Mural Connection Section - UPDATED COLORS */
+.muralConnectionSection {
+  margin-bottom: 3rem;
+}
+
+.muralConnectionText {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.8;
+  font-weight: 300;
+  letter-spacing: 0.02em;
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.muralLinkSection {
+  display: flex;
+  justify-content: center;
+}
+
+.muralLink {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 2rem 3rem;
+  background: rgba(220, 20, 60, 0.1); /* CHANGED FROM PINK */
+  border: 2px solid rgba(220, 20, 60, 0.3); /* CHANGED FROM PINK */
+  border-radius: 16px;
+  text-decoration: none;
+  transition: all 0.4s ease;
+  backdrop-filter: blur(15px);
+  max-width: 500px;
+  width: 100%;
+}
+
+.muralLink:hover {
+  background: rgba(220, 20, 60, 0.2); /* CHANGED FROM PINK */
+  border-color: rgba(220, 20, 60, 0.5); /* CHANGED FROM PINK */
+  transform: translateY(-5px);
+  box-shadow: 0 15px 40px rgba(220, 20, 60, 0.2); /* CHANGED FROM PINK */
+}
+
+.muralIcon {
+  font-size: 2.5rem;
+  filter: grayscale(0.3);
+  transition: all 0.3s ease;
+}
+
+.muralLink:hover .muralIcon {
+  filter: grayscale(0);
+  transform: scale(1.1);
+}
+
+.muralLinkContent {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.muralLinkTitle {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.2rem;
+  font-weight: 400;
+  color: white;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+}
+
+.muralLinkSubtext {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.7);
+  font-weight: 300;
+  letter-spacing: 0.02em;
+  transition: all 0.3s ease;
+}
+
+.muralLink:hover .muralLinkTitle {
+  color: rgba(220, 20, 60, 0.9); /* CHANGED FROM PINK */
+}
+
+.muralLink:hover .muralLinkSubtext {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/* Connection Section */
+.connectionText {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.8;
+  font-weight: 300;
+  letter-spacing: 0.02em;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.connectionLink {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255, 255, 255, 0.9);
+  text-decoration: none;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 300;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 1rem 2rem;
+  background: rgba(220, 20, 60, 0.2);
+  border: 1px solid rgba(220, 20, 60, 0.4);
+  border-radius: 25px;
+  transition: all 0.3s ease;
+}
+
+.connectionLink:hover {
+  background: rgba(220, 20, 60, 0.3);
+  border-color: rgba(220, 20, 60, 0.6);
+  transform: translateY(-2px);
+  color: white;
+}
+
+.connectionLink span::after {
+  content: '';
+  width: 20px;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.9);
+  margin-left: 1rem;
+  transition: all 0.3s ease;
+  display: inline-block;
+}
+
+.connectionLink:hover span::after {
+  width: 30px;
+  background: white;
+}
+
+/* Video Modal Styles */
+.videoModal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.9);
+  backdrop-filter: blur(10px);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  animation: modalFadeIn 0.3s ease-out;
+}
+
+@keyframes modalFadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+.modalContent {
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(220, 20, 60, 0.3);
+  border-radius: 16px;
+  max-width: 1200px;
+  max-height: 90vh;
+  width: 100%;
+  overflow-y: auto;
+  position: relative;
+  animation: modalSlideIn 0.4s ease-out;
+}
+
+@keyframes modalSlideIn {
+  0% { 
+    transform: translateY(50px) scale(0.9);
+    opacity: 0;
+  }
+  100% { 
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+}
+
+.closeButton {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: rgba(220, 20, 60, 0.1);
+  border: 1px solid rgba(220, 20, 60, 0.3);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  color: #DC143C;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+}
+
+.closeButton:hover {
+  background: rgba(220, 20, 60, 0.2);
+  transform: scale(1.1);
+}
+
+.modalHeader {
+  padding: 3rem 3rem 1rem;
+  text-align: center;
+}
+
+.modalTitle {
+  font-family: 'Poppins', sans-serif;
+  font-size: 2rem;
+  font-weight: 200;
+  color: #DC143C;
+  margin-bottom: 1rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  text-shadow: 0 0 20px rgba(220, 20, 60, 0.3);
+}
+
+.modalMeta {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.7);
+  font-weight: 300;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.videoContainer {
+  padding: 0 3rem;
+  margin-bottom: 2rem;
+}
+
+.videoContainer iframe {
+  width: 100%;
+  height: 500px;
+  border-radius: 8px;
+}
+
+.modalDescription {
+  padding: 0 3rem 3rem;
+}
+
+.modalDescription p {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.7;
+  font-weight: 300;
+  letter-spacing: 0.02em;
+  text-align: center;
+}
+
+/* ======================
+   RESPONSIVE DESIGN
+   ====================== */
+
+@media (max-width: 768px) {
+  .documentaryPage {
+    padding: 4vh 1rem 8vh;
+  }
+
+  .backNavigation {
+    position: static;
+    margin-bottom: 2rem;
+  }
+
+  .documentaryHero {
+    padding-top: 4vh;
+    margin-bottom: 4rem;
+  }
+
+  .heroContent {
+    padding: 2rem 1rem; /* REDUCED from previous bubble style */
+  }
+
+  .documentaryMeta {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .watchFilmBtn {
+    padding: 1.2rem 2.5rem;
+    font-size: 1rem;
+  }
+
+  .sectionContent {
+    padding: 2rem 1.5rem;
+  }
+
+  .screeningHeader {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .themesList {
+    gap: 0.5rem;
+  }
+
+  .themeTag {
+    padding: 0.6rem 1rem;
+    font-size: 0.7rem;
+  }
+
+  .muralLink {
+    flex-direction: column;
+    text-align: center;
+    padding: 2rem;
+    gap: 1rem;
+  }
+
+  .muralIcon {
+    font-size: 2rem;
+  }
+
+  .videoContainer iframe {
+    height: 300px;
+  }
+
+  .modalHeader,
+  .videoContainer,
+  .modalDescription {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .heroContent {
+    padding: 1.5rem 1rem; /* REDUCED from previous bubble style */
+  }
+
+  .watchFilmBtn {
+    padding: 1rem 2rem;
+    font-size: 0.9rem;
+  }
+
+  .sectionContent {
+    padding: 2rem 1rem;
+  }
+
+  .quote {
+    padding: 1.5rem;
+  }
+
+  .quoteText {
+    font-size: 1rem;
+  }
+
+  .muralLink {
+    padding: 1.5rem;
+  }
+
+  .videoContainer iframe {
+    height: 250px;
+  }
+
+  .modalTitle {
+    font-size: 1.5rem;
+  }
+}

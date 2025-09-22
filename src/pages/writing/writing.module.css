@@ -1,0 +1,1372 @@
+/* src/pages/writing/writing.module.css */
+
+
+
+/* ======================
+   COMING SOON PAGES
+   ====================== */
+
+.comingSoonHero {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 70vh;
+  text-align: center;
+}
+
+.comingSoonTitle {
+  font-family: 'Poppins', sans-serif;
+  font-size: clamp(3rem, 8vw, 6rem);
+  font-weight: 200;
+  color: white;
+  margin-bottom: 2rem;
+  text-shadow: 0 0 30px rgba(255, 255, 255, 0.3);
+  line-height: 1.1;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.comingSoonSubtitle {
+  font-family: 'Poppins', sans-serif;
+  font-size: clamp(1.2rem, 3vw, 1.8rem);
+  color: rgba(255, 255, 255, 0.7);
+  font-weight: 300;
+  letter-spacing: 0.05em;
+  text-transform: lowercase;
+}
+
+.blinkingDots {
+  animation: blink 1.5s infinite;
+}
+
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+
+/* ======================
+   WRITING CATEGORIES PAGE 
+   ====================== */
+
+.writingCategoriesPage {
+  position: relative;
+  z-index: 10;
+  min-height: 100vh;
+  padding: 8vh 2rem 10vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* Hero Section */
+.writingHeroSection {
+  text-align: center;
+  margin-bottom: 8rem;
+  position: relative;
+  z-index: 20;
+}
+
+.writingMainTitle {
+  font-family: 'Poppins', sans-serif !important;
+  font-size: clamp(1rem, 5vw, 6rem);
+  font-weight: 10;
+  color: white;
+  margin-bottom: 2rem;
+  text-shadow: 0 0 30px rgba(255, 255, 255, 0.3);
+  line-height: 1.1;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.writingSubtitle {
+  font-family: 'Poppins', sans-serif;
+  font-size: clamp(1.3rem, 3.5vw, 1.3rem);
+  color: rgba(255, 255, 255, 0.7);
+  font-weight: 200;
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.8;
+  letter-spacing: 0.05em;
+}
+
+/* Categories Container */
+.categoriesContainer {
+  max-width: 4000px;
+  width: 800px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 15;
+}
+
+.categoriesGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1px;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* Individual Category Cards */
+.categoryCard {
+  position: relative;
+  height: 400px;
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(7px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  text-decoration: none;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.categoryCard:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.3);
+  transform: scale(1.02);
+  backdrop-filter: blur(15px);
+}
+
+.categoryCard::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.1),
+    transparent
+  );
+  transition: left 0.5s;
+}
+
+.categoryCard:hover::before {
+  left: 100%;
+}
+
+/* Card Content */
+.categoryContent {
+  position: relative;
+  z-index: 10;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.categoryIcon {
+  width: 60px;
+  height: 60px;
+  margin: 0 auto 2rem;
+  stroke: rgba(255, 255, 255, 0.6);
+  transition: all 0.3s ease;
+}
+
+.categoryCard:hover .categoryIcon {
+  stroke: rgba(255, 255, 255, 0.9);
+  transform: scale(1.1);
+}
+
+.categoryTitle {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.8rem;
+  font-weight: 200;
+  color: white;
+  margin-bottom: 1rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+}
+
+.categoryDescription {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.6);
+  line-height: 1.6;
+  font-weight: 300;
+  max-width: 250px;
+  margin: 0 auto;
+  letter-spacing: 0.02em;
+  transition: all 0.3s ease;
+}
+
+.categoryCard:hover .categoryDescription {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* Geometric accent lines */
+.categoryCard::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.8), transparent);
+  transition: all 0.4s ease;
+  transform: translateX(-50%);
+}
+
+.categoryCard:hover::after {
+  width: 80%;
+}
+
+/* Author Statement */
+.authorStatement {
+  max-width: 800px;
+  margin: 4rem auto 0;
+  padding: 3rem 2rem;
+  background: rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.statementTitle {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 200;
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 2rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.statementContent p {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.7);
+  font-weight: 200;
+  line-height: 1.8;
+  margin-bottom: 1.5rem;
+  letter-spacing: 0.02em;
+}
+
+.statementSignature {
+  display: block;
+  text-align: right;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.5);
+  font-weight: 300;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-top: 2rem;
+}
+
+/* ======================
+   SUB-PAGES (POETRY, CREATIVE WRITING, ETC.)
+   ====================== */
+
+.subPage {
+  position: relative;
+  z-index: 10;
+  min-height: 100vh;
+  padding: 6vh 2rem 10vh;
+}
+
+/* Back Navigation */
+.backNavigation {
+  margin-bottom: 4rem;
+  position: fixed;
+  top: 8rem;
+  z-index: 100;
+}
+
+.backLink {
+  display: inline-flex;
+  align-items: center;
+  color: rgba(255, 255, 255, 0.7);
+  text-decoration: none;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 300;
+  padding: 1rem 1.5rem;
+  transition: all 0.3s ease;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.backLink:hover {
+  color: white;
+  transform: translateX(-5px);
+}
+
+.backLink::before {
+  content: '';
+  width: 20px;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.7);
+  margin-right: 1rem;
+  transition: all 0.3s ease;
+}
+
+.backLink:hover::before {
+  width: 30px;
+  background: white;
+}
+
+/* Hero Section for Sub-pages */
+.subPageHero {
+  text-align: center;
+  margin-bottom: 6rem;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.subPageTitle {
+  font-family: 'Poppins', sans-serif;
+  font-size: clamp(3rem, 8vw, 5rem);
+  font-weight: 200;
+  color: white;
+  margin-bottom: 2rem;
+  text-shadow: 0 0 30px rgba(255, 255, 255, 0.3);
+  line-height: 1.1;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.subPageSubtitle {
+  font-family: 'Poppins', sans-serif;
+  font-size: clamp(1rem, 2.5vw, 1.2rem);
+  color: rgba(255, 255, 255, 0.7);
+  font-weight: 200;
+  line-height: 1.8;
+  letter-spacing: 0.02em;
+}
+
+/* ======================
+   POETRY PAGE - Futuristic Verse Layout
+   ====================== */
+
+.poetryGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 4rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.poemCard {
+  background: rgba(0, 0, 0, 0.005);
+  backdrop-filter: blur(9px);
+  border: 1px solid rgba(255, 255, 255, 0.001);
+  padding: 0;
+  transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1);
+  position: relative;
+  overflow: hidden;
+  min-height: 400px;
+  min-width: 600px;
+  opacity: 0;
+  transform: translateY(50px);
+  animation: cardSlideIn 0.1s ease-out forwards;
+  animation-delay: var(--card-delay);
+}
+
+@keyframes cardSlideIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.interactiveCard {
+  cursor: pointer;
+}
+
+.poemCard:hover {
+  backdrop-filter: blur(8px); /* Change from blur(15px) to blur(8px) */
+  background: rgba(0, 0, 0, 0.005); /* Keep same as non-hover state */
+  border-color: rgba(255, 255, 255, 0.001);
+  box-shadow: 
+    0 20px 40px rgba(0, 0, 0, 0.1),
+    0 0 60px rgba(255, 255, 255, 0.1); /* Change var(--hover-glow) to barely visible white */
+}
+
+/* Ambient Glow Effect */
+.ambientGlow {
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(45deg, 
+    transparent,
+    var(--ambient-color),
+    transparent,
+    var(--ambient-color),
+    transparent);
+  border-radius: 12px;
+  z-index: -1;
+  opacity: 0.001;
+  animation: ambientPulse 7s ease-in-out infinite;
+}
+
+.poemCard:hover .ambientGlow {
+  opacity: 0.01;
+}
+
+@keyframes ambientPulse {
+  0%, 100% { transform: scale(1); opacity: 0.2; }
+  50% { transform: scale(1.05); opacity: 0.6; }
+}
+
+/* Particle Effects */
+.particleContainer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  z-index: 5;
+}
+
+.particle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: var(--particle-color);
+  border-radius: 50%;
+  opacity: 0;
+  animation: particleFloat var(--duration) linear infinite;
+  animation-delay: var(--delay);
+  box-shadow: 0 0 6px var(--particle-color);
+}
+
+.particleTech {
+  animation: particleFloatTech var(--duration) linear infinite;
+}
+
+.particleNeon {
+  animation: particleFloatNeon var(--duration) ease-in-out infinite;
+}
+
+.particleQuantum {
+  animation: particleFloatQuantum var(--duration) linear infinite;
+  background: linear-gradient(45deg, var(--particle-color), transparent);
+}
+
+.particleBio {
+  animation: particleFloatBio var(--duration) ease-in-out infinite;
+  border-radius: 0;
+  transform: rotate(45deg);
+}
+
+.particleStellar {
+  animation: particleFloatStellar var(--duration) linear infinite;
+  background: radial-gradient(circle, var(--particle-color), transparent);
+  width: 6px;
+  height: 6px;
+}
+
+@keyframes particleFloatTech {
+  0% { 
+    transform: translate(var(--start-x), var(--start-y)) scale(0);
+    opacity: 0;
+  }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { 
+    transform: translate(var(--end-x), var(--end-y)) scale(1);
+    opacity: 0;
+  }
+}
+
+@keyframes particleFloatNeon {
+  0%, 100% { 
+    transform: translate(var(--start-x), var(--start-y)) scale(0.5);
+    opacity: 0;
+  }
+  50% { 
+    transform: translate(var(--end-x), var(--end-y)) scale(1.5);
+    opacity: 1;
+  }
+}
+
+@keyframes particleFloatQuantum {
+  0% { 
+    transform: translate(var(--start-x), var(--start-y)) rotate(0deg);
+    opacity: 0;
+  }
+  25% { opacity: 1; }
+  75% { opacity: 1; }
+  100% { 
+    transform: translate(var(--end-x), var(--end-y)) rotate(720deg);
+    opacity: 0;
+  }
+}
+
+@keyframes particleFloatBio {
+  0%, 100% { 
+    transform: translate(var(--start-x), var(--start-y)) rotate(45deg) scale(0);
+    opacity: 0;
+  }
+  50% { 
+    transform: translate(var(--end-x), var(--end-y)) rotate(225deg) scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes particleFloatStellar {
+  0% { 
+    transform: translate(var(--start-x), var(--start-y)) scale(0);
+    opacity: 0;
+  }
+  20% { 
+    opacity: 1;
+    transform: translate(var(--start-x), var(--start-y)) scale(1);
+  }
+  80% { 
+    opacity: 1;
+    transform: translate(var(--end-x), var(--end-y)) scale(0.5);
+  }
+  100% { 
+    transform: translate(var(--end-x), var(--end-y)) scale(0);
+    opacity: 0;
+  }
+}
+
+/* Floating Verses */
+.floatingVerses {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.1); /* Match card background */
+  backdrop-filter: blur(10px);
+  z-index: 10;
+  border-radius: 12px;
+  padding: 2rem;
+}
+
+.floatingVerse {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: verseSlideIn 0.8s ease-out forwards;
+  animation-delay: var(--line-delay);
+  margin: 0.5rem 0;
+  text-align: center;
+  max-width: 80%;
+}
+
+@keyframes verseSlideIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.verseText {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.2rem;
+  color: white;
+  font-weight: 300;
+  line-height: 1.8;
+  letter-spacing: 0.05em;
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+  display: inline-block;
+  text-align: center;
+}
+
+.typingCursor {
+  animation: cursorBlink 1s infinite;
+  color: white;
+  font-weight: 400;
+  margin-left: 2px;
+}
+
+@keyframes cursorBlink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+.poemHeader {
+  padding: 3rem 3rem 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  position: relative;
+  z-index: 15;
+}
+
+.poemTitleContainer {
+  position: relative;
+  margin-bottom: 1.5rem;
+}
+
+.poemTitle {
+  font-family: 'Poppins', sans-serif;
+  font-size: 2rem;
+  font-weight: 200;
+  color: white;
+  margin-bottom: 0.5rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-shadow: 0 0 30px rgba(255, 255, 255, 0.3);
+  transition: all 0.4s ease;
+}
+
+.poemCard:hover .poemTitle {
+  color: white;
+  text-shadow: 0 0 30px rgba(255, 255, 255, 0.2);
+}
+
+.poemCard:hover .holographicLine {
+  width: 100%;
+}
+
+.poemMeta {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  padding: 0rem 2.2rem 0.5rem;
+}
+
+.poemTheme,
+.poemYear,
+.poemCount {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.6);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  font-weight: 300;
+  padding: 0.3rem 0.8rem;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 15px;
+  background: rgba(0, 0, 0, 0.3);
+  transition: all 0.4s ease;
+}
+
+.poemCard:hover .poemTheme {
+  border-color: var(--hover-glow);
+  color: var(--hover-glow);
+  box-shadow: 0 0 15px var(--hover-glow);
+}
+
+.poemContent {
+  padding: 1.5rem 2.5rem 2.5rem;
+  position: relative;
+  z-index: 15;
+}
+
+.poemDescription {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.8;
+  font-weight: 300;
+  margin-bottom: 2rem;
+  letter-spacing: 0.02em;
+}
+
+/* Energy Bar */
+.energyBar {
+  width: 100%;
+  height: 3px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 2px;
+  margin: 2rem 0;
+  overflow: hidden;
+  position: relative;
+}
+
+.energyFill {
+  height: 100%;
+  width: 0;
+  background: linear-gradient(90deg, 
+    transparent,
+    var(--energy-color),
+    var(--energy-color),
+    transparent);
+  border-radius: 2px;
+  transition: width 1.2s ease;
+  box-shadow: 0 0 10px var(--energy-color);
+  position: relative;
+}
+
+.poemCard:hover .energyFill {
+  width: 100%;
+}
+
+.energyFill::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 20px;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, white);
+  animation: energyPulse 2s ease-in-out infinite;
+}
+
+@keyframes energyPulse {
+  0%, 100% { transform: translateX(0); opacity: 0; }
+  50% { transform: translateX(-100px); opacity: 1; }
+}
+
+/* Enhanced Button Styling */
+.readFullBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 300;
+  padding: 1rem 2rem;
+  transition: all 0.4s ease;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 25px;
+  background: rgba(0, 0, 0, 0.3);
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(10px);
+}
+
+.readFullBtn:hover {
+  color: white;
+  border-color: var(--button-glow);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.buttonText {
+  position: relative;
+  z-index: 2;
+  transition: all 0.4s ease;
+}
+
+.buttonGlow {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, 
+    transparent,
+    var(--button-glow),
+    transparent);
+  transition: left 0.6s ease;
+  opacity: 0.3;
+}
+
+.readFullBtn:hover .buttonGlow {
+  left: 100%;
+}
+
+/* ======================
+   CREATIVE WRITING PAGE - Story Grid
+   ====================== */
+
+.storyGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.storyCard {
+  background: rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.4s ease;
+  position: relative;
+  overflow: hidden;
+  min-height: 350px;
+  display: flex;
+  flex-direction: column;
+}
+
+.storyCard:hover {
+  border-color: rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.05);
+  transform: translateY(-5px);
+}
+
+.storyImageArea {
+  height: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.01));
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  position: relative;
+}
+
+.storyImageArea svg {
+  width: 50px;
+  height: 50px;
+  stroke: rgba(255, 255, 255, 0.3);
+}
+
+.storyMeta {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  display: flex;
+  gap: 0.5rem;
+}
+
+.storyLength,
+.storyGenre {
+  background: rgba(0, 0, 0, 0.7);
+  color: white;
+  padding: 0.3rem 0.8rem;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 300;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+}
+
+.storyContent {
+  padding: 2rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.storyTitle {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.4rem;
+  font-weight: 200;
+  color: white;
+  margin-bottom: 1rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.storyDate {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.5);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  font-weight: 300;
+  margin-bottom: 1rem;
+}
+
+.storyDescription {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.7;
+  font-weight: 300;
+  margin-bottom: auto;
+  letter-spacing: 0.02em;
+}
+
+.readStoryBtn {
+  display: inline-flex;
+  align-items: center;
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 300;
+  padding: 0.8rem 0;
+  transition: all 0.3s ease;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-top: 1rem;
+}
+
+.readStoryBtn:hover {
+  color: white;
+  transform: translateX(5px);
+}
+
+.readStoryBtn::after {
+  content: '';
+  width: 20px;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.8);
+  margin-left: 1rem;
+  transition: all 0.3s ease;
+}
+
+.readStoryBtn:hover::after {
+  width: 30px;
+  background: white;
+}
+
+/* ======================
+   NOVEL WRITING PAGE - Chapter Preview
+   ====================== */
+
+.novelGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.novelCard {
+  background: rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  display: grid;
+  grid-template-columns: 250px 1fr;
+  min-height: 200px;
+  transition: all 0.4s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.novelCard:hover {
+  border-color: rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.novelImageArea {
+  position: relative;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.novelImageArea svg {
+  width: 80px;
+  height: 80px;
+  stroke: rgba(255, 255, 255, 0.3);
+}
+
+.novelStatus {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+}
+
+.statusBadge {
+  background: rgba(0, 0, 0, 0.7);
+  color: white;
+  padding: 0.3rem 0.8rem;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 300;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+}
+
+.complete {
+  border-color: rgba(0, 255, 0, 0.3);
+  color: rgba(0, 255, 0, 0.8);
+}
+
+.inprogress {
+  border-color: rgba(255, 255, 0, 0.3);
+  color: rgba(255, 255, 0, 0.8);
+}
+
+.draft {
+  border-color: rgba(255, 165, 0, 0.3);
+  color: rgba(255, 165, 0, 0.8);
+}
+
+.novelContent {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.novelTitle {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.6rem;
+  font-weight: 200;
+  color: white;
+  margin-bottom: 1rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.novelMeta {
+  display: flex;
+  gap: 2rem;
+  margin-bottom: 1.5rem;
+}
+
+.novelGenre,
+.novelWordCount,
+.novelYear {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.5);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  font-weight: 300;
+}
+
+.novelDescription {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.7;
+  margin-bottom: 2rem;
+  font-weight: 300;
+  letter-spacing: 0.02em;
+}
+
+.readNovelBtn {
+  display: inline-flex;
+  align-items: center;
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 300;
+  padding: 0.8rem 0;
+  transition: all 0.3s ease;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  align-self: flex-start;
+}
+
+.readNovelBtn:hover {
+  color: white;
+  transform: translateX(5px);
+}
+
+.readNovelBtn::after {
+  content: '';
+  width: 20px;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.8);
+  margin-left: 1rem;
+  transition: all 0.3s ease;
+}
+
+.readNovelBtn:hover::after {
+  width: 30px;
+  background: white;
+}
+
+/* ======================
+   VIDEO ESSAYS PAGE - Video Grid
+   ====================== */
+
+.videoGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.videoCard {
+  background: rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  overflow: hidden;
+  transition: all 0.4s ease;
+  position: relative;
+  min-height: 400px;
+  display: flex;
+  flex-direction: column;
+}
+
+.videoCard:hover {
+  border-color: rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.05);
+  transform: translateY(-5px);
+}
+
+.videoThumbnail {
+  position: relative;
+  height: 200px;
+  overflow: hidden;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.videoThumbnail svg {
+  width: 60px;
+  height: 60px;
+  stroke: rgba(255, 255, 255, 0.3);
+}
+
+.videoOverlay {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  right: 1rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.videoDuration,
+.videoViews {
+  background: rgba(0, 0, 0, 0.7);
+  color: white;
+  padding: 0.3rem 0.8rem;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 300;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+}
+
+.videoContent {
+  padding: 2rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.videoTitle {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.4rem;
+  font-weight: 200;
+  color: white;
+  margin-bottom: 1rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.videoMeta {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+}
+
+.videoDate,
+.videoTopic {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.5);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  font-weight: 300;
+}
+
+.videoDescription {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.7;
+  font-weight: 300;
+  margin-bottom: auto;
+  letter-spacing: 0.02em;
+}
+
+.watchVideoBtn {
+  display: inline-flex;
+  align-items: center;
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 300;
+  padding: 0.8rem 0;
+  transition: all 0.3s ease;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-top: 1rem;
+}
+
+.watchVideoBtn:hover {
+  color: white;
+  transform: translateX(5px);
+}
+
+.watchVideoBtn::after {
+  content: '';
+  width: 20px;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.8);
+  margin-left: 1rem;
+  transition: all 0.3s ease;
+}
+
+.watchVideoBtn:hover::after {
+  width: 30px;
+  background: white;
+}
+
+/* Writing Philosophy Section */
+.writingPhilosophy {
+  max-width: 1000px;
+  margin: 4rem auto 0;
+  padding: 4rem 2rem;
+  background: rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.philosophyTitle {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.8rem;
+  font-weight: 200;
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 3rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.philosophyContent p {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.7);
+  font-weight: 200;
+  line-height: 1.8;
+  margin-bottom: 1.5rem;
+  letter-spacing: 0.02em;
+}
+
+/* Featured Quote */
+.featuredQuote {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+  padding: 4rem 2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.featuredQuote blockquote {
+  font-family: 'Poppins', sans-serif;
+  font-size: clamp(1.1rem, 2.5vw, 1.3rem);
+  color: rgba(255, 255, 255, 0.8);
+  font-weight: 200;
+  line-height: 1.8;
+  margin-bottom: 2rem;
+  font-style: italic;
+  letter-spacing: 0.02em;
+}
+
+.featuredQuote cite {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.6);
+  font-weight: 300;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+/* ======================
+   RESPONSIVE DESIGN
+   ====================== */
+
+@media (max-width: 768px) {
+  .categoriesGrid {
+    grid-template-columns: 1fr;
+    gap: 1px;
+  }
+  
+  .categoryCard {
+    height: 300px;
+  }
+  
+  .writingHeroSection {
+    margin-bottom: 4rem;
+  }
+  
+  .storyGrid,
+  .videoGrid {
+    grid-template-columns: 1fr;
+  }
+  
+  .novelCard {
+    grid-template-columns: 1fr;
+    min-height: auto;
+  }
+  
+  .novelImageArea {
+    height: 150px;
+    border-right: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  .subPage {
+    padding: 4vh 1rem 8vh;
+  }
+  
+  .subPageHero {
+    margin-bottom: 3rem;
+  }
+  
+  .novelMeta {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .writingCategoriesPage {
+    padding: 6vh 1rem 8vh;
+  }
+  
+  .categoryCard {
+    height: 250px;
+  }
+  
+  .storyContent,
+  .videoContent,
+  .novelContent {
+    padding: 1.5rem;
+  }
+  
+  .featuredQuote {
+    padding: 2rem 1rem;
+  }
+  
+  .writingPhilosophy {
+    padding: 2rem 1rem;
+  }
+  
+  .storyGrid,
+  .videoGrid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .poetryGrid {
+    gap: 2rem;
+  }
+  
+  .poemCard {
+    padding: 2rem;
+  }
+  
+  .videoThumbnail {
+    height: 150px;
+  }
+  
+  .categoryContent {
+    padding: 1.5rem;
+  }
+  
+  .categoryTitle {
+    font-size: 1.5rem;
+  }
+  
+  .categoryDescription {
+    font-size: 0.85rem;
+  }
+}

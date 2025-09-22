@@ -1,0 +1,999 @@
+/* ======================
+   TECHNICAL PORTFOLIO SECTION
+   ====================== */
+
+.portfolioSection {
+  max-width: 1200px;
+  margin: 8rem auto 6rem;
+  padding: 0 2rem;
+}
+
+.portfolioHeader {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.portfolioTitle {
+  font-family: 'Poppins', sans-serif;
+  font-size: 2.5rem;
+  font-weight: 100;
+  color: white;
+  margin-bottom: 1rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  text-shadow: 0 0 30px rgba(255, 255, 255, 0.3);
+}
+
+.portfolioSubtitle {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.7);
+  font-weight: 300;
+  letter-spacing: 0.02em;
+}
+
+.portfolioGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 2rem;
+  margin-bottom: 3rem;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.portfolioCard {
+  background: rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  padding: 2rem;
+  text-decoration: none;
+  transition: all 0.4s ease;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  min-height: 250px;
+}
+
+.portfolioCard:hover {
+  border-color: rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.05);
+  transform: translateY(-8px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+}
+
+.portfolioIcon {
+  width: 60px;
+  height: 60px;
+  margin-bottom: 1.5rem;
+  color: rgba(255, 255, 255, 0.9);
+  stroke: rgba(255, 255, 255, 0.9);
+  fill: rgba(255, 255, 255, 0.9);
+  transition: all 0.3s ease;
+}
+
+.portfolioCard:hover .portfolioIcon {
+  color: rgba(255, 255, 255, 1);
+  stroke: rgba(255, 255, 255, 1);
+  fill: rgba(255, 255, 255, 1);
+  transform: scale(1.1);
+}
+
+.portfolioIcon svg {
+  width: 100%;
+  height: 100%;
+  stroke-width: 1 !important;
+  stroke: currentColor !important;
+  fill: none !important;
+}
+
+.portfolioIcon svg * {
+  stroke: currentColor !important;
+  fill: none !important;
+}
+
+.portfolioCardTitle {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.3rem;
+  font-weight: 200;
+  color: white;
+  margin-bottom: 1rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.portfolioCardDescription {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.6;
+  font-weight: 300;
+  margin-bottom: 1.5rem;
+  flex-grow: 1;
+}
+
+.portfolioTechStack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.portfolioTechStack span {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.7rem;
+  color: rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255, 0.1);
+  padding: 0.3rem 0.8rem;
+  border-radius: 15px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  font-weight: 300;
+  letter-spacing: 0.05em;
+  transition: all 0.3s ease;
+}
+
+.portfolioCard:hover .portfolioTechStack span {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.portfolioFooter {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.githubLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 1rem;
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+  font-family: 'Poppins', sans-serif;
+  font-size: 1rem;
+  font-weight: 300;
+  padding: 1rem 2rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50px;
+  background: rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(10px);
+  transition: all 0.4s ease;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.githubLink:hover {
+  color: white;
+  border-color: rgba(255, 255, 255, 0.4);
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.githubIcon {
+  width: 20px;
+  height: 20px;
+  stroke: currentColor;
+  stroke-width: 1;
+}
+
+/* Portfolio Card Hover Effects */
+.portfolioCard::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, 
+    transparent,
+    rgba(255, 255, 255, 0.05),
+    transparent);
+  transition: left 0.6s ease;
+}
+
+.portfolioCard:hover::before {
+  left: 100%;
+}
+
+/* ======================
+   MODE TOGGLE SYSTEM
+   ====================== */
+
+.modeToggle {
+  max-width: 600px;
+  margin: 0 auto 4rem;
+  text-align: center;
+}
+
+.toggleHeader {
+  margin-bottom: 2rem;
+}
+
+.toggleTitle {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.4rem;
+  font-weight: 200;
+  color: white;
+  margin-bottom: 0.5rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.toggleSubtitle {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.6);
+  font-weight: 300;
+  letter-spacing: 0.02em;
+}
+
+.toggleButtons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.toggleBtn {
+  background: rgba(0, 0, 0, 0.3);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50px;
+  padding: 1rem 2rem;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.8);
+  font-weight: 300;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.23, 1, 0.320, 1);
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  backdrop-filter: blur(10px);
+}
+
+.toggleBtn:hover {
+  border-color: var(--btn-color);
+  color: white;
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.toggleBtn.active {
+  border-color: var(--btn-color);
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  box-shadow: 
+    0 0 30px var(--btn-color),
+    0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.btnIcon {
+  width: 20px;
+  height: 20px;
+  stroke: currentColor;
+  transition: all 0.3s ease;
+}
+
+.toggleBtn:hover .btnIcon,
+.toggleBtn.active .btnIcon {
+  stroke: var(--btn-color);
+}
+
+.btnText {
+  position: relative;
+  z-index: 2;
+}
+
+.btnGlow {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, 
+    transparent,
+    var(--btn-color),
+    transparent);
+  opacity: 0.2;
+  transition: left 0.6s ease;
+}
+
+.toggleBtn:hover .btnGlow,
+.toggleBtn.active .btnGlow {
+  left: 100%;
+}
+
+/* Type Indicators on Timeline Markers */
+.typeIndicator {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(10px);
+}
+
+.typeIcon {
+  width: 14px;
+  height: 14px;
+  stroke: white;
+  stroke-width: 1.5;
+}
+
+/* Card Type Styling */
+.cardTechnical {
+  border-left: 3px solid rgba(0, 255, 255, 0.6);
+}
+
+.cardCreative {
+  border-left: 3px solid rgba(255, 140, 0, 0.6);
+}
+
+.cardBoth {
+  border-left: 3px solid rgba(255, 255, 255, 0.6);
+}
+
+/* ======================
+   RESUME PAGE - FUTURISTIC TIMELINE
+   ====================== */
+
+.resumePage {
+  position: relative;
+  z-index: 10;
+  min-height: 100vh;
+  padding: 4vh 2rem 10vh;
+}
+
+/* ======================
+   HERO SECTION
+   ====================== */
+
+.resumeHero {
+  text-align: center;
+  margin-bottom: 8rem;
+  position: relative;
+}
+
+.resumeTitle {
+  font-family: 'Poppins', sans-serif;
+  font-size: clamp(2.5rem, 6vw, 5rem);
+  font-weight: 100;
+  color: white;
+  margin-bottom: -3rem;
+  text-shadow: 0 0 40px rgba(255, 255, 255, 0.3);
+  line-height: 1.1;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  padding: 8vh 2rem 10vh;
+  opacity: 0;
+  animation: titleGlow 2s ease-out forwards;
+}
+
+@keyframes titleGlow {
+  0% { opacity: 0; transform: translateY(30px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+.resumeSubtitle {
+  font-family: 'Poppins', sans-serif;
+  font-size: clamp(1rem, 2.5vw, 1.4rem);
+  color: rgba(255, 255, 255, 0.7);
+  font-weight: 200;
+  max-width: 800px;
+  margin: 0 auto 1rem;
+  line-height: 1.8;
+  letter-spacing: 0.05em;
+  opacity: 0;
+  animation: subtitleFade 2s ease-out 0.5s forwards;
+}
+
+@keyframes subtitleFade {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+/* Progress Indicator */
+.progressIndicator {
+  width: 300px;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.1);
+  margin: 0 auto;
+  border-radius: 1px;
+  overflow: hidden;
+  position: relative;
+}
+
+.progressBar {
+  height: 100%;
+  background: linear-gradient(90deg, 
+    rgba(0, 255, 255, 0.8),
+    rgba(255, 255, 255, 0.8),
+    rgba(0, 255, 255, 0.8));
+  border-radius: 1px;
+  transition: width 0.1s ease-out;
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+}
+
+/* Technical Portfolio Button */
+.portfolioButtonContainer {
+  margin: 2rem auto 3rem;
+}
+
+.portfolioButton {
+  background: rgba(0, 0, 0, 0.3);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50px;
+  padding: 1rem 2.5rem;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.8);
+  font-weight: 300;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s ease;
+  backdrop-filter: blur(10px);
+}
+
+.portfolioButton:hover {
+  border-color: rgba(255, 255, 255, 0.6);
+  color: white;
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.portfolioButtonText {
+  position: relative;
+  z-index: 2;
+}
+
+.portfolioButtonGlow {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, 
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent);
+  transition: left 0.6s ease;
+}
+
+.portfolioButton:hover .portfolioButtonGlow {
+  left: 100%;
+}
+
+/* ======================
+   TIMELINE STRUCTURE
+   ====================== */
+
+.timelineContainer {
+  position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 4rem 0;
+}
+
+.timelineAxis {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateX(-50%);
+  border-radius: 2px;
+}
+
+.timelineProgress {
+  width: 100%;
+  background: linear-gradient(180deg,
+    rgba(0, 255, 255, 0.8),
+    rgba(255, 255, 255, 0.6),
+    rgba(255, 140, 0, 0.8));
+  transition: height 0.1s ease-out;
+  border-radius: 2px;
+  box-shadow: 0 0 15px rgba(0, 255, 255, 0.3);
+}
+
+/* ======================
+   TIMELINE ITEMS
+   ====================== */
+
+.timelineItem {
+  position: relative;
+  margin-bottom: 6rem;
+  display: flex;
+  align-items: center;
+  opacity: 0;
+  animation: itemSlideIn 0.8s ease-out forwards;
+  animation-delay: var(--item-delay);
+}
+
+@keyframes itemSlideIn {
+  0% { opacity: 0; transform: translateY(50px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+.timelineLeft {
+  flex-direction: row;
+}
+
+.timelineRight {
+  flex-direction: row-reverse;
+}
+
+/* Timeline Marker */
+.timelineMarker {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 20;
+  width: 120px;
+  height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.markerCore {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  box-shadow: 
+    0 0 30px var(--item-color),
+    inset 0 0 20px rgba(0, 0, 0, 0.3);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  transition: all 0.4s ease;
+}
+
+.timelineItem:hover .markerCore {
+  transform: scale(1.1);
+  box-shadow: 
+    0 0 50px var(--item-color),
+    inset 0 0 30px rgba(0, 0, 0, 0.2);
+}
+
+.markerYear {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 300;
+  color: white;
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  letter-spacing: 0.05em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  line-height: 0.9;
+  gap: 0.1rem;
+}
+
+/* Marker Particles */
+.timelineParticles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+}
+
+.timelineParticle {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  background: var(--particle-color);
+  border-radius: 50%;
+  opacity: 0;
+  animation: markerParticleFloat var(--duration) ease-in-out infinite;
+  animation-delay: var(--delay);
+}
+
+@keyframes markerParticleFloat {
+  0%, 100% { 
+    opacity: 0;
+    transform: translate(50%, 50%) scale(0);
+  }
+  50% { 
+    opacity: 1;
+    transform: translate(200%, -100%) scale(1);
+  }
+}
+
+/* ======================
+   TIMELINE CARDS
+   ====================== */
+
+.timelineCard {
+  background: rgba(0, 0, 0, 0.15);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  overflow: hidden;
+  width: 500px;
+  transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1);
+  position: relative;
+}
+
+.timelineLeft .timelineCard {
+  margin-right: 120px;
+}
+
+.timelineRight .timelineCard {
+  margin-left: 120px;
+}
+
+.timelineCard:hover {
+  border-color: rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.05);
+  transform: translateY(-10px) scale(1.02);
+}
+
+/* Card Header */
+.cardHeader {
+  padding: 1.5rem 2rem 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.cardEra {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.9rem;
+  color: var(--item-color);
+  font-weight: 300;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.cardLocation {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.5);
+  font-weight: 300;
+  letter-spacing: 0.05em;
+}
+
+/* Card Content */
+.cardContent {
+  padding: 1rem 2rem 2rem;
+}
+
+.cardTitle {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.4rem;
+  font-weight: 200;
+  color: white;
+  margin-bottom: 0.5rem;
+  letter-spacing: 0.05em;
+  line-height: 1.3;
+}
+
+.cardOrganization {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.7);
+  font-weight: 300;
+  margin-bottom: 1rem;
+  letter-spacing: 0.02em;
+}
+
+.cardDescription {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.7;
+  font-weight: 300;
+  margin-bottom: 2rem;
+  letter-spacing: 0.01em;
+}
+
+/* Achievements */
+.achievementsList {
+  margin-bottom: 2rem;
+}
+
+.achievement {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 0.8rem;
+  opacity: 0;
+  animation: achievementSlide 0.6s ease-out forwards;
+  animation-delay: var(--achievement-delay);
+}
+
+@keyframes achievementSlide {
+  0% { opacity: 0; transform: translateX(-20px); }
+  100% { opacity: 1; transform: translateX(0); }
+}
+
+.achievementBullet {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  margin: 0.4rem 1rem 0 0;
+  box-shadow: 0 0 10px var(--item-color);
+  flex-shrink: 0;
+}
+
+.achievement span {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.9);
+  line-height: 1.5;
+  font-weight: 300;
+}
+
+/* Skills Constellation */
+.skillConstellation {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+}
+
+.skillStar {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.75rem;
+  color: white;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 0.4rem 0.8rem;
+  border-radius: 20px;
+  border: 1px solid var(--star-color);
+  font-weight: 300;
+  letter-spacing: 0.05em;
+  transition: all 0.3s ease;
+  opacity: 0;
+  animation: skillStar 0.5s ease-out forwards;
+  animation-delay: var(--delay);
+}
+
+@keyframes skillStar {
+  0% { opacity: 0; transform: scale(0); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+.skillStar:hover {
+  background: var(--star-color);
+  color: black;
+  transform: scale(1.05);
+  box-shadow: 0 0 15px var(--star-color);
+}
+
+/* Card Glow Effect */
+.cardGlow {
+  position: absolute;
+  top: -20px;
+  left: -20px;
+  right: -20px;
+  bottom: -20px;
+  opacity: 0;
+  transition: opacity 0.6s ease;
+  pointer-events: none;
+  border-radius: 20px;
+}
+
+.timelineCard:hover .cardGlow {
+  opacity: 0.3;
+}
+
+/* ======================
+   DOWNLOAD SECTION
+   ====================== */
+
+.downloadSection {
+  max-width: 600px;
+  margin: 8rem auto 6rem;
+  text-align: center;
+}
+
+.downloadCard {
+  background: rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
+  padding: 3rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.downloadTitle {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.6rem;
+  font-weight: 200;
+  color: white;
+  margin-bottom: 1rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.downloadDescription {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.6;
+  margin-bottom: 2rem;
+  font-weight: 300;
+}
+
+.downloadOptions {
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.downloadBtn {
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50px;
+  padding: 1rem 2.5rem;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.9rem;
+  color: white;
+  font-weight: 300;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s ease;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.downloadBtn:hover {
+  border-color: rgba(255, 255, 255, 0.6);
+  transform: translateY(-3px);
+}
+
+.comingSoonBtn {
+  opacity: 0.6;
+  cursor: not-allowed !important;
+}
+
+.comingSoonBtn:hover {
+  transform: none !important;
+  border-color: rgba(255, 255, 255, 0.3) !important;
+}
+
+/* Clickable Timeline Card Styles */
+.clickableCard {
+  transition: all 0.3s ease !important;
+}
+
+.clickableCard:hover {
+  transform: translateY(-5px) !important;
+  box-shadow: 0 20px 50px rgba(255, 215, 0, 0.3) !important;
+  border-color: rgba(255, 215, 0, 0.6) !important;
+}
+
+.downloadText {
+  position: relative;
+  z-index: 2;
+}
+
+.downloadGlow {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, 
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent);
+  transition: left 0.6s ease;
+}
+
+.downloadBtn:hover .downloadGlow {
+  left: 100%;
+}
+
+/* ======================
+   CONTACT DIMENSIONS
+   ====================== */
+
+.contactDimensions {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.contactTitle {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.8rem;
+  font-weight: 200;
+  color: white;
+  margin-bottom: 3rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.contactGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+}
+
+.contactItem {
+  background: rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  transition: all 0.4s ease;
+  font-family: 'Poppins', sans-serif;
+  color: rgba(255, 255, 255, 0.8);
+  font-weight: 300;
+}
+
+.contactItem:hover {
+  border-color: rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.05);
+  transform: translateY(-5px);
+}
+
+.contactIcon {
+  font-size: 2rem;
+  filter: grayscale(100%) brightness(1.2);
+}
+
+/* ======================
+   RESPONSIVE DESIGN
+   ====================== */
+
+@media (max-width: 768px) {
+  .timelineAxis {
+    display: none;
+  }
+  
+  .timelineItem {
+    flex-direction: column !important;
+    margin-bottom: 4rem;
+  }
+  
+  .timelineMarker {
+    position: relative;
+    left: auto;
+    transform: none;
+    margin-bottom: 2rem;
+  }
+  
+  .timelineLeft .timelineCard,
+  .timelineRight .timelineCard {
+    margin: 0;
+    width: 100%;
+    max-width: 500px;
+  }
+  
+  .contactGrid {
+    grid-template-columns: 1fr;
+  }
+  
+  .resumePage {
+    padding: 2vh 1rem 8vh;
+  }
+}

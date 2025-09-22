@@ -1,0 +1,24 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(gatsby develop)",
+      "Bash(taskkill:*)",
+      "Bash(git commit:*)",
+      "Bash(find:*)",
+      "Bash(powershell:*)",
+      "Bash(git add:*)",
+      "Bash(dir \"C:\\Users\\snedm\\Documents\\Website\\portfolio\\khadra\\public\\videos\\film\\doc\")",
+      "Bash(npm run develop:*)",
+      "Bash(cat:*)",
+      "Bash(dir \"C:\\Users\\snedm\\Documents\\Website\\portfolio\\khadra\\static\\images\\collage\")",
+      "Bash(dir \"C:\\Users\\snedm\\Documents\\Website\\portfolio\\khadra\\static\\images\\collage\\atlas\")",
+      "Bash(dir \"C:\\Users\\snedm\\Documents\\Website\\portfolio\\khadra\\static\\images\\collage\\monster\")",
+      "Bash(dir \"C:\\Users\\snedm\\Documents\\Website\\portfolio\\khadra\\static\\images\\collage\\rage\")",
+      "Bash(dir \"C:\\Users\\snedm\\Documents\\Website\\portfolio\\khadra\\public\\videos\")",
+      "Bash(npx gatsby:*)",
+      "Bash(findstr:*)",
+      "Bash(dir:*)"
+    ],
+    "deny": []
+  }
+}

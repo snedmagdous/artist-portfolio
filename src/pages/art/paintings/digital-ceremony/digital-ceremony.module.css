@@ -1,0 +1,796 @@
+/* src/pages/art/paintings/digital-ceremony/digital-ceremony.module.css */
+
+/* ======================
+   DIGITAL CEREMONY SERIES PAGE
+   ====================== */
+
+.digitalCeremonyPage {
+  position: relative;
+  z-index: 10;
+  min-height: 100vh;
+  padding: 6vh 2rem 10vh;
+  overflow-x: hidden;
+}
+
+/* Back Navigation */
+.backNavigation {
+  position: fixed;
+  top: 8rem;
+  left: 2rem;
+  z-index: 100;
+}
+
+.backLink {
+  display: inline-flex;
+  align-items: center;
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 300;
+  padding: 1rem 1.5rem;
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 25px;
+  transition: all 0.3s ease;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.backLink:hover {
+  color: white;
+  background: rgba(0, 0, 0, 0.5);
+  border-color: rgba(255, 255, 255, 0.4);
+  transform: translateX(-5px);
+}
+
+.backLink::before {
+  content: '';
+  width: 20px;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.8);
+  margin-right: 1rem;
+  transition: all 0.3s ease;
+}
+
+.backLink:hover::before {
+  width: 30px;
+  background: white;
+}
+
+/* Hero Section */
+.seriesHero {
+  text-align: center;
+  margin-bottom: 8rem;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 12vh;
+}
+
+.seriesTitle {
+  font-family: 'Poppins', sans-serif;
+  font-size: clamp(3rem, 8vw, 5rem);
+  font-weight: 100;
+  color: white;
+  margin-bottom: 2rem;
+  text-shadow: 0 0 40px rgba(255, 182, 193, 0.4);
+  line-height: 1.2;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.seriesInfo {
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+  margin-bottom: 3rem;
+  flex-wrap: wrap;
+}
+
+.seriesCount,
+.seriesYear,
+.seriesMedium {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.7);
+  font-weight: 300;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding: 0.5rem 1rem;
+  background: rgba(255, 182, 193, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 182, 193, 0.3);
+  border-radius: 20px;
+}
+
+.seriesDescription {
+  font-family: 'Poppins', sans-serif;
+  font-size: clamp(1rem, 2.5vw, 1.2rem);
+  color: rgba(255, 255, 255, 0.8);
+  font-weight: 300;
+  line-height: 1.8;
+  letter-spacing: 0.02em;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+/* ======================
+   SACRED GALLERY - TRIANGLE FORMATION
+   ====================== */
+
+.sacredGallery {
+  position: relative;
+  min-height: 100vh;
+  margin-bottom: 8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.triangleContainer {
+  position: relative;
+  width: 800px;
+  height: 600px;
+  max-width: 90vw;
+}
+
+/* Sacred Geometric Background */
+.geometricPattern {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(ellipse at center, 
+    rgba(255, 182, 193, 0.05) 0%, 
+    rgba(255, 105, 180, 0.03) 30%, 
+    transparent 70%);
+  border-radius: 50%;
+  animation: sacredPulse 6s ease-in-out infinite;
+}
+
+@keyframes sacredPulse {
+  0%, 100% { 
+    transform: scale(1);
+    opacity: 0.3;
+  }
+  50% { 
+    transform: scale(1.1);
+    opacity: 0.6;
+  }
+}
+
+/* Triangle Formation Layout */
+.topCircle {
+  position: absolute;
+  top: -180px;
+  left: 33%;
+  transform: translateX(-50%);
+}
+
+.bottomLeftCircle {
+  position: absolute;
+  top: 115px;
+  left: -7px;
+}
+
+.bottomRightCircle {
+  position: absolute;
+  top: -163px;
+  right: -530px;
+}
+
+/* Painting Circles */
+.paintingCircle {
+  width: 280px;
+  height: 280px;
+  background: rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(15px);
+  border: 2px solid rgba(255, 182, 193, 0.3);
+  border-radius: 50%;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1);
+  position: relative;
+  animation: circleAppear 1s ease-out forwards;
+  opacity: 0;
+}
+
+.topCircle {
+  animation-delay: 0.2s;
+}
+
+.bottomLeftCircle {
+  animation-delay: 0.6s;
+}
+
+.bottomRightCircle {
+  animation-delay: 1s;
+}
+
+@keyframes circleAppear {
+  0% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.paintingCircle:hover {
+  transform: scale(1.1);
+  border-color: rgba(255, 182, 193, 0.6);
+  box-shadow: 0 0 40px rgba(255, 182, 193, 0.4);
+}
+
+/* Circle Glow */
+.circleGlow {
+  position: absolute;
+  top: -15px;
+  left: -15px;
+  right: -15px;
+  bottom: -15px;
+  background: radial-gradient(circle,
+    rgba(255, 182, 193, 0.2) 0%,
+    transparent 70%);
+  border-radius: 50%;
+  opacity: 0;
+  transition: all 0.4s ease;
+}
+
+.paintingCircle:hover .circleGlow {
+  opacity: 1;
+}
+
+/* Circle Image */
+.circleImage {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  transition: all 0.4s ease;
+  border-radius: 50%;
+  filter: brightness(0.5);
+}
+
+.paintingCircle:hover .circleImage {
+  transform: scale(1.05);
+}
+
+/* Circle Overlay */
+.circleOverlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 1rem 1.5rem;
+  text-align: center;
+  opacity: 0;
+  transition: all 0.4s ease;
+  white-space: nowrap;
+}
+
+.paintingCircle:hover .circleOverlay {
+  opacity: 1;
+}
+
+.circleTitle {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1rem;
+  font-weight: 300;
+  color: white;
+  margin-bottom: 0.3rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.circleYear {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.8rem;
+  color: rgba(255, 182, 193, 0.8);
+  font-weight: 300;
+  letter-spacing: 0.1em;
+}
+
+/* Special Effects for Each Card */
+.loveParticles,
+.protectionAura,
+.eternitySymbols {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.paintingCard:hover .loveParticles,
+.paintingCard:hover .protectionAura,
+.paintingCard:hover .eternitySymbols {
+  opacity: 1;
+}
+
+/* Love Particles (Left Card) */
+.loveParticles::before,
+.loveParticles::after {
+  content: '♡';
+  position: absolute;
+  color: rgba(255, 182, 193, 0.6);
+  font-size: 1.5rem;
+  animation: floatHeart 3s ease-in-out infinite;
+}
+
+.loveParticles::before {
+  top: 20%;
+  left: 10%;
+  animation-delay: 0s;
+}
+
+.loveParticles::after {
+  top: 60%;
+  right: 10%;
+  animation-delay: 1.5s;
+}
+
+@keyframes floatHeart {
+  0%, 100% { 
+    transform: translateY(0) scale(1);
+    opacity: 0.6;
+  }
+  50% { 
+    transform: translateY(-20px) scale(1.2);
+    opacity: 1;
+  }
+}
+
+/* Protection Aura (Center Card) */
+.protectionAura::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 150px;
+  height: 150px;
+  border: 2px solid rgba(255, 182, 193, 0.3);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  animation: protectionPulse 2s ease-in-out infinite;
+}
+
+@keyframes protectionPulse {
+  0%, 100% { 
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0.3;
+  }
+  50% { 
+    transform: translate(-50%, -50%) scale(1.2);
+    opacity: 0.6;
+  }
+}
+
+/* Eternity Symbols (Right Card) */
+.eternitySymbols::before,
+.eternitySymbols::after {
+  content: '∞';
+  position: absolute;
+  color: rgba(255, 182, 193, 0.5);
+  font-size: 2rem;
+  animation: rotate 4s linear infinite;
+}
+
+.eternitySymbols::before {
+  top: 25%;
+  left: 25%;
+}
+
+.eternitySymbols::after {
+  bottom: 25%;
+  right: 25%;
+  animation-direction: reverse;
+}
+
+@keyframes rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Triangle Connection Lines */
+.connectionLines {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.triangleConnections {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* Animated Connection Paths */
+.connectionPath1,
+.connectionPath2,
+.connectionPath3 {
+  animation: pathPulse 4s ease-in-out infinite;
+}
+
+.connectionPath2 {
+  animation-delay: 1.3s;
+}
+
+.connectionPath3 {
+  animation-delay: 2.6s;
+}
+
+@keyframes pathPulse {
+  0%, 100% {
+    opacity: 0.3;
+    stroke-width: 2;
+  }
+  50% {
+    opacity: 0.8;
+    stroke-width: 3;
+  }
+}
+
+/* Flowing Particles */
+.flowingParticle1,
+.flowingParticle2,
+.flowingParticle3 {
+  filter: drop-shadow(0 0 4px rgba(255, 182, 193, 0.8));
+}
+
+/* ======================
+   LOVE PHILOSOPHY SECTION
+   ====================== */
+
+.lovePhilosophy {
+  max-width: 900px;
+  margin: 0 auto 6rem;
+  padding: 4rem 2rem;
+  background: rgba(255, 182, 193, 0.05);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 182, 193, 0.2);
+  border-radius: 16px;
+  text-align: center;
+}
+
+.philosophyTitle {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.8rem;
+  font-weight: 200;
+  color: rgba(255, 182, 193, 0.9);
+  margin-bottom: 2rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.philosophyText blockquote {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.8;
+  margin-bottom: 2rem;
+  font-weight: 300;
+  font-style: italic;
+  letter-spacing: 0.02em;
+}
+
+.philosophyText cite {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.9rem;
+  color: rgba(255, 182, 193, 0.7);
+  font-weight: 300;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+/* ======================
+   ARTIST STATEMENT
+   ====================== */
+
+.artistStatement {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 4rem 2rem;
+  background: rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  text-align: center;
+}
+
+.statementTitle {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.8rem;
+  font-weight: 200;
+  color: white;
+  margin-bottom: 2rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.statementContent p {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.8;
+  margin-bottom: 2rem;
+  font-weight: 300;
+  letter-spacing: 0.02em;
+}
+
+.statementSignature {
+  display: block;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.6);
+  font-weight: 300;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-top: 2rem;
+  font-style: italic;
+}
+
+/* ======================
+   MODAL STYLES (REUSED FROM ANCESTRAL VISIONS)
+   ====================== */
+
+.paintingModal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.9);
+  backdrop-filter: blur(10px);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  animation: modalFadeIn 0.3s ease-out;
+}
+
+@keyframes modalFadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+.modalContent {
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 182, 193, 0.3);
+  border-radius: 16px;
+  max-width: 1200px;
+  max-height: 90vh;
+  width: 100%;
+  overflow-y: auto;
+  position: relative;
+  animation: modalSlideIn 0.4s ease-out;
+}
+
+@keyframes modalSlideIn {
+  0% { 
+    transform: translateY(50px) scale(0.9);
+    opacity: 0;
+  }
+  100% { 
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+}
+
+.closeButton {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: rgba(255, 182, 193, 0.1);
+  border: 1px solid rgba(255, 182, 193, 0.3);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  color: white;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+}
+
+.closeButton:hover {
+  background: rgba(255, 182, 193, 0.2);
+  transform: scale(1.1);
+}
+
+.modalLayout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  padding: 3rem;
+  min-height: 500px;
+}
+
+.modalImage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.paintingImage {
+  max-width: 100%;
+  max-height: 70vh;
+  border-radius: 8px;
+  box-shadow: 0 10px 40px rgba(255, 182, 193, 0.3);
+}
+
+.modalInfo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.modalTitle {
+  font-family: 'Poppins', sans-serif;
+  font-size: 2rem;
+  font-weight: 200;
+  color: white;
+  margin-bottom: 2rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.modalDetails {
+  margin-bottom: 2rem;
+}
+
+.detailItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.8rem 0;
+  border-bottom: 1px solid rgba(255, 182, 193, 0.2);
+}
+
+.detailLabel {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.6);
+  font-weight: 300;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.detailValue {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.9rem;
+  color: white;
+  font-weight: 300;
+}
+
+.modalDescription,
+.modalSymbolism,
+.modalInspiration {
+  margin-bottom: 2rem;
+}
+
+.modalDescription h4,
+.modalSymbolism h4,
+.modalInspiration h4 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+  color: rgba(255, 182, 193, 0.9);
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.modalDescription p,
+.modalSymbolism p,
+.modalInspiration p {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.7;
+  font-weight: 300;
+  letter-spacing: 0.02em;
+}
+
+/* ======================
+   RESPONSIVE DESIGN
+   ====================== */
+
+@media (max-width: 768px) {
+  .digitalCeremonyPage {
+    padding: 4vh 1rem 8vh;
+  }
+
+  .backNavigation {
+    position: static;
+    margin-bottom: 2rem;
+  }
+
+  .seriesHero {
+    padding-top: 4vh;
+    margin-bottom: 4rem;
+  }
+
+  .seriesInfo {
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+  }
+
+  .triangleContainer {
+    width: 100%;
+    height: 800px;
+  }
+
+  .paintingCircle {
+    width: 200px;
+    height: 200px;
+  }
+
+  .topCircle,
+  .bottomLeftCircle,
+  .bottomRightCircle {
+    position: relative;
+    transform: none;
+    margin: 2rem auto;
+    display: block;
+  }
+
+  .modalLayout {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    padding: 2rem;
+  }
+
+  .modalContent {
+    margin: 1rem;
+    max-height: 95vh;
+  }
+
+  .lovePhilosophy,
+  .artistStatement {
+    padding: 3rem 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .paintingCircle {
+    width: 160px;
+    height: 160px;
+  }
+
+  .modalLayout {
+    padding: 1.5rem;
+  }
+
+  .modalTitle {
+    font-size: 1.5rem;
+  }
+
+  .triangleContainer {
+    height: 600px;
+  }
+}

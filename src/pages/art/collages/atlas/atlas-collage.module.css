@@ -1,0 +1,1052 @@
+/* src/pages/art/collages/atlas/atlas-collage.module.css */
+
+/* ======================
+   ATLAS OF THE BODY COLLAGE PAGE
+   ====================== */
+
+.collagePage {
+  position: relative;
+  z-index: 10;
+  min-height: 100vh;
+  padding: 6vh 2rem 10vh;
+}
+
+/* Back Navigation */
+.backNavigation {
+  position: fixed;
+  top: 8rem;
+  left: 2rem;
+  z-index: 100;
+}
+
+.backLink {
+  display: inline-flex;
+  align-items: center;
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 300;
+  padding: 1rem 1.5rem;
+  background: rgba(75, 0, 130, 0.2);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(138, 43, 226, 0.3);
+  border-radius: 25px;
+  transition: all 0.3s ease;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.backLink:hover {
+  color: white;
+  background: rgba(75, 0, 130, 0.4);
+  border-color: rgba(138, 43, 226, 0.5);
+  transform: translateX(-5px);
+}
+
+.backLink::before {
+  content: '';
+  width: 20px;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.8);
+  margin-right: 1rem;
+  transition: all 0.3s ease;
+}
+
+.backLink:hover::before {
+  width: 30px;
+  background: white;
+}
+
+/* Hero Section */
+.collageHero {
+  text-align: center;
+  margin-bottom: 8rem;
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 15vh;
+}
+
+.collageTitle {
+  font-family: 'Poppins', sans-serif;
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  font-weight: 200;
+  color: #DAA520;
+  margin-bottom: 2rem;
+  text-shadow: 
+    0 0 20px rgba(218, 165, 32, 0.5),
+    2px 2px 4px rgba(0, 0, 0, 0.8);
+  line-height: 1.2;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  animation: atlasGlow 4s ease-in-out infinite alternate;
+}
+
+@keyframes atlasGlow {
+  0% { 
+    text-shadow: 
+      0 0 20px rgba(218, 165, 32, 0.5),
+      2px 2px 4px rgba(0, 0, 0, 0.8);
+  }
+  100% { 
+    text-shadow: 
+      0 0 30px rgba(218, 165, 32, 0.8),
+      0 0 50px rgba(218, 165, 32, 0.3),
+      2px 2px 4px rgba(0, 0, 0, 0.8);
+  }
+}
+
+.collageMeta {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+.metaItem {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.8);
+  font-weight: 300;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 0.5rem 1rem;
+  background: rgba(75, 0, 130, 0.15);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(138, 43, 226, 0.3);
+  border-radius: 20px;
+}
+
+.collageDescription {
+  font-family: 'Poppins', sans-serif;
+  font-size: clamp(1rem, 2.5vw, 1.3rem);
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 300;
+  line-height: 1.8;
+  letter-spacing: 0.02em;
+  max-width: 800px;
+  margin: 0 auto 3rem;
+}
+
+/* Body System Selector */
+.bodySystemSelector {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.systemToggle {
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(15px);
+  border: 2px solid;
+  border-radius: 30px;
+  padding: 1rem 2rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.systemToggle:hover {
+  background: rgba(0, 0, 0, 0.5);
+  transform: translateY(-2px);
+}
+
+.systemToggle span:first-child {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.toggleHint {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.7rem;
+  color: rgba(255, 255, 255, 0.6);
+  font-weight: 300;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Atlas Section */
+.atlasSection {
+  max-width: 1400px;
+  margin: 0 auto 8rem;
+}
+
+.sectionTitle {
+  font-family: 'Poppins', sans-serif;
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 200;
+  color: white;
+  text-align: center;
+  margin-bottom: 1rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-shadow: 0 0 30px rgba(255, 255, 255, 0.3);
+}
+
+.sectionSubtitle {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.7);
+  text-align: center;
+  margin-bottom: 4rem;
+  font-weight: 300;
+  letter-spacing: 0.02em;
+}
+
+/* Atlas Container */
+.atlasContainer {
+  display: grid;
+  grid-template-columns: 1fr 450px;
+  gap: 3rem;
+  align-items: start;
+}
+
+.bodyMap {
+  position: relative;
+  width: 100%;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+  border: 2px solid rgba(218, 165, 32, 0.3);
+  transition: border-color 0.3s ease;
+}
+
+.bodyMap:hover {
+  border-color: rgba(218, 165, 32, 0.5);
+}
+
+.mainAtlasImage {
+  width: 100%;
+  height: auto;
+  display: block;
+  filter: brightness(0.85) contrast(1.1) saturate(1.05) sepia(0.1);
+}
+
+/* Anatomy Overlay */
+.anatomyOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.bodyRegion {
+  position: absolute;
+  border: 2px solid transparent;
+  cursor: pointer;
+  pointer-events: all;
+  transition: all 0.4s ease;
+  background: rgba(218, 165, 32, 0.05);
+  opacity: 0;
+  border-radius: 8px;
+}
+
+.bodyRegion:hover,
+.activeRegion {
+  opacity: 1;
+  background: rgba(218, 165, 32, 0.15);
+  box-shadow: 
+    0 0 20px rgba(218, 165, 32, 0.3),
+    inset 0 0 20px rgba(255, 255, 255, 0.05);
+}
+
+/* Cultural mapping specific colors */
+.sacred {
+  border-color: rgba(218, 165, 32, 0.6);
+}
+
+.sacred:hover,
+.sacred.activeRegion {
+  background: rgba(218, 165, 32, 0.15);
+  box-shadow: 0 0 20px rgba(218, 165, 32, 0.4);
+}
+
+.commodified {
+  border-color: rgba(218, 165, 32, 0.6);
+}
+
+.commodified:hover,
+.commodified.activeRegion {
+  background: rgba(218, 165, 32, 0.6);
+  box-shadow: 0 0 20px rgba(220, 20, 60, 0.4);
+}
+
+.historical {
+  border-color: rgba(218, 165, 32, 0.6);
+}
+
+.historical:hover,
+.historical.activeRegion {
+  background: rgba(105, 105, 105, 0.15);
+  box-shadow: 0 0 20px rgba(105, 105, 105, 0.4);
+}
+
+.political {
+  border-color: rgba(218, 165, 32, 0.6);
+}
+
+.political:hover,
+.political.activeRegion {
+  background: rgba(70, 130, 180, 0.15);
+  box-shadow: 0 0 20px rgba(70, 130, 180, 0.4);
+}
+
+.erotic {
+  border-color: rgba(255, 20, 147, 0.6);
+}
+
+.erotic:hover,
+.erotic.activeRegion {
+  background: rgba(255, 20, 147, 0.15);
+  box-shadow: 0 0 20px rgba(255, 20, 147, 0.4);
+}
+
+.informational {
+  border-color: rgba(0, 191, 255, 0.6);
+}
+
+.informational:hover,
+.informational.activeRegion {
+  background: rgba(0, 191, 255, 0.15);
+  box-shadow: 0 0 20px rgba(0, 191, 255, 0.4);
+}
+
+.regionInfo {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  right: 10px;
+  background: rgba(0, 0, 0, 0.9);
+  backdrop-filter: blur(10px);
+  padding: 1rem;
+  border-radius: 8px;
+  border: 1px solid rgba(218, 165, 32, 0.3);
+  opacity: 0;
+  transform: translateY(10px);
+  transition: all 0.3s ease;
+  pointer-events: none;
+}
+
+.bodyRegion:hover .regionInfo,
+.activeRegion .regionInfo {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.regionInfo h4 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1rem;
+  color: #DAA520;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.regionInfo p {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 0.5rem;
+  line-height: 1.4;
+  font-weight: 300;
+}
+
+.bodySystemLabel {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.7rem;
+  color: rgba(218, 165, 32, 0.8);
+  font-weight: 300;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  opacity: 0.8;
+}
+
+/* Region Analysis Panel */
+.regionAnalysisPanel {
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(218, 165, 32, 0.3);
+  border-radius: 16px;
+  padding: 2rem;
+  position: sticky;
+  top: 2rem;
+  height: fit-content;
+  animation: panelSlideIn 0.4s ease-out;
+}
+
+@keyframes panelSlideIn {
+  0% { opacity: 0; transform: translateX(20px); }
+  100% { opacity: 1; transform: translateX(0); }
+}
+
+.regionAnalysis {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.regionHeader {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.regionHeader h3 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.4rem;
+  color: #DAA520;
+  margin: 0;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.mappingTag {
+  padding: 0.3rem 0.8rem;
+  border-radius: 12px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 300;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border: 1px solid;
+}
+
+.mappingTag.sacred {
+  background: rgba(218, 165, 32, 0.2);
+  border-color: rgba(218, 165, 32, 0.4);
+  color: rgba(218, 165, 32, 0.9);
+}
+
+.mappingTag.commodified {
+  background: rgba(220, 20, 60, 0.2);
+  border-color: rgba(220, 20, 60, 0.4);
+  color: rgba(220, 20, 60, 0.9);
+}
+
+.mappingTag.historical {
+  background: rgba(105, 105, 105, 0.2);
+  border-color: rgba(105, 105, 105, 0.4);
+  color: rgba(105, 105, 105, 0.9);
+}
+
+.mappingTag.political {
+  background: rgba(70, 130, 180, 0.2);
+  border-color: rgba(70, 130, 180, 0.4);
+  color: rgba(70, 130, 180, 0.9);
+}
+
+.mappingTag.erotic {
+  background: rgba(255, 20, 147, 0.2);
+  border-color: rgba(255, 20, 147, 0.4);
+  color: rgba(255, 20, 147, 0.9);
+}
+
+.mappingTag.informational {
+  background: rgba(0, 191, 255, 0.2);
+  border-color: rgba(0, 191, 255, 0.4);
+  color: rgba(0, 191, 255, 0.9);
+}
+
+.regionDescription {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.9);
+  line-height: 1.6;
+  margin: 0;
+  font-weight: 300;
+}
+
+.anatomyElements h4 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 0.8rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.anatomyElements ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.anatomyElements li {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.7);
+  padding: 0.3rem 0;
+  border-left: 2px solid rgba(218, 165, 32, 0.3);
+  padding-left: 1rem;
+  margin-bottom: 0.5rem;
+  font-weight: 300;
+}
+
+.culturalAnalysis h4 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 0.8rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.culturalAnalysis p {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.6;
+  margin: 0;
+  font-weight: 300;
+  font-style: italic;
+}
+
+.mapDeepBtn {
+  background: rgba(218, 165, 32, 0.2);
+  border: 1px solid rgba(218, 165, 32, 0.4);
+  border-radius: 25px;
+  padding: 0.8rem 1.5rem;
+  color: white;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 300;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  width: 100%;
+  margin-top: 1rem;
+}
+
+.mapDeepBtn:hover {
+  background: rgba(218, 165, 32, 0.3);
+  border-color: rgba(218, 165, 32, 0.6);
+  transform: translateY(-2px);
+}
+
+/* Mapping Section */
+.mappingSection {
+  max-width: 1200px;
+  margin: 0 auto 8rem;
+}
+
+.methodsGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+}
+
+.mappingCard {
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  gap: 2rem;
+  padding: 2.5rem;
+  background: rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(75, 0, 130, 0.2);
+  border-radius: 16px;
+  transition: all 0.3s ease;
+}
+
+.mappingCard:hover {
+  border-color: rgba(218, 165, 32, 0.4);
+  background: rgba(75, 0, 130, 0.1);
+  transform: translateY(-5px);
+}
+
+.methodIcon {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding-top: 0.5rem;
+}
+
+.iconCircle {
+  width: 80px;
+  height: 80px;
+  background: rgba(218, 165, 32, 0.2);
+  border: 2px solid rgba(218, 165, 32, 0.4);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: white;
+}
+
+.methodContent {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.methodTitle {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.6rem;
+  color: #DAA520;
+  margin: 0;
+  font-weight: 300;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.methodDescription {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.9);
+  line-height: 1.6;
+  margin: 0;
+  font-weight: 300;
+}
+
+.methodProcess h4,
+.methodMaterials h4,
+.cartographicInsight h4 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.8);
+  margin: 0 0 0.8rem 0;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.methodProcess p {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.6;
+  margin: 0;
+  font-weight: 300;
+}
+
+.materialsList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.materialChip {
+  background: rgba(75, 0, 130, 0.2);
+  border: 1px solid rgba(218, 165, 32, 0.3);
+  padding: 0.3rem 0.8rem;
+  border-radius: 15px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 300;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.insightText {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.95rem;
+  color: rgba(218, 165, 32, 0.9);
+  line-height: 1.6;
+  margin: 0;
+  font-weight: 300;
+  font-style: italic;
+  border-left: 3px solid rgba(218, 165, 32, 0.4);
+  padding-left: 1rem;
+}
+
+/* Systems Section */
+.systemsSection {
+  max-width: 1200px;
+  margin: 0 auto 8rem;
+}
+
+.systemsGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+}
+
+.systemCard {
+  background: rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(75, 0, 130, 0.2);
+  border-radius: 12px;
+  padding: 0;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.systemCard:hover,
+.activeSystem {
+  border-color: rgba(218, 165, 32, 0.4);
+  background: rgba(75, 0, 130, 0.1);
+  transform: translateY(-3px);
+}
+
+.systemHeader {
+  padding: 1.5rem 2rem 1rem;
+  border-top: 4px solid;
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.systemHeader h3 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.3rem;
+  margin: 0;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.systemDescription {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.6;
+  margin: 0 2rem 1.5rem;
+  font-weight: 300;
+}
+
+.systemRegions {
+  padding: 0 2rem 2rem;
+}
+
+.systemRegions h4 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 0.8rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.systemRegions ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.systemRegions li {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.7);
+  padding: 0.3rem 0;
+  border-left: 2px solid rgba(218, 165, 32, 0.3);
+  padding-left: 1rem;
+  margin-bottom: 0.3rem;
+  font-weight: 300;
+}
+
+/* Artist Statement */
+.artistStatement {
+  max-width: 900px;
+  margin: 0 auto 8rem;
+  padding: 4rem 3rem;
+  background: rgba(75, 0, 130, 0.1);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(218, 165, 32, 0.2);
+  border-radius: 16px;
+  position: relative;
+}
+
+.artistStatement::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, 
+    rgba(218, 165, 32, 0.05) 0%, 
+    transparent 50%, 
+    rgba(75, 0, 130, 0.05) 100%);
+  border-radius: 16px;
+  pointer-events: none;
+}
+
+.statementTitle {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.8rem;
+  font-weight: 300;
+  color: #DAA520;
+  text-align: center;
+  margin-bottom: 3rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  position: relative;
+  z-index: 2;
+}
+
+.statementContent {
+  position: relative;
+  z-index: 2;
+}
+
+.statementContent p {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 300;
+  line-height: 1.8;
+  margin-bottom: 2rem;
+  letter-spacing: 0.02em;
+}
+
+.statementSignature {
+  display: block;
+  text-align: right;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.9rem;
+  color: rgba(218, 165, 32, 0.8);
+  font-weight: 300;
+  letter-spacing: 0.1em;
+  font-style: italic;
+  margin-top: 3rem;
+}
+
+/* Modal */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.9);
+  backdrop-filter: blur(15px);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  animation: modalFadeIn 0.3s ease-out;
+}
+
+@keyframes modalFadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+.modalContent {
+  background: rgba(75, 0, 130, 0.3);
+  backdrop-filter: blur(25px);
+  border: 1px solid rgba(218, 165, 32, 0.3);
+  border-radius: 16px;
+  max-width: 800px;
+  max-height: 90vh;
+  width: 100%;
+  overflow-y: auto;
+  position: relative;
+  animation: modalSlideIn 0.4s ease-out;
+}
+
+@keyframes modalSlideIn {
+  0% { transform: scale(0.9) translateY(20px); opacity: 0; }
+  100% { transform: scale(1) translateY(0); opacity: 1; }
+}
+
+.closeButton {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: rgba(218, 165, 32, 0.2);
+  border: 1px solid rgba(218, 165, 32, 0.4);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 10001;
+}
+
+.closeButton:hover {
+  background: rgba(218, 165, 32, 0.3);
+  border-color: rgba(218, 165, 32, 0.6);
+  transform: scale(1.1);
+}
+
+.modalLayout {
+  padding: 3rem;
+}
+
+.modalInfo h2 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 2rem;
+  font-weight: 400;
+  color: #DAA520;
+  margin-bottom: 1rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.modalMeta {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.modalMappingTag,
+.modalSystemTag {
+  padding: 0.3rem 0.8rem;
+  border-radius: 12px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 300;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border: 1px solid;
+}
+
+.modalMappingTag {
+  background: rgba(218, 165, 32, 0.2);
+  border-color: rgba(218, 165, 32, 0.4);
+  color: rgba(218, 165, 32, 0.9);
+}
+
+.modalSystemTag {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.3);
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.modalDescription {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.9);
+  line-height: 1.7;
+  margin-bottom: 2rem;
+  font-weight: 300;
+}
+
+.modalElements h3,
+.modalAnalysis h3,
+.modalDecolonial h3 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.2rem;
+  color: rgba(255, 255, 255, 0.9);
+  margin: 2rem 0 1rem 0;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.modalElements ul {
+  list-style: none;
+  padding: 0;
+}
+
+.modalElements li {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.8);
+  padding: 0.5rem 0;
+  border-left: 2px solid rgba(218, 165, 32, 0.4);
+  padding-left: 1rem;
+  margin-bottom: 0.5rem;
+  font-weight: 300;
+}
+
+.modalAnalysis p,
+.modalDecolonial p {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.9);
+  line-height: 1.7;
+  font-weight: 300;
+  margin-bottom: 1.5rem;
+}
+
+.modalAnalysis p {
+  font-style: italic;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .atlasContainer {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  
+  .regionAnalysisPanel {
+    position: static;
+  }
+  
+  .systemsGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .collagePage {
+    padding: 4vh 1rem 8vh;
+  }
+  
+  .collageHero {
+    padding-top: 10vh;
+  }
+  
+  .mappingCard {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    text-align: center;
+  }
+  
+  .methodIcon {
+    justify-content: center;
+    padding-top: 0;
+  }
+  
+  .backNavigation {
+    position: static;
+    margin-bottom: 2rem;
+  }
+  
+  .artistStatement {
+    padding: 2rem 1.5rem;
+  }
+  
+  .modalLayout {
+    padding: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .collageMeta {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+  
+  .methodsGrid {
+    gap: 2rem;
+  }
+  
+  .mappingCard {
+    padding: 1.5rem;
+  }
+  
+  .materialsList {
+    justify-content: center;
+  }
+}

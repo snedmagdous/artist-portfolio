@@ -1,0 +1,2104 @@
+/* src/pages/art/art.module.css */
+
+/* Add this to the end of your art.module.css file */
+
+/* Custom video widths for different pages */
+.paintingsPageVideo .layout-video-background {
+  width: 30% !important; /* 80% of viewport width */
+}
+
+/* ======================
+   ILLUSTRATIONS PAGE - Timeline (MISSING)
+   ====================== */
+
+.timelineContainer {
+  position: relative;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.timelineLine {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(to bottom, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transform: translateX(-50%);
+}
+
+.timelineItem {
+  position: relative;
+  margin-bottom: 4rem;
+  display: flex;
+  align-items: center;
+}
+
+.timelineLeft {
+  flex-direction: row;
+}
+
+.timelineRight {
+  flex-direction: row-reverse;
+}
+
+.timelineMarker {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  background: rgba(0, 0, 0, 0.8);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  width: 80px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.timelineYear {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 300;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.timelineCard {
+  background: rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  overflow: hidden;
+  width: 450px;
+  transition: all 0.4s ease;
+}
+
+.timelineLeft .timelineCard {
+  margin-right: 100px;
+}
+
+.timelineRight .timelineCard {
+  margin-left: 100px;
+}
+
+.timelineCard:hover {
+  border-color: rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.05);
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.timelineImageArea {
+  height: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.01));
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.timelineImageArea svg {
+  width: 50px;
+  height: 50px;
+  stroke: rgba(255, 255, 255, 0.3);
+  transition: all 0.3s ease;
+}
+
+.timelineCard:hover .timelineImageArea svg {
+  stroke: rgba(255, 255, 255, 0.7);
+  transform: scale(1.1);
+}
+
+/* Hide icon when video is visible */
+.timelineImageArea .hoverVideo.videoVisible ~ svg {
+  opacity: 0;
+  transform: scale(1.1);
+}
+
+/* Ensure timeline videos are properly positioned */
+.timelineImageArea .hoverVideo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 1.2s ease;
+  z-index: 2;
+  filter: brightness(0.8) contrast(1.1);
+}
+
+.timelineImageArea .hoverVideo.videoVisible {
+  opacity: 1;
+  z-index: 3;
+}
+
+.timelineStatus {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+}
+
+
+.comingsoon {
+  border-color: rgba(128, 128, 128, 0.3);
+  color: rgba(128, 128, 128, 0.8);
+}
+
+.ongoing {
+  border-color: rgba(0, 150, 255, 0.3);
+  color: rgba(0, 150, 255, 0.8);
+}
+
+.available {
+  border-color: rgba(0, 255, 0, 0.3);
+  color: rgba(19, 129, 19, 0.8);
+}
+
+.timelineContent {
+  padding: 2rem;
+}
+
+.timelineTitle {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.4rem;
+  font-weight: 200;
+  color: white;
+  margin-bottom: 1rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.timelineMeta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.timelineType,
+.timelineMedium,
+.timelineCount {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.7rem;
+  color: rgba(255, 255, 255, 0.5);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  font-weight: 300;
+}
+
+.timelineDescription {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.7;
+  font-weight: 300;
+  margin-bottom: 1.5rem;
+  letter-spacing: 0.02em;
+}
+
+.viewProjectBtn {
+  display: inline-flex;
+  align-items: center;
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 300;
+  padding: 0.8rem 0;
+  transition: all 0.3s ease;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.viewProjectBtn:hover {
+  color: white;
+  transform: translateX(5px);
+}
+
+.viewProjectBtn::after {
+  content: '';
+  width: 20px;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.8);
+  margin-left: 1rem;
+  transition: all 0.3s ease;
+}
+
+.viewProjectBtn:hover::after {
+  width: 30px;
+  background: white;
+}
+
+.mediumExploration {
+  max-width: 900px;
+  margin: 4rem auto 0;
+  padding: 3rem 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.explorationTitle {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 200;
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 3rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.explorationGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+}
+
+.explorationItem {
+  background: rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 2rem;
+  text-align: center;
+}
+
+.explorationItem h4 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 300;
+  color: white;
+  margin-bottom: 1rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.explorationItem p {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.6;
+  font-weight: 300;
+}
+
+/* ======================
+   MURALS PAGE - Video Grid (MISSING)
+   ====================== */
+
+.muralGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+}
+
+.muralCard {
+  background: rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  overflow: hidden;
+  transition: all 0.4s ease;
+  position: relative;
+  min-height: 400px;
+  display: flex;
+  flex-direction: column;
+}
+
+.muralCard:hover {
+  border-color: rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.05);
+  transform: translateY(-5px);
+}
+
+.muralVideoContainer {
+  position: relative;
+  height: 250px;
+  overflow: hidden;
+}
+
+.muralVideo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+
+.muralVideoBackground {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 1.5s ease-in-out;
+  z-index: 1;
+}
+
+.muralCardLink:hover .muralVideoBackground {
+  opacity: 0.6; /* Adjust this value to control video visibility */
+}
+
+/* Content overlay that stays above video */
+.muralVideoContent {
+  position: relative;
+  z-index: 10;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: rgba(0, 0, 0, 0.1); /* Slight overlay for text readability */
+  transition: background 0.3s ease;
+}
+
+.muralCardLink:hover .muralVideoContent {
+  background: rgba(0, 0, 0, 0.2); /* Slightly darker on hover for better contrast */
+}
+
+/* Update existing overlay styles */
+.muralVideoOverlay {
+  position: relative; /* Changed from absolute */
+  top: auto;
+  left: auto;
+  right: auto;
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+  z-index: 15;
+}
+
+/* Ensure text stays readable over video */
+.muralLocation,
+.muralSize {
+  background: rgba(0, 0, 0, 0.8); /* Darker background for better readability */
+  color: white;
+  padding: 0.3rem 0.8rem;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 300;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+}
+
+.muralCardLink:hover .muralLocation,
+.muralCardLink:hover .muralSize {
+  background: rgba(0, 0, 0, 0.9);
+  border-color: rgba(255, 255, 255, 0.5);
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+/* Ensure mural content text has good contrast */
+.muralContent {
+  padding: 2rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  z-index: 10;
+  background: rgba(0, 0, 0, 0.1);
+  transition: background 0.3s ease;
+}
+
+.muralCardLink:hover .muralContent {
+  background: rgba(0, 0, 0, 0.15);
+}
+
+/* Add text shadows for better readability over video */
+.muralCardLink:hover .muralTitle {
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+.muralCardLink:hover .muralDescription {
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+.muralCardLink:hover .muralYear,
+.muralCardLink:hover .muralCollaborators {
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+.muralVideoOverlay {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  right: 1rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.muralLocation,
+.muralSize {
+  background: rgba(0, 0, 0, 0.7);
+  color: white;
+  padding: 0.3rem 0.8rem;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 300;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+}
+
+.muralContent {
+  padding: 2rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.muralTitle {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 200;
+  color: white;
+  margin-bottom: 1rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.muralMeta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.muralYear,
+.muralCollaborators {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.5);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  font-weight: 300;
+}
+
+/* Mural Funding Section */
+.muralFunding {
+  margin: 1rem 0;
+  padding: 0.8rem 1rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-left: 3px solid rgba(255, 255, 255, 0.3);
+  border-radius: 0 4px 4px 0;
+  backdrop-filter: blur(5px);
+}
+
+.fundingText {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.8);
+  font-weight: 300;
+  letter-spacing: 0.05em;
+  font-style: italic;
+  text-transform: none; /* Override the uppercase from other elements */
+}
+
+.muralDescription {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.7;
+  font-weight: 300;
+  margin-bottom: auto;
+  letter-spacing: 0.02em;
+}
+
+.viewMuralBtn {
+  display: inline-flex;
+  align-items: center;
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 300;
+  padding: 0.8rem 0;
+  transition: all 0.3s ease;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-top: 1rem;
+}
+
+.viewMuralBtn:hover {
+  color: white;
+  transform: translateX(5px);
+}
+
+.viewMuralBtn::after {
+  content: '';
+  width: 20px;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.8);
+  margin-left: 1rem;
+  transition: all 0.3s ease;
+}
+
+.viewMuralBtn:hover::after {
+  width: 30px;
+  background: white;
+}
+
+.communityImpact {
+  max-width: 1000px;
+  margin: 4rem auto 0;
+  padding: 4rem 2rem;
+  background: rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.impactTitle {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.8rem;
+  font-weight: 200;
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 3rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.impactContent {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 3rem;
+  align-items: center;
+}
+
+.impactStats {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+
+.impactStat {
+  text-align: center;
+  padding: 1.5rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.statNumber {
+  display: block;
+  font-family: 'Poppins', sans-serif;
+  font-size: 2.5rem;
+  font-weight: 200;
+  color: white;
+  margin-bottom: 0.5rem;
+  letter-spacing: 0.1em;
+}
+
+.statLabel {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.6);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-weight: 300;
+}
+
+.impactText p {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.7);
+  font-weight: 200;
+  line-height: 1.8;
+  margin-bottom: 1.5rem;
+  letter-spacing: 0.02em;
+}
+
+/* Responsive for Timeline & Murals */
+@media (max-width: 768px) {
+  .timelineLine {
+    display: none;
+  }
+  
+  .timelineItem {
+    flex-direction: column !important;
+  }
+  
+  .timelineMarker {
+    position: relative;
+    left: auto;
+    transform: none;
+    margin-bottom: 1rem;
+  }
+  
+  .timelineLeft .timelineCard,
+  .timelineRight .timelineCard {
+    margin: 0;
+    width: 100%;
+  }
+  
+  .muralGrid {
+    grid-template-columns: 1fr;
+  }
+  
+  .impactContent {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  
+  .impactStats {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+  }
+}
+
+/* ======================
+   COLLAGES PAGE - Creative Grid
+   ====================== */
+
+/* ======================
+   COLLAGES PAGE - Creative Grid
+   ====================== */
+
+.collageGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 3rem;
+  margin: 3rem auto 0;
+  max-width: 1200px;
+  padding: 0 2rem;
+}
+
+.collageCard {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.08);
+  border-radius: 0px;
+  padding: 0;
+  transition: all 0.4s ease;
+  overflow: hidden;
+  height: auto;
+  min-height: 450px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  transform: rotate(-2deg);
+}
+
+/* Tilt Variations */
+.collageCard:nth-child(1) {
+  transform: rotate(-1.5deg);
+}
+
+.collageCard:nth-child(2) {
+  transform: rotate(2.5deg);
+}
+
+.collageCard:nth-child(3) {
+  transform: rotate(-3deg);
+}
+
+.collageCard:nth-child(4) {
+  transform: rotate(1deg);
+}
+
+.collageCard:nth-child(5) {
+  transform: rotate(-2.5deg);
+}
+
+.collageCard:hover {
+  transform: rotate(0deg) translateY(-8px);
+  border-color: rgba(255, 255, 255, 0.4);
+  background: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3), 0 0 30px rgba(255, 255, 255, 0.15);
+}
+
+.collageImageArea {
+  position: relative;
+  height: 250px;
+  overflow: hidden;
+  border-radius: 0px;
+  background: rgba(255, 255, 255, 0.02);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.collageIcon {
+  width: 80px;
+  height: 80px;
+  color: rgba(255, 255, 255, 0.6);
+  transition: all 0.3s ease;
+}
+
+.collageCard:hover .collageIcon {
+  color: rgba(255, 255, 255, 0.8);
+  transform: scale(1.1);
+}
+
+.collageIcon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.hoverImage {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 2;
+  opacity: 1;
+  transition: opacity 0.3s ease;
+  filter: brightness(0.8) contrast(1.1) saturate(1.2);
+}
+
+.collageCard:hover .collageIcon {
+  opacity: 0;
+  transform: scale(1.1);
+  transition: all 0.3s ease;
+}
+
+.collageCard:hover .hoverImage {
+  filter: brightness(0.9) contrast(1.2) saturate(1.3);
+}
+
+.collageOverlay {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.5rem;
+}
+
+.collageSize,
+.collageCount {
+  background: rgba(0, 0, 0, 0.6);
+  color: white;
+  padding: 0.3rem 0.8rem;
+  font-family: 'Avenir', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 300;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.collageContent {
+  padding: 2rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.collageTitle {
+  font-family: 'Avenir', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 200;
+  color: white;
+  margin-bottom: 1rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.collageMeta {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+}
+
+.collageMedium,
+.collageYear {
+  font-family: 'Avenir', sans-serif;
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.5);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  font-weight: 300;
+}
+
+.collageDescription {
+  font-family: 'Avenir', sans-serif;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.7;
+  font-weight: 300;
+  margin-bottom: auto;
+  letter-spacing: 0.02em;
+}
+
+.viewCollectionBtn {
+  display: inline-flex;
+  align-items: center;
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+  font-family: 'Avenir', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 300;
+  padding: 0.8rem 0;
+  transition: all 0.3s ease;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-top: 1rem;
+}
+
+.viewCollectionBtn:hover {
+  color: white;
+  transform: translateX(5px);
+}
+
+.viewCollectionBtn::after {
+  content: '';
+  width: 20px;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.8);
+  margin-left: 1rem;
+  transition: all 0.3s ease;
+}
+
+.viewCollectionBtn:hover::after {
+  width: 30px;
+  background: white;
+}
+
+.comingSoonBtn {
+  display: inline-flex;
+  align-items: center;
+  color: rgba(255, 255, 255, 0.5);
+  font-family: 'Avenir', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 300;
+  padding: 0.8rem 0;
+  letter-spacing: 0.1em;
+  border: none;
+  background: none;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.blinkingDots {
+  margin-left: 0.3rem;
+  animation: blink 1.5s infinite;
+}
+
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+.techniqueSpotlight {
+  max-width: 800px;
+  margin: 4rem auto;
+  padding: 3rem 2rem;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  transition: all 0.3s ease;
+}
+
+.techniqueSpotlight:hover {
+  border-color: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.08);
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+.spotlightTitle {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 200;
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 2rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.spotlightContent p {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.85);
+  font-weight: 300;
+  line-height: 1.8;
+  margin-bottom: 2rem;
+  letter-spacing: 0.02em;
+}
+
+.spotlightSignature {
+  display: block;
+  text-align: right;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.5);
+  font-weight: 300;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-top: 2rem;
+}
+
+/* ======================
+   RESPONSIVE DESIGN
+   ====================== */
+
+@media (max-width: 768px) {
+  .collageMainTitle {
+    font-size: 2.5rem;
+  }
+
+  .collageSubtitle {
+    font-size: 1.1rem;
+    letter-spacing: 1px;
+  }
+
+  .collageCaption {
+    font-size: 1rem;
+  }
+
+  .navigationButtons {
+    top: 1rem;
+    right: 1rem;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .navButton {
+    padding: 0.5rem 1rem;
+    font-size: 0.8rem;
+  }
+
+  .collageHeroSection {
+    padding: 1rem;
+  }
+
+  .philosophySection,
+  .collectionsSection {
+    padding: 2rem 1rem;
+  }
+
+  .collageGrid {
+    grid-template-columns: 1fr;
+    gap: 1px;
+  }
+  
+  .collageCard {
+    height: 40vh;
+    padding: 1.5rem;
+  }
+  
+  .collageIcon {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 1.5rem;
+  }
+  
+  .philosophyContent {
+    padding: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .collageCard {
+    height: 35vh;
+    padding: 1rem;
+  }
+  
+  .collageIcon {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 1rem;
+  }
+  
+  .philosophyContent {
+    padding: 1.5rem;
+  }
+  
+  .philosophyText {
+    font-size: 1rem;
+    line-height: 1.7;
+  }
+}
+
+/* ======================
+   ILLUSTRATIONS PAGE - Timeline
+   ====================== */
+
+.timelineContainer {
+  position: relative;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.timelineLine {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(to bottom, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transform: translateX(-50%);
+}
+
+.timelineItem {
+  position: relative;
+  margin-bottom: 4rem;
+  display: flex;
+  align-items: center;
+}
+
+.timelineLeft {
+  flex-direction: row;
+}
+
+.timelineRight {
+  flex-direction: row-reverse;
+}
+
+.timelineMarker {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  background: rgba(0, 0, 0, 0.8);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  width: 80px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.timelineYear {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 300;
+  color: white/* src/pages/art/art.module.css */
+}
+
+/* ======================
+   ART CATEGORIES PAGE 
+   ====================== */
+
+.artCategoriesPage {
+  position: relative;
+  z-index: 10;
+  min-height: 100vh;
+  padding: 8vh 2rem 10vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* Hero Section */
+.artHeroSection {
+  text-align: center;
+  margin-bottom: 8rem;
+  position: relative;
+  z-index: 20;
+}
+
+.artMainTitle {
+  font-family: 'Poppins', sans-serif !important;
+  font-size: clamp(1rem, 5vw, 6rem);
+  font-weight: 10;
+  color: white;
+  margin-bottom: 2rem;
+  text-shadow: 0 0 30px rgba(255, 255, 255, 0.3);
+  line-height: 1.1;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.artSubtitle {
+  font-family: 'Poppins', sans-serif;
+  font-size: clamp(1.3rem, 3.5vw, 1.3rem);
+  color: rgba(255, 255, 255, 0.7);
+  font-weight: 200;
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.8;
+  letter-spacing: 0.05em;
+}
+
+.paintingsPageVideo {
+  filter: brightness(0.3) contrast(0.8) !important;
+}
+
+/* Target videos on paintings page specifically */
+.subPage .layout-video-background__video {
+  filter: brightness(0.5) contrast(0.9); /* Adjust values as needed */
+}
+
+/* Categories Container */
+.categoriesContainer {
+  max-width: 4000px;
+  width: 800px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 15;
+}
+
+.categoriesGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1px;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* Individual Category Cards */
+.categoryCard {
+  position: relative;
+  height: 400px;
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(7px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  text-decoration: none;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.categoryCard:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.3);
+  transform: scale(1.02);
+  backdrop-filter: blur(15px);
+}
+
+.categoryCard::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.1),
+    transparent
+  );
+  transition: left 0.5s;
+}
+
+.categoryCard:hover::before {
+  left: 100%;
+}
+
+/* Card Content */
+.categoryContent {
+  position: relative;
+  z-index: 10;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.categoryIcon {
+  width: 60px;
+  height: 60px;
+  margin: 0 auto 2rem;
+  stroke: rgba(255, 255, 255, 0.6);
+  transition: all 0.3s ease;
+}
+
+.categoryCard:hover .categoryIcon {
+  stroke: rgba(255, 255, 255, 0.9);
+  transform: scale(1.1);
+}
+
+.categoryTitle {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.8rem;
+  font-weight: 200;
+  color: white;
+  margin-bottom: 1rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+}
+
+.categoryDescription {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.6);
+  line-height: 1.6;
+  font-weight: 300;
+  max-width: 250px;
+  margin: 0 auto;
+  letter-spacing: 0.02em;
+  transition: all 0.3s ease;
+}
+
+.categoryCard:hover .categoryDescription {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* Artist Statement */
+.artistStatement {
+  max-width: 800px;
+  margin: 4rem auto 0;
+  padding: 3rem 2rem;
+  background: rgba(0, 0, 0, 0.2); /* Same opacity as technique spotlight */
+  backdrop-filter: blur(12px); /* Same blur effect */
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.statementTitle {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 200;
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 2rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.statementContent p {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.7);
+  font-weight: 200;
+  line-height: 1.8;
+  margin-bottom: 1.5rem;
+  letter-spacing: 0.02em;
+}
+
+.statementSignature {
+  display: block;
+  text-align: right;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.5);
+  font-weight: 300;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-top: 2rem;
+}
+
+/* Geometric accent lines */
+.categoryCard::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.8), transparent);
+  transition: all 0.4s ease;
+  transform: translateX(-50%);
+}
+
+.categoryCard:hover::after {
+  width: 80%;
+}
+
+/* ======================
+   SUB-PAGES (PAINTINGS, COLLAGES, ETC.)
+   ====================== */
+
+.subPage {
+  position: relative;
+  z-index: 10;
+  min-height: 100vh;
+  padding: 6vh 2rem 10vh;
+}
+
+/* Back Navigation */
+.backNavigation {
+  margin-bottom: 4rem;
+  position: fixed;
+  top: 8rem;
+  z-index: 100;
+}
+
+.backLink {
+  display: inline-flex;
+  align-items: center;
+  color: rgba(255, 255, 255, 0.7);
+  text-decoration: none;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 300;
+  padding: 1rem 1.5rem; /* Added horizontal padding */
+  transition: all 0.3s ease;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.backLink:hover {
+  color: white;
+  transform: translateX(-5px);
+}
+
+.backLink::before {
+  content: '';
+  width: 20px;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.7);
+  margin-right: 1rem;
+  transition: all 0.3s ease;
+}
+
+.backLink:hover::before {
+  width: 30px;
+  background: white;
+}
+
+
+
+/* Hero Section for Sub-pages */
+.subPageHero {
+  text-align: center;
+  margin-bottom: 6rem;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.subPageTitle {
+  font-family: 'Poppins', sans-serif;
+  font-size: clamp(3rem, 8vw, 5rem);
+  font-weight: 200;
+  color: white;
+  margin-bottom: 2rem;
+  text-shadow: 0 0 30px rgba(255, 255, 255, 0.3);
+  line-height: 1.1;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.subPageSubtitle {
+  font-family: 'Poppins', sans-serif;
+  font-size: clamp(1rem, 2.5vw, 1.2rem);
+  color: rgba(255, 255, 255, 0.7);
+  font-weight: 200;
+  line-height: 1.8;
+  letter-spacing: 0.02em;
+}
+
+/* Series Container */
+.seriesContainer {
+  max-width: 1000px;
+  margin: 0 auto;
+  margin-bottom: 6rem;
+}
+
+.seriesHeading {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 200;
+  color: rgba(255, 255, 255, 0.8);
+  text-align: center;
+  margin-bottom: 4rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.seriesGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+}
+
+/* Series Cards - Horizontal Layout */
+.seriesCard {
+  background: rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  min-height: 200px;
+  transition: all 0.4s ease;
+  position: relative;
+  overflow: hidden;
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+.seriesCard:hover {
+  border-color: rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.seriesCard::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.05),
+    transparent
+  );
+  transition: left 0.6s;
+}
+
+.seriesCard:hover::before {
+  left: 100%;
+}
+
+/* Series Image Placeholder */
+.seriesImagePlaceholder {
+  position: relative;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.05) 0%,
+    rgba(255, 255, 255, 0.02) 100%
+  );
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+  overflow: hidden;
+}
+
+.seriesIcon {
+  width: 80px;
+  height: 80px;
+  stroke: rgba(255, 255, 255, 0.3);
+  stroke-width: 1;
+  position: relative;
+  z-index: 2;
+  transition: all 0.3s ease;
+}
+
+.seriesImagePlaceholder svg {
+  width: 80px;
+  height: 80px;
+  stroke: rgba(255, 255, 255, 0.3);
+  stroke-width: 1;
+}
+
+/* Hover Video Styles */
+.hoverVideo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 1.2s ease;
+  z-index: 1;
+  filter: brightness(0.6) contrast(1.1);
+}
+
+.videoVisible {
+  opacity: 1;
+}
+
+.seriesCard:hover .seriesIcon {
+  opacity: 0;
+  transform: scale(1.1);
+}
+
+.imageOverlay {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  z-index: 3;
+}
+
+.pieceCount,
+.seriesYear {
+  background: rgba(0, 0, 0, 0.6);
+  color: rgba(255, 255, 255, 0.8);
+  padding: 0.3rem 0.8rem;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 300;
+  text-align: center;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Series Content */
+.seriesContent {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.seriesTitle {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.6rem;
+  font-weight: 200;
+  color: white;
+  margin-bottom: 1rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.seriesMeta {
+  margin-bottom: 1.5rem;
+}
+
+.seriesMedium {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 300;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.seriesDescription {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.7;
+  margin-bottom: 2rem;
+  font-weight: 300;
+  letter-spacing: 0.02em;
+}
+
+.viewSeriesBtn {
+  display: inline-flex;
+  align-items: center;
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 300;
+  padding: 0.8rem 0;
+  transition: all 0.3s ease;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  align-self: flex-start;
+}
+
+.viewSeriesBtn:hover {
+  color: white;
+  transform: translateX(5px);
+}
+
+.viewSeriesBtn::after {
+  content: '';
+  width: 20px;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.8);
+  margin-left: 1rem;
+  transition: all 0.3s ease;
+}
+
+.viewSeriesBtn:hover::after {
+  width: 30px;
+  background: white;
+}
+
+/* Featured Quote */
+.featuredQuote {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+  padding: 4rem 2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.featuredQuote blockquote {
+  font-family: 'Poppins', sans-serif;
+  font-size: clamp(1.1rem, 2.5vw, 1.3rem);
+  color: rgba(255, 255, 255, 0.8);
+  font-weight: 200;
+  line-height: 1.8;
+  margin-bottom: 2rem;
+  font-style: italic;
+  letter-spacing: 0.02em;
+}
+
+.featuredQuote cite {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.6);
+  font-weight: 300;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+/* ======================
+   RESPONSIVE DESIGN
+   ====================== */
+
+@media (max-width: 768px) {
+  .categoriesGrid {
+    grid-template-columns: 1fr;
+    gap: 1px;
+  }
+  
+  .categoryCard {
+    height: 300px;
+  }
+  
+  .artHeroSection {
+    margin-bottom: 4rem;
+  }
+  
+  .seriesCard {
+    grid-template-columns: 1fr;
+    min-height: auto;
+  }
+  
+  .seriesImagePlaceholder {
+    height: 150px;
+    border-right: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  .subPage {
+    padding: 4vh 1rem 8vh;
+  }
+  
+  .subPageHero {
+    margin-bottom: 3rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .artCategoriesPage {
+    padding: 6vh 1rem 8vh;
+  }
+  
+  .categoryCard {
+    height: 250px;
+  }
+  
+  .seriesContent {
+    padding: 1.5rem;
+  }
+  
+  .featuredQuote {
+    padding: 2rem 1rem;
+  }
+}
+
+
+/* ======================
+   RESPONSIVE DESIGN
+   ====================== */
+
+@media (max-width: 768px) {
+  .categoriesGrid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .categoryCard {
+    height: 250px;
+  }
+  
+  .categoryContent {
+    padding: 2rem;
+  }
+  
+  .artMainTitle {
+    margin-bottom: 1rem;
+  }
+  
+  .artHeroSection {
+    margin-bottom: 4rem;
+  }
+  
+  .floatingElements {
+    display: none; /* Hide decorative elements on mobile */
+  }
+  
+  .seriesGrid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  
+  .subPage {
+    padding: 4vh 1rem 8vh;
+  }
+  
+  .seriesContainer {
+    margin-bottom: 3rem;
+  }
+  
+  .subPageHero {
+    margin-bottom: 3rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .artCategoriesPage {
+    padding: 6vh 1rem 8vh;
+  }
+  
+  .categoryCard {
+    height: 220px;
+  }
+  
+  .categoryContent {
+    padding: 1.5rem;
+  }
+  
+  .categoryTitle {
+    font-size: 1.5rem;
+  }
+  
+  .categoryDescription {
+    font-size: 0.9rem;
+  }
+  
+  .seriesContent {
+    padding: 1.5rem;
+  }
+  
+  .seriesImagePlaceholder {
+    height: 200px;
+  }
+  
+  .featuredQuote {
+    padding: 2rem 1.5rem;
+  }
+}
+
+/* ======================
+   COMING SOON STYLES
+   ====================== */
+
+.comingSoonBtn {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.7);
+  font-weight: 300;
+  letter-spacing: 0.05em;
+  text-transform: lowercase;
+  text-align: center;
+  padding: 1rem 2rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 25px;
+  margin-top: 1.5rem;
+  transition: all 0.3s ease;
+}
+
+.comingSoonBtn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.blinkingDots {
+  animation: blink 1.5s infinite;
+}
+
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+/* ======================
+   MURAL ICON STYLES
+   ====================== */
+
+.muralIcon {
+  position: absolute;
+  top: 61%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100px;
+  height: 100px;
+  color: rgba(160, 160, 160, 0.9);
+  transition: opacity 0.4s ease;
+  z-index: 5;
+}
+
+.muralIcon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.muralCardLink:hover .muralIcon {
+  opacity: 0;
+}
+
+/* ======================
+   COLLAGE HOVER ANIMATIONS
+   ====================== */
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* ======================
+   COLLAGE PAGE HERO SECTION
+   ====================== */
+
+.collageHeroSection {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  padding: 2rem;
+}
+
+.navigationButtons {
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+  display: flex;
+  gap: 1rem;
+  z-index: 10;
+}
+
+.navButton {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: rgba(255, 255, 255, 0.9);
+  padding: 0.75rem 1.5rem;
+  border-radius: 25px;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+
+.navButton:hover,
+.navButton.active {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.5);
+  color: white;
+  transform: translateY(-2px);
+}
+
+.heroContent {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.collageMainTitle {
+  font-family: 'Inter', sans-serif;
+  font-size: 4rem;
+  font-weight: 300;
+  color: white;
+  margin-bottom: 1rem;
+  letter-spacing: 2px;
+}
+
+.collageSubtitle {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 2rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+.collageCaption {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.6;
+  font-style: italic;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* ======================
+   PHILOSOPHY SECTION
+   ====================== */
+
+.philosophySection {
+  min-height: 100vh;
+  padding: 4rem 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.sectionMarker {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.6);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+/* ======================
+   COLLECTIONS SECTION
+   ====================== */
+
+.collectionsSection {
+  min-height: 100vh;
+  padding: 4rem 2rem;
+}
+
+/* ======================
+   RESPONSIVE DESIGN
+   ====================== */
+
+@media (max-width: 768px) {
+  .collageMainTitle {
+    font-size: 2.5rem;
+  }
+
+  .collageSubtitle {
+    font-size: 1.1rem;
+    letter-spacing: 1px;
+  }
+
+  .collageCaption {
+    font-size: 1rem;
+  }
+
+  .navigationButtons {
+    top: 1rem;
+    right: 1rem;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .navButton {
+    padding: 0.5rem 1rem;
+    font-size: 0.8rem;
+  }
+
+  .collageHeroSection {
+    padding: 1rem;
+  }
+
+  .philosophySection,
+  .collectionsSection {
+    padding: 2rem 1rem;
+  }
+}
+
+/* Coming Soon Card Styles */
+.comingSoonCard {
+  pointer-events: none;
+  opacity: 0.7;
+  cursor: default;
+}
+
+.comingSoonCard:hover {
+  transform: none;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.comingSoonText {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.9rem;
+  font-weight: 300;
+  margin-top: 0.5rem;
+  letter-spacing: 0.05em;
+  text-align: center;
+}
+
+.blinkingDots {
+  margin-left: 0.3rem;
+  animation: blink 1.5s infinite;
+}
+
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+/* Status Badge Styles */
+.statusBadge {
+  display: inline-block;
+  padding: 0.3rem 0.8rem;
+  border-radius: 20px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  border: 1px solid;
+  backdrop-filter: blur(10px);
+  position: absolute;
+  top: 1rem;
+  left: 29rem;
+  right: 1rem;
+  z-index: 10;
+}
+
+.statusBadge.complete {
+  background: rgba(31, 166, 80, 0.2);
+  border-color: rgba(44, 189, 97, 0.6);
+  color: rgb(49, 199, 104);
+}
+
+.statusBadge.ongoing {
+  background: rgba(251, 191, 36, 0.2);
+  border-color: rgba(251, 191, 36, 0.6);
+  color: rgb(251, 191, 36);
+}
+
+/* Collage Cards Mobile Responsive */
+@media (max-width: 768px) {
+  .collageGrid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    padding: 0 1rem;
+    max-width: 600px;
+  }
+
+  .collageCard {
+    min-height: 400px;
+  }
+
+  .collageCard:nth-child(1) {
+    transform: rotate(-1deg);
+  }
+
+  .collageCard:nth-child(2) {
+    transform: rotate(1.5deg);
+  }
+
+  .collageCard:nth-child(3) {
+    transform: rotate(-2deg);
+  }
+
+  .collageCard:nth-child(4) {
+    transform: rotate(0.5deg);
+  }
+
+  .collageCard:nth-child(5) {
+    transform: rotate(-1.5deg);
+  }
+
+  .collageImageArea {
+    height: 200px;
+  }
+}

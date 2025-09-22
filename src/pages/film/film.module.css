@@ -1,0 +1,1961 @@
+/* ======================
+   MICRO FILMS - FILM ROLL EXHIBITION
+   ====================== */
+
+.filmRollContainer {
+  max-width: 1000px;
+  margin: 0 auto;
+  margin-bottom: 6rem;
+}
+
+.filmRollHeading {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.8rem;
+  font-weight: 200;
+  color: rgba(255, 255, 255, 0.8);
+  text-align: center;
+  margin-bottom: 3rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+/* Film Roll Decorative Elements */
+.filmRollHeader,
+.filmRollFooter {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin: 2rem 0;
+}
+
+.filmRollSpocket {
+  width: 20px;
+  height: 20px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  background: transparent;
+}
+
+/* Main Exhibition Container */
+.exhibitionContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  background: rgba(0, 0, 0, 0.3);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  padding: 3rem 2rem;
+  backdrop-filter: blur(15px);
+}
+
+.filmNavBtn {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: white;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  backdrop-filter: blur(10px);
+  z-index: 10;
+}
+
+.filmNavBtn:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: scale(1.1);
+}
+
+/* Film Slides Container */
+.filmSlidesContainer {
+  width: 100%;
+  max-width: 800px;
+  overflow: hidden;
+  margin: 0 2rem;
+  position: relative;
+}
+
+.filmSlides {
+  display: flex;
+  transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  gap: 2rem;
+}
+
+/* iPhone-style Phone Cards */
+.phoneCard {
+  min-width: 280px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.phoneFrame {
+  width: 200px;
+  height: 400px;
+  background: #1a1a1a;
+  border-radius: 25px;
+  padding: 8px;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+  position: relative;
+  border: 2px solid #333;
+}
+
+.phoneNotch {
+  position: absolute;
+  top: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 20px;
+  background: #000;
+  border-radius: 0 0 15px 15px;
+  z-index: 10;
+}
+
+.phoneScreen {
+  width: 100%;
+  height: 100%;
+  background: #000;
+  border-radius: 20px;
+  overflow: hidden;
+  position: relative;
+}
+
+.microVideo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.microVideoOverlay {
+  position: absolute;
+  bottom: 1rem;
+  left: 1rem;
+  right: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.microTitle {
+  background: rgba(0, 0, 0, 0.7);
+  color: white;
+  padding: 0.3rem 0.6rem;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 300;
+  border-radius: 8px;
+  backdrop-filter: blur(10px);
+}
+
+.microDuration {
+  background: rgba(255, 255, 255, 0.9);
+  color: #000;
+  padding: 0.2rem 0.5rem;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.6rem;
+  font-weight: 500;
+  border-radius: 6px;
+}
+
+/* Film Details Below Phone */
+.microFilmDetails {
+  text-align: center;
+  margin-top: 2rem;
+  max-width: 250px;
+}
+
+.microFilmTitle {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.2rem;
+  font-weight: 300;
+  color: white;
+  margin-bottom: 1rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.microDescription {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.6;
+  font-weight: 300;
+  margin-bottom: 1rem;
+  letter-spacing: 0.02em;
+}
+
+.microHashtags {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.3rem;
+  margin-bottom: 1rem;
+}
+
+.hashtagLabel {
+  background: rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.8);
+  padding: 0.2rem 0.5rem;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.6rem;
+  font-weight: 300;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.microYear {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.7rem;
+  color: rgba(255, 255, 255, 0.5);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+/* Film Roll Navigation Dots */
+.filmRollDots {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin: 3rem 0;
+}
+
+.filmDot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.activeDot {
+  background: rgba(255, 255, 255, 0.8);
+  transform: scale(1.2);
+}
+
+/* Platform Note */
+.platformNote {
+  max-width: 800px;
+  margin: 4rem auto 0;
+  padding: 3rem 2rem;
+  background: rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  text-align: center;
+}
+
+.noteTitle {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 200;
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 2rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.noteContent p {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.7);
+  font-weight: 200;
+  line-height: 1.8;
+  margin-bottom: 1.5rem;
+  letter-spacing: 0.02em;
+}
+
+.noteSignature {
+  display: block;
+  text-align: center;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.5);
+  font-weight: 300;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-top: 2rem;
+}
+
+/* ======================
+   SHORT FILMS - GRID LAYOUT
+   ====================== */
+
+.shortFilmsContainer {
+  max-width: 1200px;
+  margin: 0 auto;
+  margin-bottom: 6rem;
+}
+
+.shortFilmsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+/* ======================
+   SHORT FILMS - GRID LAYOUT (CONTINUED)
+   ====================== */
+
+.shortFilmCard {
+  background: rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  text-decoration: none;
+  overflow: hidden;
+  transition: all 0.4s ease;
+  position: relative;
+  min-height: 500px;
+  display: flex;
+  flex-direction: column;
+  border-radius: 8px;
+}
+
+.shortFilmCard:hover {
+  border-color: rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.05);
+  transform: translateY(-10px);
+}
+
+.shortFilmVideoContainer {
+  position: relative;
+  height: 250px;
+  overflow: hidden;
+}
+
+.shortFilmVideo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.shortFilmCard:hover .shortFilmVideo {
+  transform: scale(1.05);
+}
+
+.shortFilmVideoOverlay {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  right: 1rem;
+  display: flex;
+  justify-content: space-between;
+  z-index: 5;
+}
+
+.shortFilmDuration {
+  background: rgba(0, 0, 0, 0.7);
+  color: white;
+  padding: 0.4rem 0.8rem;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 300;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+}
+
+.shortFilmStatus {
+  background: rgba(0, 0, 0, 0.7);
+  color: white;
+  padding: 0.4rem 0.8rem;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 300;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.shortFilmHover {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(5px);
+}
+
+.shortFilmCard:hover .shortFilmHover {
+  opacity: 1;
+}
+
+.playButton {
+  color: white;
+  font-size: 3rem;
+  margin-bottom: 0.5rem;
+  transform: scale(0.8);
+  transition: all 0.3s ease;
+}
+
+.shortFilmCard:hover .playButton {
+  transform: scale(1);
+}
+
+.shortFilmContent {
+  padding: 2rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.shortFilmHeader {
+  margin-bottom: 1.5rem;
+}
+
+.shortFilmTitle {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.4rem;
+  font-weight: 200;
+  color: white;
+  margin-bottom: 0.8rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.shortFilmMeta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.shortFilmGenre,
+.shortFilmYear {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.5);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  font-weight: 300;
+}
+
+.shortFilmDescription {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.7;
+  font-weight: 300;
+  margin-bottom: 1.5rem;
+  letter-spacing: 0.02em;
+}
+
+.shortFilmThemes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.shortFilmAward {
+  background: rgba(255, 215, 0, 0.1);
+  color: rgba(255, 215, 0, 0.9);
+  padding: 0.5rem 1rem;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 300;
+  margin-bottom: 1.5rem;
+  border: 1px solid rgba(255, 215, 0, 0.3);
+  border-radius: 4px;
+  text-align: center;
+}
+
+.viewShortFilmBtn {
+  margin-top: auto;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.viewShortFilmBtn span {
+  color: rgba(255, 255, 255, 0.8);
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 300;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.viewShortFilmBtn span::after {
+  content: '';
+  width: 20px;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.8);
+  margin-left: 1rem;
+  transition: all 0.3s ease;
+  display: inline-block;
+}
+
+.shortFilmCard:hover .viewShortFilmBtn span {
+  color: white;
+}
+
+.shortFilmCard:hover .viewShortFilmBtn span::after {
+  width: 30px;
+  background: white;
+}
+
+.filmmakerStatement {
+  max-width: 800px;
+  margin: 4rem auto 0;
+  padding: 4rem 2rem;
+  background: rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  text-align: center;
+}
+
+/* Responsive Design for Micro Films & Short Films */
+@media (max-width: 768px) {
+  .filmSlides {
+    gap: 1rem;
+  }
+  
+  .phoneCard {
+    min-width: 240px;
+  }
+  
+  .phoneFrame {
+    width: 160px;
+    height: 320px;
+  }
+  
+  .filmNavBtn {
+    width: 40px;
+    height: 40px;
+    font-size: 1.2rem;
+  }
+  
+  .shortFilmsGrid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  
+  .shortFilmCard {
+    min-height: 450px;
+  }
+  
+  .shortFilmVideoContainer {
+    height: 200px;
+  }
+  
+  .shortFilmContent {
+    padding: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .exhibitionContainer {
+    padding: 2rem 1rem;
+  }
+  
+  .microFilmDetails {
+    margin-top: 1.5rem;
+  }
+  
+  .platformNote,
+  .filmmakerStatement {
+    padding: 3rem 1.5rem;
+  }
+}/* src/pages/film/film.module.css */
+
+/* ======================
+   FILM CATEGORIES PAGE 
+   ====================== */
+
+.filmCategoriesPage {
+  position: relative;
+  z-index: 10;
+  min-height: 100vh;
+  padding: 8vh 2rem 10vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* Hero Section */
+.filmHeroSection {
+  text-align: center;
+  margin-bottom: 8rem;
+  position: relative;
+  z-index: 20;
+}
+
+.filmMainTitle {
+  font-family: 'Poppins', sans-serif !important;
+  font-size: clamp(3rem, 8vw, 6rem);
+  font-weight: 200;
+  color: white;
+  margin-bottom: 2rem;
+  text-shadow: 0 0 30px rgba(255, 255, 255, 0.3);
+  line-height: 1.1;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.filmSubtitle {
+  font-family: 'Poppins', sans-serif;
+  font-size: clamp(1rem, 2.5vw, 1.3rem);
+  color: rgba(255, 255, 255, 0.7);
+  font-weight: 200;
+  max-width: 700px;
+  margin: 0 auto;
+  line-height: 1.8;
+  letter-spacing: 0.05em;
+}
+
+/* Categories Container */
+.categoriesContainer {
+  max-width: 1400px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 15;
+}
+
+.filmGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+/* ======================
+   UNIVERSAL FILM CARD VIDEO HOVER EFFECTS
+   ====================== */
+
+/* Film Cards */
+.filmCard {
+  background: rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  text-decoration: none;
+  overflow: hidden;
+  transition: all 0.4s ease;
+  position: relative;
+  min-height: 500px;
+  display: flex;
+  flex-direction: column;
+}
+
+.filmCard:hover {
+  border-color: rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.05);
+  transform: translateY(-10px);
+}
+
+/* Video Container */
+.filmVideoContainer {
+  position: relative;
+  height: 280px;
+  overflow: hidden;
+  padding: 0;
+}
+
+.filmVideo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 0.8s ease-in-out;
+  z-index: 1;
+  margin: 0;
+}
+
+/* Film Video Content Overlay */
+.filmVideoContent {
+  position: relative;
+  z-index: 10;
+  height: 100%;
+  top: 0; /* ADD THIS */
+  left: 0; /* ADD THIS */
+  right: 0; /* ADD THIS */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: linear-gradient(135deg, 
+    rgba(0, 0, 0, 0.7) 0%, 
+    rgba(0, 0, 0, 0.3) 50%, 
+    rgba(0, 0, 0, 0.8) 100%); /* REPLACE the existing background */
+  transition: background 0.4s ease;
+  margin: 0;
+}
+
+.filmCard:hover .filmVideoContent {
+  background: linear-gradient(135deg,
+    rgba(0, 0, 0, 0.5) 0%,
+    rgba(0, 0, 0, 0.1) 50%,
+    rgba(0, 0, 0, 0.6) 100%);
+  backdrop-filter: none;
+}
+
+/* Film Icon */
+.filmIcon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 120px;
+  height: 120px;
+  color: rgba(160, 160, 160, 0.9);
+  transition: opacity 0.4s ease;
+  z-index: 5;
+}
+
+.filmIcon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.filmCard:hover .filmIcon {
+  opacity: 0;
+}
+
+.filmCard:hover .filmVideo {
+  opacity: 0.65;
+}
+
+/* Update film overlay positioning */
+.filmVideoOverlay {
+  position: relative;
+  top: auto;
+  left: auto;
+  right: auto;
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+  z-index: 15;
+  margin: 0;
+}
+/* Enhanced text readability */
+.filmCount,
+.filmDuration {
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 0.5rem 1rem;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 300;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 15px;
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+.filmCard:hover .filmCount,
+.filmCard:hover .filmDuration {
+  background: none;
+  border-color: rgba(255, 255, 255, 0.5);
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+  transform: translateY(-2px);
+}
+
+/* Update hover overlay */
+.filmHoverOverlay {
+  position: relative;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: all 0.4s ease;
+  backdrop-filter: none;
+  flex: 1;
+}
+
+.filmCard:hover .filmHoverOverlay {
+  opacity: 0.6;
+  background: none;
+  backdrop-filter: none;
+}
+
+.playIndicator {
+  color: white;
+  font-size: 3.5rem;
+  opacity: 0.9;
+  transform: scale(0.7);
+  transition: all 0.3s ease;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 1rem;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(10px);
+  margin-top: -2rem;
+  width: 80px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5); /* ADD THIS LINE */
+  position: relative; 
+  /* ADD THESE LINES TO CENTER THE TRIANGLE: */
+  padding-left: 1.5rem; /* Shift triangle to the right slightly */
+  text-align: center;
+  line-height: 1;
+}
+
+.filmCard:hover .playIndicator {
+  transform: scale(1);
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.6);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3); /* ADD THIS LINE */
+}
+
+/* ADD this ripple effect: */
+.playIndicator::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 120px;
+  height: 120px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  animation: ripple 2s infinite;
+  opacity: 0;
+}
+
+@keyframes ripple {
+  0% {
+    transform: translate(-50%, -50%) scale(0.8);
+    opacity: 0.8;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1.5);
+    opacity: 0;
+  }
+}
+
+/* ADD this to activate ripple on hover: */
+.filmCard:hover .playIndicator::before {
+  animation-play-state: running;
+}
+
+.filmCard:hover .filmTitle {
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.filmCard:hover .filmDescription {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.filmCard:hover .filmCTA {
+  border-top-color: rgba(255, 255, 255, 0.2);
+}
+
+.filmCard:hover .viewFilmsBtn {
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.filmCard:hover .viewFilmsBtn::after {
+  box-shadow: 0 1px 5px rgba(255, 255, 255, 0.3);
+}
+
+/* Film Content */
+.filmContent {
+  padding: 2.5rem 2rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.filmTitle {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.6rem;
+  font-weight: 200;
+  color: white;
+  margin-bottom: 1.5rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.filmDescription {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.7;
+  font-weight: 300;
+  margin-bottom: auto;
+  letter-spacing: 0.02em;
+}
+
+.filmCTA {
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.viewFilmsBtn {
+  display: inline-flex;
+  align-items: center;
+  color: rgba(255, 255, 255, 0.8);
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 300;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.viewFilmsBtn::after {
+  content: '';
+  width: 20px;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.8);
+  margin-left: 1rem;
+  transition: all 0.3s ease;
+}
+
+.filmCard:hover .viewFilmsBtn {
+  color: white;
+  transform: translateX(5px);
+}
+
+.filmCard:hover .viewFilmsBtn::after {
+  width: 30px;
+  background: white;
+}
+
+/* Film Statement */
+.filmStatement {
+  max-width: 900px;
+  margin: 6rem auto 0;
+  padding: 4rem 2rem;
+  background: rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  text-align: center;
+}
+
+.statementTitle {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.8rem;
+  font-weight: 200;
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 2.5rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.statementContent p {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.7);
+  font-weight: 200;
+  line-height: 1.8;
+  margin-bottom: 1.5rem;
+  letter-spacing: 0.02em;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.statementSignature {
+  display: block;
+  text-align: center;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.5);
+  font-weight: 300;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-top: 2rem;
+}
+
+/* Collaboration Note */
+.collaborationNote {
+  max-width: 800px;
+  margin: 3rem auto 0;
+  padding: 2.5rem 2rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.noteTitle {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.2rem;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 1.5rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.noteContent p {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.6);
+  font-weight: 300;
+  line-height: 1.7;
+  letter-spacing: 0.02em;
+  text-align: center;
+}
+
+/* ======================
+   DOCUMENTARIES TIMELINE PAGE
+   ====================== */
+
+.subPage {
+  position: relative;
+  z-index: 10;
+  min-height: 100vh;
+  padding: 6vh 2rem 10vh;
+}
+
+
+/* Back Navigation */
+.backNavigation {
+  margin-bottom: 4rem;
+  position: fixed;
+  top: 8rem;
+  z-index: 100;
+}
+
+.backLink {
+  display: inline-flex;
+  align-items: center;
+  color: rgba(255, 255, 255, 0.7);
+  text-decoration: none;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 300;
+  padding: 1rem 1.5rem; /* Added horizontal padding */
+  transition: all 0.3s ease;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.backLink:hover {
+  color: white;
+  transform: translateX(-5px);
+}
+
+.backLink::before {
+  content: '';
+  width: 20px;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.7);
+  margin-right: 1rem;
+  transition: all 0.3s ease;
+}
+
+.backLink:hover::before {
+  width: 30px;
+  background: white;
+}
+
+/* Hero Section for Sub-pages */
+.subPageHero {
+  text-align: center;
+  margin-bottom: 6rem;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.subPageTitle {
+  font-family: 'Poppins', sans-serif;
+  font-size: clamp(3rem, 8vw, 5rem);
+  font-weight: 200;
+  color: white;
+  margin-bottom: 2rem;
+  text-shadow: 0 0 30px rgba(255, 255, 255, 0.3);
+  line-height: 1.1;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.subPageSubtitle {
+  font-family: 'Poppins', sans-serif;
+  font-size: clamp(1rem, 2.5vw, 1.2rem);
+  color: rgba(255, 255, 255, 0.7);
+  font-weight: 200;
+  line-height: 1.8;
+  letter-spacing: 0.02em;
+}
+
+/* Documentary Timeline */
+.documentaryContainer {
+  max-width: 1200px;
+  margin: 0 auto;
+  margin-bottom: 6rem;
+}
+
+.timelineHeading {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 200;
+  color: rgba(255, 255, 255, 0.8);
+  text-align: center;
+  margin-bottom: 4rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.documentaryTimeline {
+  position: relative;
+  max-width: 1000px; 
+  margin: 0 auto;
+}
+
+.timelineLine {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(to bottom, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transform: translateX(-50%);
+}
+
+.documentaryItem {
+  position: relative;
+  margin-bottom: 5rem;
+  display: flex;
+  align-items: center; 
+  width: 100%;
+  min-height: 300px; /* Add minimum height */
+}
+
+.timelineLeft {
+  flex-direction: row;
+}
+
+.timelineRight {
+  flex-direction: row-reverse;
+}
+
+.timelineMarker {
+  position: absolute;
+  left: 50%;
+  top: 2rem; /* Position from top instead of center */
+  transform: translateX(-50%);
+  z-index: 10;
+  background: rgba(0, 0, 0, 0.8);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  width: 80px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(10px);
+}
+
+.timelineYear {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 300;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+/* Documentary Cards */
+.documentaryCard {
+  background: rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  overflow: hidden;
+  width: 480px;
+  max-width: 480px; /* Ensure consistent width */
+  transition: all 0.4s ease;
+  text-decoration: none;
+  display: block;
+}
+
+.timelineLeft .documentaryCard {
+  margin-right: 500px;
+}
+
+.timelineRight .documentaryCard {
+  margin-left: 500px;
+}
+
+.documentaryCard:hover {
+  border-color: rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.05);
+  transform: translateY(-10px);
+}
+
+/* Documentary Video Area */
+.documentaryVideoArea {
+  position: relative;
+  height: 200px;
+  overflow: hidden;
+}
+
+.documentaryVideo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 1.5s ease-in-out, transform 0.4s ease;
+}
+
+.documentaryCard:hover .documentaryVideo {
+  transform: scale(1.05);
+  opacity: 0.6;
+}
+
+.documentaryCard:hover .documentaryTitle {
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+}
+
+.documentaryCard:hover .documentaryDescription {
+  text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.6);
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.documentaryCard:hover .documentarySnippet {
+  text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.6);
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.documentaryCard:hover .viewDocBtn span {
+  text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.6);
+}
+
+.documentaryCard:hover .docDuration,
+.documentaryCard:hover .docStatus {
+  background: rgba(0, 0, 0, 0.9);
+  border-color: rgba(255, 255, 255, 0.4);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+}
+
+.documentaryOverlay {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  right: 1rem;
+  display: flex;
+  justify-content: space-between;
+  z-index: 15;
+}
+
+.docDuration {
+  background: rgba(0, 0, 0, 0.7);
+  color: white;
+  padding: 0.3rem 0.8rem;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 300;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+}
+
+.docStatus {
+  background: rgba(0, 0, 0, 0.7);
+  color: white;
+  padding: 0.3rem 0.8rem;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 300;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.festivalcircuit {
+  border-color: rgba(255, 215, 0, 0.5);
+  color: rgba(255, 215, 0, 0.9);
+}
+
+.streaming {
+  border-color: rgba(0, 255, 0, 0.5);
+  color: rgba(0, 255, 0, 0.9);
+}
+
+.educationalrelease {
+  border-color: rgba(0, 150, 255, 0.5);
+  color: rgba(0, 150, 255, 0.9);
+}
+
+.archived {
+  border-color: rgba(150, 150, 150, 0.5);
+  color: rgba(150, 150, 150, 0.9);
+}
+
+.communityscreenings {
+  border-color: rgba(255, 100, 255, 0.5);
+  color: rgba(255, 100, 255, 0.9);
+}
+
+.documentaryHover {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(5px);
+}
+
+.documentaryCard:hover .documentaryHover {
+  opacity: 1;
+  backdrop-filter: none;
+}
+
+.watchText {
+  color: white;
+  font-family: 'Poppins', sans-serif;
+  font-size: 1rem;
+  font-weight: 300;
+  background: transparent;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+  padding: 1rem 2rem;
+  border-radius: 25px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(15px);
+  transition: all 0.3s ease;
+}
+
+.documentaryCard:hover .watchText {
+  border-color: rgba(255, 255, 255, 0.5);
+  transform: scale(1.05);
+  text-shadow: 2px 2px 12px rgba(0, 0, 0, 1);
+}
+
+/* Documentary Content */
+.documentaryContent {
+  padding: 2.5rem;
+}
+
+.documentaryTitle {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.6rem;
+  font-weight: 200;
+  color: white;
+  margin-bottom: 1.5rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.documentaryMeta {
+  margin-bottom: 1.5rem;
+}
+
+.documentaryThemes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.themeTag {
+  background: rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.8);
+  padding: 0.3rem 0.8rem;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 300;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+}
+
+.documentaryDescription {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.7;
+  font-weight: 300;
+  margin-bottom: 1rem;
+  letter-spacing: 0.02em;
+}
+
+.documentarySnippet {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.6);
+  line-height: 1.6;
+  font-weight: 300;
+  margin-bottom: 1.5rem;
+  letter-spacing: 0.02em;
+  font-style: italic;
+}
+
+.awardBadge {
+  background: rgba(255, 215, 0, 0.1);
+  color: rgba(255, 215, 0, 0.9);
+  padding: 0.5rem 1rem;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 300;
+  margin-bottom: 1.5rem;
+  border: 1px solid rgba(255, 215, 0, 0.3);
+  border-radius: 4px;
+  text-align: center;
+}
+
+.festivalList {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.5);
+  line-height: 1.5;
+  margin-bottom: 2rem;
+  letter-spacing: 0.02em;
+}
+
+.festivalLabel {
+  color: rgba(255, 255, 255, 0.7);
+  font-weight: 400;
+  margin-right: 0.5rem;
+}
+
+.viewDocBtn {
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.viewDocBtn span {
+  color: rgba(255, 255, 255, 0.8);
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 300;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.viewDocBtn span::after {
+  content: '';
+  width: 20px;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.8);
+  margin-left: 1rem;
+  transition: all 0.3s ease;
+  display: inline-block;
+}
+
+.documentaryCard:hover .viewDocBtn span {
+  color: white;
+}
+
+.documentaryCard:hover .viewDocBtn span::after {
+  width: 30px;
+  background: white;
+}
+
+/* Documentary Statement */
+.documentaryStatement {
+  max-width: 800px;
+  margin: 4rem auto 0;
+  padding: 4rem 2rem;
+  background: rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  text-align: center;
+}
+
+
+/* Documentary Modal */
+.documentaryModal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.9);
+  backdrop-filter: blur(10px);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  animation: modalFadeIn 0.3s ease-out;
+}
+
+@keyframes modalFadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+.modalContent {
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 16px;
+  max-width: 1200px;
+  max-height: 90vh;
+  width: 100%;
+  overflow-y: auto;
+  position: relative;
+  animation: modalSlideIn 0.4s ease-out;
+}
+
+@keyframes modalSlideIn {
+  0% { 
+    transform: translateY(50px) scale(0.9);
+    opacity: 0;
+  }
+  100% { 
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+}
+
+.closeButton {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  color: white;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+}
+
+.closeButton:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: scale(1.1);
+}
+
+.modalHeader {
+  padding: 3rem 3rem 1rem;
+  text-align: center;
+}
+
+.modalTitle {
+  font-family: 'Poppins', sans-serif;
+  font-size: 2rem;
+  font-weight: 200;
+  color: white;
+  margin-bottom: 1rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.modalMeta {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.7);
+  font-weight: 300;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.videoContainer {
+  padding: 0 3rem;
+  margin-bottom: 2rem;
+}
+
+.videoContainer iframe {
+  width: 100%;
+  height: 500px;
+  border-radius: 8px;
+}
+
+.modalDescription {
+  padding: 0 3rem 3rem;
+}
+
+.modalDescription p {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.7;
+  font-weight: 300;
+  letter-spacing: 0.02em;
+  text-align: center;
+}
+
+/* Mobile responsive modal */
+@media (max-width: 768px) {
+  .documentaryModal {
+    padding: 1rem;
+  }
+  
+  .modalHeader,
+  .videoContainer,
+  .modalDescription {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+  
+  .videoContainer iframe {
+    height: 300px;
+  }
+  
+  .modalTitle {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .modalHeader,
+  .videoContainer,
+  .modalDescription {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+  
+  .videoContainer iframe {
+    height: 250px;
+  }
+}
+
+/* Responsive Design for Documentaries */
+@media (max-width: 768px) {
+  .timelineLine {
+    display: none;
+  }
+  
+  .documentaryItem {
+    flex-direction: column !important;
+  }
+  
+  .timelineMarker {
+    position: relative;
+    left: auto;
+    transform: none;
+    margin-bottom: 2rem;
+  }
+  
+  .timelineLeft .documentaryCard,
+  .timelineRight .documentaryCard {
+    margin: 0;
+    width: 100%;
+    max-width: 500px;
+  }
+  
+  .documentaryContent {
+    padding: 2rem;
+  }
+  
+  .documentaryVideoArea {
+  position: relative;
+  height: 400px;
+  overflow: hidden;
+  background: #000; /* ADD THIS LINE */
+}
+
+  .playIndicator {
+    font-size: 2.5rem;
+    width: 70px;
+    height: 70px;
+    padding: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .documentaryContent {
+    padding: 1.5rem;
+  }
+  
+  .documentaryVideoArea {
+    position: relative;
+    height: 280px; /* CHANGE from 400px to 280px */
+    overflow: hidden;
+    background: #000;
+  }
+  
+  .documentaryStatement {
+    padding: 3rem 1.5rem;
+  }
+
+  .playIndicator {
+    font-size: 2rem;
+    width: 60px;
+    height: 60px;
+    padding: 0.8rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .filmGrid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  
+  .filmCard {
+    min-height: 450px;
+  }
+  
+  .filmVideoContainer {
+    height: 220px;
+  }
+  
+  .filmContent {
+    padding: 2rem 1.5rem;
+  }
+  
+  .filmHeroSection {
+    margin-bottom: 4rem;
+  }
+  
+  .filmStatement {
+    margin: 4rem auto 0;
+    padding: 3rem 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .filmCategoriesPage {
+    padding: 6vh 1rem 8vh;
+  }
+  
+  .filmCard {
+    min-height: 400px;
+  }
+  
+  .filmVideoContainer {
+    height: 180px;
+  }
+  
+  .filmContent {
+    padding: 1.5rem;
+  }
+  
+  .filmStatement {
+    padding: 2rem 1rem;
+  }
+  
+  .collaborationNote {
+    padding: 2rem 1rem;
+  }
+}
+
+/* ======================
+   COMING SOON PAGES
+   ====================== */
+
+/* Coming Soon Text for Micro Films */
+.subPageHero .comingSoonText {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 300;
+  letter-spacing: 0.05em;
+  text-align: center;
+  margin-top: 1rem;
+  padding: 0.8rem 1.5rem;
+  background: rgba(160, 82, 45, 0.2);
+  border: 1px solid rgba(160, 82, 45, 0.4);
+  border-radius: 25px;
+  text-transform: uppercase;
+  display: inline-block;
+}
+
+/* Make sure blinking dots animation is defined */
+.blinkingDots {
+  animation: blink 1.5s infinite;
+}
+
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+/* Coming Soon Card Styles */
+.comingSoonCard {
+  opacity: 0.8;
+  position: relative;
+}
+
+.comingSoonCard::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 2;
+  border-radius: 8px;
+}
+
+.comingSoonText {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 300;
+  letter-spacing: 0.05em;
+  text-align: center;
+  margin-top: 1rem;
+  padding: 1rem;
+  background: rgba(160, 82, 45, 0.2);
+  border: 1px solid rgba(160, 82, 45, 0.4);
+  border-radius: 8px;
+  text-transform: uppercase;
+}
+
+.blinkingDots {
+  animation: blink 1.5s infinite;
+}
+
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+/* Ensure the coming soon card content stays above the overlay */
+.comingSoonCard .shortFilmContent {
+  position: relative;
+  z-index: 3;
+}
+
+.comingSoonCard .shortFilmVideoContainer {
+  position: relative;
+}
+
+.comingSoonCard .shortFilmVideoContainer::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 1;
+  border-radius: 8px 8px 0 0;
+}
+
+.subPage {
+  position: relative;
+  z-index: 10;
+  min-height: 100vh;
+  padding: 8vh 2rem 10vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.backNavigation {
+  position: fixed;
+  top: 8rem;
+  left: 2rem;
+  z-index: 100;
+}
+
+.backLink {
+  display: inline-flex;
+  align-items: center;
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 300;
+  padding: 1rem 1.5rem;
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 25px;
+  transition: all 0.3s ease;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.backLink:hover {
+  color: white;
+  background: rgba(0, 0, 0, 0.5);
+  border-color: rgba(255, 255, 255, 0.4);
+  transform: translateX(-5px);
+}
+
+.backLink::before {
+  content: '';
+  width: 20px;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.8);
+  margin-right: 1rem;
+  transition: all 0.3s ease;
+}
+
+.backLink:hover::before {
+  width: 30px;
+  background: white;
+}
+
+.comingSoonHero {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 30vh;
+  text-align: center;
+  margin-top: -200px;
+}
+
+.comingSoonTitle {
+  font-family: 'Poppins', sans-serif;
+  font-size: clamp(3rem, 8vw, 6rem);
+  font-weight: 200;
+  color: white;
+  margin-bottom: 2rem;
+  text-shadow: 0 0 30px rgba(255, 255, 255, 0.3);
+  line-height: 1.1;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.comingSoonSubtitle {
+  font-family: 'Poppins', sans-serif;
+  font-size: clamp(1.2rem, 3vw, 1.8rem);
+  color: rgba(255, 255, 255, 0.7);
+  font-weight: 300;
+  letter-spacing: 0.05em;
+  text-transform: lowercase;
+}
+
+.blinkingDots {
+  animation: blink 1.5s infinite;
+}
+
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+

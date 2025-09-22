@@ -1,0 +1,676 @@
+// src/pages/index.js (homepage)
+import React, { useState, useRef, useEffect } from "react";
+import { Link } from "gatsby"
+import "../styles/global.css"
+import "./index.css"
+import Layout from "../components/Layout";
+
+export default function Home() {
+  const videoRef = useRef(null);
+  const portfolioSectionRef = useRef(null);
+  const carouselRef = useRef(null);
+
+  // Slideshow dragging state
+  const [isDragging, setIsDragging] = useState(false);
+  const [startX, setStartX] = useState(0);
+  const [scrollLeft, setScrollLeft] = useState(0);
+
+  // Video background setup
+  useEffect(() => {
+    if (videoRef.current) {
+      const video = videoRef.current;
+      video.defaultMuted = true;
+      video.muted = true;
+      
+      // Ensure video plays immediately  
+      const playVideo = async () => {
+        try {
+          await video.play();
+        } catch (error) {
+          console.log('Video autoplay failed:', error);
+        }
+      };
+      
+      // Play video as soon as possible
+      if (video.readyState >= 2) {
+        playVideo();
+      } else {
+        video.addEventListener('loadeddata', playVideo);
+      }
+      
+      return () => {
+        video.removeEventListener('loadeddata', playVideo);
+      };
+    }
+  }, []);
+
+  // Slideshow dragging functionality
+  const handleMouseDown = (e) => {
+    if (!carouselRef.current) return;
+    setIsDragging(true);
+    setStartX(e.pageX - carouselRef.current.offsetLeft);
+    setScrollLeft(carouselRef.current.scrollLeft);
+    carouselRef.current.classList.add('paused');
+  };
+
+  const handleMouseLeave = () => {
+    if (!carouselRef.current) return;
+    setIsDragging(false);
+    setTimeout(() => {
+      if (carouselRef.current) {
+        carouselRef.current.classList.remove('paused');
+      }
+    }, 2000); // Resume animation after 2 seconds
+  };
+
+  const handleMouseUp = () => {
+    if (!carouselRef.current) return;
+    setIsDragging(false);
+    setTimeout(() => {
+      if (carouselRef.current) {
+        carouselRef.current.classList.remove('paused');
+      }
+    }, 2000); // Resume animation after 2 seconds
+  };
+
+  const handleMouseMove = (e) => {
+    if (!isDragging || !carouselRef.current) return;
+    e.preventDefault();
+    const x = e.pageX - carouselRef.current.offsetLeft;
+    const walk = (x - startX) * 2; // Multiply by 2 for faster scrolling
+    carouselRef.current.scrollLeft = scrollLeft - walk;
+  };
+
+  // Touch events for mobile
+  const handleTouchStart = (e) => {
+    if (!carouselRef.current) return;
+    setIsDragging(true);
+    setStartX(e.touches[0].pageX - carouselRef.current.offsetLeft);
+    setScrollLeft(carouselRef.current.scrollLeft);
+    carouselRef.current.classList.add('paused');
+  };
+
+  const handleTouchMove = (e) => {
+    if (!isDragging || !carouselRef.current) return;
+    const x = e.touches[0].pageX - carouselRef.current.offsetLeft;
+    const walk = (x - startX) * 2;
+    carouselRef.current.scrollLeft = scrollLeft - walk;
+  };
+
+  const handleTouchEnd = () => {
+    if (!carouselRef.current) return;
+    setIsDragging(false);
+    setTimeout(() => {
+      if (carouselRef.current) {
+        carouselRef.current.classList.remove('paused');
+      }
+    }, 2000);
+  };
+
+  const scrollToPortfolio = () => {
+    document.getElementById('portfolio-section').scrollIntoView({
+      behavior: 'smooth'
+    })
+  }
+
+  const scrollToDefinition = () => {
+    document.querySelector('.definition-section').scrollIntoView({
+      behavior: 'smooth'
+    })
+  }
+
+  // Main categories for navigation
+  const mainCategories = [
+    {
+      id: 'art',
+      title: 'Art',
+      description: 'Visual expressions of identity and resistance',
+      icon: (
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1">
+          <path d="M12 2L13.09 8.26L20 9L13.09 9.74L12 16L10.91 9.74L4 9L10.91 8.26L12 2Z"/>
+        </svg>
+      ),
+      link: '/art',
+      subcategories: [
+        {
+          id: 'paintings',
+          title: 'Paintings',
+          description: 'Canvas explorations of identity and resistance',
+          link: '/art/paintings'
+        },
+        {
+          id: 'murals',
+          title: 'Murals',
+          description: 'Large-scale community art and storytelling',
+          link: '/art/murals'
+        },
+        {
+          id: 'illustrations',
+          title: 'Illustrations',
+          description: 'Digital art celebrating divine femininity',
+          link: '/art/illustrations'
+        },
+        {
+          id: 'collages',
+          title: 'Collages',
+          description: 'Mixed media narratives and compositions',
+          link: '/art/collages'
+        }
+      ]
+    },
+    {
+      id: 'film',
+      title: 'Film',
+      description: 'Cinematic storytelling and visual narratives',
+      icon: (
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1">
+          <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+          <path d="M8 21L16 21"/>
+          <path d="M12 17L12 21"/>
+        </svg>
+      ),
+      link: '/film',
+      subcategories: [
+        {
+          id: 'documentaries',
+          title: 'Documentaries',
+          description: 'Truth-telling through cinematic storytelling',
+          link: '/film/documentaries'
+        },
+        {
+          id: 'shortfilms',
+          title: 'Short Films',
+          description: 'Concise narratives with powerful impact',
+          link: '/film/short-films'
+        },
+        {
+          id: 'microfilms',
+          title: 'Micro Films',
+          description: 'Brief moments of profound meaning',
+          link: '/film/micro-films'
+        }
+      ]
+    },
+    {
+      id: 'writing',
+      title: 'Writing',
+      description: 'Words that heal, resist, and transform',
+      icon: (
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1">
+          <path d="M14 2H6C5.45 2 5 2.45 5 3V21C5 21.55 5.45 22 6 22H18C18.55 22 19 21.55 19 21V7L14 2Z"/>
+          <polyline points="14,2 14,8 20,8"/>
+          <line x1="16" y1="13" x2="8" y2="13"/>
+          <line x1="16" y1="17" x2="8" y2="17"/>
+          <polyline points="10,9 9,9 8,9"/>
+        </svg>
+      ),
+      link: '/writing',
+      subcategories: [
+        {
+          id: 'poetry',
+          title: 'Poetry',
+          description: 'Verses of resistance and healing',
+          link: '/writing/poetry'
+        },
+        {
+          id: 'creative-writing',
+          title: 'Creative Writing',
+          description: 'Imaginative prose and storytelling',
+          link: '/writing/creative-writing'
+        },
+        {
+          id: 'novel-writing',
+          title: 'Novel Writing',
+          description: 'Long-form narratives and world-building',
+          link: '/writing/novel-writing'
+        },
+        {
+          id: 'video-essays',
+          title: 'Video Essays',
+          description: 'Visual analysis and commentary',
+          link: '/writing/video-essays'
+        }
+      ]
+    },
+    {
+      id: 'coding',
+      title: 'Coding',
+      description: 'Technology for liberation and social impact',
+      icon: (
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1">
+          <path d="M16 18L22 12L16 6"/>
+          <path d="M8 6L2 12L8 18"/>
+        </svg>
+      ),
+      link: '/resume',
+      subcategories: [
+        {
+          id: 'technical-resume',
+          title: 'Technical Resume',
+          description: 'Technical skills and development experience',
+          link: '/resume'
+        },
+        {
+          id: 'creative-resume',
+          title: 'Creative Resume',
+          description: 'Creative projects and artistic experience',
+          link: '/resume'
+        }
+      ]
+    }
+  ]
+
+  // All portfolio items for slideshow (keeping original structure)
+  const portfolioItems = [
+    // Art Subcategories
+    {
+      id: 'paintings',
+      title: 'Paintings',
+      description: 'Canvas explorations of identity and resistance',
+      icon: (
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1">
+          <path d="M12 2L13.09 8.26L20 9L13.09 9.74L12 16L10.91 9.74L4 9L10.91 8.26L12 2Z"/>
+        </svg>
+      ),
+      link: '/art/paintings'
+    },
+    {
+      id: 'murals',
+      title: 'Murals',
+      description: 'Large-scale community art and storytelling',
+      icon: (
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1">
+          <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+          <circle cx="9" cy="9" r="2"/>
+          <path d="M21 15L16 10L5 21"/>
+        </svg>
+      ),
+      link: '/art/murals'
+    },
+    {
+      id: 'illustrations',
+      title: 'Illustrations',
+      description: 'Digital art celebrating divine femininity',
+      icon: (
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1">
+          <path d="M21.44 11.05L12.25 21.9C11.84 22.31 11.16 22.31 10.75 21.9L1.56 11.05C1.15 10.64 1.15 9.96 1.56 9.55L10.75 0.7C11.16 0.29 11.84 0.29 12.25 0.7L21.44 9.55C21.85 9.96 21.85 10.64 21.44 11.05Z"/>
+        </svg>
+      ),
+      link: '/art/illustrations'
+    },
+    {
+      id: 'collages',
+      title: 'Collages',
+      description: 'Mixed media narratives and compositions',
+      icon: (
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1">
+          <rect x="3" y="3" width="7" height="7"/>
+          <rect x="14" y="3" width="7" height="7"/>
+          <rect x="14" y="14" width="7" height="7"/>
+          <rect x="3" y="14" width="7" height="7"/>
+        </svg>
+      ),
+      link: '/art/collages'
+    },
+    // Film Subcategories
+    {
+      id: 'documentaries',
+      title: 'Documentaries',
+      description: 'Truth-telling through cinematic storytelling',
+      icon: (
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1">
+          <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+          <path d="M8 21L16 21"/>
+          <path d="M12 17L12 21"/>
+        </svg>
+      ),
+      link: '/film/documentaries'
+    },
+    {
+      id: 'shortfilms',
+      title: 'Short Films',
+      description: 'Concise narratives with powerful impact',
+      icon: (
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1">
+          <polygon points="23 7 16 12 23 17 23 7"/>
+          <rect x="1" y="5" width="15" height="14" rx="2" ry="2"/>
+        </svg>
+      ),
+      link: '/film/short-films'
+    },
+    {
+      id: 'microfilms',
+      title: 'Micro Films',
+      description: 'Brief moments of profound meaning',
+      icon: (
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1">
+          <circle cx="12" cy="12" r="10"/>
+          <polygon points="10,8 16,12 10,16 10,8"/>
+        </svg>
+      ),
+      link: '/film/micro-films'
+    },
+    // Writing Subcategories
+    {
+      id: 'poetry',
+      title: 'Poetry',
+      description: 'Verses of resistance and healing',
+      icon: (
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1">
+          <path d="M14 2H6C5.45 2 5 2.45 5 3V21C5 21.55 5.45 22 6 22H18C18.55 22 19 21.55 19 21V7L14 2Z"/>
+          <polyline points="14,2 14,8 20,8"/>
+          <line x1="16" y1="13" x2="8" y2="13"/>
+          <line x1="16" y1="17" x2="8" y2="17"/>
+          <polyline points="10,9 9,9 8,9"/>
+        </svg>
+      ),
+      link: '/writing/poetry'
+    },
+    {
+      id: 'creative-writing',
+      title: 'Creative Writing',
+      description: 'Imaginative prose and storytelling',
+      icon: (
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1">
+          <path d="M12 20H21"/>
+          <path d="M16.5 3.5A2.121 2.121 0 0 1 19 6L7 18L3 19L4 15L16.5 3.5Z"/>
+        </svg>
+      ),
+      link: '/writing/creative-writing'
+    },
+    {
+      id: 'novel-writing',
+      title: 'Novel Writing',
+      description: 'Long-form narratives and world-building',
+      icon: (
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1">
+          <path d="M4 19.5C4 18.837 4.263 18.201 4.732 17.732C5.201 17.263 5.837 17 6.5 17H20"/>
+          <path d="M6.5 2H20V22H6.5C5.837 22 5.201 21.737 4.732 21.268C4.263 20.799 4 20.163 4 19.5V4.5C4 3.837 4.263 3.201 4.732 2.732C5.201 2.263 5.837 2 6.5 2Z"/>
+        </svg>
+      ),
+      link: '/writing/novel-writing'
+    },
+    {
+      id: 'video-essays',
+      title: 'Video Essays',
+      description: 'Visual analysis and commentary',
+      icon: (
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1">
+          <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+          <path d="M10 9L14 12L10 15V9Z"/>
+        </svg>
+      ),
+      link: '/writing/video-essays'
+    },
+    // Technology
+    {
+      id: 'coding',
+      title: 'Coding',
+      description: 'Technology for liberation and social impact',
+      icon: (
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1">
+          <path d="M16 18L22 12L16 6"/>
+          <path d="M8 6L2 12L8 18"/>
+        </svg>
+      ),
+      link: '/resume'
+    }
+  ]
+
+  /* Homescreen */
+  return (
+    <Layout>
+    <div className="home-Container">
+      {/* Video Background - Separate from content */}
+      <div className="video-background">
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          preload="auto"
+          className="video-tag"
+          ref={videoRef}
+          style={{
+            filter: 'brightness(0.55) contrast(1.1) saturate(1.9)'
+          }}
+        >
+          <source src="https://pub-3f206994e69e42408f7908b2177b9ed9.r2.dev/indigenous-futurism.MP4" type="video/mp4" />
+        </video>
+      </div>
+
+      {/* Hero Section */}
+      <section className="hero-section">
+        {/* Background with overlay */}
+
+        {/* Hero content */}
+        <main className="hero-content">
+          <div className="hero-text">
+            <h1 className="main-title clickable-title" onClick={scrollToDefinition}>INDIGENOUS FUTURISM</h1>
+            <p className="arabic-text clickable-title" onClick={scrollToDefinition}>المستقبلية الأصيلة</p>
+            
+            <div className="cta-buttons">
+              <button onClick={scrollToPortfolio} className="cta-button secondary">
+                Portfolio
+              </button>
+              <Link to="/about" className="cta-button white">
+                About
+              </Link>
+              <button
+                onClick={() => document.getElementById('contact-section').scrollIntoView({ behavior: 'smooth' })}
+                className="cta-button secondary"
+              >
+                Contact
+              </button>
+            </div>
+          </div>
+        </main>
+      </section>
+
+      {/* Indigenous Futurism Definition Section */}
+      <section className="definition-section">
+        <div className="definition-container">
+          <div className="definition-header">
+            <div className="section-indicator">
+              <span className="indicator-dot"></span>
+              <span className="indicator-text">Philosophy</span>
+            </div>
+            <h2 className="definition-title">
+              <a
+                href="https://lithub.com/writing-toward-a-definition-of-indigenous-futurism/"
+                target="_blank"
+                rel="noopener noreferrer"
+                title="Learn more about Indigenous Futurism"
+              >
+                Indigenous Futurism
+              </a>
+            </h2>
+          </div>
+
+          <div className="definition-content" title="Learn more about Indigenous Futurism">
+            <p className="definition-text">
+              Originally introduced to me through science-fiction, Indigenous Futurism (المستقبلية الأصيلة) is a 
+              movement that centers Indigenous ways of being as the architecture for tomorrow. It is a daily practice of 
+              carving out time to reimagine what freedom should look like. Through art and writing, we open real, tangible 
+              routes that guide us toward this future—creating small spaces each day for worlds that 
+              should and will exist.
+            </p>
+            <p className="definition-text">
+              EEach day, we must dream of building worlds where we lose the identities we built around our wounds, 
+              worlds where liberation becomes a state of being, not just imagining. In my creative work, I explore
+              how this daily reimagining transforms resistance into regeneration, turning our visions into 
+              inevitable realities that must be reckoned with.
+            </p>
+            <p className="definition-text">
+              As Walidah Imarisha puts it, “whenever we try to envision a world without war, without violence, 
+              without prisons, without capitalism, we are engaging in speculative fiction. All organizing is 
+              science fiction.”
+
+            </p>
+            <div className="definition-quote">
+              <p className="main-title" style={{ textTransform: 'none', fontStyle: 'normal' }}>"We are not vanishing. We are becoming."</p>
+              <p className="arabic-text" style={{ fontSize: '1.7rem', direction: 'rtl', fontStyle: 'normal' }}>"نحنا ننولد من جديد ولا نختفي في الأفق"</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Portfolio Section */}
+      <section 
+        id="portfolio-section" 
+        className="portfolio-section"
+        ref={portfolioSectionRef}
+      >
+        <div className="portfolio-container">
+          <div className="portfolio-header">
+            <div className="section-indicator">
+              <span className="indicator-dot"></span>
+              <span className="indicator-text">Portfolio</span>
+            </div>
+            <h2 className="portfolio-title">My Portfolio</h2>
+            <p className="portfolio-subtitle">
+              Where I reimagine ways of living and being
+            </p>
+
+            {/* Main Category Navigation with Hover Dropdowns */}
+            <div className="portfolio-nav-links">
+              {mainCategories.map((category, index) => (
+                <div key={category.id} className="portfolio-nav-category">
+                  <Link
+                    to={category.link}
+                    className="portfolio-nav-link"
+                  >
+                    <div className="portfolio-nav-icon">
+                      {category.icon}
+                    </div>
+                    <span className="portfolio-nav-text">{category.title}</span>
+                  </Link>
+
+                  {/* Subcategories Dropdown */}
+                  {category.subcategories && category.subcategories.length > 0 && (
+                    <div className="portfolio-subcategories">
+                      {category.subcategories.map((subcategory, subIndex) => (
+                        <Link
+                          key={subcategory.id}
+                          to={subcategory.link}
+                          className="portfolio-subcategory-link"
+                        >
+                          <span className="subcategory-title">{subcategory.title}</span>
+                          <span className="subcategory-description">{subcategory.description}</span>
+                        </Link>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Portfolio Slideshow */}
+          <div className="portfolio-slideshow">
+            <div
+              className="portfolio-carousel"
+              ref={carouselRef}
+              onMouseDown={handleMouseDown}
+              onMouseLeave={handleMouseLeave}
+              onMouseUp={handleMouseUp}
+              onMouseMove={handleMouseMove}
+              onTouchStart={handleTouchStart}
+              onTouchMove={handleTouchMove}
+              onTouchEnd={handleTouchEnd}
+            >
+              {/* First set of items */}
+              {portfolioItems.map((item, index) => (
+                <Link
+                  key={`first-${item.id}`}
+                  to={item.link}
+                  className="portfolio-slide"
+                  style={{ '--slide-index': index }}
+                >
+                  <div className="portfolio-slide-content">
+                    <div className="portfolio-icon">
+                      {item.icon}
+                    </div>
+                    <h3 className="portfolio-slide-title">{item.title}</h3>
+                    <p className="portfolio-slide-description">{item.description}</p>
+                  </div>
+                  <div className="portfolio-slide-glow"></div>
+                </Link>
+              ))}
+              {/* Duplicate set for seamless loop */}
+              {portfolioItems.map((item, index) => (
+                <Link
+                  key={`second-${item.id}`}
+                  to={item.link}
+                  className="portfolio-slide"
+                  style={{ '--slide-index': index + portfolioItems.length }}
+                >
+                  <div className="portfolio-slide-content">
+                    <div className="portfolio-icon">
+                      {item.icon}
+                    </div>
+                    <h3 className="portfolio-slide-title">{item.title}</h3>
+                    <p className="portfolio-slide-description">{item.description}</p>
+                  </div>
+                  <div className="portfolio-slide-glow"></div>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Contact Section */} 
+      <section id="contact-section" className="contact-section">
+        <div className="contact-container">
+          <div className="contact-header">
+            <div className="section-indicator">
+              <span className="indicator-dot"></span>
+              <span className="indicator-text">Get In Touch</span>
+            </div>
+            <h2 className="contact-title">Contact Māyā</h2>
+            <p className="contact-subtitle">
+              Have a project in mind or want to collaborate? Let's connect.
+            </p>
+          </div>
+
+          <form
+            className="contact-form"
+            name="contact"
+            method="POST"
+            data-netlify="true"
+            action="/success"
+            netlify-honeypot="bot-field"
+          >
+            <input type="hidden" name="form-name" value="contact" />
+            <div className="form-group" style={{ display: 'none' }}>
+              <label htmlFor="bot-field">Don't fill this out if you're human:</label>
+              <input name="bot-field" />
+            </div>
+            <div className="form-group">
+              <label htmlFor="name">Name</label>
+              <input type="text" id="name" name="name" required />
+            </div>
+            <div className="form-group">
+              <label htmlFor="email">Email</label>
+              <input type="email" id="email" name="email" required />
+            </div>
+            <div className="form-group">
+              <label htmlFor="subject">Subject</label>
+              <input type="text" id="subject" name="subject" />
+            </div>
+            <div className="form-group">
+              <label htmlFor="message">Message</label>
+              <textarea id="message" name="message" rows="5" required></textarea>
+            </div>
+            <button type="submit" className="contact-submit-btn">
+              <span className="submit-text">Send Message</span>
+              <div className="submit-glow"></div>
+            </button>
+          </form>
+        </div>
+      </section>
+      </div>
+    </Layout>
+  )
+}

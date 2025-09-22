@@ -1,0 +1,312 @@
+// src/pages/writing/poetry/index.js - BACKUP OF ORIGINAL POETRY PAGE
+import React, { useState, useEffect } from "react"
+import { Link } from "gatsby"
+import Layout from "../../../components/Layout"
+import * as styles from "../writing.module.css"
+
+const PoetryPage = () => {
+  const [language, setLanguage] = useState('EN')
+  const [hoveredPoem, setHoveredPoem] = useState(null)
+  const [animatedLines, setAnimatedLines] = useState({})
+
+  const poetryCollections = [
+    {
+      id: 'digital-ancestors',
+      title: 'Digital Ancestors',
+      description: 'Voices from the future speaking through quantum echoes and neural networks, where ancient wisdom flows through fiber optic veins.',
+      pieceCount: 15,
+      year: '2024',
+      theme: 'Techno-Spiritualism',
+      hoverVerses: [
+        "In circuits of copper and dreams of silicon,",
+        "our ancestors whisper through digital winds,",
+        "their voices encoded in patterns of light..."
+      ],
+      glowColor: 'rgba(255, 140, 0, 0.8)', // Warm Orange
+      particles: 'tech'
+    },
+    {
+      id: 'neon-prophecies',
+      title: 'Neon Prophecies',
+      description: 'Urban visions painted in electric colors, where street lights become constellation maps and city rhythms echo tribal drums.',
+      pieceCount: 12,
+      year: '2023',
+      theme: 'Urban Mysticism',
+      hoverVerses: [
+        "Beneath neon constellations we gather,",
+        "electric totems pulse with ancient heartbeats,",
+        "the city breathes with prophetic light..."
+      ],
+      glowColor: 'rgba(218, 165, 32, 0.8)', // Golden Rod
+      particles: 'neon'
+    },
+    {
+      id: 'quantum-ceremony',
+      title: 'Quantum Ceremony',
+      description: 'Sacred rituals performed across dimensions, where traditional ceremonies transcend space-time and consciousness uploads to cloud spirits.',
+      pieceCount: 8,
+      year: '2024',
+      theme: 'Dimensional Spirituality',
+      hoverVerses: [
+        "In quantum fields where spirits dance,",
+        "ceremony transcends the boundaries of being,",
+        "sacred smoke becomes stellar dust..."
+      ],
+      glowColor: 'rgba(255, 215, 0, 0.8)', // Bright Gold
+      particles: 'quantum'
+    },
+    {
+      id: 'biomech-dreams',
+      title: 'Biomech Dreams',
+      description: 'Organic technology merging flesh with circuit, exploring the symbiosis between natural consciousness and artificial intelligence.',
+      pieceCount: 10,
+      year: '2023',
+      theme: 'Bio-Integration',
+      hoverVerses: [
+        "Where metal meets bone and wire meets soul,",
+        "synthetic hearts pump digital blood,",
+        "consciousness blooms in hybrid gardens..."
+      ],
+      glowColor: 'rgba(205, 133, 63, 0.8)', // Peru/Beige
+      particles: 'bio'
+    },
+    {
+      id: 'star-navigation',
+      title: 'Star Navigation',
+      description: 'Celestial poetry mapping journeys between worlds, using traditional star knowledge to navigate through virtual galaxies.',
+      pieceCount: 18,
+      year: '2024',
+      theme: 'Cosmic Exploration',
+      hoverVerses: [
+        "Ancient star maps guide us through cyberspace,",
+        "constellation codes unlock distant worlds,",
+        "we sail on solar winds toward tomorrow..."
+      ],
+      glowColor: 'rgba(255, 228, 181, 0.8)', // Moccasin/Light Beige
+      particles: 'stellar'
+    }
+  ]
+
+  // Animated typing effect for verses
+  useEffect(() => {
+    if (hoveredPoem) {
+      const verses = poetryCollections.find(p => p.id === hoveredPoem)?.hoverVerses || []
+      const newAnimatedLines = {}
+
+      verses.forEach((verse, verseIndex) => {
+        setTimeout(() => {
+          let charIndex = 0
+          const interval = setInterval(() => {
+            if (charIndex <= verse.length) {
+              newAnimatedLines[verseIndex] = verse.substring(0, charIndex)
+              setAnimatedLines({...newAnimatedLines})
+              charIndex++
+            } else {
+              clearInterval(interval)
+            }
+          }, 30) // Typing speed
+        }, verseIndex * 800) // Delay between lines
+      })
+    } else {
+      setAnimatedLines({})
+    }
+  }, [hoveredPoem])
+
+  // Particle animation component
+  const ParticleEffect = ({ type, color }) => {
+    const particleCount = type === 'quantum' ? 20 : 15
+
+    return (
+      <div className={styles.particleContainer}>
+        {[...Array(particleCount)].map((_, i) => (
+          <div
+            key={i}
+            className={`${styles.particle} ${styles[`particle${type.charAt(0).toUpperCase() + type.slice(1)}`]}`}
+            style={{
+              '--particle-color': color,
+              '--delay': `${Math.random() * 3}s`,
+              '--duration': `${3 + Math.random() * 2}s`,
+              '--start-x': `${Math.random() * 100}%`,
+              '--start-y': `${Math.random() * 100}%`,
+              '--end-x': `${Math.random() * 100}%`,
+              '--end-y': `${Math.random() * 100}%`
+            }}
+          />
+        ))}
+      </div>
+    )
+  }
+
+  // Floating verse overlay
+  const FloatingVerses = ({ verses, isVisible, glowColor }) => {
+    if (!isVisible) return null
+
+    return (
+      <div className={styles.floatingVerses} style={{ '--glow-color': glowColor }}>
+        {verses.map((verse, index) => (
+          <div
+            key={index}
+            className={styles.floatingVerse}
+            style={{
+              '--line-delay': `${index * 0.8}s`,
+              animationDelay: `${index * 0.8}s`
+            }}
+          >
+            <span className={styles.verseText}>
+              {animatedLines[index] || ''}
+              {animatedLines[index] && animatedLines[index].length < verse.length &&
+                <span className={styles.typingCursor}>|</span>
+              }
+            </span>
+          </div>
+        ))}
+      </div>
+    )
+  }
+
+  // Regular card content that shows when not hovering
+  const RegularContent = ({ collection, isVisible }) => {
+    if (!isVisible) return null
+
+    return (
+      <>
+        <div className={styles.poemMeta}>
+          <span className={styles.poemTheme}>{collection.theme}</span>
+          <span className={styles.poemYear}>{collection.year}</span>
+          <span className={styles.poemCount}>{collection.pieceCount} poems</span>
+        </div>
+
+        <div className={styles.poemContent}>
+          <p className={styles.poemDescription}>{collection.description}</p>
+
+          <div className={styles.energyBar}>
+            <div className={styles.energyFill} style={{ '--energy-color': collection.glowColor }}></div>
+          </div>
+
+          <Link
+            to={`/writing/poetry/${collection.id}`}
+            className={styles.readFullBtn}
+            style={{ '--button-glow': collection.glowColor }}
+          >
+            <span className={styles.buttonText}>Enter Collection</span>
+            <div className={styles.buttonGlow}></div>
+          </Link>
+        </div>
+      </>
+    )
+  }
+
+  return (
+    <Layout
+      language={language}
+      setLanguage={setLanguage}
+      hasVideoBackground={true}
+      videoSrc="https://pub-3f206994e69e42408f7908b2177b9ed9.r2.dev/poetry.MP4"
+      videoStyle={{
+        filter: 'brightness(0.6) contrast(1) saturate(1.3)'
+      }}
+      overlayStyle={{
+        background: 'transparent' // Remove amber overlay
+      }}
+    >
+      <section className={styles.subPage}>
+        {/* Back Navigation */}
+        <div className={styles.backNavigation}>
+          <Link to="/writing" className={styles.backLink}>
+            Back to Writing Categories
+          </Link>
+        </div>
+
+        {/* Hero Section */}
+        <div className={styles.subPageHero}>
+          <h1 className={styles.subPageTitle}>Poetry</h1>
+          <p className={styles.subPageSubtitle}>
+            Verses exploring identity, heritage, and transformation through the language of the future
+          </p>
+        </div>
+
+        {/* Poetry Collections Grid */}
+        <div className={styles.seriesContainer}>
+          <div className={styles.poetryGrid}>
+            {poetryCollections.map((collection, index) => (
+              <div
+                key={collection.id}
+                className={`${styles.poemCard} ${styles.interactiveCard}`}
+                onMouseEnter={() => setHoveredPoem(collection.id)}
+                onMouseLeave={() => setHoveredPoem(null)}
+                role="button"
+                tabIndex={0}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    setHoveredPoem(collection.id);
+                  }
+                }}
+                style={{
+                  '--hover-glow': collection.glowColor,
+                  '--card-delay': `${index * 0.1}s`
+                }}
+              >
+                {/* Particle Effects */}
+                {hoveredPoem === collection.id && (
+                  <ParticleEffect type={collection.particles} color={collection.glowColor} />
+                )}
+
+                {/* Card Content */}
+                <div className={styles.poemHeader}>
+                  <div className={styles.poemTitleContainer}>
+                    <h3 className={styles.poemTitle}>{collection.title}</h3>
+                    <div className={styles.holographicLine}></div>
+                  </div>
+                </div>
+
+                {/* Regular Content - shows when not hovering */}
+                <RegularContent
+                  collection={collection}
+                  isVisible={hoveredPoem !== collection.id}
+                />
+
+                {/* Floating Verses Overlay - shows when hovering */}
+                <FloatingVerses
+                  verses={collection.hoverVerses}
+                  isVisible={hoveredPoem === collection.id}
+                  glowColor={collection.glowColor}
+                />
+
+                {/* Ambient Border Glow */}
+                <div className={styles.ambientGlow} style={{ '--ambient-color': collection.glowColor }}></div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Poet Statement */}
+        <div className={styles.authorStatement}>
+          <div className={styles.statementContent}>
+            <h3 className={styles.statementTitle}>Poet Statement</h3>
+            <div className={styles.statementText}>
+              <p>
+                In the liminal space between silicon and spirit, my poetry emerges as a bridge
+                between ancestral wisdom and digital prophesy. Each verse is a quantum entanglement
+                of traditional knowledge with futuristic possibility.
+              </p>
+              <p>
+                Through language that pulses with electric rhythm and bleeds neon light, I explore
+                how indigenous consciousness can navigate and transform digital landscapes.
+                The poems are ceremonies conducted in cyberspace, prayers uploaded to the cloud.
+              </p>
+              <p>
+                Here, words become code, metaphors become algorithms, and every line breaks
+                the boundaries between what was, what is, and what could be.
+              </p>
+            </div>
+            <div className={styles.statementSignature}>
+              <span>— Māyā Murry, Digital Ceremonialist</span>
+            </div>
+          </div>
+        </div>
+      </section>
+    </Layout>
+  )
+}
+
+export default PoetryPage

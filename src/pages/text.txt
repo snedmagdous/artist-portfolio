@@ -1,0 +1,479 @@
+COMPREHENSIVE TEXT EXTRACTION: MAYA MURRY PORTFOLIO CONTENT
+=================================================================
+
+This document contains all text content about Maya Murry extracted from the portfolio website, including biographical information, artist statements, technique spotlights, project descriptions, and personal narratives.
+
+=================================================================
+HOMEPAGE - INDIGENOUS FUTURISM PHILOSOPHY
+=================================================================
+
+Indigenous Futurism Definition:
+Initially a science fiction genre, Indigenous Futurism (المستقبلية الأصيلة) is a movement that envisions centering Indigenous ways of being as the architecture for tomorrow. It is a daily practice of carving out time to reimagine what freedom should look like. Through art, we open real, tangible routes to guide us toward this future—compelling ourselves in even the tiniest ways to create space for worlds that should and will exist.
+
+Each day, we must create worlds where we lose the identities we built around our wounds, and where liberation becomes a state of being, not just a state of imagining. Through my creative work, I explore how this daily reimagining transforms resistance into regeneration, turning our visions into inevitable realities that must be reckoned with.
+
+As Walidah Imarisha puts it, "whenever we try to envision a world without war, without violence, without prisons, without capitalism, we are engaging in speculative fiction. All organizing is science fiction."
+
+Key Quote: "We are not vanishing. We are becoming."
+Arabic Translation: "نحنا ننولد من جديد ولا نختفي في الأفق"
+
+=================================================================
+ABOUT PAGE - COMPREHENSIVE BIOGRAPHY
+=================================================================
+
+About MĀYĀ Murry:
+Maya Murry exists at the intersection of worlds that rarely meet. As a Computer Science student at Cornell University, she architects deep learning systems that can decode pain from heartbeats and builds AI frameworks that protect healthcare data across enterprise systems. Her technical mastery spans from adversarial machine learning to full-stack applications, but her code carries something deeper—a vision of technology as liberation.
+
+Behind the algorithms and neural networks lives an artist whose documentaries screen to hundreds, whose murals transform communities, and whose poetry bridges the intimate and the political. Her films like "Love as Revolution" and "Our Ancestors Are Still Singing" weave stories of resistance across cultures, while her large-scale public art projects have raised over $18,000 in community funding for Palestinian solidarity and Jewish liberation.
+
+As President of Students for Justice in Palestine and an organizer across multiple movements, Maya doesn't just build bridges between technology and art—she constructs pathways between communities fighting for liberation. Her international fieldwork spans from documenting Indigenous resilience in Cambodia to preserving Zapotec language in Mexico, always seeking to understand how traditional wisdom can inform technological futures.
+
+In every line of code she writes and every frame she films, Maya is answering the same question: How can we use the tools of tomorrow to honor the wisdom of yesterday and create more just worlds today? Her work suggests that the future doesn't have to abandon the past—it can carry it forward, transformed and transforming.
+
+Philosophy - Digital Ancestralism:
+"Technology isn't neutral—it carries the values of its creators. I choose to build systems that remember where they came from and know where they're going. Every algorithm is an ancestor, every dataset a story, every application an act of cultural preservation or destruction." — Maya's approach to ethical technology
+
+Creative Facts:
+- 400+ People reached through film screenings
+- $18K+ Community funding raised through art
+- 3 Countries documented for cultural preservation
+
+Contact Information:
+- Email: mmm443@cornell.edu
+- LinkedIn: linkedin.com/in/maya-murry/
+- GitHub: github.com/snedmagdous
+
+=================================================================
+RESUME - DETAILED TIMELINE AND EXPERIENCE
+=================================================================
+
+Current Work (2025):
+
+Southworks Gallery Mural Commission:
+Invited to create large-scale mural adaptation of "In the Image of My Queens, I Stand" painting series—a meditation on divine feminine lineage honoring ancestral wisdom, present sovereignty, and future generations.
+- Selected for prestigious gallery mural commission based on painting portfolio
+- Translating 3-piece painting series into large-scale public art installation
+- Expanding divine feminine narrative themes through collaborative gallery partnership
+- Creating accessible public art connecting Palestinian diaspora identity with universal themes
+
+AI Engineer & Full-Stack Developer - PainTrust Technologies & Cornell Labs:
+Developing revolutionary healthcare AI technology for objective pain assessment while conducting cutting-edge research in computational neuroscience.
+- Architecting Deep Artificial Denoising Auto-Encoder-Decoder for ECG-based pain detection (86% accuracy)
+- Building full-stack React/Node.js application for real-time medical data modeling
+- Leading patent development for automated pain biomarking algorithms
+- Collaborating with cross-functional teams of engineers and medical researchers
+
+Documentary Filmmaker & Visual Artist:
+Creating powerful documentaries and public art that explore intersectional liberation, Palestinian solidarity, and Indigenous resilience.
+- "Love as Revolution" screened at Cinemapolis (200+ attendance) and Schwartz Center
+- "Our Ancestors Are Still Singing" - Indigenous resilience documentary screening at Cornell AIIS
+- Three major murals raising $18,000+ in community funding for social justice themes
+- Published Palestinian poetry in Fikra Magazine, ArabLit Quarterly, and Diacritics Journal
+
+Education (2021-2025):
+B.Sc Computer Science - Cornell University College of Engineering
+Dean's List honors student bridging computational science with social justice, combining technical mastery with creative expression and activism.
+- Dean's List (2022, 2024, 2025) with 3.62 GPA in Computer Science
+- McMullen Dean's Scholar, Sphinx Head Honor Society, WE LEAD Scholar
+- Advanced coursework in ML, AI, Computational Genomics, and Documentary Filming
+- Portfolio website coded entirely from scratch using React and Gatsby (github.com/snedmagdous/portfolio)
+
+Technical Experience:
+
+PricewaterhouseCoopers LLP - Advanced Software Engineering Intern (2024):
+Developed AI-enabled cybersecurity frameworks for healthcare data protection, integrating RAG systems and presenting to clients.
+- Launched high-performance Generative AI frameworks with CI/CD cybersecurity pipelines
+- Integrated RAG systems using Langchain/Azure OpenAI for semantic chunking
+- Improved compliance efficiency by 25% through privacy protocol implementation
+- Presented software solutions to clients and stakeholders at engineering symposium
+
+Cornell Life History Lab & Multiple Research Centers - Healthcare Software Developer & AI Researcher (2023-2025):
+Leading interdisciplinary research combining computational genomics, machine learning, and social justice to understand health disparities.
+- Designed computational pipelines analyzing 10K+ epigenetic datasets (90% accuracy)
+- Developed Non-Homogeneous Hidden Markov Models for psychiatric trauma markers
+- Created NLP meta-analysis connecting social trauma to epigenetic changes
+- Published research on algorithmic bias and cybersecurity protocols
+
+Multi-Institutional Machine Learning Researcher (2021-2023):
+Building foundational expertise in computer vision, deep learning, and privacy-preserving ML across prestigious research programs.
+- Developed adversarial ML algorithms for privacy protection (92% effectiveness)
+- Created CNNs for sleep pattern analysis contributing to Nature publication
+- Programmed computer vision systems for spinal cord injury research (67% improvement)
+- Authored comprehensive computer vision guidebook for lab-wide use
+
+International Work:
+International Researcher & Cultural Documentarian (2023-2025):
+Conducting fieldwork documenting Indigenous resilience, language preservation, and intergenerational healing across multiple cultures.
+- Gilman Scholar documenting Zapotec language preservation in Oaxaca, Mexico
+- AIIS Scholar filming "Our Ancestors Are Still Singing" in Cambodia
+- Researching educational inequities and trauma-informed algorithms in Ecuador
+- Creating digital reconstructions of historical spaces using computational techniques
+
+Leadership Experience:
+Student Leader & Advocacy Organizer (2022-2024):
+Leading campus organizing for social justice while excelling in technical research and building bridges across communities.
+- NAIC Lead Paradigm Changer Intern advancing equity in investment sectors
+- Theta Tau Professional Chair organizing technical workshops for engineers
+- Cross-cultural justice organizing across multiple student associations
+- Women in Computing mentor supporting underrepresented minorities in STEM
+
+Future Vision (2025+):
+Technology for Liberation:
+Pioneering the intersection of advanced AI, creative storytelling, and social justice to build technology that serves liberation movements.
+- Launch healthcare AI startup democratizing pain assessment technology
+- Establish documentary film collective focusing on resistance and resilience stories
+- Develop AI systems trained on traditional ecological and cultural knowledge
+- Create digital platforms for Palestinian and Indigenous cultural preservation
+
+=================================================================
+ART PORTFOLIO
+=================================================================
+
+Art Philosophy:
+"My paintings serve as bridges between worlds—ancestral and futuristic, traditional and technological, sacred and digital. Through canvas and pigment, I explore how indigenous wisdom can inform and transform our understanding of future possibilities. Each brushstroke carries the weight of history while reaching toward tomorrow. In this practice, I find that the oldest stories become the most radical visions of what could be." — Māyā Murry
+
+PAINTINGS:
+
+Ancestral Visions Series (2020-2024):
+A five-painting chronicle of transformation spanning four years, documenting the journey from spiritual disconnection and chronic pain to reclaimed power and embodied presence. Each piece serves as a milestone in healing—from breaking four years of creative silence to reclaiming bodily autonomy, from channeling necessary rage to reconnecting with ancestral protection.
+
+Central Painting - "Ancestral Witness" (2020-2024):
+A self-portrait born from one of the darkest periods of my life—chronic pain, depersonalization, and spiritual disconnection. This painting represents the recognition that even in profound suffering, protective forces always surround us. The Arabic text "يا من بيدها مفاتيح الكون, اجعلي معاناتي ثواب لتحقيق كل ماتمنيته" translates to "O you who holds the keys to the universe, make my suffering a reward for achieving everything I have wished for."
+
+"Water Keeper" (2024):
+The first painting I created after not touching a paintbrush for four years. This marked my return to art and my freedom from the fear of putting brushes down again. The Water Keeper is a spiritual guardian who protects herself, her environment, and those she loves. She embodies the version of myself I was aspiring to become: fierce, sensual, unbothered, patient, and soft all simultaneously, with water as the element that flows through it all.
+
+"Fire Bearer" (2024):
+Inspired by multi-armed Indian goddesses, this painting shows a woman with luminous white eyes, energetically in control of her body and the environment, sunset, and fire around her. This represents a reclamation of rage — allowing oneself to feel anger in order to exorcise it and release all versions of the self once created for survival. The Arabic text "استعيد ما يخصني" translates to "I return what is mine."
+
+"Forest Sovereign" (2024):
+A celebration of reclaimed bodily autonomy after healing from debilitating chronic pain and reproductive trauma. The woman shines in her element—sensual but completely unbothered, alone, and thriving as she navigates this forest of souls. She serves as protector and sovereign of these lands, representing the power that comes from finally feeling at home in one's own body.
+
+"Moon Daughter" (2024):
+A reclamation of softness and femininity, representing my journey back to feeling like someone's daughter again. This painting counters a poem I once wrote called "Nobody's Daughter" during a time when chronic pain left me feeling spiritually mismatched from all earthly and familial ties. Moon Daughter signifies reclaiming my status as daughter—of having come from somewhere and thus going somewhere, reconnecting with my lineage and my right to tenderness.
+
+Artist Statement for Ancestral Visions:
+"This series spans four transformative years—beginning in 2020 during my darkest period of chronic pain, depersonalization, and spiritual disconnection following a severe bike accident that left me with a black eye and deeper wounds that couldn't be seen. For four years, I couldn't touch a paintbrush, paralyzed by the fear that if I put it down, I might never pick it up again.
+
+The journey began with 'Water Keeper' in 2024—my breakthrough painting that broke the four-year silence and freed me from the creative lapse. What followed was a rapid succession of works documenting my healing: 'Forest Sovereign' celebrating my reclamation of bodily autonomy after years of debilitating chronic pain and reproductive trauma; 'Moon Daughter' reclaiming the softness and status of daughter I had lost when pain made me feel like 'nobody's daughter,' misunderstood by my inability to articulate the depth of my spiritual, mental, and physical devastation.
+
+'Fire Bearer' channels the necessary rage—allowing myself to feel anger in order to exorcise it, to release all versions of myself I had created just to survive. Finally, I returned to complete 'Ancestral Witness,' begun in 2020 as a desperate prayer during my spiritual untethering, now finished with Palestinian tribal tattoos and ancestral butterflies—a testament that protective forces surrounded me even in my deepest darkness.
+
+Each painting represents a different facet of reclamation: rage transformed into power, bodily autonomy restored, femininity and heritage connections renewed, and spiritual protection recognized. Together, they map a journey from survival to sovereignty, from disconnection to embodied presence, from nobody's daughter to a woman who can finally be fierce, sensual, unbothered, patient, and soft simultaneously." — Artist, 2024
+
+Other Painting Series:
+
+"Digital Ceremony" (2023):
+Traditional ceremonies reimagined in digital spaces, questioning the nature of sacred practice in virtual worlds. These works explore how ritual and technology can coexist in harmony.
+
+"In the Image of My Queens, I Stand" (2025):
+Dreamtime stories told through neon colors and cyberpunk aesthetics, bridging ancient wisdom with modern technology. Fluorescent pigments illuminate traditional narratives.
+
+"Mamma, I'm Fine" (2024):
+A powerful single piece exploring the complex emotions of reassurance and vulnerability, inspired by personal poetry and community murals that speak to the immigrant experience.
+
+MURALS:
+
+Community Impact & Process:
+Each mural project emerges from deep community collaboration and grassroots funding, ensuring that the work truly serves the people who live with it daily. These aren't just artworks—they're acts of collective resistance, love letters to liberation movements, and beacons of hope in spaces that need them most.
+
+Through community-funded models, from small individual donations to organized fundraising campaigns, each project demonstrates the power of collective investment in art that challenges oppression and celebrates our shared humanity. The collaborative creation process transforms both the artists and the community, building relationships that extend far beyond the painted wall.
+
+These murals exist at the intersection of art and activism, creating visual anchors for movements while making space for healing, celebration, and revolutionary imagination in public spaces that belong to all of us.
+
+Statistics:
+- 4 Murals Completed
+- $18K+ Community Raised
+- 100+ Community Contributors
+
+"The Sun Will Shine In A Free Palestine" (2024):
+A powerful statement of solidarity created collectively for Indigenous liberation. This large-scale mural became a beacon of hope and resistance, symbolizing the unwavering belief in Palestinian freedom and the collective power of student activism.
+- Location: Apartheid Wall, Ithaca, NY
+- Size: 8ft × 36ft
+- Collaborators: Ithaca Jewish Voice for Peace, Ithaca Collective for Justice in Palestine, Ithaca Mural Arts, & Various local social justice coalitions
+- Funding: Community-funded project raising $13,000+
+
+"Tikkun V'or (תיקון אור) - Healing Light" (2024):
+A Jewish liberation mural exploring themes of healing, justice, and spiritual resistance to Zionism. Created in collaboration with Jewish spiritual leader and rabbi in training, Michael Margolin and Jewish youth, this piece reclaims Jewish identity through values of liberation and solidarity.
+- Location: Tikkun V'or Synagogue, Lansing, NY
+- Size: 10ft × 10ft
+- Collaborators: Center for Transformative Action, Ithaca Mural Arts, Michael Margolin, Jewish youth community at the Tikkun V'or Synagogue
+- Funding: Community-funded project raising $2,000+
+
+"Love as Revolution" (2025):
+An intersectional solidarity mural celebrating the revolutionary power of love as a force for social change. This piece weaves together themes of community care, mutual aid, and the transformative potential of collective love in movements for justice.
+- Location: Community School of Music & Arts (CSMA), NY
+- Size: 10ft × 15ft
+- Collaborators: CSMA, Cornell Society for the Humanities, Ithaca Mural Arts
+- Funding: Community-funded project raising $3,000+ (including $1,500+ crowdsourced)
+
+"In the Image of My Queens, I Stand" (2025):
+A nature-infused mural featuring Indigenous Bedouin and Nubian women protected by ancestral geometric light, standing in fierce resistance on stolen land while maintaining connection to their traditional territories.
+- Location: SouthWorks Factory, Ithaca, New York
+- Size: 37ft × 15ft
+- Status: In Progress
+- Collaborators: Argos Inn, Ithaca's Community Arts Partnership, Center for Transformative Action, Ithaca Mural Arts, Meldrim's Paint Center
+- Funding: Grant-funded community project
+
+"In the Image of My Queens, I Stand" - Detailed Process:
+A nature-infused mural featuring Indigenous Bedouin and Nubian women protected by ancestral geometric light, standing in fierce resistance on stolen land while maintaining connection to their traditional territories. Created through community collaboration with proceeds benefiting Sudan and Gaza humanitarian efforts.
+
+Key Elements:
+- Indigenous Solidarity between Bedouin and Nubian women
+- Acknowledgment of stolen Haudenosaunee land
+- Ancestral geometric light representing spiritual protection
+- Community collaboration through Cornell organizations
+- Fundraising for Sudan and Gaza humanitarian aid
+- Completion on October 7th as solidarity statement
+
+Indigenous Solidarity Impact:
+"In the Image of My Queens, I Stand" creates solidarity between Indigenous Bedouin and Nubian women while acknowledging that the mural itself stands on stolen Haudenosaunee land. This connection across continents demonstrates how Indigenous struggles against colonization, occupation, and displacement are fundamentally linked.
+
+The ancestral geometric light that protects these Queens represents the spiritual strength that flows from traditional knowledge and connection to land. Even when physically displaced or occupied, this connection remains unbroken and continues to empower resistance. The mural serves as both artistic expression and practical solidarity through its fundraising for humanitarian aid to Sudan and Gaza.
+
+ILLUSTRATIONS:
+
+"Divine Feminine" Portrait Series (2024):
+A pen portrait series born from love and healing - my first artworks after a four-year pause from creating, inspired by my love language of reminding the women in my life of their power and beauty as goddesses in perpetual evolution.
+
+Artist Statement for Divine Feminine:
+"Divine Feminine" was born from the intersection of healing and love. After four years away from art - dealing with deep chronic pain, spiritual, physical, and emotional struggles - I knew that when I returned to creating, my first works had to be offerings of love.
+
+My love language has always been reminding people of their power and beauty as goddesses in perpetual evolution. As I was just remembering how to feel that for myself for the first time in years, I decided that the first art I would create would make the people around me - the people I care most about - feel so loved and so beautiful.
+
+Using only black pen on paper, each portrait became a meditation on seeing and celebrating divine feminine energy. These aren't just portraits - they're love letters, mirrors reflecting back the goddess I see in each of these women, reminders of their power written in their ancestral languages, adorned with the cultural symbols that honor their heritage.
+
+This series marked my return not just to art, but to the practice of loving others as a pathway back to loving myself. Every line drawn was an act of healing, every portrait a celebration of the women who held me through my darkest times and taught me what divine feminine strength truly looks like.
+
+Notable Portraits:
+- Michelle Wang • 王雪莉 - "The Ethereal" - lifelong best friend captured in ethereal energy
+- Ashira & Rebecca • רבקה ואשירה - "The Healers" - featuring Yiddish poetry by Holocaust survivor
+- Sahiba • साहिबा - "The Resilient Light" - college friend who was support during dark times
+- Malak Abuhashim • ملاك أبو هاشم - "The Revolutionary Sun" - Palestinian activist mentor
+- Yasmin • یاسمین - "The Rising Phoenix" - high school friend rising through challenges
+- Sierra - "The Musical Soul" - college friend celebrating artistic healing
+- Anastasiya • Анастасія - "The Keeper of Stories" - Ukrainian friend with spiritual protection
+- Mariama • مريامة - "The Scholar" - brilliant scholar with Fulani heritage
+- Sokhnadiarra - "The River of Abundance" - Senegalese mentor embodying abundance
+
+=================================================================
+FILM PORTFOLIO
+=================================================================
+
+Director's Vision:
+"Through film, I explore how indigenous stories can reshape our understanding of time, technology, and possibility. Each project is an invitation to reimagine the future through the lens of ancestral wisdom. My work spans from intimate documentaries that preserve cultural knowledge to speculative narratives that envision indigenous-led futures, always asking: what worlds become possible when we center indigenous voices in storytelling?" — Māyā Murry, Director
+
+Documentary Approach:
+"My documentary practice centers love as resistance, exploring how personal narratives intersect with collective struggles for justice. Each film serves as both intimate memoir and political act, weaving together ancestral wisdom and contemporary activism. Through experimental forms and community collaboration, these works ask: how do we honor our ancestors while imagining liberated futures? How does love become our most radical tool for transformation?" — Māyā Murry, 2025
+
+DOCUMENTARIES:
+
+"Love as Revolution" (2025):
+An intimate exploration of how love functions as a radical act of resistance within social justice movements. The film weaves together personal narratives and community organizing to examine love as both a healing practice and revolutionary force.
+
+Details:
+- Duration: 11 minutes
+- Format: Short Film, Experimental Documentary
+- Role: Director, Editor, Producer
+
+Synopsis: The final minutes of this film, where I speak about "letting the dead go home to learn what it means to love again," serve as Khadra's opening sequence, triggering the deeper ancestral exploration of the documentary that follows. Screened strategically before The Encampments movie locally, in solidarity with Palestinian, Black, Indigenous, & Jewish Liberation movements.
+
+Screenings:
+- Schwartz Performing Center (May 8, 2025, 50+ attendance) - University premiere
+- Cinemapolis Theater, Ithaca NY (May 22, 2025, 200+ attendance) - Community screening with panel
+- Community School of Music & Arts (July 10, 2025, 100+ attendance) - Upcoming with Q&A
+
+Funding: Cornell Society for the Humanities Award, Rural Humanities Seminar Award
+
+Director's Statement: "This film emerged from my own journey of understanding love not as a passive emotion, but as an active choice to resist systems of oppression. Through intimate conversations with organizers and activists, I discovered that love—for community, for justice, for our ancestors—becomes the fuel that sustains movements when everything else feels impossible, and that murals can become a medium to project and manifest this radical future we imagine."
+
+Production Notes: "Shot over 8 months across multiple communities, this film prioritized consent and collaboration at every stage. Participants maintained editorial control over their segments, ensuring their stories remained authentic to their experiences."
+
+Key Quote from Interview:
+"'Love as Liberation' is crucial because it's only through love that you can truly free people or experience freedom. And I believe that the mural artists that paint or create things on walls are doing the exact same thing. They are moving through time and space and learning more about themselves and putting something beautiful that's reflective of themselves on a canvas. To me, that is love in action, which leads to liberation - for the artist and for the people in the space." — Megan Omohundro, Executive Director of the Community School of Music & Arts
+
+Connection to Mural Work: The themes explored in this documentary found physical expression in a community-funded mural project at the Community School of Music & Arts - produced by the same director, Māyā Murry. In a way, the mural and documentary are the same brainchild, both titled 'Love as Revolution.' This large-scale collaborative artwork brings the revolutionary power of love into public space, creating a lasting visual reminder of our collective capacity for radical healing and transformation.
+
+"Our Ancestors Are Still Singing" (2025):
+A meditation on intergenerational resilience within Indigenous communities, exploring how ancestral wisdom continues to guide contemporary struggles for sovereignty and cultural preservation.
+
+Details:
+- Duration: 11 minutes
+- Format: Narrative Documentary
+- Role: Director, Cinematographer
+
+Synopsis: Following multiple generations as they navigate between traditional practices and modern challenges, revealing the unbroken chain of indigenous knowledge.
+
+Funding: American Indian & Indigenous Studies Department, Southeast Asia Program, Russo E. Khmer Studies Travel Grant, Cornell Community Engagement Grant, Cornell Engineering International Research Grant
+
+"Khadra" (2024):
+An experimental memoir tracing a Palestinian-Jordanian's spiritual journey across Arab diasporas to Palestine, weaving ancestral memory with magical realism to reimagine liberated futures.
+
+Details:
+- Duration: 45 minutes
+- Status: Pre-Production
+- Format: Experimental Memoir
+- Role: Director, Writer, Producer
+
+Synopsis: A cinematic narrative about Indigenous Futurism that explores the process of letting the dead go home to learn what it means to love again.
+
+Connection to Other Works: This film serves as the emotional and conceptual bridge from "Love as Revolution," where the exploration of love and ancestral healing continues through the lens of Palestinian diaspora and magical realism.
+
+"Mongolian Nadaam Festival" (2024):
+A short documentary exploring Mongolian agricultural traditions and cultural preservation in Interlaken, New York, documenting how immigrant communities maintain ancestral practices.
+
+Details:
+- Duration: 5 minutes
+- Status: Fulbright Educational Release
+- Format: Short Documentary
+- Role: Director, Cinematographer, Editor
+
+Synopsis: Intimate portraits of Mongolian families celebrating the Nadaam festival while adapting traditional agricultural practices to their new environment in upstate New York.
+
+Collaboration & Community Note:
+Every film project prioritizes community collaboration, ensuring that stories are told with consent, respect, and shared ownership.
+
+=================================================================
+WRITING
+=================================================================
+
+Poetry Publications:
+- Published Palestinian poetry in Fikra Magazine
+- Published in ArabLit Quarterly
+- Published in Diacritics Journal
+
+Themes: Verses of resistance and healing, exploring intersections of Palestinian diaspora identity, healing trauma, and liberation movements.
+
+=================================================================
+TECHNICAL EXPERTISE
+=================================================================
+
+Core Technical Skills:
+- Deep Learning & AI: TensorFlow, PyTorch, neural networks, computer vision
+- Healthcare AI: ECG analysis, pain detection algorithms, medical data modeling
+- Cybersecurity: Adversarial ML, data poisoning, privacy-preserving algorithms
+- Full-Stack Development: React, Node.js, JavaScript, Python
+- Cloud & DevOps: Azure, AWS, CI/CD pipelines, Docker
+- Data Science: Statistical modeling, NLP, computational genomics
+- Research: Academic publication, grant writing, interdisciplinary collaboration
+
+Specialty Areas:
+- Healthcare technology and medical AI systems
+- Privacy-preserving machine learning
+- Computational genomics and epigenetic analysis
+- Social justice applications of technology
+- Cross-cultural digital preservation
+
+Programming Languages: Python, JavaScript, R, SQL, MATLAB, C++
+
+Frameworks & Tools: React, Node.js, TensorFlow, PyTorch, Azure OpenAI, Langchain, PostgreSQL, Git, Docker
+
+=================================================================
+PERSONAL NARRATIVES & HEALING JOURNEY
+=================================================================
+
+Chronic Pain and Healing:
+Maya's artistic journey is deeply intertwined with her experience of chronic pain, depersonalization, and spiritual disconnection following a severe bike accident that left her with physical and invisible wounds. For four years, she couldn't touch a paintbrush, paralyzed by the fear that if she put it down, she might never pick it up again.
+
+The breakthrough came in 2024 with "Water Keeper" - her first painting after the four-year silence. This marked not just a return to art but freedom from the creative paralysis. The healing journey continued through multiple artworks documenting her reclamation of bodily autonomy, rage transformation, and reconnection with ancestral protection.
+
+From "Nobody's Daughter" to Reconnection:
+During her darkest period, Maya wrote a poem called "Nobody's Daughter" when chronic pain left her feeling spiritually mismatched from all earthly and familial ties. The painting "Moon Daughter" represents her journey back to feeling like someone's daughter again - reclaiming her status as having come from somewhere and thus going somewhere, reconnecting with her lineage and her right to tenderness.
+
+Love as Healing Practice:
+Maya's love language has always been reminding people of their power and beauty. The "Divine Feminine" portrait series emerged from this practice - as she was learning to feel beautiful and powerful for herself again, she decided her first artworks would make the people around her feel loved and seen as goddesses.
+
+Technique Spotlight - Returning to Art:
+After four years away from creating due to trauma and chronic pain, Maya's return to art was methodical and intentional. She started with simple materials - black pen on paper - removing barriers that might create fear of not finishing. Each portrait in the "Divine Feminine" series became a meditation on seeing beauty and strength, using art as a tool for healing both herself and her subjects.
+
+Cultural Identity and Heritage:
+Throughout her work, Maya integrates multiple cultural elements reflecting her Palestinian-Jordanian heritage. Palestinian tribal tattoos appear in her self-portraits, Arabic text carries prayers and affirmations, and her work consistently centers Palestinian liberation and solidarity with other Indigenous struggles.
+
+Academic and Artistic Integration:
+Maya's unique position as both a computer science student and visual artist allows her to explore questions about technology, ethics, and liberation. Her academic work in AI and healthcare technology carries the same values as her artistic practice - using tools and platforms to serve marginalized communities and preserve cultural knowledge.
+
+=================================================================
+QUOTES AND PHILOSOPHIES
+=================================================================
+
+On Indigenous Futurism:
+"We are not vanishing. We are becoming." / "نحنا ننولد من جديد ولا نختفي في الأفق"
+
+On Technology and Ethics:
+"Technology isn't neutral—it carries the values of its creators. I choose to build systems that remember where they came from and know where they're going. Every algorithm is an ancestor, every dataset a story, every application an act of cultural preservation or destruction."
+
+On Art and Healing:
+"My paintings serve as bridges between worlds—ancestral and futuristic, traditional and technological, sacred and digital. Through canvas and pigment, I explore how indigenous wisdom can inform and transform our understanding of future possibilities. Each brushstroke carries the weight of history while reaching toward tomorrow. In this practice, I find that the oldest stories become the most radical visions of what could be."
+
+On Love as Resistance:
+"Love—for community, for justice, for our ancestors—becomes the fuel that sustains movements when everything else feels impossible."
+
+On Community and Art:
+"These aren't just artworks—they're acts of collective resistance, love letters to liberation movements, and beacons of hope in spaces that need them most."
+
+On Returning to Creativity:
+"Every line drawn was an act of healing, every portrait a celebration of the women who held me through my darkest times and taught me what divine feminine strength truly looks like."
+
+Personal Affirmations (from artwork):
+- "يا من بيدها مفاتيح الكون, اجعلي معاناتي ثواب لتحقيق كل ماتمنيته" (O you who holds the keys to the universe, make my suffering a reward for achieving everything I have wished for)
+- "استعيد ما يخصني" (I return what is mine)
+- "Everything I'm going through is preparing me for what I asked for"
+- "Nothing will ever dim my light. I am the sun, I will always rise again"
+- "I unapologetically step into my power"
+- "Trust in divine timing, the universe is always guiding me" / "Довіряй божественному часу, всесвіт завжди веде мене"
+- "I hold the power to create the life I desire"
+- "A river of abundance flows through me"
+
+=================================================================
+AWARDS, RECOGNITION, AND FUNDING
+=================================================================
+
+Academic Honors:
+- Dean's List (2022, 2024, 2025) with 3.62 GPA in Computer Science
+- McMullen Dean's Scholar
+- Sphinx Head Honor Society
+- WE LEAD Scholar
+
+Grants and Scholarships:
+- Cornell Society for the Humanities Award
+- Rural Humanities Seminar Award
+- American Indian & Indigenous Studies Department funding
+- Southeast Asia Program support
+- Russo E. Khmer Studies Travel Grant
+- Cornell Community Engagement Grant
+- Cornell Engineering International Research Grant
+- Gilman Scholar for international work in Mexico
+
+Professional Experience:
+- PricewaterhouseCoopers LLP Advanced Software Engineering Intern
+- NAIC Lead Paradigm Changer Intern
+- Multiple research positions across Cornell, UMD, UPenn, University of Miami
+
+Community Impact:
+- Over $18,000 raised through community-funded art projects
+- 400+ people reached through film screenings
+- 100+ community contributors to mural projects
+- President of Students for Justice in Palestine
+- Cross-cultural organizing across multiple movements
+
+=================================================================
+CONTACT AND PROFESSIONAL LINKS
+=================================================================
+
+Email: mmm443@cornell.edu
+LinkedIn: linkedin.com/in/maya-murry/
+GitHub: github.com/snedmagdous
+Portfolio Website: Coded entirely from scratch using React and Gatsby
+
+Educational Institution: Cornell University College of Engineering
+Major: Computer Science (B.Sc, graduating 2025)
+GPA: 3.62
+
+Current Location: Ithaca, New York
+International Work: Ecuador, Cambodia, Mexico
+
+=================================================================
+END OF EXTRACTION
+=================================================================
+
+This comprehensive extraction includes all significant text content about Maya Murry from across the portfolio website, including biographical information, artist statements, project descriptions, personal narratives, technical expertise, philosophy, quotes, and professional details. The content reflects her multidisciplinary practice spanning technology, art, activism, and cultural preservation.
