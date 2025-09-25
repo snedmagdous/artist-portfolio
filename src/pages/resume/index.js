@@ -47,7 +47,7 @@ const ResumePage = () => {
         'Selected for prestigious gallery mural commission based on painting portfolio',
         'Translating 3-piece painting series into large-scale public art installation',
         'Expanding divine feminine narrative themes through collaborative gallery partnership',
-        'Creating accessible public art connecting Palestinian diaspora identity with universal themes'
+        'Creating accessible public art connecting diaspora identity with universal themes'
       ],
       skills: ['Large-Scale Mural Art', 'Gallery Collaboration', 'Divine Feminine Themes', 'Public Art Installation', 'Cultural Storytelling'],
       color: 'rgba(255, 215, 0, 0.9)',
@@ -82,12 +82,12 @@ const ResumePage = () => {
       location: 'Ithaca, New York',
       type: 'creative',
       category: 'current',
-      description: 'Creating powerful documentaries and public art that explore intersectional liberation, Palestinian solidarity, and Indigenous resilience.',
+      description: 'Creating powerful documentaries and public art that explore intersectional liberation, solidarity, and Indigenous resilience.',
       achievements: [
         '"Love as Revolution" screened at Cinemapolis (200+ attendance) and Schwartz Center',
         '"Our Ancestors Are Still Singing" - Indigenous resilience documentary screening at Cornell AIIS',
         'Three major murals raising $18,000+ in community funding for social justice themes',
-        'Published Palestinian poetry in Fikra Magazine, ArabLit Quarterly, and Diacritics Journal'
+        'Published poetry in Fikra Magazine, ArabLit Quarterly, and Diacritics Journal'
       ],
       skills: ['Documentary Filmmaking', 'Mural Art', 'Poetry', 'Community Organizing', 'Digital Media', 'Cultural Research'],
       color: 'rgba(255, 140, 0, 0.8)',
@@ -162,10 +162,10 @@ const ResumePage = () => {
       location: 'International',
       type: 'creative',
       category: 'experience',
-      description: 'Creating intersectional art connecting Palestinian liberation, Indigenous rights, and anti-colonial resistance through film, murals, and poetry.',
+      description: 'Creating intersectional art connecting liberation, Indigenous rights, and anti-colonial resistance through film, murals, and poetry.',
       achievements: [
         'Three documentary films screening at major venues (400+ total attendance)',
-        '"The Sun Will Shine in a Free Palestine" mural (8x36ft, $13K+ community funding)',
+        '"The Sun Will Shine" mural (8x36ft, $13K+ community funding)',
         '"Tikkun V\'or" Jewish liberation mural collaboration with spiritual leaders',
         'Poetry published in multiple journals exploring themes of resistance and healing'
       ],
@@ -247,7 +247,7 @@ const ResumePage = () => {
         'Launch healthcare AI startup democratizing pain assessment technology',
         'Establish documentary film collective focusing on resistance and resilience stories',
         'Develop AI systems trained on traditional ecological and cultural knowledge',
-        'Create digital platforms for Palestinian and Indigenous cultural preservation'
+        'Create digital platforms for Indigenous cultural preservation'
       ],
       skills: ['Startup Leadership', 'AI Ethics', 'Cultural Technology', 'Social Impact', 'Documentary Distribution', 'Liberation Technology'],
       color: 'rgba(255, 255, 255, 0.8)',

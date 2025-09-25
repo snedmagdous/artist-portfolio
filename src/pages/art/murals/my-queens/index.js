@@ -24,7 +24,7 @@ const MyQueensMuralPage = () => {
       id: 'grant-award',
       date: 'July 2025',
       title: 'Grant Funding & Fundraising Model',
-      description: 'Receiving grant funding while establishing mural as fundraiser with proceeds split between Sudan and Gaza charities.',
+      description: 'Receiving grant funding while establishing mural as fundraiser with proceeds split between different local charities.',
       image: '/images/murals/my-queens/grant-funding.jpg',
       details: 'This dual funding model allows for artistic creation while directly supporting humanitarian relief efforts for communities experiencing displacement and occupation.'
     },
@@ -112,15 +112,15 @@ const MyQueensMuralPage = () => {
       id: 'october-7-completion',
       date: 'October 7, 2025',
       title: 'Completion on October 7th',
-      description: 'Completing the mural on October 7th as a statement of solidarity with Gaza and all Indigenous peoples facing occupation.',
+      description: 'Completing the mural on October 7th as a statement of solidarity with all Indigenous peoples facing occupation.',
       image: '/images/murals/my-queens/completion.jpg',
-      details: 'The October 7th completion date connects this work to ongoing Palestinian resistance while honoring all Indigenous peoples fighting for their right to exist on their ancestral lands.'
+      details: 'The October 7th completion date connects this work to ongoing resistance while honoring all Indigenous peoples fighting for their right to exist on their ancestral lands.'
     },
     {
       id: 'charity-fundraising',
       date: 'October 2025',
-      title: 'Ongoing Fundraising for Sudan & Gaza',
-      description: 'Continuing fundraising efforts with proceeds supporting humanitarian aid for communities in Sudan and Gaza.',
+      title: 'Ongoing Fundraising for refugee support',
+      description: 'Continuing fundraising efforts with proceeds supporting humanitarian aid for local & international Black & Indigenous communities.',
       image: '/images/murals/my-queens/fundraising.jpg',
       details: 'The mural serves as both artistic statement and practical solidarity, with ongoing fundraising demonstrating how art can directly support communities facing displacement and violence.'
     }
@@ -141,7 +141,7 @@ const MyQueensMuralPage = () => {
     title: 'In the Image of My Queens, I Stand',
     subtitle: 'Preliminary Mural Sketch',
     description: 'A powerful representation of Indigenous Bedouin and Nubian women surrounded by ancestral geometric light, standing in fierce resistance on stolen land while connected to their traditional territories.',
-    details: 'This mural aims to create solidarity between Indigenous communities across continents while serving as a fundraiser for humanitarian aid to Sudan and Gaza, demonstrating how art can be both resistance and practical support.'
+    details: 'This mural aims to create solidarity between Indigenous communities across continents while serving as a fundraiser for humanitarian aid, demonstrating how art can be both resistance and practical support.'
   }
 
   return (
@@ -174,7 +174,7 @@ const MyQueensMuralPage = () => {
             A nature-infused mural featuring Indigenous Bedouin and Nubian women protected by ancestral 
             geometric light, standing in fierce resistance on stolen land while maintaining connection 
             to their traditional territories. Created through community collaboration with proceeds 
-            benefiting Sudan and Gaza humanitarian efforts.
+            benefiting humanitarian efforts.
           </p>
 
           {/* View Mural Button */}
@@ -281,9 +281,7 @@ const MyQueensMuralPage = () => {
             <p>
               The ancestral geometric light that protects these Queens represents the spiritual strength 
               that flows from traditional knowledge and connection to land. Even when physically displaced 
-              or occupied, this connection remains unbroken and continues to empower resistance. The mural 
-              serves as both artistic expression and practical solidarity through its fundraising for 
-              humanitarian aid to Sudan and Gaza.
+              or occupied, this connection remains unbroken and continues to empower resistance.
             </p>
             <p>
               Completed on October 7th, this work stands as a testament to the ongoing resistance of all 
