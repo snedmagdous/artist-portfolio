@@ -199,73 +199,132 @@ const CollagesPage = () => {
           <div className={styles.collageGrid}>
             {collageCollections.map((collection, index) => (
               <React.Fragment key={collection.id}>
-                <div
-                  className={`${styles.collageCard} ${styles[`collageCard${(index % 3) + 1}`]}`}
-                  onMouseEnter={() => handleCardEnter(collection.id)}
-                  onMouseLeave={handleCardLeave}
-                >
-                  <div className={styles.collageImageArea}>
-                    {/* Video (always rendered, opacity controlled) */}
-                    {collection.videoSrc && (
-                      <video
-                        ref={el => videoRefs.current[collection.id] = el}
-                        muted
-                        loop
-                        playsInline
-                        className={styles.hoverVideo}
+                {collection.status === 'Available' ? (
+                  <Link
+                    to={`/art/collages/${collection.id}`}
+                    className={`${styles.collageCard} ${styles[`collageCard${(index % 3) + 1}`]}`}
+                    onMouseEnter={() => handleCardEnter(collection.id)}
+                    onMouseLeave={handleCardLeave}
+                  >
+                    <div className={styles.collageImageArea}>
+                      {/* Video (always rendered, opacity controlled) */}
+                      {collection.videoSrc && (
+                        <video
+                          ref={el => videoRefs.current[collection.id] = el}
+                          muted
+                          loop
+                          playsInline
+                          className={styles.hoverVideo}
+                          style={{
+                            position: 'absolute',
+                            top: 0,
+                            left: 0,
+                            width: '100%',
+                            height: '100%',
+                            objectFit: 'cover',
+                            zIndex: 2,
+                            opacity: hoveredCard === collection.id ? 1 : 0,
+                            transition: 'opacity 0.8s ease-in-out',
+                            filter: collection.videoFilter || 'brightness(0.8) contrast(1.1) saturate(1.2)'
+                          }}
+                        >
+                          <source src={collection.videoSrc} type="video/mp4" />
+                        </video>
+                      )}
+
+                      {/* Icon (hidden when video is showing) */}
+                      <div
+                        className={styles.collageIcon}
                         style={{
-                          position: 'absolute',
-                          top: 0,
-                          left: 0,
-                          width: '100%',
-                          height: '100%',
-                          objectFit: 'cover',
-                          zIndex: 2,
-                          opacity: hoveredCard === collection.id ? 1 : 0,
-                          transition: 'opacity 0.8s ease-in-out',
-                          filter: collection.videoFilter || 'brightness(0.8) contrast(1.1) saturate(1.2)'
+                          opacity: hoveredCard === collection.id && collection.videoSrc ? 0 : 1,
+                          transition: 'opacity 0.8s ease-in-out'
                         }}
                       >
-                        <source src={collection.videoSrc} type="video/mp4" />
-                      </video>
-                    )}
+                        {collection.icon}
+                      </div>
 
-                    {/* Icon (hidden when video is showing) */}
-                    <div
-                      className={styles.collageIcon}
-                      style={{
-                        opacity: hoveredCard === collection.id && collection.videoSrc ? 0 : 1,
-                        transition: 'opacity 0.8s ease-in-out'
-                      }}
-                    >
-                      {collection.icon}
+                      <div className={styles.collageOverlay}>
+                        <span className={styles.collageSize}>{collection.size}</span>
+                        <span className={styles.collageCount}>{collection.pieceCount}</span>
+                      </div>
                     </div>
 
-                    <div className={styles.collageOverlay}>
-                      <span className={styles.collageSize}>{collection.size}</span>
-                      <span className={styles.collageCount}>{collection.pieceCount}</span>
-                    </div>
-                  </div>
+                    <div className={styles.collageContent}>
+                      <h3 className={styles.collageTitle}>{collection.title}</h3>
+                      <div className={styles.collageMeta}>
+                        <span className={styles.collageMedium}>{collection.medium}</span>
+                        <span className={styles.collageYear}>{collection.year}</span>
+                      </div>
+                      <p className={styles.collageDescription}>{collection.description}</p>
 
-                  <div className={styles.collageContent}>
-                    <h3 className={styles.collageTitle}>{collection.title}</h3>
-                    <div className={styles.collageMeta}>
-                      <span className={styles.collageMedium}>{collection.medium}</span>
-                      <span className={styles.collageYear}>{collection.year}</span>
-                    </div>
-                    <p className={styles.collageDescription}>{collection.description}</p>
-
-                    {collection.status === 'Available' ? (
-                      <Link to={`/art/collages/${collection.id}`} className={styles.viewCollectionBtn}>
+                      <div className={styles.viewCollectionBtn}>
                         View Collection
-                      </Link>
-                    ) : (
+                      </div>
+                    </div>
+                  </Link>
+                ) : (
+                  <div
+                    className={`${styles.collageCard} ${styles[`collageCard${(index % 3) + 1}`]}`}
+                    onMouseEnter={() => handleCardEnter(collection.id)}
+                    onMouseLeave={handleCardLeave}
+                  >
+                    <div className={styles.collageImageArea}>
+                      {/* Video (always rendered, opacity controlled) */}
+                      {collection.videoSrc && (
+                        <video
+                          ref={el => videoRefs.current[collection.id] = el}
+                          muted
+                          loop
+                          playsInline
+                          className={styles.hoverVideo}
+                          style={{
+                            position: 'absolute',
+                            top: 0,
+                            left: 0,
+                            width: '100%',
+                            height: '100%',
+                            objectFit: 'cover',
+                            zIndex: 2,
+                            opacity: hoveredCard === collection.id ? 1 : 0,
+                            transition: 'opacity 0.8s ease-in-out',
+                            filter: collection.videoFilter || 'brightness(0.8) contrast(1.1) saturate(1.2)'
+                          }}
+                        >
+                          <source src={collection.videoSrc} type="video/mp4" />
+                        </video>
+                      )}
+
+                      {/* Icon (hidden when video is showing) */}
+                      <div
+                        className={styles.collageIcon}
+                        style={{
+                          opacity: hoveredCard === collection.id && collection.videoSrc ? 0 : 1,
+                          transition: 'opacity 0.8s ease-in-out'
+                        }}
+                      >
+                        {collection.icon}
+                      </div>
+
+                      <div className={styles.collageOverlay}>
+                        <span className={styles.collageSize}>{collection.size}</span>
+                        <span className={styles.collageCount}>{collection.pieceCount}</span>
+                      </div>
+                    </div>
+
+                    <div className={styles.collageContent}>
+                      <h3 className={styles.collageTitle}>{collection.title}</h3>
+                      <div className={styles.collageMeta}>
+                        <span className={styles.collageMedium}>{collection.medium}</span>
+                        <span className={styles.collageYear}>{collection.year}</span>
+                      </div>
+                      <p className={styles.collageDescription}>{collection.description}</p>
+
                       <button className={styles.comingSoonBtn} disabled>
                         Coming Soon<span className={styles.blinkingDots}>...</span>
                       </button>
-                    )}
+                    </div>
                   </div>
-                </div>
+                )}
 
                 {/* Insert second part of technique spotlight after first two cards */}
                 {index === 1 && (

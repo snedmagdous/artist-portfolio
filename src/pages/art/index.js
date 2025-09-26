@@ -7,7 +7,13 @@ import * as styles from "./art.module.css"
 const ArtPage = () => {
   const [language, setLanguage] = useState('EN')
   const videoRef = useRef(null);
-  
+
+  // Scroll snapping state and refs
+  const [currentSection, setCurrentSection] = useState(0);
+  const [isScrolling, setIsScrolling] = useState(false);
+  const heroSectionRef = useRef(null);
+  const categoriesSectionRef = useRef(null);
+
   // Copy the exact video setup from your working homepage
   useEffect(() => {
     if (videoRef.current) {
@@ -15,6 +21,113 @@ const ArtPage = () => {
       videoRef.current.muted = true;
     }
   }, []);
+
+  // Scroll snapping functionality
+  useEffect(() => {
+    const sections = [
+      heroSectionRef.current,
+      categoriesSectionRef.current
+    ];
+
+    let ticking = false;
+
+    const handleWheel = (e) => {
+      if (isScrolling) return;
+
+      e.preventDefault();
+
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          const deltaY = e.deltaY;
+          let newSection = currentSection;
+
+          if (deltaY > 0 && currentSection < sections.length - 1) {
+            // Scroll down
+            newSection = currentSection + 1;
+          } else if (deltaY < 0 && currentSection > 0) {
+            // Scroll up
+            newSection = currentSection - 1;
+          }
+
+          if (newSection !== currentSection) {
+            setIsScrolling(true);
+            setCurrentSection(newSection);
+
+            // Smooth scroll to section
+            if (sections[newSection]) {
+              sections[newSection].scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+              });
+            }
+
+            // Reset scrolling state after animation
+            setTimeout(() => {
+              setIsScrolling(false);
+            }, 1000); // 1 second delay to allow smooth scroll
+          }
+
+          ticking = false;
+        });
+        ticking = true;
+      }
+    };
+
+    // Add wheel event listener
+    document.addEventListener('wheel', handleWheel, { passive: false });
+
+    // Handle touch events for mobile
+    let startY = 0;
+    let endY = 0;
+
+    const handleTouchStart = (e) => {
+      startY = e.touches[0].clientY;
+    };
+
+    const handleTouchEnd = (e) => {
+      if (isScrolling) return;
+
+      endY = e.changedTouches[0].clientY;
+      const deltaY = startY - endY;
+
+      if (Math.abs(deltaY) > 50) { // Minimum swipe distance
+        let newSection = currentSection;
+
+        if (deltaY > 0 && currentSection < sections.length - 1) {
+          // Swipe up (scroll down)
+          newSection = currentSection + 1;
+        } else if (deltaY < 0 && currentSection > 0) {
+          // Swipe down (scroll up)
+          newSection = currentSection - 1;
+        }
+
+        if (newSection !== currentSection) {
+          setIsScrolling(true);
+          setCurrentSection(newSection);
+
+          if (sections[newSection]) {
+            sections[newSection].scrollIntoView({
+              behavior: 'smooth',
+              block: 'start'
+            });
+          }
+
+          setTimeout(() => {
+            setIsScrolling(false);
+          }, 1000);
+        }
+      }
+    };
+
+    document.addEventListener('touchstart', handleTouchStart, { passive: true });
+    document.addEventListener('touchend', handleTouchEnd, { passive: true });
+
+    return () => {
+      document.removeEventListener('wheel', handleWheel);
+      document.removeEventListener('touchstart', handleTouchStart);
+      document.removeEventListener('touchend', handleTouchEnd);
+    };
+  }, [currentSection, isScrolling]);
   
   const artCategories = [
     {
@@ -147,12 +260,19 @@ const ArtPage = () => {
 
 
       <section className={styles.artCategoriesPage}>
-        <div className={styles.artHeroSection}>
+        {/* Back Navigation */}
+        <div className={styles.backNavigation}>
+          <Link to="/" className={styles.backLink}>
+            Back to Homepage
+          </Link>
+        </div>
+
+        <div ref={heroSectionRef} className={styles.artHeroSection}>
           <h1 className={styles.artMainTitle}>Art Portfolio</h1>
           <p className={styles.artSubtitle}>Exploring Indigenous Futurism through visual arts</p>
         </div>
 
-        <div className={styles.categoriesContainer}>
+        <div ref={categoriesSectionRef} className={styles.categoriesContainer}>
           <div className={styles.categoriesGrid}>
             {artCategories.map((category, index) => (
               category.comingSoon ? (

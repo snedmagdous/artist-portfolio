@@ -182,57 +182,99 @@ const IllustrationsPage = () => {
                 <div className={styles.timelineMarker}>
                   <div className={styles.timelineYear}>{project.year}</div>
                 </div>
-                
-                <div
-                  className={styles.timelineCard}
-                  onMouseEnter={() => handleProjectMouseEnter(project.id)}
-                  onMouseLeave={() => handleProjectMouseLeave(project.id)}
-                >
-                  <div className={styles.timelineImageArea}>
-                    {/* Hover Video */}
-                    <video
-                      ref={el => projectVideoRefs.current[project.id] = el}
-                      className={`${styles.hoverVideo} ${hoveredProject === project.id ? styles.videoVisible : ''}`}
-                      style={{
-                        filter: `brightness(${project.videoBrightness || 0.8}) saturate(${project.videoSaturation || 1.1}) contrast(${project.videoContrast || 1.1})`
-                      }}
-                      muted
-                      loop
-                      playsInline
-                    >
-                      <source src={project.videoSrc} type="video/mp4" />
-                    </video>
 
-                    {/* Project Icon */}
-                    {getProjectIcon(project.id)}
+                {index < 2 ? (
+                  <Link
+                    to={`/art/illustrations/${project.id}`}
+                    className={styles.timelineCard}
+                    onMouseEnter={() => handleProjectMouseEnter(project.id)}
+                    onMouseLeave={() => handleProjectMouseLeave(project.id)}
+                  >
+                    <div className={styles.timelineImageArea}>
+                      {/* Hover Video */}
+                      <video
+                        ref={el => projectVideoRefs.current[project.id] = el}
+                        className={`${styles.hoverVideo} ${hoveredProject === project.id ? styles.videoVisible : ''}`}
+                        style={{
+                          filter: `brightness(${project.videoBrightness || 0.8}) saturate(${project.videoSaturation || 1.1}) contrast(${project.videoContrast || 1.1})`
+                        }}
+                        muted
+                        loop
+                        playsInline
+                      >
+                        <source src={project.videoSrc} type="video/mp4" />
+                      </video>
 
-                    <div className={styles.timelineStatus}>
-                      <span className={`${styles.statusBadge} ${styles[project.status.toLowerCase().replace(' ', '')]}`}>
-                        {project.status}
-                      </span>
+                      {/* Project Icon */}
+                      {getProjectIcon(project.id)}
+
+                      <div className={styles.timelineStatus}>
+                        <span className={`${styles.statusBadge} ${styles[project.status.toLowerCase().replace(' ', '')]}`}>
+                          {project.status}
+                        </span>
+                      </div>
                     </div>
-                  </div>
-                  
-                  <div className={styles.timelineContent}>
-                    <h3 className={styles.timelineTitle}>{project.title}</h3>
-                    <div className={styles.timelineMeta}>
-                      <span className={styles.timelineType}>{project.type}</span>
-                      <span className={styles.timelineMedium}>{project.medium}</span>
-                      <span className={styles.timelineCount}>{project.pieceCount} pieces</span>
-                    </div>
-                    <p className={styles.timelineDescription}>{project.description}</p>
-                    
-                    {index < 2 ? (
-                      <Link to={`/art/illustrations/${project.id}`} className={styles.viewProjectBtn}>
+
+                    <div className={styles.timelineContent}>
+                      <h3 className={styles.timelineTitle}>{project.title}</h3>
+                      <div className={styles.timelineMeta}>
+                        <span className={styles.timelineType}>{project.type}</span>
+                        <span className={styles.timelineMedium}>{project.medium}</span>
+                        <span className={styles.timelineCount}>{project.pieceCount} pieces</span>
+                      </div>
+                      <p className={styles.timelineDescription}>{project.description}</p>
+
+                      <div className={styles.viewProjectBtn}>
                         View Project
-                      </Link>
-                    ) : (
+                      </div>
+                    </div>
+                  </Link>
+                ) : (
+                  <div
+                    className={styles.timelineCard}
+                    onMouseEnter={() => handleProjectMouseEnter(project.id)}
+                    onMouseLeave={() => handleProjectMouseLeave(project.id)}
+                  >
+                    <div className={styles.timelineImageArea}>
+                      {/* Hover Video */}
+                      <video
+                        ref={el => projectVideoRefs.current[project.id] = el}
+                        className={`${styles.hoverVideo} ${hoveredProject === project.id ? styles.videoVisible : ''}`}
+                        style={{
+                          filter: `brightness(${project.videoBrightness || 0.8}) saturate(${project.videoSaturation || 1.1}) contrast(${project.videoContrast || 1.1})`
+                        }}
+                        muted
+                        loop
+                        playsInline
+                      >
+                        <source src={project.videoSrc} type="video/mp4" />
+                      </video>
+
+                      {/* Project Icon */}
+                      {getProjectIcon(project.id)}
+
+                      <div className={styles.timelineStatus}>
+                        <span className={`${styles.statusBadge} ${styles[project.status.toLowerCase().replace(' ', '')]}`}>
+                          {project.status}
+                        </span>
+                      </div>
+                    </div>
+
+                    <div className={styles.timelineContent}>
+                      <h3 className={styles.timelineTitle}>{project.title}</h3>
+                      <div className={styles.timelineMeta}>
+                        <span className={styles.timelineType}>{project.type}</span>
+                        <span className={styles.timelineMedium}>{project.medium}</span>
+                        <span className={styles.timelineCount}>{project.pieceCount} pieces</span>
+                      </div>
+                      <p className={styles.timelineDescription}>{project.description}</p>
+
                       <div className={styles.comingSoonBtn}>
                         Coming Soon<span className={styles.blinkingDots}>...</span>
                       </div>
-                    )}
+                    </div>
                   </div>
-                </div>
+                )}
               </div>
             ))}
           </div>

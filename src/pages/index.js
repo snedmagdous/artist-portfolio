@@ -10,6 +10,15 @@ export default function Home() {
   const portfolioSectionRef = useRef(null);
   const carouselRef = useRef(null);
 
+  // Section refs for scroll snapping
+  const heroSectionRef = useRef(null);
+  const definitionSectionRef = useRef(null);
+  const contactSectionRef = useRef(null);
+
+  // Scroll snapping state
+  const [currentSection, setCurrentSection] = useState(0);
+  const [isScrolling, setIsScrolling] = useState(false);
+
   // Slideshow dragging state
   const [isDragging, setIsDragging] = useState(false);
   const [startX, setStartX] = useState(0);
@@ -43,6 +52,115 @@ export default function Home() {
       };
     }
   }, []);
+
+  // Scroll snapping functionality
+  useEffect(() => {
+    const sections = [
+      heroSectionRef.current,
+      definitionSectionRef.current,
+      portfolioSectionRef.current,
+      contactSectionRef.current
+    ];
+
+    let ticking = false;
+
+    const handleWheel = (e) => {
+      if (isScrolling) return;
+
+      e.preventDefault();
+
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          const deltaY = e.deltaY;
+          let newSection = currentSection;
+
+          if (deltaY > 0 && currentSection < sections.length - 1) {
+            // Scroll down
+            newSection = currentSection + 1;
+          } else if (deltaY < 0 && currentSection > 0) {
+            // Scroll up
+            newSection = currentSection - 1;
+          }
+
+          if (newSection !== currentSection) {
+            setIsScrolling(true);
+            setCurrentSection(newSection);
+
+            // Smooth scroll to section
+            if (sections[newSection]) {
+              sections[newSection].scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+              });
+            }
+
+            // Reset scrolling state after animation
+            setTimeout(() => {
+              setIsScrolling(false);
+            }, 1000); // 1 second delay to allow smooth scroll
+          }
+
+          ticking = false;
+        });
+        ticking = true;
+      }
+    };
+
+    // Add wheel event listener
+    document.addEventListener('wheel', handleWheel, { passive: false });
+
+    // Handle touch events for mobile
+    let startY = 0;
+    let endY = 0;
+
+    const handleTouchStart = (e) => {
+      startY = e.touches[0].clientY;
+    };
+
+    const handleTouchEnd = (e) => {
+      if (isScrolling) return;
+
+      endY = e.changedTouches[0].clientY;
+      const deltaY = startY - endY;
+
+      if (Math.abs(deltaY) > 50) { // Minimum swipe distance
+        let newSection = currentSection;
+
+        if (deltaY > 0 && currentSection < sections.length - 1) {
+          // Swipe up (scroll down)
+          newSection = currentSection + 1;
+        } else if (deltaY < 0 && currentSection > 0) {
+          // Swipe down (scroll up)
+          newSection = currentSection - 1;
+        }
+
+        if (newSection !== currentSection) {
+          setIsScrolling(true);
+          setCurrentSection(newSection);
+
+          if (sections[newSection]) {
+            sections[newSection].scrollIntoView({
+              behavior: 'smooth',
+              block: 'start'
+            });
+          }
+
+          setTimeout(() => {
+            setIsScrolling(false);
+          }, 1000);
+        }
+      }
+    };
+
+    document.addEventListener('touchstart', handleTouchStart, { passive: true });
+    document.addEventListener('touchend', handleTouchEnd, { passive: true });
+
+    return () => {
+      document.removeEventListener('wheel', handleWheel);
+      document.removeEventListener('touchstart', handleTouchStart);
+      document.removeEventListener('touchend', handleTouchEnd);
+    };
+  }, [currentSection, isScrolling]);
 
   // Slideshow dragging functionality
   const handleMouseDown = (e) => {
@@ -108,15 +226,30 @@ export default function Home() {
   };
 
   const scrollToPortfolio = () => {
+    setCurrentSection(2); // Portfolio is section 2 (0-indexed)
+    setIsScrolling(true);
     document.getElementById('portfolio-section').scrollIntoView({
       behavior: 'smooth'
-    })
+    });
+    setTimeout(() => setIsScrolling(false), 1000);
   }
 
   const scrollToDefinition = () => {
+    setCurrentSection(1); // Definition is section 1 (0-indexed)
+    setIsScrolling(true);
     document.querySelector('.definition-section').scrollIntoView({
       behavior: 'smooth'
-    })
+    });
+    setTimeout(() => setIsScrolling(false), 1000);
+  }
+
+  const scrollToContact = () => {
+    setCurrentSection(3); // Contact is section 3 (0-indexed)
+    setIsScrolling(true);
+    document.getElementById('contact-section').scrollIntoView({
+      behavior: 'smooth'
+    });
+    setTimeout(() => setIsScrolling(false), 1000);
   }
 
   // Main categories for navigation
@@ -135,25 +268,21 @@ export default function Home() {
         {
           id: 'paintings',
           title: 'Paintings',
-          description: 'Canvas explorations of identity and resistance',
           link: '/art/paintings'
         },
         {
           id: 'murals',
           title: 'Murals',
-          description: 'Large-scale community art and storytelling',
           link: '/art/murals'
         },
         {
           id: 'illustrations',
           title: 'Illustrations',
-          description: 'Digital art celebrating divine femininity',
           link: '/art/illustrations'
         },
         {
           id: 'collages',
           title: 'Collages',
-          description: 'Mixed media narratives and compositions',
           link: '/art/collages'
         }
       ]
@@ -174,19 +303,16 @@ export default function Home() {
         {
           id: 'documentaries',
           title: 'Documentaries',
-          description: 'Truth-telling through cinematic storytelling',
           link: '/film/documentaries'
         },
         {
           id: 'shortfilms',
           title: 'Short Films',
-          description: 'Concise narratives with powerful impact',
           link: '/film/short-films'
         },
         {
           id: 'microfilms',
           title: 'Micro Films',
-          description: 'Brief moments of profound meaning',
           link: '/film/micro-films'
         }
       ]
@@ -209,25 +335,21 @@ export default function Home() {
         {
           id: 'poetry',
           title: 'Poetry',
-          description: 'Verses of resistance and healing',
           link: '/writing/poetry'
         },
         {
           id: 'creative-writing',
           title: 'Creative Writing',
-          description: 'Imaginative prose and storytelling',
           link: '/writing/creative-writing'
         },
         {
           id: 'novel-writing',
           title: 'Novel Writing',
-          description: 'Long-form narratives and world-building',
           link: '/writing/novel-writing'
         },
         {
           id: 'video-essays',
           title: 'Video Essays',
-          description: 'Visual analysis and commentary',
           link: '/writing/video-essays'
         }
       ]
@@ -247,13 +369,11 @@ export default function Home() {
         {
           id: 'technical-resume',
           title: 'Technical Resume',
-          description: 'Technical skills and development experience',
           link: '/resume'
         },
         {
           id: 'creative-resume',
           title: 'Creative Resume',
-          description: 'Creative projects and artistic experience',
           link: '/resume'
         }
       ]
@@ -440,7 +560,7 @@ export default function Home() {
       </div>
 
       {/* Hero Section */}
-      <section className="hero-section">
+      <section className="hero-section" ref={heroSectionRef}>
         {/* Background with overlay */}
 
         {/* Hero content */}
@@ -457,7 +577,7 @@ export default function Home() {
                 About
               </Link>
               <button
-                onClick={() => document.getElementById('contact-section').scrollIntoView({ behavior: 'smooth' })}
+                onClick={scrollToContact}
                 className="cta-button secondary"
               >
                 Contact
@@ -468,7 +588,7 @@ export default function Home() {
       </section>
 
       {/* Indigenous Futurism Definition Section */}
-      <section className="definition-section">
+      <section className="definition-section" ref={definitionSectionRef}>
         <div className="definition-container">
           <div className="definition-header">
             <div className="section-indicator">
@@ -556,7 +676,6 @@ export default function Home() {
                           className="portfolio-subcategory-link"
                         >
                           <span className="subcategory-title">{subcategory.title}</span>
-                          <span className="subcategory-description">{subcategory.description}</span>
                         </Link>
                       ))}
                     </div>
@@ -621,7 +740,7 @@ export default function Home() {
       </section>
 
       {/* Contact Section */} 
-      <section id="contact-section" className="contact-section">
+      <section id="contact-section" className="contact-section" ref={contactSectionRef}>
         <div className="contact-container">
           <div className="contact-header">
             <div className="section-indicator">

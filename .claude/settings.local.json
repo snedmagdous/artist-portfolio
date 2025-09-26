@@ -17,7 +17,8 @@
       "Bash(dir \"C:\\Users\\snedm\\Documents\\Website\\portfolio\\khadra\\public\\videos\")",
       "Bash(npx gatsby:*)",
       "Bash(findstr:*)",
-      "Bash(dir:*)"
+      "Bash(dir:*)",
+      "Bash(y)"
     ],
     "deny": []
   }

@@ -29,7 +29,7 @@
 
 .timelineItem {
   position: relative;
-  margin-bottom: 4rem;
+  margin-bottom: 2rem;
   display: flex;
   align-items: center;
 }
@@ -77,11 +77,11 @@
 }
 
 .timelineLeft .timelineCard {
-  margin-right: 100px;
+  margin-right: 60px;
 }
 
 .timelineRight .timelineCard {
-  margin-left: 100px;
+  margin-left: 60px;
 }
 
 .timelineCard:hover {
@@ -621,9 +621,10 @@
   .timelineLine {
     display: none;
   }
-  
+
   .timelineItem {
     flex-direction: column !important;
+    margin-bottom: 1.5rem;
   }
   
   .timelineMarker {
@@ -1048,7 +1049,7 @@
 
 .timelineItem {
   position: relative;
-  margin-bottom: 4rem;
+  margin-bottom: 2rem;
   display: flex;
   align-items: center;
 }
@@ -1331,15 +1332,21 @@
   font-family: 'Poppins', sans-serif;
   font-size: 0.9rem;
   font-weight: 300;
-  padding: 1rem 1.5rem; /* Added horizontal padding */
+  padding: 1rem 1.5rem;
   transition: all 0.3s ease;
   letter-spacing: 0.05em;
   text-transform: uppercase;
+  background: rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 25px;
 }
 
 .backLink:hover {
   color: white;
   transform: translateX(-5px);
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.3);
 }
 
 .backLink::before {

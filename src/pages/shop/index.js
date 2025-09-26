@@ -1,5 +1,6 @@
 // src/pages/shop/index.js
 import React, { useState } from "react"
+import { Link } from "gatsby"
 import Layout from "../../components/Layout"
 import * as styles from "./shop.module.css"
 
@@ -15,6 +16,13 @@ const ShopPage = () => {
       videoFilter="brightness(0.45) contrast(1.2) saturate(1.2)"
     >
       <section className={styles.shopPage}>
+        {/* Back Navigation */}
+        <div className={styles.backNavigation}>
+          <Link to="/" className={styles.backLink}>
+            Back to Homepage
+          </Link>
+        </div>
+
         {/* Coming Soon Hero */}
         <div className={styles.comingSoonHero}>
           <h1 className={styles.comingSoonTitle}>Shop</h1>

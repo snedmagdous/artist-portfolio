@@ -8,7 +8,14 @@ const FilmPage = () => {
   const [language, setLanguage] = useState('EN')
   const videoRef = useRef(null); // Background video ref
   const videoRefs = useRef([]) // Content video refs
-  
+
+  // Scroll snapping state and refs
+  const [currentSection, setCurrentSection] = useState(0);
+  const [isScrolling, setIsScrolling] = useState(false);
+  const heroSectionRef = useRef(null);
+  const categoriesSectionRef = useRef(null);
+  const statementSectionRef = useRef(null);
+
   // Background video setup - copy from working homepage
   useEffect(() => {
     if (videoRef.current) {
@@ -16,6 +23,114 @@ const FilmPage = () => {
       videoRef.current.muted = true;
     }
   }, []);
+
+  // Scroll snapping functionality
+  useEffect(() => {
+    const sections = [
+      heroSectionRef.current,
+      categoriesSectionRef.current,
+      statementSectionRef.current
+    ];
+
+    let ticking = false;
+
+    const handleWheel = (e) => {
+      if (isScrolling) return;
+
+      e.preventDefault();
+
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          const deltaY = e.deltaY;
+          let newSection = currentSection;
+
+          if (deltaY > 0 && currentSection < sections.length - 1) {
+            // Scroll down
+            newSection = currentSection + 1;
+          } else if (deltaY < 0 && currentSection > 0) {
+            // Scroll up
+            newSection = currentSection - 1;
+          }
+
+          if (newSection !== currentSection) {
+            setIsScrolling(true);
+            setCurrentSection(newSection);
+
+            // Smooth scroll to section
+            if (sections[newSection]) {
+              sections[newSection].scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+              });
+            }
+
+            // Reset scrolling state after animation
+            setTimeout(() => {
+              setIsScrolling(false);
+            }, 1000); // 1 second delay to allow smooth scroll
+          }
+
+          ticking = false;
+        });
+        ticking = true;
+      }
+    };
+
+    // Add wheel event listener
+    document.addEventListener('wheel', handleWheel, { passive: false });
+
+    // Handle touch events for mobile
+    let startY = 0;
+    let endY = 0;
+
+    const handleTouchStart = (e) => {
+      startY = e.touches[0].clientY;
+    };
+
+    const handleTouchEnd = (e) => {
+      if (isScrolling) return;
+
+      endY = e.changedTouches[0].clientY;
+      const deltaY = startY - endY;
+
+      if (Math.abs(deltaY) > 50) { // Minimum swipe distance
+        let newSection = currentSection;
+
+        if (deltaY > 0 && currentSection < sections.length - 1) {
+          // Swipe up (scroll down)
+          newSection = currentSection + 1;
+        } else if (deltaY < 0 && currentSection > 0) {
+          // Swipe down (scroll up)
+          newSection = currentSection - 1;
+        }
+
+        if (newSection !== currentSection) {
+          setIsScrolling(true);
+          setCurrentSection(newSection);
+
+          if (sections[newSection]) {
+            sections[newSection].scrollIntoView({
+              behavior: 'smooth',
+              block: 'start'
+            });
+          }
+
+          setTimeout(() => {
+            setIsScrolling(false);
+          }, 1000);
+        }
+      }
+    };
+
+    document.addEventListener('touchstart', handleTouchStart, { passive: true });
+    document.addEventListener('touchend', handleTouchEnd, { passive: true });
+
+    return () => {
+      document.removeEventListener('wheel', handleWheel);
+      document.removeEventListener('touchstart', handleTouchStart);
+      document.removeEventListener('touchend', handleTouchEnd);
+    };
+  }, [currentSection, isScrolling]);
   
   const filmCategories = [
     {
@@ -165,14 +280,21 @@ const FilmPage = () => {
       </div>
 
       <section className={styles.filmCategoriesPage}>
-        <div className={styles.filmHeroSection}>
+        {/* Back Navigation */}
+        <div className={styles.backNavigation}>
+          <Link to="/" className={styles.backLink}>
+            Back to Homepage
+          </Link>
+        </div>
+
+        <div ref={heroSectionRef} className={styles.filmHeroSection}>
           <h1 className={styles.filmMainTitle}>Film Portfolio</h1>
           <p className={styles.filmSubtitle}>
             Visual storytelling that weaves indigenous narratives with futuristic possibilities
           </p>
         </div>
 
-        <div className={styles.categoriesContainer}>
+        <div ref={categoriesSectionRef} className={styles.categoriesContainer}>
           <div className={styles.filmGrid}>
             {filmCategories.map((category, index) => (
               <Link 
@@ -238,7 +360,7 @@ const FilmPage = () => {
           </div>
         </div>
 
-        <div className={styles.filmStatement}>
+        <div ref={statementSectionRef} className={styles.filmStatement}>
           <h3 className={styles.statementTitle}>Director's Vision</h3>
           <div className={styles.statementContent}>
             <p>

@@ -388,6 +388,13 @@ const ResumePage = () => {
       </div>
 
       <section className={styles.resumePage}>
+        {/* Back Navigation */}
+        <div className={styles.backNavigation}>
+          <Link to="/" className={styles.backLink}>
+            Back to Homepage
+          </Link>
+        </div>
+
         {/* Hero Section */}
         <div className={styles.resumeHero}>
           <h1 className={styles.resumeTitle}>Journey Through Time</h1>

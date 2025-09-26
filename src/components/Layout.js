@@ -1,22 +1,35 @@
 // src/components/layout.js
-import React, { useRef, useEffect } from "react"
+import React, { useRef, useEffect, useState } from "react"
 import { Link } from "gatsby"
 import { navigate } from "gatsby";
 import "../styles/global.css" // Your main CSS
 
-const Layout = ({ 
-  children, 
-  language, 
-  setLanguage, 
-  hasVideoBackground = false, 
-  videoSrc, 
-  videoStyle = {}, 
-  videoContainerStyle = {}, 
+const Layout = ({
+  children,
+  language,
+  setLanguage,
+  hasVideoBackground = false,
+  videoSrc,
+  videoStyle = {},
+  videoContainerStyle = {},
   overlayStyle = {}, // New prop for custom overlay styling
   playbackRate = 1.0,
   videoFilter = 'brightness(0.55) contrast(1.6) saturate(1.9)' // Default filter
 }) => {
   const videoRef = useRef(null);
+  const [isBackgroundPaused, setIsBackgroundPaused] = useState(false);
+  const [showPauseText, setShowPauseText] = useState(false);
+  const [isHovering, setIsHovering] = useState(false);
+
+  // Initialize pause state from localStorage on component mount
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const savedPauseState = localStorage.getItem('globalBackgroundPaused');
+      if (savedPauseState === 'true') {
+        setIsBackgroundPaused(true);
+      }
+    }
+  }, []);
   console.log('Layout received:', { hasVideoBackground, videoSrc, videoStyle });
   const headerRef = useRef(null); 
 
@@ -27,28 +40,67 @@ const Layout = ({
       video.defaultMuted = true;
       video.muted = true;
       video.playbackRate = playbackRate;
-      
-      // Ensure video plays immediately
+
+      // Ensure video plays immediately (unless globally paused)
       const playVideo = async () => {
         try {
-          await video.play();
+          if (!isBackgroundPaused) {
+            await video.play();
+          }
         } catch (error) {
           console.log('Video autoplay failed:', error);
         }
       };
-      
-      // Play video as soon as possible
+
+      // Play video as soon as possible (unless globally paused)
       if (video.readyState >= 2) {
         playVideo();
       } else {
         video.addEventListener('loadeddata', playVideo);
       }
-      
+
       return () => {
         video.removeEventListener('loadeddata', playVideo);
       };
     }
-  }, [hasVideoBackground, videoSrc, playbackRate]);
+  }, [hasVideoBackground, videoSrc, playbackRate, isBackgroundPaused]);
+
+  // Auto-pause all videos when global pause state is active
+  useEffect(() => {
+    const pauseAllBackgroundVideos = () => {
+      // Pause layout background video
+      if (videoRef.current) {
+        if (isBackgroundPaused) {
+          videoRef.current.pause();
+        } else {
+          videoRef.current.play().catch(e => console.log("Layout video play failed:", e));
+        }
+      }
+
+      // Find and pause/unpause all background videos on the page
+      const backgroundVideos = document.querySelectorAll(
+        '.layout-video-background__video, .video-background video, .background-video, video[autoplay][muted][loop]'
+      );
+
+      backgroundVideos.forEach(video => {
+        if (isBackgroundPaused) {
+          video.pause();
+        } else {
+          video.play().catch(e => console.log("Background video play failed:", e));
+        }
+      });
+    };
+
+    // Apply pause state immediately and after a short delay to catch late-loading videos
+    pauseAllBackgroundVideos();
+    const timeoutId = setTimeout(pauseAllBackgroundVideos, 500);
+    const timeoutId2 = setTimeout(pauseAllBackgroundVideos, 1500);
+
+    return () => {
+      clearTimeout(timeoutId);
+      clearTimeout(timeoutId2);
+    };
+  }, [isBackgroundPaused]);
 
   // Optional: Header scroll effects
   useEffect(() => {
@@ -72,6 +124,19 @@ const Layout = ({
       window.removeEventListener('scroll', handleScroll);
     };
   }, []);
+
+  // Global background video pause functionality
+  const handleGlobalBackgroundPause = () => {
+    const newPauseState = !isBackgroundPaused;
+    setIsBackgroundPaused(newPauseState);
+
+    // Save state to localStorage for persistence across pages
+    if (typeof window !== "undefined") {
+      localStorage.setItem('globalBackgroundPaused', newPauseState.toString());
+    }
+
+    // The actual video pausing/playing will be handled by the useEffect above
+  };
 
   // Generic function to handle navigation clicks
   const handleNavClick = (targetPath) => (e) => {
@@ -327,27 +392,81 @@ const Layout = ({
             </Link>
           </nav>
 
-          <div className="language-toggle" style={{
-            color: hasVideoBackground ? 'white' : 'inherit',
-            textShadow: hasVideoBackground ? '0 2px 4px rgba(0,0,0,0.5)' : 'none'
+          <div className="header-controls" style={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: '1rem'
           }}>
-            <button 
-              className={`lang-button ${language === 'EN' ? 'active' : ''}`}
-              onClick={() => setLanguage('EN')}
-              aria-label="Switch to English"
-              aria-pressed={language === 'EN'}
+            <button
+              className="global-pause-button"
+              onClick={handleGlobalBackgroundPause}
+              title=""
+              style={{
+                background: 'white',
+                border: '2px solid white',
+                color: 'black',
+                borderRadius: '20px',
+                padding: '0.5rem 1rem',
+                fontSize: '0.9rem',
+                cursor: 'pointer',
+                transition: 'all 0.8s cubic-bezier(0.4, 0, 0.2, 1)',
+                backdropFilter: 'blur(10px)',
+                fontFamily: 'Poppins, sans-serif',
+                fontWeight: '300',
+                letterSpacing: '0.05em',
+                minWidth: isHovering ? '180px' : '40px',
+                width: isHovering ? '180px' : '40px',
+                whiteSpace: 'nowrap',
+                overflow: 'hidden'
+              }}
+              onMouseEnter={(e) => {
+                setIsHovering(true);
+                // Delay text appearance to allow width animation to start
+                setTimeout(() => {
+                  if (e.target.parentElement) { // Check if still hovering
+                    setShowPauseText(true);
+                  }
+                }, 200);
+                e.target.style.background = 'rgba(255, 255, 255, 0.9)';
+                e.target.style.transform = 'translateY(-1px)';
+                e.target.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.2)';
+              }}
+              onMouseLeave={(e) => {
+                setIsHovering(false);
+                setShowPauseText(false);
+                e.target.style.background = 'white';
+                e.target.style.transform = 'translateY(0)';
+                e.target.style.boxShadow = 'none';
+              }}
             >
-              EN
+              {showPauseText
+                ? `${isBackgroundPaused ? 'Play' : 'Pause'} All Backgrounds`
+                : (isBackgroundPaused ? '▶' : '⏸')
+              }
             </button>
-            <span className="lang-separator">/</span>
-            <button 
-              className={`lang-button ${language === 'AR' ? 'active' : ''}`}
-              onClick={() => setLanguage('AR')}
-              aria-label="Switch to Arabic"
-              aria-pressed={language === 'AR'}
-            >
-              AR
-            </button>
+
+            <div className="language-toggle" style={{
+              color: hasVideoBackground ? 'white' : 'inherit',
+              textShadow: hasVideoBackground ? '0 2px 4px rgba(0,0,0,0.5)' : 'none'
+            }}>
+              <button
+                className={`lang-button ${language === 'EN' ? 'active' : ''}`}
+                onClick={() => setLanguage('EN')}
+                aria-label="Switch to English"
+                aria-pressed={language === 'EN'}
+              >
+                EN
+              </button>
+              <span className="lang-separator">/</span>
+              <button
+                className={`lang-button ${language === 'AR' ? 'active' : ''}`}
+                onClick={() => setLanguage('AR')}
+                aria-label="Switch to Arabic"
+                aria-pressed={language === 'AR'}
+              >
+                AR
+              </button>
+            </div>
           </div>
         </header>
 

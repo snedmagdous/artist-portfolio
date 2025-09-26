@@ -1,5 +1,6 @@
 // src/pages/about/index.js
 import React, { useState, useEffect, useRef } from "react"
+import { Link } from "gatsby"
 import Layout from "../../components/Layout"
 import * as styles from "./about.module.css"
 
@@ -122,6 +123,13 @@ const AboutPage = () => {
     </div>
 
       <section className={styles.aboutPage}>
+        {/* Back Navigation */}
+        <div className={styles.backNavigation}>
+          <Link to="/" className={styles.backLink}>
+            Back to Homepage
+          </Link>
+        </div>
+
         {/* Fireflies Animation */}
         <Fireflies />
         
@@ -166,7 +174,7 @@ const AboutPage = () => {
               <p className={styles.bioText}>
                 In every line of code she writes, every frame she films, every artwork she labors into, Māyā strives to ask and 
                 answer the same question again and again: How can we get closer to the we freedom we dream of through what we put out into the world? 
-                that? How do we create a future that doesn't abandon the past—but rather carries it forward, transformed and transforming.
+                How do we create a future that doesn't abandon the past—but rather carries it forward, transformed and transforming?
               </p>
             </div>
           </div>
