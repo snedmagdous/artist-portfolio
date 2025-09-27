@@ -566,7 +566,7 @@
 
 .timelineItem {
   position: relative;
-  margin-bottom: 6rem;
+  margin-bottom: 3.6rem;
   display: flex;
   align-items: center;
   opacity: 0;
@@ -1022,14 +1022,14 @@
   
   .timelineItem {
     flex-direction: column !important;
-    margin-bottom: 4rem;
+    margin-bottom: 2.4rem;
   }
   
   .timelineMarker {
     position: relative;
     left: auto;
     transform: none;
-    margin-bottom: 2rem;
+    margin-bottom: 1.2rem;
   }
   
   .timelineLeft .timelineCard,

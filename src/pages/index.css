@@ -16,6 +16,11 @@ html, body {
   scroll-behavior: smooth;
 }
 
+/* Ensure smooth scrolling for all elements */
+* {
+  scroll-behavior: smooth;
+}
+
 body {
   font-family: 'Avenir', sans-serif;
   overflow-x: hidden;
@@ -42,19 +47,17 @@ body {
   padding: 0;
 }
 
-/* Section Scroll Snapping */
+/* Section Scroll Behavior - more natural */
 .hero-section,
 .definition-section,
 .portfolio-section,
 .contact-section {
-  scroll-snap-align: start;
-  scroll-snap-stop: always;
+  scroll-margin-top: 0;
 }
 
 /* Hero Section */
 .hero-section {
   min-height: 100vh;
-  height: 100vh;
   width: 100%;
   z-index: 1;
   position: relative;
@@ -1132,7 +1135,6 @@ body {
 
 .success-section {
   min-height: 100vh;
-  height: 100vh;
   width: 100%;
   z-index: 1;
   position: relative;

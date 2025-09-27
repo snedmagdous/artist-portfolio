@@ -1708,7 +1708,7 @@
 
 .documentaryItem {
   position: relative;
-  margin-bottom: 2.5rem;
+  margin-bottom: 1.5rem;
   display: flex;
   align-items: center;
   width: 100%;
@@ -1764,11 +1764,11 @@
 }
 
 .timelineLeft .documentaryCard {
-  margin-right: 300px;
+  margin-right: 180px;
 }
 
 .timelineRight .documentaryCard {
-  margin-left: 300px;
+  margin-left: 180px;
 }
 
 .documentaryCard:hover {
@@ -2228,7 +2228,7 @@
 
   .documentaryItem {
     flex-direction: column !important;
-    margin-bottom: 2rem;
+    margin-bottom: 1.2rem;
   }
   
   .timelineMarker {

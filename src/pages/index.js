@@ -15,9 +15,8 @@ export default function Home() {
   const definitionSectionRef = useRef(null);
   const contactSectionRef = useRef(null);
 
-  // Scroll snapping state
+  // Section tracking for navigation (non-intrusive)
   const [currentSection, setCurrentSection] = useState(0);
-  const [isScrolling, setIsScrolling] = useState(false);
 
   // Slideshow dragging state
   const [isDragging, setIsDragging] = useState(false);
@@ -53,114 +52,41 @@ export default function Home() {
     }
   }, []);
 
-  // Scroll snapping functionality
+  // Natural scroll behavior - no interference
   useEffect(() => {
-    const sections = [
-      heroSectionRef.current,
-      definitionSectionRef.current,
-      portfolioSectionRef.current,
-      contactSectionRef.current
-    ];
+    // Remove all scroll intervention - let browser handle natural scrolling
+    // Keep section tracking for button navigation only
+    const handleScroll = () => {
+      const sections = [
+        heroSectionRef.current,
+        definitionSectionRef.current,
+        portfolioSectionRef.current,
+        contactSectionRef.current
+      ];
 
-    let ticking = false;
-
-    const handleWheel = (e) => {
-      if (isScrolling) return;
-
-      e.preventDefault();
-
-      if (!ticking) {
-        requestAnimationFrame(() => {
-          const deltaY = e.deltaY;
-          let newSection = currentSection;
-
-          if (deltaY > 0 && currentSection < sections.length - 1) {
-            // Scroll down
-            newSection = currentSection + 1;
-          } else if (deltaY < 0 && currentSection > 0) {
-            // Scroll up
-            newSection = currentSection - 1;
+      // Update current section based on natural scroll position (for button states)
+      let newCurrentSection = 0;
+      sections.forEach((section, index) => {
+        if (section) {
+          const rect = section.getBoundingClientRect();
+          if (rect.top <= window.innerHeight / 2 && rect.bottom >= window.innerHeight / 2) {
+            newCurrentSection = index;
           }
+        }
+      });
 
-          if (newSection !== currentSection) {
-            setIsScrolling(true);
-            setCurrentSection(newSection);
-
-            // Smooth scroll to section
-            if (sections[newSection]) {
-              sections[newSection].scrollIntoView({
-                behavior: 'smooth',
-                block: 'start'
-              });
-            }
-
-            // Reset scrolling state after animation
-            setTimeout(() => {
-              setIsScrolling(false);
-            }, 1000); // 1 second delay to allow smooth scroll
-          }
-
-          ticking = false;
-        });
-        ticking = true;
+      if (newCurrentSection !== currentSection) {
+        setCurrentSection(newCurrentSection);
       }
     };
 
-    // Add wheel event listener
-    document.addEventListener('wheel', handleWheel, { passive: false });
-
-    // Handle touch events for mobile
-    let startY = 0;
-    let endY = 0;
-
-    const handleTouchStart = (e) => {
-      startY = e.touches[0].clientY;
-    };
-
-    const handleTouchEnd = (e) => {
-      if (isScrolling) return;
-
-      endY = e.changedTouches[0].clientY;
-      const deltaY = startY - endY;
-
-      if (Math.abs(deltaY) > 50) { // Minimum swipe distance
-        let newSection = currentSection;
-
-        if (deltaY > 0 && currentSection < sections.length - 1) {
-          // Swipe up (scroll down)
-          newSection = currentSection + 1;
-        } else if (deltaY < 0 && currentSection > 0) {
-          // Swipe down (scroll up)
-          newSection = currentSection - 1;
-        }
-
-        if (newSection !== currentSection) {
-          setIsScrolling(true);
-          setCurrentSection(newSection);
-
-          if (sections[newSection]) {
-            sections[newSection].scrollIntoView({
-              behavior: 'smooth',
-              block: 'start'
-            });
-          }
-
-          setTimeout(() => {
-            setIsScrolling(false);
-          }, 1000);
-        }
-      }
-    };
-
-    document.addEventListener('touchstart', handleTouchStart, { passive: true });
-    document.addEventListener('touchend', handleTouchEnd, { passive: true });
+    // Use passive scroll listener for section tracking only
+    window.addEventListener('scroll', handleScroll, { passive: true });
 
     return () => {
-      document.removeEventListener('wheel', handleWheel);
-      document.removeEventListener('touchstart', handleTouchStart);
-      document.removeEventListener('touchend', handleTouchEnd);
+      window.removeEventListener('scroll', handleScroll);
     };
-  }, [currentSection, isScrolling]);
+  }, [currentSection]);
 
   // Slideshow dragging functionality
   const handleMouseDown = (e) => {
@@ -199,8 +125,8 @@ export default function Home() {
     carouselRef.current.scrollLeft = scrollLeft - walk;
   };
 
-  // Touch events for mobile
-  const handleTouchStart = (e) => {
+  // Touch events for mobile carousel
+  const handleCarouselTouchStart = (e) => {
     if (!carouselRef.current) return;
     setIsDragging(true);
     setStartX(e.touches[0].pageX - carouselRef.current.offsetLeft);
@@ -208,14 +134,14 @@ export default function Home() {
     carouselRef.current.classList.add('paused');
   };
 
-  const handleTouchMove = (e) => {
+  const handleCarouselTouchMove = (e) => {
     if (!isDragging || !carouselRef.current) return;
     const x = e.touches[0].pageX - carouselRef.current.offsetLeft;
     const walk = (x - startX) * 2;
     carouselRef.current.scrollLeft = scrollLeft - walk;
   };
 
-  const handleTouchEnd = () => {
+  const handleCarouselTouchEnd = () => {
     if (!carouselRef.current) return;
     setIsDragging(false);
     setTimeout(() => {
@@ -226,30 +152,21 @@ export default function Home() {
   };
 
   const scrollToPortfolio = () => {
-    setCurrentSection(2); // Portfolio is section 2 (0-indexed)
-    setIsScrolling(true);
     document.getElementById('portfolio-section').scrollIntoView({
       behavior: 'smooth'
     });
-    setTimeout(() => setIsScrolling(false), 1000);
   }
 
   const scrollToDefinition = () => {
-    setCurrentSection(1); // Definition is section 1 (0-indexed)
-    setIsScrolling(true);
     document.querySelector('.definition-section').scrollIntoView({
       behavior: 'smooth'
     });
-    setTimeout(() => setIsScrolling(false), 1000);
   }
 
   const scrollToContact = () => {
-    setCurrentSection(3); // Contact is section 3 (0-indexed)
-    setIsScrolling(true);
     document.getElementById('contact-section').scrollIntoView({
       behavior: 'smooth'
     });
-    setTimeout(() => setIsScrolling(false), 1000);
   }
 
   // Main categories for navigation
@@ -694,9 +611,9 @@ export default function Home() {
               onMouseLeave={handleMouseLeave}
               onMouseUp={handleMouseUp}
               onMouseMove={handleMouseMove}
-              onTouchStart={handleTouchStart}
-              onTouchMove={handleTouchMove}
-              onTouchEnd={handleTouchEnd}
+              onTouchStart={handleCarouselTouchStart}
+              onTouchMove={handleCarouselTouchMove}
+              onTouchEnd={handleCarouselTouchEnd}
             >
               {/* First set of items */}
               {portfolioItems.map((item, index) => (

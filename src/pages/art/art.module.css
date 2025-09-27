@@ -29,7 +29,7 @@
 
 .timelineItem {
   position: relative;
-  margin-bottom: 2rem;
+  margin-bottom: 1.2rem;
   display: flex;
   align-items: center;
 }
@@ -77,11 +77,11 @@
 }
 
 .timelineLeft .timelineCard {
-  margin-right: 60px;
+  margin-right: 36px;
 }
 
 .timelineRight .timelineCard {
-  margin-left: 60px;
+  margin-left: 36px;
 }
 
 .timelineCard:hover {
@@ -624,7 +624,7 @@
 
   .timelineItem {
     flex-direction: column !important;
-    margin-bottom: 1.5rem;
+    margin-bottom: 0.9rem;
   }
   
   .timelineMarker {
@@ -1049,7 +1049,7 @@
 
 .timelineItem {
   position: relative;
-  margin-bottom: 2rem;
+  margin-bottom: 1.2rem;
   display: flex;
   align-items: center;
 }
