@@ -533,7 +533,7 @@ export default function Home() {
               should and will exist.
             </p>
             <p className="definition-text">
-              EEach day, we must dream of building worlds where we lose the identities we built around our wounds, 
+              Each day, we must dream of building worlds where we lose the identities we built around our wounds, 
               worlds where liberation becomes a state of being, not just imagining. In my creative work, I explore
               how this daily reimagining transforms resistance into regeneration, turning our visions into 
               inevitable realities that must be reckoned with.
