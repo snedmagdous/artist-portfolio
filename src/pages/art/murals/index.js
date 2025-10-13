@@ -92,7 +92,7 @@ const MuralsPage = () => {
       size: '37ft × 15ft',
       medium: 'Exterior acrylic paint',
       status: 'Ongoing',
-      videoSrc: 'https://pub-3f206994e69e42408f7908b2177b9ed9.r2.dev/my-queens.MP4',
+      videoSrc: 'https://pub-3f206994e69e42408f7908b2177b9ed9.r2.dev/queens-mural.mp4',
       collaborators: 'Argos Inn, Ithaca\'s Community Arts Partnership, Center for Transformative Action, Ithaca Mural Arts, Meldrim\'s Paint Center',
       funding: 'Grant-funded community project',
       icon: (

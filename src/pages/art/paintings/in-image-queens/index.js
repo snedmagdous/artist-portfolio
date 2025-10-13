@@ -38,11 +38,11 @@ const QueensImagePage = () => {
     },
     {
       id: 'daughters-unborn',
-      title: 'COMING SOON...',
+      title: 'Daughters Unborn',
       year: '2024',
       medium: 'Oil & Luminescent Paint on Canvas',
       dimensions: '40" x 32"',
-      image: '/images/paintings/queens-image/daughters-unborn.jpg',
+      image: '/images/paintings/queens/unborn.jpeg',
       description: 'The women who will come after us—daughters, granddaughters, and all who will inherit the world we are building, carrying our dreams into realities we can barely imagine.',
       symbolism: 'Luminescent paint suggests the radiant possibility of future generations, while ethereal forms represent potential and infinite possibility.',
       inspiration: 'Painting for the girls who will never doubt their worth, who will inherit our struggles transformed into their strength.',
@@ -66,9 +66,9 @@ const QueensImagePage = () => {
       language={language} 
       setLanguage={setLanguage}
       hasVideoBackground={true}
-      videoSrc="https://pub-3f206994e69e42408f7908b2177b9ed9.r2.dev/my-queens.MP4"
+      videoSrc="https://pub-3f206994e69e42408f7908b2177b9ed9.r2.dev/istand.mp4"
       videoStyle={{
-        filter: 'brightness(0.37) contrast(1.2) saturate(1.1)'
+        filter: 'brightness(0.57) contrast(1.1) saturate(1.1)'
       }}
     >
       <section className={styles.queensImagePage}>

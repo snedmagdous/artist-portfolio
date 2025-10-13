@@ -139,7 +139,7 @@ const MyQueensMuralPage = () => {
   const mainMuralImage = {
     src: '/images/illustration/blueprint/ancestral.JPEG',
     title: 'In the Image of My Queens, I Stand',
-    subtitle: 'Preliminary Mural Sketch',
+    subtitle: '2025 • Southworks Factory, Ithaca, NY',
     description: 'A powerful representation of Indigenous Bedouin and Nubian women surrounded by ancestral geometric light, standing in fierce resistance on stolen land while connected to their traditional territories.',
     details: 'This mural aims to create solidarity between Indigenous communities across continents while serving as a fundraiser for humanitarian aid, demonstrating how art can be both resistance and practical support.'
   }
@@ -149,9 +149,9 @@ const MyQueensMuralPage = () => {
       language={language} 
       setLanguage={setLanguage}
       hasVideoBackground={true}
-      videoSrc="https://pub-3f206994e69e42408f7908b2177b9ed9.r2.dev/my-queens.MP4"
+      videoSrc="https://pub-3f206994e69e42408f7908b2177b9ed9.r2.dev/queens-mural.mp4"
       videoStyle={{
-        filter: 'brightness(0.4) contrast(1.1) saturate(1.2)'
+        filter: 'brightness(0.3) contrast(1.2) saturate(1.3)'
       }}
     >
       <section className={styles.muralPage}>
@@ -183,8 +183,20 @@ const MyQueensMuralPage = () => {
               onClick={() => openModal(mainMuralImage)}
               className={styles.muralViewBtn}
             >
-              View Sketch
+              View Mural
             </button>
+          </div>
+        </div>
+
+        {/* Funding Section */}
+        <div className={styles.fundingSection}>
+          <h3 className={styles.fundingTitle}>Funding & Community Support</h3>
+          <div className={styles.fundingContent}>
+            <p className={styles.fundingText}>
+              This mural was made possible by the New York State Ccouncil On the Arts with the support of the Office of the Governor.
+              The Mural Jam is also supported by the Ithaca Community Arts Partnership, Meldrims Paint Center, Argos Inn, and Gimmecoffee. 
+              This work was commissioned through Ithaca Murals, a project of the Cornell Center For Transformative Action.
+            </p>
           </div>
         </div>
 
