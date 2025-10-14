@@ -12,9 +12,9 @@ const DigitalCeremonyPage = () => {
   const paintings = [
     {
       id: 'sacred-connection',
-      title: 'Sacred Connection',
+      title: 'Come back to me',
       year: '2024',
-      medium: 'Acrylic & Mixed Media on Canvas',
+      medium: 'Acrylic & Oil on Canvas',
       dimensions: '36" x 48"',
       image: '/images/paintings/ceremony/sacred.jpeg',
       description: 'Two souls represented as flowing light forms that intertwine and merge, creating a sacred geometry of love that transcends physical boundaries.',
@@ -24,9 +24,9 @@ const DigitalCeremonyPage = () => {
     },
     {
       id: 'protected-love',
-      title: 'Protected Love',
+      title: 'Love me there',
       year: '2024',
-      medium: 'Acrylic & Mixed Media on Canvas',
+      medium: 'Acrylic & Oil on Canvas',
       dimensions: '30" x 40"',
       image: '/images/paintings/ceremony/protect.jpeg',
       description: 'A sanctuary of light surrounds two figures, creating a protective barrier where love can exist safely in its most vulnerable and authentic form.',
