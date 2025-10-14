@@ -173,8 +173,8 @@ const AboutPage = () => {
     
               <p className={styles.bioText}>
                 In every line of code she writes, every frame she films, every artwork she labors into, Māyā strives to ask and 
-                answer the same question again and again: How can we get closer to the we freedom we dream of through what we put out into the world? 
-                How do we create a future that doesn't abandon the past—but rather carries it forward, transformed and transforming?
+                answer the same question again and again: How can we move closer to the freedom we dream of through what we put out into the world? 
+                How do we create futures that carry the past forward—transformed and transforming?
               </p>
             </div>
           </div>

@@ -472,7 +472,7 @@ export default function Home() {
             filter: 'brightness(0.55) contrast(1.1) saturate(1.9)'
           }}
         >
-          <source src="https://pub-3f206994e69e42408f7908b2177b9ed9.r2.dev/indigenous-futurism.MP4" type="video/mp4" />
+          <source src="https://pub-3f206994e69e42408f7908b2177b9ed9.r2.dev/IMG_3893.MP4" type="video/mp4" />
         </video>
       </div>
 
