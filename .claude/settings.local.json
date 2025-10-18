@@ -18,7 +18,8 @@
       "Bash(npx gatsby:*)",
       "Bash(findstr:*)",
       "Bash(dir:*)",
-      "Bash(y)"
+      "Bash(y)",
+      "Bash(git checkout:*)"
     ],
     "deny": []
   }

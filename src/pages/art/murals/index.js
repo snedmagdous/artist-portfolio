@@ -164,6 +164,17 @@ const MuralsPage = () => {
           <p className={styles.subPageSubtitle}>
             Community-funded public art celebrating liberation, solidarity, and the revolutionary power of collective creation
           </p>
+          <button
+            onClick={() => {
+              document.querySelector(`.${styles.seriesContainer}`).scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+              });
+            }}
+            className={styles.viewMuralsButton}
+          >
+            View Murals
+          </button>
         </div>
 
         <div className={styles.seriesContainer}>

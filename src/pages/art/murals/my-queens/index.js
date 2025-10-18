@@ -137,7 +137,7 @@ const MyQueensMuralPage = () => {
   }
 
   const mainMuralImage = {
-    src: '/images/illustration/blueprint/ancestral.JPEG',
+    src: '/images/murals/my-queens/mural.JPeG',
     title: 'In the Image of My Queens, I Stand',
     subtitle: '2025 • Southworks Factory, Ithaca, NY',
     description: 'A powerful representation of Indigenous Bedouin and Nubian women surrounded by ancestral geometric light, standing in fierce resistance on stolen land while connected to their traditional territories.',
@@ -149,9 +149,9 @@ const MyQueensMuralPage = () => {
       language={language} 
       setLanguage={setLanguage}
       hasVideoBackground={true}
-      videoSrc="https://pub-3f206994e69e42408f7908b2177b9ed9.r2.dev/queens-mural.mp4"
+      videoSrc="https://pub-3f206994e69e42408f7908b2177b9ed9.r2.dev/myqueens.MOV"
       videoStyle={{
-        filter: 'brightness(0.3) contrast(1.2) saturate(1.3)'
+        filter: 'brightness(0.2) contrast(1.1) saturate(1.2)'
       }}
     >
       <section className={styles.muralPage}>
@@ -211,7 +211,7 @@ const MyQueensMuralPage = () => {
             <div className={styles.timelineLine}></div>
             
             {timelineSteps.map((step, index) => (
-              <div 
+              <div
                 key={step.id}
                 className={`${styles.timelineStep} ${index % 2 === 0 ? styles.stepLeft : styles.stepRight}`}
                 onMouseEnter={() => setHoveredStep(step.id)}
@@ -220,29 +220,30 @@ const MyQueensMuralPage = () => {
                 <div className={styles.stepMarker}>
                   <span className={styles.stepNumber}>{index + 1}</span>
                 </div>
-                
-                <div className={styles.stepCard}>
+
+                <div
+                  className={styles.stepCard}
+                  onClick={() => openModal({
+                    src: step.image,
+                    title: step.title,
+                    subtitle: step.date,
+                    description: step.description,
+                    details: step.details
+                  })}
+                  style={{ cursor: 'pointer' }}
+                >
                   <div className={styles.stepDate}>{step.date}</div>
                   <h3 className={styles.stepTitle}>{step.title}</h3>
                   <p className={styles.stepDescription}>{step.description}</p>
-                  
+
                   {hoveredStep === step.id && (
                     <div className={styles.stepDetails}>
                       <p>{step.details}</p>
                     </div>
                   )}
-                  
-                  <div 
-                    className={styles.stepImageContainer}
-                    onClick={() => openModal({
-                      src: step.image,
-                      title: step.title,
-                      subtitle: step.date,
-                      description: step.description,
-                      details: step.details
-                    })}
-                  >
-                    <div 
+
+                  <div className={styles.stepImageContainer}>
+                    <div
                       className={`${styles.stepImage} ${hoveredStep === step.id ? styles.imageZoomed : ''}`}
                       style={{
                         backgroundImage: `url(${step.image})`,
