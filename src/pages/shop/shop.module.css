@@ -5,10 +5,11 @@
    ====================== */
 
 .backNavigation {
-  margin-bottom: 4rem;
+  margin-bottom: 2rem;
   position: fixed;
   top: 8rem;
   z-index: 100;
+  padding-left: 2rem;
 }
 
 .backLink {
@@ -58,54 +59,362 @@
   position: relative;
   z-index: 10;
   min-height: 100vh;
-  padding: 8vh 2rem 10vh;
+  padding: 12vh 2rem 10vh;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  max-width: 1400px;
+  margin: 0 auto;
 }
 
 /* ======================
-   COMING SOON SECTION
+   SHOP HERO
    ====================== */
 
-.comingSoonHero {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  min-height: 30vh;
+.shopHero {
   text-align: center;
-  margin-top: -200;
+  margin-bottom: 6rem;
+  padding-top: 2rem;
 }
 
-.comingSoonTitle {
+.sectionIndicator {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+  padding: 0.5rem 1.5rem;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border-radius: 25px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.indicatorDot {
+  width: 8px;
+  height: 8px;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 50%;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.5; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.2); }
+}
+
+.indicatorText {
   font-family: 'Poppins', sans-serif;
-  font-size: clamp(3rem, 8vw, 6rem);
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.8);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: 300;
+}
+
+.shopTitle {
+  font-family: 'Poppins', sans-serif;
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
   font-weight: 200;
   color: white;
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
   text-shadow: 0 0 30px rgba(255, 255, 255, 0.3);
   line-height: 1.1;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 
-.comingSoonSubtitle {
+.shopSubtitle {
   font-family: 'Poppins', sans-serif;
-  font-size: clamp(1.2rem, 3vw, 1.8rem);
+  font-size: clamp(1rem, 2vw, 1.3rem);
   color: rgba(255, 255, 255, 0.7);
   font-weight: 300;
+  letter-spacing: 0.02em;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* ======================
+   SECTION HEADERS
+   ====================== */
+
+.commissionsSection,
+.productsSection {
+  margin-bottom: 6rem;
+}
+
+.sectionHeader {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.sectionTitle {
+  font-family: 'Poppins', sans-serif;
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  font-weight: 300;
+  color: white;
+  margin-bottom: 1rem;
   letter-spacing: 0.05em;
-  text-transform: lowercase;
 }
 
-.blinkingDots {
-  animation: blink 1.5s infinite;
+.sectionDescription {
+  font-family: 'Poppins', sans-serif;
+  font-size: clamp(0.95rem, 2vw, 1.1rem);
+  color: rgba(255, 255, 255, 0.7);
+  font-weight: 300;
+  max-width: 700px;
+  margin: 0 auto;
 }
 
-@keyframes blink {
-  0%, 50% { opacity: 1; }
-  51%, 100% { opacity: 0; }
+/* ======================
+   COMMISSION CARDS
+   ====================== */
+
+.commissionGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.commissionCard {
+  position: relative;
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  padding: 2.5rem 2rem;
+  text-decoration: none;
+  color: white;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.commissionCard::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, transparent 100%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.commissionCard:hover {
+  transform: translateY(-8px);
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.3);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+.commissionCard:hover::before {
+  opacity: 1;
+}
+
+.cardIcon {
+  width: 60px;
+  height: 60px;
+  margin-bottom: 1.5rem;
+  color: rgba(255, 255, 255, 0.8);
+  transition: all 0.3s ease;
+}
+
+.commissionCard:hover .cardIcon {
+  color: white;
+  transform: scale(1.1);
+}
+
+.cardTitle {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: white;
+  margin-bottom: 1rem;
+  letter-spacing: 0.03em;
+}
+
+.cardDescription {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.6;
+  margin-bottom: 2rem;
+  flex-grow: 1;
+}
+
+.cardButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.8rem 1.8rem;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 25px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 300;
+  letter-spacing: 0.05em;
+  transition: all 0.3s ease;
+}
+
+.commissionCard:hover .cardButton {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+.arrow {
+  transition: transform 0.3s ease;
+  font-size: 1.2rem;
+}
+
+.commissionCard:hover .arrow {
+  transform: translateX(5px);
+}
+
+/* ======================
+   PRODUCT CARDS (Coming Soon)
+   ====================== */
+
+.productsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  margin-bottom: 4rem;
+}
+
+.productCard {
+  position: relative;
+  background: rgba(255, 255, 255, 0.02);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  padding: 2.5rem 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  opacity: 0.7;
+  transition: all 0.3s ease;
+}
+
+.productCard:hover {
+  opacity: 0.85;
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+.comingSoonBadge {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  padding: 0.4rem 1rem;
+  background: rgba(222, 184, 135, 0.2);
+  border: 1px solid rgba(222, 184, 135, 0.3);
+  border-radius: 15px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 400;
+  color: rgba(222, 184, 135, 0.9);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+/* ======================
+   NEWSLETTER SECTION
+   ====================== */
+
+.newsletterSection {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 25px;
+  padding: 3rem 2rem;
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.newsletterTitle {
+  font-family: 'Poppins', sans-serif;
+  font-size: clamp(1.3rem, 3vw, 1.8rem);
+  font-weight: 400;
+  color: white;
+  margin-bottom: 1rem;
+  letter-spacing: 0.02em;
+}
+
+.newsletterDescription {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1rem;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 2rem;
+  line-height: 1.6;
+}
+
+.newsletterForm {
+  display: flex;
+  gap: 1rem;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.newsletterInput {
+  flex: 1;
+  padding: 1rem 1.5rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 25px;
+  color: white;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 300;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.newsletterInput::placeholder {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.newsletterInput:focus {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+.newsletterButton {
+  padding: 1rem 2rem;
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 25px;
+  color: white;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+
+.newsletterButton:hover {
+  background: rgba(255, 255, 255, 0.25);
+  border-color: rgba(255, 255, 255, 0.5);
+  transform: translateY(-2px);
+}
+
+.successMessage {
+  padding: 1.5rem;
+  background: rgba(144, 238, 144, 0.1);
+  border: 1px solid rgba(144, 238, 144, 0.3);
+  border-radius: 15px;
+  color: rgba(144, 238, 144, 0.9);
+  font-family: 'Poppins', sans-serif;
+  font-size: 1rem;
+  font-weight: 300;
 }
 
 /* ======================
@@ -114,16 +423,50 @@
 
 @media (max-width: 768px) {
   .shopPage {
-    padding: 6vh 1rem 8vh;
+    padding: 8vh 1.5rem 8vh;
   }
-  
-  .comingSoonHero {
-    min-height: 60vh;
+
+  .backNavigation {
+    top: 6rem;
+    padding-left: 1rem;
+  }
+
+  .shopHero {
+    margin-bottom: 4rem;
+  }
+
+  .commissionsSection,
+  .productsSection {
+    margin-bottom: 4rem;
+  }
+
+  .commissionGrid,
+  .productsGrid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .newsletterForm {
+    flex-direction: column;
+  }
+
+  .newsletterSection {
+    padding: 2rem 1.5rem;
   }
 }
 
 @media (max-width: 480px) {
   .shopPage {
-    padding: 4vh 1rem 6vh;
+    padding: 6vh 1rem 6vh;
+  }
+
+  .commissionCard,
+  .productCard {
+    padding: 2rem 1.5rem;
+  }
+
+  .cardIcon {
+    width: 50px;
+    height: 50px;
   }
 }

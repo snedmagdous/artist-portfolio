@@ -1329,6 +1329,21 @@
   z-index: 100;
 }
 
+/* Mobile: Adjust back button positioning */
+@media (max-width: 768px) {
+  .backNavigation {
+    top: 6rem;
+    left: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .backNavigation {
+    top: 5.5rem;
+    left: 0.5rem;
+  }
+}
+
 .backLink {
   display: inline-flex;
   align-items: center;
@@ -1345,6 +1360,22 @@
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 25px;
+  /* Ensure minimum touch target size */
+  min-height: 44px;
+}
+
+@media (max-width: 768px) {
+  .backLink {
+    padding: 0.9rem 1.3rem;
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .backLink {
+    padding: 0.8rem 1.2rem;
+    font-size: 0.8rem;
+  }
 }
 
 .backLink:hover {
@@ -2157,5 +2188,625 @@
 
   .collageImageArea {
     height: 200px;
+  }
+}
+
+/* ======================
+   COMPREHENSIVE MOBILE IMPROVEMENTS
+   ====================== */
+
+/* Art Hub Main Page Mobile Optimizations */
+@media (max-width: 768px) {
+  .artCategoriesPage {
+    padding: 8rem 1.5rem 8vh;
+  }
+
+  .artMainTitle {
+    font-size: clamp(2.5rem, 9vw, 5rem);
+    margin-bottom: 1.8rem;
+  }
+
+  .artSubtitle {
+    font-size: clamp(1.1rem, 4vw, 1.25rem);
+    padding: 0 1rem;
+  }
+
+  .categoriesContainer {
+    width: 100%;
+    max-width: 600px;
+  }
+
+  .categoryIcon {
+    width: 52px;
+    height: 52px;
+  }
+
+  .categoryTitle {
+    font-size: 1.6rem;
+  }
+
+  .categoryDescription {
+    font-size: 0.95rem;
+    max-width: 220px;
+  }
+
+  .artistStatement {
+    margin: 3rem auto 0;
+    padding: 2.5rem 2rem;
+  }
+
+  .statementTitle {
+    font-size: 1.4rem;
+    margin-bottom: 1.8rem;
+  }
+
+  .statementContent p {
+    font-size: 1rem;
+    line-height: 1.75;
+  }
+
+  /* Disable hover transforms on mobile */
+  .categoryCard:hover {
+    transform: none;
+  }
+
+  .categoryCard:active {
+    background: rgba(255, 255, 255, 0.08);
+    transform: scale(0.98);
+  }
+}
+
+@media (max-width: 600px) {
+  .artCategoriesPage {
+    padding: 7rem 1.2rem 7vh;
+  }
+
+  .categoryCard {
+    height: 280px;
+  }
+
+  .artistStatement {
+    margin: 2.5rem auto 0;
+    padding: 2rem 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .artCategoriesPage {
+    padding: 6.5rem 1rem 6vh;
+  }
+
+  .artMainTitle {
+    font-size: clamp(2rem, 10vw, 4.5rem);
+    margin-bottom: 1.5rem;
+  }
+
+  .artSubtitle {
+    font-size: clamp(1rem, 4.5vw, 1.2rem);
+    padding: 0 0.5rem;
+  }
+
+  .categoryCard {
+    height: 260px;
+  }
+
+  .categoryIcon {
+    width: 48px;
+    height: 48px;
+    margin-bottom: 1.5rem;
+  }
+
+  .categoryTitle {
+    font-size: 1.4rem;
+  }
+
+  .categoryDescription {
+    font-size: 0.85rem;
+    max-width: 200px;
+  }
+
+  .artistStatement {
+    margin: 2rem auto 0;
+    padding: 2rem 1.2rem;
+  }
+
+  .statementTitle {
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .statementContent p {
+    font-size: 0.9rem;
+    line-height: 1.7;
+    margin-bottom: 1.3rem;
+  }
+
+  .statementSignature {
+    font-size: 0.75rem;
+  }
+}
+
+/* Timeline/Illustrations Mobile Enhancements */
+@media (max-width: 768px) {
+  .timelineCard {
+    width: 100%;
+  }
+
+  .timelineMarker {
+    width: 70px;
+    height: 70px;
+  }
+
+  .timelineImageArea {
+    height: 180px;
+  }
+
+  .timelineContent {
+    padding: 1.8rem 1.5rem;
+  }
+
+  .timelineTitle {
+    font-size: 1.25rem;
+  }
+
+  .timelineDescription {
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+
+  .viewProjectBtn {
+    font-size: 0.85rem;
+    padding: 0.9rem 0;
+    /* Ensure minimum touch target */
+    min-height: 44px;
+  }
+
+  .explorationGrid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .explorationItem {
+    padding: 1.8rem 1.5rem;
+  }
+
+  .mediumExploration {
+    padding: 2.5rem 0;
+    margin: 3rem auto 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .timelineMarker {
+    width: 60px;
+    height: 60px;
+  }
+
+  .timelineYear {
+    font-size: 0.8rem;
+  }
+
+  .timelineImageArea {
+    height: 150px;
+  }
+
+  .timelineContent {
+    padding: 1.5rem 1.2rem;
+  }
+
+  .timelineTitle {
+    font-size: 1.1rem;
+  }
+
+  .timelineMeta {
+    gap: 0.8rem;
+  }
+
+  .timelineDescription {
+    font-size: 0.85rem;
+    margin-bottom: 1.3rem;
+  }
+
+  .explorationTitle {
+    font-size: 1.3rem;
+    margin-bottom: 2rem;
+  }
+
+  .explorationItem {
+    padding: 1.5rem 1.2rem;
+  }
+
+  .explorationItem h4 {
+    font-size: 1rem;
+  }
+
+  .explorationItem p {
+    font-size: 0.85rem;
+  }
+}
+
+/* Murals Page Mobile Enhancements */
+@media (max-width: 768px) {
+  .muralVideoContainer {
+    height: 220px;
+  }
+
+  .muralContent {
+    padding: 1.8rem 1.5rem;
+  }
+
+  .muralTitle {
+    font-size: 1.35rem;
+  }
+
+  .muralDescription {
+    font-size: 0.95rem;
+    -webkit-line-clamp: 3;
+  }
+
+  .muralFunding {
+    padding: 0.7rem 0.9rem;
+    margin: 0.8rem 0;
+  }
+
+  .fundingText {
+    font-size: 0.75rem;
+  }
+
+  .viewMuralBtn {
+    font-size: 0.85rem;
+    padding: 0.9rem 0;
+    /* Ensure minimum touch target */
+    min-height: 44px;
+  }
+
+  .communityImpact {
+    margin: 3rem auto 0;
+    padding: 3rem 1.5rem;
+  }
+
+  .impactTitle {
+    font-size: 1.6rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .impactStat {
+    padding: 1.3rem;
+  }
+
+  .statNumber {
+    font-size: 2.2rem;
+  }
+
+  .impactText p {
+    font-size: 0.95rem;
+    line-height: 1.75;
+  }
+
+  /* Disable hover effects on mobile */
+  .muralCard:hover {
+    transform: none;
+  }
+
+  .muralCard:active {
+    background: rgba(255, 255, 255, 0.08);
+  }
+}
+
+@media (max-width: 480px) {
+  .muralCard {
+    height: auto;
+    min-height: 480px;
+  }
+
+  .muralVideoContainer {
+    height: 200px;
+  }
+
+  .muralContent {
+    padding: 1.5rem 1.2rem;
+  }
+
+  .muralTitle {
+    font-size: 1.2rem;
+  }
+
+  .muralYear,
+  .muralCollaborators {
+    font-size: 0.75rem;
+  }
+
+  .muralDescription {
+    font-size: 0.85rem;
+  }
+
+  .viewMuralBtn {
+    font-size: 0.8rem;
+  }
+
+  .muralFunding {
+    padding: 0.6rem 0.8rem;
+  }
+
+  .fundingText {
+    font-size: 0.7rem;
+  }
+
+  .communityImpact {
+    margin: 2.5rem auto 0;
+    padding: 2.5rem 1.2rem;
+  }
+
+  .impactTitle {
+    font-size: 1.4rem;
+    margin-bottom: 2rem;
+  }
+
+  .impactStats {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .impactStat {
+    padding: 1.2rem;
+  }
+
+  .statNumber {
+    font-size: 2rem;
+  }
+
+  .statLabel {
+    font-size: 0.75rem;
+  }
+
+  .impactText p {
+    font-size: 0.85rem;
+    line-height: 1.7;
+    margin-bottom: 1.3rem;
+  }
+}
+
+/* Collages Comprehensive Mobile */
+@media (max-width: 768px) {
+  .collageContent {
+    padding: 1.8rem 1.5rem;
+  }
+
+  .collageTitle {
+    font-size: 1.35rem;
+  }
+
+  .collageDescription {
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+
+  .viewCollectionBtn,
+  .comingSoonBtn {
+    font-size: 0.85rem;
+    padding: 0.9rem 0;
+    /* Ensure minimum touch target */
+    min-height: 44px;
+  }
+
+  .techniqueSpotlight {
+    margin: 3rem auto;
+    padding: 2.5rem 1.8rem;
+  }
+
+  .spotlightTitle {
+    font-size: 1.35rem;
+    margin-bottom: 1.8rem;
+  }
+
+  .spotlightContent p {
+    font-size: 1rem;
+    line-height: 1.75;
+    margin-bottom: 1.8rem;
+  }
+
+  .spotlightSignature {
+    font-size: 0.75rem;
+  }
+
+  /* Disable hover effects on mobile */
+  .collageCard:hover {
+    transform: none;
+  }
+
+  .collageCard:active {
+    transform: scale(0.98);
+  }
+}
+
+@media (max-width: 480px) {
+  .collageCard {
+    height: auto;
+    min-height: 380px;
+  }
+
+  .collageImageArea {
+    height: 180px;
+  }
+
+  .collageIcon {
+    width: 56px;
+    height: 56px;
+  }
+
+  .collageContent {
+    padding: 1.5rem 1.2rem;
+  }
+
+  .collageTitle {
+    font-size: 1.2rem;
+  }
+
+  .collageMedium,
+  .collageYear {
+    font-size: 0.75rem;
+  }
+
+  .collageDescription {
+    font-size: 0.85rem;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+  }
+
+  .viewCollectionBtn,
+  .comingSoonBtn {
+    font-size: 0.8rem;
+  }
+
+  .techniqueSpotlight {
+    margin: 2.5rem auto;
+    padding: 2rem 1.2rem;
+  }
+
+  .spotlightTitle {
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .spotlightContent p {
+    font-size: 0.9rem;
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+  }
+
+  .spotlightSignature {
+    font-size: 0.7rem;
+    margin-top: 1.5rem;
+  }
+}
+
+/* Series Cards Mobile (Paintings page) */
+@media (max-width: 768px) {
+  .seriesImagePlaceholder svg,
+  .seriesIcon {
+    width: 60px;
+    height: 60px;
+  }
+
+  .seriesContent {
+    padding: 1.8rem 1.5rem;
+  }
+
+  .seriesTitle {
+    font-size: 1.4rem;
+  }
+
+  .seriesDescription {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 1.8rem;
+  }
+
+  .viewSeriesBtn {
+    font-size: 0.85rem;
+    padding: 0.9rem 0;
+    /* Ensure minimum touch target */
+    min-height: 44px;
+  }
+
+  .featuredQuote blockquote {
+    font-size: clamp(1rem, 3vw, 1.2rem);
+  }
+
+  /* Disable hover effects */
+  .seriesCard:hover {
+    transform: none;
+  }
+
+  .seriesCard:active {
+    background: rgba(255, 255, 255, 0.08);
+  }
+}
+
+@media (max-width: 480px) {
+  .subPageTitle {
+    font-size: clamp(2rem, 10vw, 4.5rem);
+  }
+
+  .subPageSubtitle {
+    font-size: clamp(0.9rem, 3vw, 1.1rem);
+  }
+
+  .seriesImagePlaceholder {
+    height: 180px;
+  }
+
+  .seriesImagePlaceholder svg,
+  .seriesIcon {
+    width: 50px;
+    height: 50px;
+  }
+
+  .seriesContent {
+    padding: 1.5rem 1.2rem;
+  }
+
+  .seriesTitle {
+    font-size: 1.25rem;
+  }
+
+  .seriesMedium {
+    font-size: 0.75rem;
+  }
+
+  .seriesDescription {
+    font-size: 0.85rem;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+  }
+
+  .viewSeriesBtn {
+    font-size: 0.8rem;
+  }
+
+  .viewMuralsButton {
+    padding: 1.1rem 2rem;
+    font-size: 0.85rem;
+    margin-top: 2.5rem;
+  }
+
+  .featuredQuote {
+    padding: 3rem 1.2rem;
+  }
+
+  .featuredQuote blockquote {
+    font-size: clamp(0.95rem, 3.5vw, 1.15rem);
+    margin-bottom: 1.5rem;
+  }
+
+  .featuredQuote cite {
+    font-size: 0.8rem;
+  }
+}
+
+/* Extra small devices - Final polish */
+@media (max-width: 375px) {
+  .artMainTitle {
+    font-size: clamp(1.8rem, 11vw, 4rem);
+  }
+
+  .categoryCard {
+    height: 240px;
+  }
+
+  .categoryIcon {
+    width: 44px;
+    height: 44px;
+  }
+
+  .categoryTitle {
+    font-size: 1.3rem;
+  }
+
+  .timelineContent,
+  .muralContent,
+  .collageContent,
+  .seriesContent {
+    padding: 1.3rem 1rem;
   }
 }
