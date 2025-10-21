@@ -89,8 +89,8 @@ const ShopPage = () => {
             <Link to="/shop/commissions/custom-art" className={styles.commissionCard}>
               <div className={styles.cardIcon}>
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-                  <path d="M12 2L13.09 8.26L20 9L13.09 9.74L12 16L10.91 9.74L4 9L10.91 8.26L12 2Z"/>
                   <circle cx="12" cy="12" r="3"/>
+                  <path d="M12 2v4M12 18v4M22 12h-4M6 12H2M19.07 4.93l-2.83 2.83M7.76 16.24l-2.83 2.83M19.07 19.07l-2.83-2.83M7.76 7.76L4.93 4.93"/>
                 </svg>
               </div>
               <h3 className={styles.cardTitle}>Custom Artwork</h3>
