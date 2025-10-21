@@ -8,8 +8,8 @@
   margin-bottom: 2rem;
   position: fixed;
   top: 8rem;
+  left: 2rem;
   z-index: 100;
-  padding-left: 2rem;
 }
 
 .backLink {
