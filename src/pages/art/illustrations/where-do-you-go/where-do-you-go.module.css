@@ -1,0 +1,770 @@
+/* src/pages/art/illustrations/where-do-you-go/where-do-you-go.module.css */
+
+/* ======================
+   WHERE DO YOU GO PAGE
+   ====================== */
+
+.wherePage {
+  position: relative;
+  z-index: 10;
+  min-height: 100vh;
+  padding: 6vh 2rem 10vh;
+  overflow-x: hidden;
+}
+
+/* Arabic text styling */
+[dir="rtl"] .wherePage {
+  font-family: 'Noto Naskh Arabic', 'Poppins', sans-serif;
+}
+
+[dir="rtl"] .title,
+[dir="rtl"] .description,
+[dir="rtl"] .contextTitle,
+[dir="rtl"] .contextCard,
+[dir="rtl"] .artistStatement,
+[dir="rtl"] .modalInfo {
+  text-align: right;
+}
+
+/* Back Navigation */
+.backNavigation {
+  position: fixed;
+  top: 8rem;
+  left: 2rem;
+  z-index: 100;
+}
+
+/* RTL Support */
+[dir="rtl"] .backNavigation {
+  left: auto;
+  right: 2rem;
+}
+
+.backLink {
+  display: inline-flex;
+  align-items: center;
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 300;
+  padding: 1rem 1.5rem;
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 25px;
+  transition: all 0.3s ease;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.backLink:hover {
+  color: white;
+  background: rgba(0, 0, 0, 0.5);
+  border-color: rgba(255, 255, 255, 0.4);
+  transform: translateX(-5px);
+}
+
+.backLink::before {
+  content: '';
+  width: 20px;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.8);
+  margin-right: 1rem;
+  transition: all 0.3s ease;
+}
+
+.backLink:hover::before {
+  width: 30px;
+  background: white;
+}
+
+/* Hero Section */
+.hero {
+  text-align: center;
+  margin-bottom: 8rem;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 12vh;
+}
+
+.title {
+  font-family: 'Poppins', sans-serif;
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 200;
+  color: white;
+  margin-bottom: 2rem;
+  text-shadow: 0 0 30px rgba(255, 255, 255, 0.3);
+  line-height: 1.3;
+  letter-spacing: 0.05em;
+}
+
+.meta {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+.metaItem {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.7);
+  font-weight: 300;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding: 0.5rem 1rem;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
+}
+
+.description {
+  font-family: 'Poppins', sans-serif;
+  font-size: clamp(1rem, 2.5vw, 1.1rem);
+  color: rgba(255, 255, 255, 0.8);
+  font-weight: 300;
+  line-height: 1.8;
+  letter-spacing: 0.02em;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* ======================
+   DETECTIVE BOARD LAYOUT
+   ====================== */
+
+.boardContainer {
+  position: relative;
+  max-width: 1600px;
+  margin: 0 auto 10rem;
+  padding: 4rem 2rem;
+}
+
+.boardTitle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  margin-bottom: 12rem;
+}
+
+.boardTitle h2 {
+  font-family: 'Poppins', sans-serif;
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  font-weight: 200;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.redString {
+  width: 100px;
+  height: 2px;
+  background: rgba(200, 50, 50, 0.6);
+  box-shadow: 0 0 10px rgba(200, 50, 50, 0.4);
+}
+
+/* Connection Canvas */
+.connectionCanvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.thread {
+  stroke: rgba(200, 50, 50, 0.4);
+  stroke-width: 1.5;
+  fill: none;
+  transition: all 0.3s ease;
+  stroke-dasharray: 5, 5;
+  animation: threadPulse 3s ease-in-out infinite;
+}
+
+@keyframes threadPulse {
+  0%, 100% {
+    stroke-opacity: 0.4;
+  }
+  50% {
+    stroke-opacity: 0.7;
+  }
+}
+
+.threadHighlight {
+  stroke: rgba(255, 80, 80, 0.8);
+  stroke-width: 2.5;
+  stroke-dasharray: 0;
+  filter: drop-shadow(0 0 5px rgba(255, 80, 80, 0.6));
+}
+
+/* Detective Board */
+.detectiveBoard {
+  position: relative;
+  width: 100%;
+  height: 900px;
+  background: rgba(20, 20, 20, 0.4);
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  box-shadow: inset 0 0 50px rgba(0, 0, 0, 0.5);
+}
+
+/* Evidence Cards (Images) */
+.evidenceCard {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+  z-index: 2;
+  opacity: 0;
+  animation: evidenceFadeIn 0.8s ease-out forwards;
+  transition: all 0.3s ease;
+}
+
+@keyframes evidenceFadeIn {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.8) rotate(-5deg);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1) rotate(0deg);
+  }
+}
+
+.evidenceCard:hover {
+  z-index: 10;
+  transform: translate(-50%, -50%) scale(1.05) rotate(2deg);
+}
+
+/* Unified sizing - all images same height */
+.evidenceCard.portrait {
+  width: 220px;
+}
+
+.evidenceCard.landscape {
+  width: 293px; /* Maintains 4:3 ratio with same height as portrait 3:4 */
+}
+
+/* Pin/Tack at top */
+.pin {
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 20px;
+  height: 20px;
+  background: radial-gradient(circle, #666, #333);
+  border-radius: 50%;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5),
+              inset 0 1px 2px rgba(255, 255, 255, 0.3);
+  z-index: 5;
+}
+
+.pin::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 8px;
+  height: 8px;
+  background: #444;
+  border-radius: 50%;
+}
+
+/* Image Wrapper with tape */
+.imageWrapper {
+  position: relative;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(10px);
+  padding: 12px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6),
+              0 0 0 1px rgba(255, 255, 255, 0.1);
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+.evidenceCard:hover .imageWrapper {
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.8),
+              0 0 20px rgba(255, 255, 255, 0.2);
+}
+
+/* Tape effect */
+.tape {
+  position: absolute;
+  width: 80px;
+  height: 25px;
+  background: rgba(255, 255, 220, 0.4);
+  left: 50%;
+  top: 0;
+  transform: translateX(-50%) translateY(-50%) rotate(-2deg);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  border-left: 1px solid rgba(0, 0, 0, 0.1);
+  border-right: 1px solid rgba(0, 0, 0, 0.1);
+  z-index: 3;
+}
+
+/* Evidence Image */
+.evidenceImage {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 3/4;
+  object-fit: cover;
+  display: block;
+  filter: brightness(0.75) contrast(1.2) saturate(0.9);
+  transition: filter 0.3s ease;
+}
+
+/* Landscape orientation */
+.landscape .evidenceImage {
+  aspect-ratio: 4/3;
+}
+
+.evidenceCard:hover .evidenceImage {
+  filter: brightness(0.85) contrast(1.3) saturate(1);
+}
+
+/* Evidence Label */
+.evidenceLabel {
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(10px);
+  padding: 0.8rem;
+  margin-top: -1px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+  border-radius: 0 0 2px 2px;
+}
+
+.evidenceNumber {
+  font-family: 'Courier New', monospace;
+  font-size: 0.7rem;
+  color: rgba(200, 50, 50, 0.9);
+  font-weight: 600;
+  letter-spacing: 0.05em;
+}
+
+.evidenceTitle {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 400;
+  letter-spacing: 0.02em;
+}
+
+.evidenceDate {
+  font-family: 'Courier New', monospace;
+  font-size: 0.7rem;
+  color: rgba(255, 255, 255, 0.6);
+  font-weight: 300;
+}
+
+/* Hover Info */
+.hoverInfo {
+  position: absolute;
+  bottom: calc(100% + 20px);
+  left: 50%;
+  transform: translateX(-50%);
+  width: 280px;
+  background: rgba(0, 0, 0, 0.95);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 8px;
+  padding: 1rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+  animation: hoverInfoAppear 0.3s ease-out;
+  z-index: 20;
+  pointer-events: none;
+}
+
+@keyframes hoverInfoAppear {
+  0% {
+    opacity: 0;
+    transform: translateX(-50%) translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+.hoverInfo::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-top: 8px solid rgba(0, 0, 0, 0.95);
+}
+
+.hoverInfo p {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.9);
+  line-height: 1.5;
+  margin: 0;
+  font-weight: 300;
+  letter-spacing: 0.02em;
+}
+
+/* ======================
+   CONTEXT SECTION
+   ====================== */
+
+.contextSection {
+  max-width: 1200px;
+  margin: 0 auto 8rem;
+  padding: 4rem 2rem;
+}
+
+.contextTitle {
+  font-family: 'Poppins', sans-serif;
+  font-size: clamp(2rem, 4vw, 2.5rem);
+  font-weight: 200;
+  color: white;
+  text-align: center;
+  margin-bottom: 3rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.contextGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  margin-bottom: 4rem;
+}
+
+.contextCard {
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 2rem;
+  transition: all 0.3s ease;
+}
+
+.contextCard:hover {
+  background: rgba(0, 0, 0, 0.5);
+  border-color: rgba(255, 255, 255, 0.3);
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.contextCard h4 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.2rem;
+  font-weight: 300;
+  color: white;
+  margin-bottom: 1rem;
+  letter-spacing: 0.05em;
+}
+
+.contextCard p {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.6;
+  font-weight: 300;
+  letter-spacing: 0.02em;
+}
+
+/* Artist Statement */
+.artistStatement {
+  background: rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-left: 3px solid rgba(200, 50, 50, 0.6);
+  border-radius: 8px;
+  padding: 3rem;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.artistStatement p {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.8;
+  margin-bottom: 1.5rem;
+  font-weight: 300;
+  letter-spacing: 0.02em;
+}
+
+.artistStatement p:last-child {
+  margin-bottom: 0;
+  font-style: italic;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/* ======================
+   MODAL
+   ====================== */
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(10px);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  animation: modalFadeIn 0.3s ease-out;
+}
+
+@keyframes modalFadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+.modalContent {
+  background: rgba(20, 20, 20, 0.95);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+  max-width: 1100px;
+  max-height: 90vh;
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  animation: modalSlideIn 0.4s ease-out;
+}
+
+@keyframes modalSlideIn {
+  0% {
+    transform: scale(0.9) translateY(50px);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1) translateY(0);
+    opacity: 1;
+  }
+}
+
+.closeButton {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+  color: white;
+  font-size: 1.8rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+}
+
+[dir="rtl"] .closeButton {
+  right: auto;
+  left: 1.5rem;
+}
+
+.closeButton:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: scale(1.1) rotate(90deg);
+}
+
+.modalLayout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  padding: 3rem;
+  align-items: center;
+}
+
+.modalImage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modalImage img {
+  width: 100%;
+  max-width: 450px;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+  filter: brightness(0.8) contrast(1.2);
+}
+
+.modalInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.modalInfo h2 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 2.2rem;
+  font-weight: 200;
+  color: white;
+  letter-spacing: 0.05em;
+  margin: 0;
+}
+
+.modalMeta {
+  display: flex;
+  gap: 2rem;
+  margin-bottom: 1rem;
+}
+
+.modalMetaItem {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.7);
+  font-weight: 300;
+  margin: 0;
+}
+
+.modalLabel {
+  color: rgba(200, 50, 50, 0.8);
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  margin-right: 0.5rem;
+}
+
+.modalDate {
+  font-family: 'Courier New', monospace;
+  font-size: 0.9rem;
+  color: rgba(200, 50, 50, 0.8);
+  font-weight: 300;
+  letter-spacing: 0.05em;
+  margin: 0;
+}
+
+.modalDescription {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.05rem;
+  color: rgba(255, 255, 255, 0.85);
+  line-height: 1.7;
+  font-weight: 300;
+  letter-spacing: 0.02em;
+  margin: 0;
+}
+
+.connections {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-left: 3px solid rgba(200, 50, 50, 0.6);
+  border-radius: 8px;
+  padding: 1.5rem;
+}
+
+.connections h4 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.7);
+  font-weight: 300;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 0.8rem;
+}
+
+.connections ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.connections li {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.8);
+  font-weight: 300;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.connections li:last-child {
+  border-bottom: none;
+}
+
+/* ======================
+   RESPONSIVE DESIGN
+   ====================== */
+
+@media (max-width: 1024px) {
+  .detectiveBoard {
+    height: 750px;
+  }
+
+  .modalLayout {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .modalImage img {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .wherePage {
+    padding: 4vh 1rem 8vh;
+  }
+
+  .backNavigation {
+    position: static;
+    margin-bottom: 2rem;
+  }
+
+  .hero {
+    padding-top: 4vh;
+    margin-bottom: 4rem;
+  }
+
+  .boardContainer {
+    padding: 2rem 1rem;
+  }
+
+  .detectiveBoard {
+    height: 600px;
+  }
+
+  .evidenceCard.portrait {
+    width: 140px;
+  }
+
+  .evidenceCard.landscape {
+    width: 187px; /* Maintains 4:3 ratio with same height */
+  }
+
+  .hoverInfo {
+    width: 200px;
+  }
+
+  .contextGrid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .artistStatement {
+    padding: 2rem;
+  }
+
+  .modalLayout {
+    padding: 2rem;
+  }
+}

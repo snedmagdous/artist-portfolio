@@ -1,2 +1,0 @@
-# Force all netlify.app traffic to custom domain
-https://mayamurry.netlify.app/* https://mayamurry.com/:splat 301!

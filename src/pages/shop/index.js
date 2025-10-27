@@ -31,76 +31,15 @@ const ShopPage = () => {
             <span className={styles.indicatorDot}></span>
             <span className={styles.indicatorText}>Shop</span>
           </div>
-          <h1 className={styles.shopTitle}>Commission & Shop</h1>
+          <h1 className={styles.shopTitle}>Shop Originals & Prints</h1>
           <p className={styles.shopSubtitle}>
-            Support my art practice through commissions and original works
+            Support my art practice with original works, prints, and merchandise
           </p>
-        </div>
 
-        {/* Commission Section */}
-        <div className={styles.commissionsSection}>
-          <div className={styles.sectionHeader}>
-            <h2 className={styles.sectionTitle}>Commission Custom Work</h2>
-            <p className={styles.sectionDescription}>
-              Let's collaborate on bringing your vision to life through art, murals, or film
-            </p>
-          </div>
-
-          <div className={styles.commissionGrid}>
-            {/* Mural Commission Card */}
-            <Link to="/shop/commissions/mural" className={styles.commissionCard}>
-              <div className={styles.cardIcon}>
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-                  <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
-                  <circle cx="9" cy="9" r="2"/>
-                  <path d="M21 15L16 10L5 21"/>
-                </svg>
-              </div>
-              <h3 className={styles.cardTitle}>Mural Commission</h3>
-              <p className={styles.cardDescription}>
-                Have a wall you'd like painted? Transform your space with a custom mural
-              </p>
-              <div className={styles.cardButton}>
-                Request Mural
-                <span className={styles.arrow}>→</span>
-              </div>
-            </Link>
-
-            {/* Film Commission Card */}
-            <Link to="/shop/commissions/film" className={styles.commissionCard}>
-              <div className={styles.cardIcon}>
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-                  <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
-                  <path d="M8 21L16 21"/>
-                  <path d="M12 17L12 21"/>
-                </svg>
-              </div>
-              <h3 className={styles.cardTitle}>Film Services</h3>
-              <p className={styles.cardDescription}>
-                Have an event you'd like filmed? Let's capture your story together
-              </p>
-              <div className={styles.cardButton}>
-                Request Services
-                <span className={styles.arrow}>→</span>
-              </div>
-            </Link>
-
-            {/* Custom Art Commission Card */}
-            <Link to="/shop/commissions/custom-art" className={styles.commissionCard}>
-              <div className={styles.cardIcon}>
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-                  <circle cx="12" cy="12" r="3"/>
-                  <path d="M12 2v4M12 18v4M22 12h-4M6 12H2M19.07 4.93l-2.83 2.83M7.76 16.24l-2.83 2.83M19.07 19.07l-2.83-2.83M7.76 7.76L4.93 4.93"/>
-                </svg>
-              </div>
-              <h3 className={styles.cardTitle}>Custom Artwork</h3>
-              <p className={styles.cardDescription}>
-                Commission a custom painting, illustration, or mixed media piece
-              </p>
-              <div className={styles.cardButton}>
-                Request Commission
-                <span className={styles.arrow}>→</span>
-              </div>
+          {/* Link to Commission Page */}
+          <div className={styles.commissionLink}>
+            <Link to="/commission" className={styles.commissionButton}>
+              Looking for custom work? Visit Commission Page →
             </Link>
           </div>
         </div>

@@ -697,7 +697,7 @@ const ResumePage = () => {
           <div className={styles.contactGrid}>
             <div className={styles.contactItem}>
               <div className={styles.contactIcon}>📧</div>
-              <span>mmm443@cornell.edu</span>
+              <span>hello@mayamurry.com</span>
             </div>
             <a
               href="https://linkedin.com/in/mayamurry"

@@ -884,3 +884,201 @@
     padding: 1.8rem 1.2rem;
   }
 }
+
+/* ======================
+   CONTACT FORM SECTION
+   ====================== */
+
+.contactSection {
+  max-width: 800px;
+  margin: 6rem auto;
+  text-align: center;
+}
+
+.contactTitle {
+  font-family: 'Poppins', sans-serif;
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 100;
+  color: white;
+  margin-bottom: 1rem;
+  line-height: 1.2;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-shadow: 0 0 30px rgba(255, 255, 255, 0.3);
+}
+
+.contactSubtitle {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.7);
+  font-weight: 300;
+  max-width: 600px;
+  margin: 0 auto 3rem;
+  line-height: 1.6;
+  letter-spacing: 0.02em;
+}
+
+.contactPageButton {
+  display: inline-block;
+  padding: 1.2rem 3rem;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50px;
+  color: white;
+  text-decoration: none;
+  font-family: 'Poppins', sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+  margin-top: 1rem;
+}
+
+.contactPageButton:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.5);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.contactForm {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  text-align: left;
+  background: rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  padding: 3rem;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.formGroup label {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.8);
+  font-weight: 300;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.formGroup input,
+.formGroup textarea {
+  padding: 1.2rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 1rem;
+  font-weight: 300;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  color: white;
+  transition: all 0.3s ease;
+  letter-spacing: 0.02em;
+  min-height: 48px;
+}
+
+.formGroup input::placeholder,
+.formGroup textarea::placeholder {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.formGroup input:focus,
+.formGroup textarea:focus {
+  outline: none;
+  border-color: rgba(255, 255, 255, 0.4);
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+}
+
+.formGroup textarea {
+  resize: vertical;
+  min-height: 150px;
+}
+
+.contactSubmitBtn {
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50px;
+  padding: 1.2rem 3rem;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.9rem;
+  color: white;
+  font-weight: 300;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s ease;
+  margin: 2rem auto 0;
+  max-width: 250px;
+  min-height: 48px;
+}
+
+.contactSubmitBtn:hover {
+  border-color: rgba(255, 255, 255, 0.6);
+  background: rgba(255, 255, 255, 0.15);
+  transform: translateY(-3px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+}
+
+.submitText {
+  position: relative;
+  z-index: 2;
+}
+
+@media (max-width: 768px) {
+  .contactSection {
+    margin: 4rem auto;
+  }
+
+  .contactForm {
+    padding: 2rem 1.5rem;
+  }
+
+  .formGroup input,
+  .formGroup textarea {
+    font-size: 16px;
+    padding: 1rem;
+  }
+
+  .contactSubmitBtn {
+    width: 100%;
+    max-width: 300px;
+    padding: 1.3rem 2.5rem;
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .contactSection {
+    margin: 3rem auto;
+  }
+
+  .contactForm {
+    padding: 1.5rem 1.2rem;
+    gap: 1rem;
+  }
+
+  .formGroup input,
+  .formGroup textarea {
+    font-size: 16px;
+    padding: 0.9rem;
+  }
+
+  .contactSubmitBtn {
+    width: 100%;
+    max-width: 280px;
+    padding: 1.4rem 2rem;
+    font-size: 1rem;
+  }
+}

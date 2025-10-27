@@ -8,6 +8,7 @@ import * as styles from "./divine-feminine.module.css"
 const DivineFemininePage = () => {
   const [language, setLanguage] = useState('EN')
   const [hoveredPortrait, setHoveredPortrait] = useState(null)
+  const [hoveredImage, setHoveredImage] = useState(null)
   const [selectedPortrait, setSelectedPortrait] = useState(null)
   const videoRef = useRef(null);
   
@@ -230,7 +231,7 @@ to bring me a star, so it would become bright as home.`,
             <div className={styles.timelineLine}></div>
             
             {portraits.map((portrait, index) => (
-              <div 
+              <div
                 key={portrait.id}
                 className={`${styles.timelineStep} ${index % 2 === 0 ? styles.stepLeft : styles.stepRight}`}
                 onMouseEnter={() => setHoveredPortrait(portrait.id)}
@@ -242,8 +243,28 @@ to bring me a star, so it would become bright as home.`,
                 <div className={styles.stepMarker}>
                   <span className={styles.stepNumber}>{index + 1}</span>
                 </div>
-                
-                <div 
+
+                {/* Portrait Image on Opposite Side */}
+                <div
+                  className={styles.portraitImageContainer}
+                  onClick={() => openPortraitModal(portrait)}
+                  onMouseEnter={() => setHoveredImage(portrait.id)}
+                  onMouseLeave={() => setHoveredImage(null)}
+                >
+                  <img
+                    src={portrait.image}
+                    alt={portrait.name}
+                    className={styles.portraitImage}
+                  />
+                  {hoveredImage === portrait.id && (
+                    <div className={styles.imageNameOverlay}>
+                      <span className={styles.imageName}>{portrait.name}</span>
+                    </div>
+                  )}
+                  <div className={styles.imageGlowEffect}></div>
+                </div>
+
+                <div
                   className={styles.stepCard}
                   onClick={() => openPortraitModal(portrait)}
                 >
@@ -251,12 +272,12 @@ to bring me a star, so it would become bright as home.`,
                   <h3 className={styles.stepTitle}>{portrait.name}</h3>
                   <h4 className={styles.stepSubtitle}>{portrait.title}</h4>
                   <p className={styles.stepDescription}>{portrait.description}</p>
-                  
+
                   <div className={styles.portraitMeta}>
                     <span className={styles.metaTag}>Relationship: {portrait.relationship}</span>
                     <span className={styles.metaTag}>Qualities: {portrait.qualities}</span>
                   </div>
-                  
+
                   {hoveredPortrait === portrait.id && (
                     <div className={styles.stepDetails}>
                       <p>{portrait.story}</p>

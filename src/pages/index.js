@@ -6,14 +6,14 @@ import "./index.css"
 import Layout from "../components/Layout";
 
 export default function Home() {
+  const [language, setLanguage] = useState('EN');
   const videoRef = useRef(null);
   const portfolioSectionRef = useRef(null);
   const carouselRef = useRef(null);
 
   // Section refs for scroll snapping
   const heroSectionRef = useRef(null);
-  const definitionSectionRef = useRef(null);
-  const contactSectionRef = useRef(null);
+  const mailingListSectionRef = useRef(null);
 
   // Section tracking for navigation (non-intrusive)
   const [currentSection, setCurrentSection] = useState(0);
@@ -22,6 +22,10 @@ export default function Home() {
   const [isDragging, setIsDragging] = useState(false);
   const [startX, setStartX] = useState(0);
   const [scrollLeft, setScrollLeft] = useState(0);
+
+  // Mailing list state
+  const [email, setEmail] = useState('');
+  const [subscribeSuccess, setSubscribeSuccess] = useState(false);
 
   // Video background setup
   useEffect(() => {
@@ -59,9 +63,8 @@ export default function Home() {
     const handleScroll = () => {
       const sections = [
         heroSectionRef.current,
-        definitionSectionRef.current,
         portfolioSectionRef.current,
-        contactSectionRef.current
+        mailingListSectionRef.current
       ];
 
       // Update current section based on natural scroll position (for button states)
@@ -157,13 +160,7 @@ export default function Home() {
     });
   }
 
-  const scrollToDefinition = () => {
-    document.querySelector('.definition-section').scrollIntoView({
-      behavior: 'smooth'
-    });
-  }
-
-  const scrollToContact = () => {
+  const scrollToMailingList = () => {
     document.getElementById('contact-section').scrollIntoView({
       behavior: 'smooth'
     });
@@ -456,7 +453,7 @@ export default function Home() {
 
   /* Homescreen */
   return (
-    <Layout>
+    <Layout language={language} setLanguage={setLanguage}>
     <div className="home-Container">
       {/* Video Background - Separate from content */}
       <div className="video-background">
@@ -472,7 +469,7 @@ export default function Home() {
             filter: 'brightness(0.55) contrast(1.1) saturate(1.9)'
           }}
         >
-          <source src="https://pub-3f206994e69e42408f7908b2177b9ed9.r2.dev/IMG_3893.MP4" type="video/mp4" />
+          <source src="https://pub-3f206994e69e42408f7908b2177b9ed9.r2.dev/about-1.mp4" type="video/mp4" />
         </video>
       </div>
 
@@ -483,9 +480,12 @@ export default function Home() {
         {/* Hero content */}
         <main className="hero-content">
           <div className="hero-text">
-            <h1 className="main-title clickable-title" onClick={scrollToDefinition}>INDIGENOUS FUTURISM</h1>
-            <p className="arabic-text clickable-title" onClick={scrollToDefinition}>المستقبلية الأصيلة</p>
-            
+            <h1 className="main-title">
+              MĀYĀ MURRY<br /><span className="studio-text">STUDIO</span>
+            </h1>
+            <p className="arabic-text">استوديو مايا مرعي</p>
+            <p className="artist-bio">Interdisciplinary Artist • Filmmaker • Writer • Programmer</p>
+
             <div className="cta-buttons">
               <button onClick={scrollToPortfolio} className="cta-button secondary">
                 Portfolio
@@ -493,63 +493,17 @@ export default function Home() {
               <Link to="/about" className="cta-button white">
                 About
               </Link>
-              <button
-                onClick={scrollToContact}
-                className="cta-button secondary"
-              >
+              <Link to="/contact" className="cta-button secondary">
                 Contact
-              </button>
+              </Link>
             </div>
+
+            <Link to="/shop" className="shop-button">
+              <span className="shop-button-text">SHOP</span>
+              <div className="shop-button-gloss"></div>
+            </Link>
           </div>
         </main>
-      </section>
-
-      {/* Indigenous Futurism Definition Section */}
-      <section className="definition-section" ref={definitionSectionRef}>
-        <div className="definition-container">
-          <div className="definition-header">
-            <div className="section-indicator">
-              <span className="indicator-dot"></span>
-              <span className="indicator-text">Philosophy</span>
-            </div>
-            <h2 className="definition-title">
-              <a
-                href="https://lithub.com/writing-toward-a-definition-of-indigenous-futurism/"
-                target="_blank"
-                rel="noopener noreferrer"
-                title="Learn more about Indigenous Futurism"
-              >
-                Indigenous Futurism
-              </a>
-            </h2>
-          </div>
-
-          <div className="definition-content" title="Learn more about Indigenous Futurism">
-            <p className="definition-text">
-              Originally introduced to me through science-fiction, Indigenous Futurism (المستقبلية الأصيلة) is a 
-              movement that centers Indigenous ways of being as the architecture for tomorrow. It is a daily practice of 
-              carving out time to reimagine what freedom should look like. Through art and writing, we open real, tangible 
-              routes that guide us toward this future—creating small spaces each day for worlds that 
-              should and will exist.
-            </p>
-            <p className="definition-text">
-              Each day, we must dream of building worlds where we lose the identities we built around our wounds, 
-              worlds where liberation becomes a state of being, not just imagining. In my creative work, I explore
-              how this daily reimagining transforms resistance into regeneration, turning our visions into 
-              inevitable realities that must be reckoned with.
-            </p>
-            <p className="definition-text">
-              As Walidah Imarisha puts it, “whenever we try to envision a world without war, without violence, 
-              without prisons, without capitalism, we are engaging in speculative fiction. All organizing is 
-              science fiction.”
-
-            </p>
-            <div className="definition-quote">
-              <p className="main-title" style={{ textTransform: 'none', fontStyle: 'normal' }}>"We are not vanishing. We are becoming."</p>
-              <p className="arabic-text" style={{ fontSize: '1.7rem', direction: 'rtl', fontStyle: 'normal' }}>"نحنا ننولد من جديد ولا نختفي في الأفق"</p>
-            </div>
-          </div>
-        </div>
       </section>
 
       {/* Portfolio Section */}
@@ -651,59 +605,88 @@ export default function Home() {
                   <div className="portfolio-slide-glow"></div>
                 </Link>
               ))}
+              {/* Third set for extra smooth looping */}
+              {portfolioItems.map((item, index) => (
+                <Link
+                  key={`third-${item.id}`}
+                  to={item.link}
+                  className="portfolio-slide"
+                  style={{ '--slide-index': index + (portfolioItems.length * 2) }}
+                >
+                  <div className="portfolio-slide-content">
+                    <div className="portfolio-icon">
+                      {item.icon}
+                    </div>
+                    <h3 className="portfolio-slide-title">{item.title}</h3>
+                    <p className="portfolio-slide-description">{item.description}</p>
+                  </div>
+                  <div className="portfolio-slide-glow"></div>
+                </Link>
+              ))}
             </div>
           </div>
         </div>
       </section>
 
-      {/* Contact Section */} 
-      <section id="contact-section" className="contact-section" ref={contactSectionRef}>
-        <div className="contact-container">
-          <div className="contact-header">
+      {/* Mailing List Section */}
+      <section id="contact-section" className="mailing-list-section" ref={mailingListSectionRef}>
+        <div className="mailing-list-container">
+          <div className="mailing-list-header">
             <div className="section-indicator">
               <span className="indicator-dot"></span>
-              <span className="indicator-text">Get In Touch</span>
+              <span className="indicator-text">Stay Connected</span>
             </div>
-            <h2 className="contact-title">Contact Māyā</h2>
-            <p className="contact-subtitle">
-              Have a project in mind or want to collaborate? Let's connect.
+            <h2 className="mailing-list-title">Join the Mailing List</h2>
+            <p className="mailing-list-subtitle">
+              Be the first to know about new artwork, exhibitions, film screenings, and creative projects
             </p>
           </div>
 
-          <form
-            className="contact-form"
-            name="contact"
-            method="POST"
-            data-netlify="true"
-            action="/success"
-            netlify-honeypot="bot-field"
-          >
-            <input type="hidden" name="form-name" value="contact" />
-            <div className="form-group" style={{ display: 'none' }}>
-              <label htmlFor="bot-field">Don't fill this out if you're human:</label>
-              <input name="bot-field" />
+          {!subscribeSuccess ? (
+            <form
+              className="mailing-list-form"
+              name="homepage-newsletter"
+              method="POST"
+              data-netlify="true"
+              netlify-honeypot="bot-field"
+              onSubmit={(e) => {
+                e.preventDefault()
+                const form = e.target
+                fetch("/", {
+                  method: "POST",
+                  headers: { "Content-Type": "application/x-www-form-urlencoded" },
+                  body: new URLSearchParams(new FormData(form)).toString()
+                })
+                  .then(() => {
+                    setSubscribeSuccess(true)
+                    setEmail('')
+                  })
+                  .catch((error) => console.error(error))
+              }}
+            >
+              <input type="hidden" name="form-name" value="homepage-newsletter" />
+              <div style={{ display: 'none' }}>
+                <label htmlFor="bot-field">Don't fill this out if you're human:</label>
+                <input name="bot-field" />
+              </div>
+              <input
+                type="email"
+                name="email"
+                placeholder="Enter your email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+                className="mailing-list-input"
+              />
+              <button type="submit" className="mailing-list-button">
+                Subscribe
+              </button>
+            </form>
+          ) : (
+            <div className="success-message">
+              ✓ Thank you for subscribing! You'll hear from me soon.
             </div>
-            <div className="form-group">
-              <label htmlFor="name">Name</label>
-              <input type="text" id="name" name="name" required />
-            </div>
-            <div className="form-group">
-              <label htmlFor="email">Email</label>
-              <input type="email" id="email" name="email" required />
-            </div>
-            <div className="form-group">
-              <label htmlFor="subject">Subject</label>
-              <input type="text" id="subject" name="subject" />
-            </div>
-            <div className="form-group">
-              <label htmlFor="message">Message</label>
-              <textarea id="message" name="message" rows="5" required></textarea>
-            </div>
-            <button type="submit" className="contact-submit-btn">
-              <span className="submit-text">Send Message</span>
-              <div className="submit-glow"></div>
-            </button>
-          </form>
+          )}
         </div>
       </section>
       </div>

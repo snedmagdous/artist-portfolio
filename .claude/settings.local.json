@@ -19,7 +19,13 @@
       "Bash(findstr:*)",
       "Bash(dir:*)",
       "Bash(y)",
-      "Bash(git checkout:*)"
+      "Bash(git checkout:*)",
+      "Bash(timeout 30 bash:*)",
+      "Bash(netstat:*)",
+      "Bash(git push:*)",
+      "Bash(ipconfig:*)",
+      "Bash(gatsby develop:*)",
+      "Bash(npm install:*)"
     ],
     "deny": []
   }

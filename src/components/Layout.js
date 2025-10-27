@@ -20,6 +20,7 @@ const Layout = ({
   const [isBackgroundPaused, setIsBackgroundPaused] = useState(false);
   const [showPauseText, setShowPauseText] = useState(false);
   const [isHovering, setIsHovering] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   // Initialize pause state from localStorage on component mount
   useEffect(() => {
@@ -155,10 +156,12 @@ const Layout = ({
   };
 
   const handleLogoClick = (e) => {
+    e.preventDefault();
     if (typeof window !== "undefined") {
       if (window.location.pathname === "/") {
-        e.preventDefault();
         window.location.reload();
+      } else {
+        navigate("/");
       }
     }
   };
@@ -204,6 +207,17 @@ const Layout = ({
       setTimeout(() => window.scrollTo(0, 0), 200);
       setTimeout(() => window.scrollTo(0, 0), 500);
     }
+  };
+
+  // Mobile menu toggle
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
+  };
+
+  // Close mobile menu when clicking a nav link
+  const handleMobileNavClick = (targetPath) => (e) => {
+    setIsMobileMenuOpen(false);
+    handleNavClick(targetPath)(e);
   };
 
   return (
@@ -273,28 +287,26 @@ const Layout = ({
         )}
 
         {/* Header */}
-        <header 
+        <header
           ref={headerRef}
-          className="header" 
+          className="header"
           style={{
             position: 'static',
             zIndex: 1000,
             background: hasVideoBackground ? 'rgba(0, 0, 0, 0.05)' : 'transparent',
-            padding: '1rem 0',
-            display: 'flex',
-            justifyContent: 'space-between',
-            alignItems: 'center'
+            padding: '1.5rem 2rem'
           }}>
           {/* Logo section */}
-          <button 
-            className="logo-section" 
+          <Link
+            to="/"
+            className="logo-section"
             onClick={handleLogoClick}
-            onKeyDown={(e) => e.key === 'Enter' && handleLogoClick(e)}
-            style={{ 
+            style={{
               cursor: 'pointer',
               background: 'none',
               border: 'none',
               padding: 0,
+              textDecoration: 'none',
               color: hasVideoBackground ? 'white' : 'inherit',
               textShadow: hasVideoBackground ? '0 2px 4px rgba(0,0,0,0.5)' : 'none'
             }}
@@ -314,14 +326,15 @@ const Layout = ({
               <div className="name-line">MĀYĀ</div>
               <div className="name-line">MURRY</div>
             </div>
-          </button>
+          </Link>
 
-          <nav className="main-nav" style={{
+          {/* Desktop Navigation */}
+          <nav className="main-nav desktop-nav" style={{
             color: hasVideoBackground ? 'white' : 'inherit',
             textShadow: hasVideoBackground ? '0 2px 4px rgba(0,0,0,0.5)' : 'none'
           }}>
-            <Link 
-              to="/" 
+            <Link
+              to="/"
               className="nav-link"
               activeClassName="active"
               onClick={handleNavClick("/")}
@@ -331,39 +344,19 @@ const Layout = ({
               Home
             </Link>
 
-            <Link 
-              to="/art" 
-              className="nav-link" 
+            <Link
+              to="/portfolio"
+              className="nav-link"
               activeClassName="active"
-              onClick={handleNavClick("/art")}
+              onClick={handleNavClick("/portfolio")}
               style={{ position: 'relative', overflow: 'hidden' }}
             >
-              <span className="nav-dot"></span> Art
+              <span className="nav-dot"></span> Portfolio
             </Link>
 
-            <Link 
-              to="/film" 
-              className="nav-link" 
-              activeClassName="active"
-              onClick={handleNavClick("/film")}
-              style={{ position: 'relative', overflow: 'hidden' }}
-            >
-              <span className="nav-dot"></span> Film
-            </Link>
-
-            <Link 
-              to="/writing" 
-              className="nav-link" 
-              activeClassName="active"
-              onClick={handleNavClick("/writing")}
-              style={{ position: 'relative', overflow: 'hidden' }}
-            >
-              <span className="nav-dot"></span> Writing
-            </Link>
-
-            <Link 
-              to="/resume" 
-              className="nav-link" 
+            <Link
+              to="/resume"
+              className="nav-link"
               activeClassName="active"
               onClick={handleNavClick("/resume")}
               style={{ position: 'relative', overflow: 'hidden' }}
@@ -371,9 +364,9 @@ const Layout = ({
               <span className="nav-dot"></span> Resume
             </Link>
 
-            <Link 
-              to="/about" 
-              className="nav-link" 
+            <Link
+              to="/about"
+              className="nav-link"
               activeClassName="active"
               onClick={handleNavClick("/about")}
               style={{ position: 'relative', overflow: 'hidden' }}
@@ -381,9 +374,29 @@ const Layout = ({
               <span className="nav-dot"></span> About
             </Link>
 
-            <Link 
-              to="/shop" 
-              className="nav-link" 
+            <Link
+              to="/contact"
+              className="nav-link"
+              activeClassName="active"
+              onClick={handleNavClick("/contact")}
+              style={{ position: 'relative', overflow: 'hidden' }}
+            >
+              <span className="nav-dot"></span> Contact
+            </Link>
+
+            <Link
+              to="/commission"
+              className="nav-link"
+              activeClassName="active"
+              onClick={handleNavClick("/commission")}
+              style={{ position: 'relative', overflow: 'hidden' }}
+            >
+              <span className="nav-dot"></span> Commission
+            </Link>
+
+            <Link
+              to="/shop"
+              className="nav-link"
               activeClassName="active"
               onClick={handleNavClick("/shop")}
               style={{ position: 'relative', overflow: 'hidden' }}
@@ -391,6 +404,49 @@ const Layout = ({
               <span className="nav-dot"></span> Shop
             </Link>
           </nav>
+
+          {/* Mobile Menu Button */}
+          <button
+            className="mobile-menu-button"
+            onClick={toggleMobileMenu}
+            aria-label="Toggle menu"
+            style={{
+              background: 'rgba(255, 255, 255, 0.1)',
+              border: '1px solid rgba(255, 255, 255, 0.2)',
+              borderRadius: '8px',
+              padding: '0.5rem',
+              cursor: 'pointer',
+              display: 'none',
+              alignItems: 'center',
+              justifyContent: 'center',
+              width: '40px',
+              height: '40px',
+              backdropFilter: 'blur(10px)'
+            }}
+          >
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="white"
+              strokeWidth="2"
+              strokeLinecap="round"
+            >
+              {isMobileMenuOpen ? (
+                <>
+                  <line x1="18" y1="6" x2="6" y2="18" />
+                  <line x1="6" y1="6" x2="18" y2="18" />
+                </>
+              ) : (
+                <>
+                  <line x1="3" y1="12" x2="21" y2="12" />
+                  <line x1="3" y1="6" x2="21" y2="6" />
+                  <line x1="3" y1="18" x2="21" y2="18" />
+                </>
+              )}
+            </svg>
+          </button>
 
           <div className="header-controls" style={{
             display: 'flex',
@@ -402,73 +458,145 @@ const Layout = ({
               onClick={handleGlobalBackgroundPause}
               title=""
               style={{
-                background: 'white',
-                border: '2px solid white',
-                color: 'black',
-                borderRadius: '20px',
-                padding: '0.5rem 1rem',
+                background: 'rgba(255, 255, 255, 0.15)',
+                border: '1px solid rgba(255, 255, 255, 0.3)',
+                color: 'white',
+                borderRadius: '50%',
+                padding: '0.6rem',
                 fontSize: '0.9rem',
                 cursor: 'pointer',
-                transition: 'all 0.8s cubic-bezier(0.4, 0, 0.2, 1)',
+                transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
                 backdropFilter: 'blur(10px)',
+                WebkitBackdropFilter: 'blur(10px)',
                 fontFamily: 'Poppins, sans-serif',
                 fontWeight: '300',
                 letterSpacing: '0.05em',
-                minWidth: isHovering ? '180px' : '40px',
-                width: isHovering ? '180px' : '40px',
+                minWidth: '40px',
+                width: '40px',
+                height: '40px',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
                 whiteSpace: 'nowrap',
                 overflow: 'hidden'
               }}
               onMouseEnter={(e) => {
                 setIsHovering(true);
-                // Delay text appearance to allow width animation to start
-                setTimeout(() => {
-                  if (e.target.parentElement) { // Check if still hovering
-                    setShowPauseText(true);
-                  }
-                }, 200);
-                e.target.style.background = 'rgba(255, 255, 255, 0.9)';
-                e.target.style.transform = 'translateY(-1px)';
-                e.target.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.2)';
+                e.target.style.background = 'rgba(255, 255, 255, 0.25)';
+                e.target.style.transform = 'translateY(-2px)';
+                e.target.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.3)';
               }}
               onMouseLeave={(e) => {
                 setIsHovering(false);
                 setShowPauseText(false);
-                e.target.style.background = 'white';
+                e.target.style.background = 'rgba(255, 255, 255, 0.15)';
                 e.target.style.transform = 'translateY(0)';
                 e.target.style.boxShadow = 'none';
               }}
             >
-              {showPauseText
-                ? `${isBackgroundPaused ? 'Play' : 'Pause'} All Backgrounds`
-                : (isBackgroundPaused ? '▶' : '⏸')
-              }
+              {isBackgroundPaused ? (
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <polygon points="5 3 19 12 5 21 5 3" />
+                </svg>
+              ) : (
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <rect x="6" y="4" width="4" height="16" />
+                  <rect x="14" y="4" width="4" height="16" />
+                </svg>
+              )}
             </button>
 
-            <div className="language-toggle" style={{
-              color: hasVideoBackground ? 'white' : 'inherit',
-              textShadow: hasVideoBackground ? '0 2px 4px rgba(0,0,0,0.5)' : 'none'
-            }}>
-              <button
-                className={`lang-button ${language === 'EN' ? 'active' : ''}`}
-                onClick={() => setLanguage('EN')}
-                aria-label="Switch to English"
-                aria-pressed={language === 'EN'}
-              >
-                EN
-              </button>
-              <span className="lang-separator">/</span>
-              <button
-                className={`lang-button ${language === 'AR' ? 'active' : ''}`}
-                onClick={() => setLanguage('AR')}
-                aria-label="Switch to Arabic"
-                aria-pressed={language === 'AR'}
-              >
-                AR
-              </button>
-            </div>
+            {setLanguage && (
+              <div className="language-toggle" style={{
+                color: hasVideoBackground ? 'white' : 'inherit',
+                textShadow: hasVideoBackground ? '0 2px 4px rgba(0,0,0,0.5)' : 'none'
+              }}>
+                <button
+                  className={`lang-button ${language === 'EN' ? 'active' : ''}`}
+                  onClick={() => setLanguage('EN')}
+                  aria-label="Switch to English"
+                  aria-pressed={language === 'EN'}
+                >
+                  EN
+                </button>
+                <span className="lang-separator">/</span>
+                <button
+                  className={`lang-button ${language === 'AR' ? 'active' : ''}`}
+                  onClick={() => setLanguage('AR')}
+                  aria-label="Switch to Arabic"
+                  aria-pressed={language === 'AR'}
+                >
+                  AR
+                </button>
+              </div>
+            )}
           </div>
         </header>
+
+        {/* Mobile Menu Overlay */}
+        {isMobileMenuOpen && (
+          <>
+            <div className="mobile-menu-backdrop" onClick={toggleMobileMenu} />
+            <nav className="mobile-menu-nav">
+              <Link
+                to="/"
+                className="mobile-nav-link"
+                onClick={handleMobileNavClick("/")}
+              >
+                <span className="nav-dot" />
+                Home
+              </Link>
+
+              <Link
+                to="/portfolio"
+                className="mobile-nav-link"
+                onClick={handleMobileNavClick("/portfolio")}
+              >
+                <span className="nav-dot"></span> Portfolio
+              </Link>
+
+              <Link
+                to="/resume"
+                className="mobile-nav-link"
+                onClick={handleMobileNavClick("/resume")}
+              >
+                <span className="nav-dot"></span> Resume
+              </Link>
+
+              <Link
+                to="/about"
+                className="mobile-nav-link"
+                onClick={handleMobileNavClick("/about")}
+              >
+                <span className="nav-dot"></span> About
+              </Link>
+
+              <Link
+                to="/contact"
+                className="mobile-nav-link"
+                onClick={handleMobileNavClick("/contact")}
+              >
+                <span className="nav-dot"></span> Contact
+              </Link>
+
+              <Link
+                to="/commission"
+                className="mobile-nav-link"
+                onClick={handleMobileNavClick("/commission")}
+              >
+                <span className="nav-dot"></span> Commission
+              </Link>
+
+              <Link
+                to="/shop"
+                className="mobile-nav-link"
+                onClick={handleMobileNavClick("/shop")}
+              >
+                <span className="nav-dot"></span> Shop
+              </Link>
+            </nav>
+          </>
+        )}
 
         {/* Page-specific content */}
         <main className="main-content" style={{
@@ -512,8 +640,9 @@ const Layout = ({
                 <h3>Quick Links</h3>
                 <a href="/" onClick={handleFooterHomeClick}>Home</a>
                 <Link to="/about" onClick={handleFooterPageClick("/about")}>About</Link>
+                <Link to="/commission" onClick={handleFooterPageClick("/commission")}>Commission</Link>
                 <Link to="/shop" onClick={handleFooterPageClick("/shop")}>Shop</Link>
-                <a href="#contact" onClick={handleFooterContactClick}>Contact</a>
+                <Link to="/contact" onClick={handleFooterPageClick("/contact")}>Contact</Link>
               </div>
             <div className="links-column">
               <h3>Portfolio</h3>
@@ -524,7 +653,7 @@ const Layout = ({
               </div>
               <div className="links-column">
                 <h3>Contact</h3>
-                <a href="mailto:mmm443@cornell.edu">mmm443@cornell.edu</a>
+                <a href="mailto:hello@mayamurry.com">hello@mayamurry.com</a>
               </div>
             </div>
           </div>

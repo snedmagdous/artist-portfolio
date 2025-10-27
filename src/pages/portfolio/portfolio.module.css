@@ -1,0 +1,694 @@
+/* Portfolio Hub Page Styles */
+
+.portfolioPage {
+  min-height: 100vh;
+  padding: 2rem 0 8rem;
+  position: relative;
+  z-index: 1;
+}
+
+/* Back Navigation */
+.backNavigation {
+  margin-bottom: 2rem;
+  position: fixed;
+  top: 8rem;
+  left: 2rem;
+  z-index: 100;
+}
+
+.backLink {
+  display: inline-flex;
+  align-items: center;
+  color: rgba(255, 255, 255, 0.7);
+  text-decoration: none;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 300;
+  padding: 1rem 1.5rem;
+  transition: all 0.3s ease;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  background: rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 25px;
+}
+
+.backLink:hover {
+  color: white;
+  transform: translateX(-5px);
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.backLink::before {
+  content: '';
+  width: 20px;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.7);
+  margin-right: 1rem;
+  transition: all 0.3s ease;
+}
+
+.backLink:hover::before {
+  width: 30px;
+  background: white;
+}
+
+/* Portfolio Hero */
+.portfolioHero {
+  text-align: center;
+  margin-bottom: 6rem;
+  padding: 0 2rem;
+}
+
+.sectionIndicator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.indicatorDot {
+  width: 8px;
+  height: 8px;
+  background: rgba(255, 255, 255, 0.6);
+  border-radius: 50%;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+.indicatorText {
+  color: rgba(255, 255, 255, 0.8);
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 300;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.portfolioTitle {
+  font-family: 'Poppins', sans-serif;
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  font-weight: 100;
+  color: white;
+  margin-bottom: 1.5rem;
+  line-height: 1.2;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-shadow: 0 0 30px rgba(255, 255, 255, 0.3);
+  opacity: 0;
+  animation: titleGlow 2s ease-out forwards;
+}
+
+@keyframes titleGlow {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.portfolioSubtitle {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.7);
+  font-weight: 300;
+  max-width: 700px;
+  margin: 0 auto;
+  line-height: 1.6;
+  letter-spacing: 0.02em;
+  opacity: 0;
+  animation: titleGlow 2s ease-out 0.3s forwards;
+}
+
+/* Categories Grid */
+.categoriesGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 3rem;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.categoryCard {
+  position: relative;
+  text-decoration: none;
+  color: white;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  overflow: hidden;
+  transition: all 0.4s ease;
+  cursor: pointer;
+  min-height: 225px;
+  display: flex;
+  flex-direction: column;
+}
+
+.categoryCard:hover {
+  transform: translateY(-10px);
+  border-color: rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+.categoryCardInner {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  flex: 1;
+  position: relative;
+  z-index: 2;
+}
+
+.categoryIcon {
+  width: 40px;
+  height: 40px;
+  stroke: rgba(255, 255, 255, 0.7);
+  transition: all 0.4s ease;
+}
+
+.categoryCard:hover .categoryIcon {
+  stroke: white;
+  transform: scale(1.1);
+  filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.5));
+}
+
+.categoryIcon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.categoryTitle {
+  font-family: 'Poppins', sans-serif;
+  font-size: 2rem;
+  font-weight: 200;
+  color: white;
+  margin: 0;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+}
+
+.categoryCard:hover .categoryTitle {
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.4);
+}
+
+.categoryDescription {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.7);
+  font-weight: 300;
+  line-height: 1.7;
+  letter-spacing: 0.02em;
+  margin: 0;
+}
+
+.categoryStats {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.6);
+  font-weight: 300;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding: 0.5rem 1rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 20px;
+  display: inline-block;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.subcategoriesList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  margin-top: auto;
+}
+
+.subcategoryTag {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.7);
+  font-weight: 300;
+  padding: 0.4rem 0.9rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 15px;
+  letter-spacing: 0.05em;
+  transition: all 0.3s ease;
+}
+
+.categoryCard:hover .subcategoryTag {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.25);
+}
+
+.categoryArrow {
+  width: 30px;
+  height: 30px;
+  stroke: rgba(255, 255, 255, 0.6);
+  transition: all 0.3s ease;
+  margin-top: 1rem;
+}
+
+.categoryCard:hover .categoryArrow {
+  stroke: white;
+  transform: translateX(10px);
+}
+
+.categoryArrow svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* Category Glow Effect */
+.categoryGlow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at center, rgba(255, 255, 255, 0.1), transparent 70%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.categoryCard:hover .categoryGlow {
+  opacity: 1;
+}
+
+/* Featured Quote */
+.featuredQuote {
+  max-width: 900px;
+  margin: 6rem auto 0;
+  padding: 3rem;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+}
+
+.quoteText {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.2rem;
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 300;
+  font-style: italic;
+  line-height: 1.8;
+  letter-spacing: 0.02em;
+  margin: 0 0 1.5rem;
+}
+
+.quoteAuthor {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.6);
+  font-weight: 300;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .backNavigation {
+    top: 6rem;
+    left: 1rem;
+  }
+
+  .categoriesGrid {
+    grid-template-columns: 1fr;
+    max-width: 600px;
+    gap: 2.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .portfolioPage {
+    padding: 1.5rem 0 6rem;
+  }
+
+  .portfolioHero {
+    margin-bottom: 4rem;
+  }
+
+  .categoriesGrid {
+    padding: 0 1.5rem;
+    gap: 2rem;
+  }
+
+  .categoryCard {
+    min-height: 400px;
+  }
+
+  .categoryCardInner {
+    padding: 2.5rem;
+  }
+
+  .featuredQuote {
+    margin: 4rem auto 0;
+    padding: 2.5rem 2rem;
+  }
+
+  .quoteText {
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .portfolioPage {
+    padding: 1rem 0 5rem;
+  }
+
+  .portfolioHero {
+    margin-bottom: 3rem;
+  }
+
+  .categoriesGrid {
+    padding: 0 1rem;
+    gap: 1.5rem;
+  }
+
+  .categoryCard {
+    min-height: 380px;
+  }
+
+  .categoryCardInner {
+    padding: 2rem;
+    gap: 1.2rem;
+  }
+
+  .categoryIcon {
+    width: 50px;
+    height: 50px;
+  }
+
+  .categoryTitle {
+    font-size: 1.6rem;
+  }
+
+  .categoryDescription {
+    font-size: 0.95rem;
+  }
+
+  .featuredQuote {
+    margin: 3rem auto 0;
+    padding: 2rem 1.5rem;
+  }
+
+  .quoteText {
+    font-size: 1rem;
+    line-height: 1.7;
+  }
+}
+
+/* Vertical Gallery Section */
+.verticalGallerySection {
+  margin: 8rem 0 10rem 0;
+  padding: 0 2rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.galleryHeader {
+  text-align: center;
+  margin-bottom: 5rem;
+}
+
+.galleryTitle {
+  font-family: 'Poppins', sans-serif;
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  font-weight: 100;
+  color: white;
+  margin-bottom: 1rem;
+  line-height: 1.2;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-shadow: 0 0 30px rgba(255, 255, 255, 0.3);
+}
+
+/* Gallery Grid - 2 columns, centered, half width with fade effects */
+.verticalGalleryGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  position: relative;
+  max-width: 700px;
+  margin: 0 auto;
+  max-height: 1200px;
+  overflow: hidden;
+  padding: 3rem 2.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 25px;
+  background: rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-mask-image: linear-gradient(to bottom,
+    transparent 0%,
+    black 10%,
+    black 90%,
+    transparent 100%);
+  mask-image: linear-gradient(to bottom,
+    transparent 0%,
+    black 10%,
+    black 90%,
+    transparent 100%);
+}
+
+/* Scroll indicators */
+.verticalGalleryGrid::before,
+.verticalGalleryGrid::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40px;
+  height: 40px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  z-index: 10;
+  pointer-events: none;
+  animation: scrollPulse 2s ease-in-out infinite;
+}
+
+.verticalGalleryGrid::before {
+  top: 1rem;
+  border-top-color: transparent;
+  border-left-color: transparent;
+  transform: translateX(-50%) rotate(45deg);
+}
+
+.verticalGalleryGrid::after {
+  bottom: 1rem;
+  border-bottom-color: transparent;
+  border-right-color: transparent;
+  transform: translateX(-50%) rotate(45deg);
+}
+
+@keyframes scrollPulse {
+  0%, 100% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+
+.galleryColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  animation: scrollDown 60s linear infinite;
+}
+
+/* Stagger animation for each column */
+.column1 {
+  animation-delay: 0s;
+}
+
+.column2 {
+  animation-delay: -20s;
+}
+
+.column3 {
+  animation-delay: -40s;
+}
+
+@keyframes scrollDown {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-50%);
+  }
+}
+
+/* Pause animation on hover */
+.verticalGalleryGrid:hover .galleryColumn {
+  animation-play-state: paused;
+}
+
+/* Gallery Item */
+.galleryItem {
+  position: relative;
+  display: block;
+  border-radius: 15px;
+  overflow: hidden;
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.4s ease;
+  cursor: pointer;
+  aspect-ratio: 3/4;
+  opacity: 0.75;
+  filter: brightness(1.1);
+}
+
+/* Different card sizes */
+.galleryItem.small {
+  aspect-ratio: 3/4;
+  min-height: 250px;
+}
+
+.galleryItem.medium {
+  aspect-ratio: 3/4;
+  min-height: 350px;
+}
+
+.galleryItem.large {
+  aspect-ratio: 3/4;
+  min-height: 450px;
+}
+
+.galleryItem.landscape {
+  aspect-ratio: 16/9;
+  min-height: 200px;
+}
+
+.galleryItem:hover,
+.galleryItem:active {
+  transform: translateY(-10px) scale(1.02);
+  border-color: rgba(255, 255, 255, 0.3);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5),
+              0 0 40px rgba(255, 255, 255, 0.1);
+  opacity: 1;
+  filter: brightness(1.3);
+}
+
+.galleryItemImage,
+.galleryItemVideo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: all 0.4s ease;
+  display: block;
+  border-radius: inherit;
+}
+
+.galleryItemVideo {
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.galleryItem:hover .galleryItemImage {
+  transform: scale(1.05);
+}
+
+.galleryItem:hover .galleryItemVideo {
+  transform: scale(1);
+}
+
+/* Gallery Item Overlay */
+.galleryItemOverlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 2rem;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent);
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.4s ease;
+}
+
+.galleryItem:hover .galleryItemOverlay {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.galleryItemTitle {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.2rem;
+  font-weight: 300;
+  color: white;
+  margin: 0 0 0.5rem 0;
+  letter-spacing: 0.05em;
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+}
+
+.galleryItemYear {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.7);
+  font-weight: 300;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+/* Responsive Design for Gallery */
+@media (max-width: 768px) {
+  .verticalGallerySection {
+    margin: 3rem 0 6rem 0;
+    padding: 0 1.5rem;
+  }
+
+  .verticalGalleryGrid {
+    max-width: 500px;
+    gap: 1.2rem;
+  }
+
+  .galleryItemOverlay {
+    padding: 1.5rem;
+  }
+
+  .galleryItemTitle {
+    font-size: 1rem;
+  }
+
+  .galleryItemYear {
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .verticalGallerySection {
+    margin: 2rem 0 5rem 0;
+    padding: 0 1rem;
+  }
+
+  .verticalGalleryGrid {
+    grid-template-columns: 1fr;
+    max-width: 350px;
+    gap: 1rem;
+  }
+
+  .column2 {
+    display: none;
+  }
+
+  .galleryColumn {
+    animation: scrollDown 20s linear infinite;
+  }
+
+  .galleryItem {
+    aspect-ratio: 4/5;
+  }
+}

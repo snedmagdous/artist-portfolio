@@ -61,11 +61,14 @@ const IllustrationsPage = () => {
           <path d="M12 9V3M12 21v-6M9 12H3M21 12h-6" strokeWidth="1" opacity="0.7"/>
         </svg>
       ),
-      'language-maps': (
+      'where-do-you-go': (
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-          <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" strokeWidth="1.5"/>
-          <circle cx="12" cy="10" r="3" strokeWidth="1.5"/>
-          <path d="M3 3l18 18M21 3L3 21" strokeWidth="0.8" opacity="0.4"/>
+          <circle cx="12" cy="12" r="9" strokeWidth="1.5" opacity="0.3" strokeDasharray="2,2"/>
+          <path d="M12 3v2M12 19v2M3 12h2M19 12h2" strokeWidth="1.5" opacity="0.5"/>
+          <circle cx="12" cy="12" r="3" strokeWidth="1.5"/>
+          <path d="M8 8l-3-3M16 8l3-3M8 16l-3 3M16 16l3 3" strokeWidth="1" opacity="0.4"/>
+          <line x1="9" y1="12" x2="15" y2="12" strokeWidth="0.5" opacity="0.6"/>
+          <line x1="12" y1="9" x2="12" y2="15" strokeWidth="0.5" opacity="0.6"/>
         </svg>
       ),
       'constellation-code': (
@@ -95,7 +98,8 @@ const IllustrationsPage = () => {
       videoSrc: 'https://pub-3f206994e69e42408f7908b2177b9ed9.r2.dev/divine-fem.MP4',
       videoBrightness: 0.6,
       videoSaturation: 1.2,
-      videoContrast: 1.1
+      videoContrast: 1.1,
+      previewImage: '/images/portraits/michelle.jpeg'
     },
     {
       id: 'blueprint-rebellion',
@@ -109,18 +113,22 @@ const IllustrationsPage = () => {
       videoSrc: 'https://pub-3f206994e69e42408f7908b2177b9ed9.r2.dev/library.MP4',
       videoBrightness: 0.6,
       videoSaturation: 1.1,
-      videoContrast: 1.3
+      videoContrast: 1.3,
+      previewImage: '/images/illustration/blueprint/intimate.jpeg'
     },
     {
       id: 'where-do-you-go',
       title: 'Where do you go when there\'s nowhere left to go?',
-      description: 'Infographic illustrations mapping the evolution and preservation of indigenous languages in digital spaces and future technologies.',
+      description: 'A dark illustration series mapping depersonalization and chronic pain through interconnected fragments of dissociation.',
       pieceCount: 8,
-      year: '2024',
-      medium: 'Vector & Typography',
-      type: 'Information Design',
-      status: 'In Progress',
-      videoSrc: 'https://pub-3f206994e69e42408f7908b2177b9ed9.r2.dev/my-queens.MP4'
+      year: '2023-2024',
+      medium: 'Dark Illustration',
+      type: 'Investigation Series',
+      status: 'Complete',
+      videoSrc: 'https://pub-3f206994e69e42408f7908b2177b9ed9.r2.dev/my-queens.MP4',
+      videoBrightness: 0.4,
+      videoSaturation: 0.8,
+      videoContrast: 1.3
     },
     {
       id: 'constellation-code',
@@ -183,7 +191,18 @@ const IllustrationsPage = () => {
                   <div className={styles.timelineYear}>{project.year}</div>
                 </div>
 
-                {index < 2 ? (
+                {/* Preview Image on Opposite Side */}
+                {project.previewImage && (
+                  <div className={`${styles.previewImageContainer} ${hoveredProject === project.id ? styles.previewVisible : ''}`}>
+                    <img
+                      src={project.previewImage}
+                      alt={`${project.title} preview`}
+                      className={styles.previewImage}
+                    />
+                  </div>
+                )}
+
+                {index < 3 ? (
                   <Link
                     to={`/art/illustrations/${project.id}`}
                     className={styles.timelineCard}

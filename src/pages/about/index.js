@@ -17,6 +17,19 @@ const AboutPage = () => {
     }
   }, []);
 
+  // Handle scroll to contact section from URL hash
+  useEffect(() => {
+    if (typeof window !== 'undefined' && window.location.hash === '#contact') {
+      // Small delay to ensure page is fully loaded
+      setTimeout(() => {
+        const contactSection = document.getElementById('contact');
+        if (contactSection) {
+          contactSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }, 100);
+    }
+  }, []);
+
   // Auto-cycle through different aspects of Maya
   useEffect(() => {
     const interval = setInterval(() => {
@@ -135,7 +148,7 @@ const AboutPage = () => {
         
         {/* Hero Section */}
         <div className={styles.aboutHero}>
-          <h1 className={styles.aboutTitle}>About MĀYĀ Murry</h1>
+          <h1 className={styles.aboutTitle}>About MĀYĀ</h1>
           
           {/* Floating Identity Aspects */}
           <div className={styles.identityAspects}>
@@ -202,32 +215,83 @@ const AboutPage = () => {
           </div>
         </div>
 
-        {/* Philosophy Section */}
+        {/* Indigenous Futurism Philosophy Section */}
+        <div className={styles.philosophySection}>
+          <div className={styles.philosophyCard}>
+            <h3 className={styles.philosophyTitle}>
+              <a
+                href="https://lithub.com/writing-toward-a-definition-of-indigenous-futurism/"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{ color: 'inherit', textDecoration: 'none' }}
+              >
+                Indigenous Futurism
+              </a>
+            </h3>
+            <blockquote className={styles.philosophyQuote}>
+              Originally introduced to me through science-fiction, Indigenous Futurism (المستقبلية الأصيلة) is a
+              movement that centers Indigenous ways of being as the architecture for tomorrow. It is a daily practice of
+              carving out time to reimagine what freedom should look like. Through art and writing, we open real, tangible
+              routes that guide us toward this future—creating small spaces each day for worlds that
+              should and will exist.
+              <br/><br/>
+              Each day, we must dream of building worlds where we lose the identities we built around our wounds,
+              worlds where liberation becomes a state of being, not just imagining. In my creative work, I explore
+              how this daily reimagining transforms resistance into regeneration, turning our visions into
+              inevitable realities that must be reckoned with.
+              <br/><br/>
+              As Walidah Imarisha puts it, "whenever we try to envision a world without war, without violence,
+              without prisons, without capitalism, we are engaging in speculative fiction. All organizing is
+              science fiction."
+            </blockquote>
+            <div style={{ marginTop: '2rem', textAlign: 'center' }}>
+              <p className={styles.philosophyQuote} style={{ fontSize: '1.4rem', fontStyle: 'normal' }}>
+                "We are not vanishing. We are becoming."
+              </p>
+              <p className={styles.philosophyQuote} style={{ fontSize: '1.3rem', direction: 'rtl', fontStyle: 'normal' }}>
+                "نحنا ننولد من جديد ولا نختفي في الأفق"
+              </p>
+            </div>
+          </div>
+        </div>
+
+        {/* Digital Ancestralism Philosophy Section */}
         <div className={styles.philosophySection}>
           <div className={styles.philosophyCard}>
             <h3 className={styles.philosophyTitle}>Digital Ancestralism</h3>
             <blockquote className={styles.philosophyQuote}>
-              "Technology isn't neutral—it carries the values of its creators. 
-              I choose to build systems that remember where they came from and 
-              know where they're going. Every algorithm is an ancestor, every dataset a story, 
+              "Technology isn't neutral—it carries the values of its creators.
+              I choose to build systems that remember where they came from and
+              know where they're going. Every algorithm is an ancestor, every dataset a story,
               every application an act of cultural preservation or destruction."
             </blockquote>
             <cite className={styles.philosophyCite}>— Māyā, 2025</cite>
           </div>
         </div>
 
+        {/* Contact CTA Section */}
+        <div id="contact" className={styles.contactSection}>
+          <h3 className={styles.contactTitle}>Get in Touch</h3>
+          <p className={styles.contactSubtitle}>
+            Have a project in mind or want to collaborate? Let's connect.
+          </p>
+          <Link to="/contact" className={styles.contactPageButton}>
+            Go to Contact Page
+          </Link>
+        </div>
+
         {/* Contact Links */}
         <div className={styles.connectSection}>
           <h3 className={styles.connectTitle}>Connect Across Dimensions</h3>
           <div className={styles.connectGrid}>
-            <a href="mailto:mmm443@cornell.edu" className={styles.connectLink}>
+            <a href="mailto:hello@mayamurry.com" className={styles.connectLink}>
               <svg viewBox="0 0 24 24" fill="none" className={styles.connectIcon}>
                 <path d="M4 4H20C21.1 4 22 4.9 22 6V18C22 19.1 21.1 20 20 20H4C2.9 20 2 19.1 2 18V6C2 4.9 2.9 4 4 4Z" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round"/>
                 <path d="L22 6L12 13L2 6" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round"/>
               </svg>
-              <span>mmm443@cornell.edu</span>
+              <span>hello@mayamurry.com</span>
             </a>
-            
+
             <a href="https://www.linkedin.com/in/maya-murry/" target="_blank" rel="noopener noreferrer" className={styles.connectLink}>
               <svg viewBox="0 0 24 24" fill="none" className={styles.connectIcon}>
                 <path d="M16 8A6 6 0 0 1 22 14V21H18V14A2 2 0 0 0 14 14V21H10V9H14V11.5A4 4 0 0 1 16 8Z" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round"/>
@@ -236,7 +300,7 @@ const AboutPage = () => {
               </svg>
               <span>LinkedIn Profile</span>
             </a>
-            
+
             <a href="https://github.com/snedmagdous" target="_blank" rel="noopener noreferrer" className={styles.connectLink}>
               <svg viewBox="0 0 24 24" fill="none" className={styles.connectIcon}>
                 <path d="M9 19C4 20.5 4 16.5 2 16M22 16V22C22 22.5304 21.7893 23.0391 21.4142 23.4142C21.0391 23.7893 20.5304 24 20 24H16" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round"/>
