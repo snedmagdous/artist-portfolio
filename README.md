@@ -230,7 +230,7 @@ Original: https://github.com/snedmagdous/artist-portfolio | mayamurry.com
 
 - **Website**: [mayamurry.com](https://mayamurry.com)
 - **LinkedIn**: [linkedin.com/in/maya-murry](https://linkedin.com/in/maya-murry)
-- **Email**: [mmm443@cornell.edu](mailto:hello@mayamurry.com)
+- **Email**: [hello@mayamurry.com](mailto:hello@mayamurry.com)
 - **GitHub**: [@snedmagdous](https://github.com/snedmagdous)
 
 ---
