@@ -1,12 +1,10 @@
 # Maya Murry - Artist Portfolio Website
 
 [![Live Site](https://img.shields.io/badge/Live%20Site-mayamurry.com-brightgreen)](https://mayamurry.com)
-[![Built with Gatsby](https://img.shields.io/badge/Built%20with-Gatsby-663399)](https://www.gatsbyjs.com/)
-[![React](https://img.shields.io/badge/React-18-blue)](https://reactjs.org/)
-![Gatsby](https://img.shields.io/badge/Gatsby-663399?style=for-the-badge&logo=gatsby&logoColor=white)
-![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
-![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
-![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
+[![Gatsby](https://img.shields.io/badge/Gatsby-663399?logo=gatsby&logoColor=white)](https://www.gatsbyjs.com/)
+[![React](https://img.shields.io/badge/React-18-61DAFB?logo=react&logoColor=white)](https://reactjs.org/)
+[![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=black)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+[![CSS3](https://img.shields.io/badge/CSS3-1572B6?logo=css3&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/CSS)
 
 A multidimensional portfolio showcasing the intersection of technology, art, and social justice. This website presents documentary filmmaking, large-scale murals, AI research, and poetry through an experimental digital experience.
 
@@ -22,12 +20,12 @@ A multidimensional portfolio showcasing the intersection of technology, art, and
 
 ## 🌟 About This Project
 
-This portfolio website explores themes of **Indigenous Futurism**, **Palestinian liberation**, and **intersectional creativity** through:
+This portfolio website displays my interndiscinplinary work:
 
 - **Documentary Films**: Community-centered stories of resistance and resilience
-- **Mural Art**: Large-scale public installations connecting diaspora identity with universal liberation themes
+- **Mural Art**: Large-scale public installations connecting diaspora identity with liberation themes
 - **Technical Projects**: AI research in healthcare, computational genomics, and social justice applications
-- **Poetry & Writing**: Published works exploring ancestral memory and decolonial futures
+- **Poetry & Writing**: Published works exploring ancestral memory 
 
 ---
 
@@ -91,7 +89,7 @@ This portfolio website explores themes of **Indigenous Futurism**, **Palestinian
 
 ## 📊 Impact & Metrics
 
-- **Live Since**: [Add your launch date]
+- **Live Since**: September 2025
 - **Tech Stack**: Gatsby + React + CSS Modules + Cloudflare R2
 - **Performance**: 95+ Lighthouse score across all categories
 - **Accessibility**: WCAG 2.1 AA compliant
@@ -232,7 +230,7 @@ Original: https://github.com/snedmagdous/artist-portfolio | mayamurry.com
 
 - **Website**: [mayamurry.com](https://mayamurry.com)
 - **LinkedIn**: [linkedin.com/in/maya-murry](https://linkedin.com/in/maya-murry)
-- **Email**: [mmm443@cornell.edu](mailto:mmm443@cornell.edu)
+- **Email**: [mmm443@cornell.edu](mailto:hello@mayamurry.com)
 - **GitHub**: [@snedmagdous](https://github.com/snedmagdous)
 
 ---
