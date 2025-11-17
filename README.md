@@ -256,6 +256,6 @@ Built with intention, care, and the understanding that every line of code is a p
 ## 📚 Additional Resources
 
 For more detailed technical documentation:
-- `docs/ARCHITECTURE.md` - Deep dive into system architecture *(coming soon)*
-- `docs/DESIGN_DECISIONS.md` - Rationale behind key technical choices *(coming soon)*
-- `docs/PERFORMANCE.md` - Performance optimization strategies *(coming soon)*
+- `docs/ARCHITECTURE.md` - Deep dive into system architecture
+- `docs/DESIGN_DECISIONS.md` - Rationale behind key technical choices
+- `docs/PERFORMANCE.md` - Performance optimization strategies
