@@ -14,8 +14,8 @@ A multidimensional portfolio showcasing the intersection of technology, art, and
 
 ## 🎨 Preview
 
-> **📸 Homepage hero section with video background
-<!-- ![Homepage Preview](images\screenshots\homepage.png) -->
+![Homepage Preview](static/images/screenshots/homepage.png)
+
 ---
 
 ## 🌟 About This Project
