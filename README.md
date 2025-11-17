@@ -16,21 +16,8 @@ A multidimensional portfolio showcasing the intersection of technology, art, and
 
 ## 🎨 Preview
 
-> **📸 ADD SCREENSHOT HERE**: Homepage hero section with video background
-<!-- ![Homepage Preview](docs/screenshots/homepage.png) -->
-
-> **📸 ADD SCREENSHOT HERE**: Interactive resume timeline with particle effects
-<!-- ![Resume Timeline](docs/screenshots/resume-timeline.gif) -->
-
-> **📸 ADD SCREENSHOT HERE**: Documentary film gallery section
-<!-- ![Film Gallery](docs/screenshots/film-section.png) -->
-
-> **📸 ADD SCREENSHOT HERE**: Mural portfolio grid
-<!-- ![Mural Gallery](docs/screenshots/mural-section.png) -->
-
-> **📸 ADD SCREENSHOT HERE**: Mobile responsive design (use 300px width)
-<!-- <img src="docs/screenshots/mobile-view.png" width="300"> -->
-
+> **📸 Homepage hero section with video background
+<!-- ![Homepage Preview](images\screenshots\homepage.png) -->
 ---
 
 ## 🌟 About This Project
