@@ -25,7 +25,11 @@
       "Bash(git push:*)",
       "Bash(ipconfig:*)",
       "Bash(gatsby develop:*)",
-      "Bash(npm install:*)"
+      "Bash(npm install:*)",
+      "Bash(timeout 10 bash:*)",
+      "Bash(git pull:*)",
+      "Bash(tree:*)",
+      "WebFetch(domain:github.com)"
     ],
     "deny": []
   }

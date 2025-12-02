@@ -402,20 +402,24 @@ const ResumePage = () => {
             A multidimensional navigation through parallel worlds of code and creativity
           </p>
 
-          {/* Technical Portfolio Button */}
+          {/* Portfolio Buttons */}
           <div className={styles.portfolioButtonContainer}>
-            <button 
+            <Link
+              to="/portfolio"
               className={styles.portfolioButton}
-              type="button"
-              aria-label="Scroll to technical portfolio section"
-              onClick={() => {
-                const portfolioSection = document.querySelector(`.${styles.portfolioSection}`);
-                portfolioSection?.scrollIntoView({ behavior: 'smooth' });
-              }}
+              aria-label="View art portfolio"
             >
-              <span className={styles.portfolioButtonText}>TECHNICAL PORTFOLIO</span>
+              <span className={styles.portfolioButtonText}>ART PORTFOLIO</span>
               <div className={styles.portfolioButtonGlow} />
-            </button>
+            </Link>
+            <Link
+              to="/tech-portfolio"
+              className={styles.portfolioButton}
+              aria-label="View technical portfolio"
+            >
+              <span className={styles.portfolioButtonText}>TECH PORTFOLIO</span>
+              <div className={styles.portfolioButtonGlow} />
+            </Link>
           </div>
           
           {/* Mode Toggle */}
@@ -571,13 +575,14 @@ const ResumePage = () => {
                 <span className={styles.downloadText}>Technical Resume</span>
                 <div className={styles.downloadGlow} />
               </a>
-              <button
-                className={`${styles.downloadBtn} ${styles.comingSoonBtn}`}
-                disabled
+              <a
+                href="/maya-murry-creative-cv-2025.pdf"
+                download="Maya-Murry-Creative-CV.pdf"
+                className={styles.downloadBtn}
               >
-                <span className={styles.downloadText}>Creative Resume (Coming Soon)</span>
+                <span className={styles.downloadText}>Creative CV</span>
                 <div className={styles.downloadGlow} />
-              </button>
+              </a>
             </div>
           </div>
         </div>
@@ -592,68 +597,38 @@ const ResumePage = () => {
           </div>
 
           <div className={styles.portfolioGrid}>
-            <Link to="/portfolio/healthcare-ai" className={styles.portfolioCard}>
+            <a
+              href="https://github.com/snedmagdous/artist-portfolio"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.portfolioCard}
+            >
               <div className={styles.portfolioIcon}>
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                  <path d="M19 14C20.49 12.54 22 10.79 22 8.5C22 5.42 19.58 3 16.5 3C14.76 3 13.26 3.94 12.62 5.36C12.26 5.94 11.74 5.94 11.38 5.36C10.74 3.94 9.24 3 7.5 3C4.42 3 2 5.42 2 8.5C2 10.79 3.51 12.54 5 14L12 21L19 14Z" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round"/>
-                  <path d="M12 6V12" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round"/>
-                  <path d="M9 9H15" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round"/>
+                  <path d="M12 2L13.09 8.26L20 9L13.09 9.74L12 16L10.91 9.74L4 9L10.91 8.26L12 2Z" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round"/>
+                  <path d="M5 3V7" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round"/>
+                  <path d="M19 17V21" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round"/>
+                  <path d="M3 5H7" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round"/>
+                  <path d="M17 19H21" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round"/>
                 </svg>
               </div>
-              <h4 className={styles.portfolioCardTitle}>Healthcare AI</h4>
+              <h4 className={styles.portfolioCardTitle}>Artist Portfolio</h4>
               <p className={styles.portfolioCardDescription}>
-                Deep learning for pain detection, sleep analysis, and medical data processing
+                Full-stack artist portfolio built with Gatsby/React showcasing documentary film, murals, and technical projects | Live at mayamurry.com
               </p>
               <div className={styles.portfolioTechStack}>
-                <span>Python</span>
-                <span>TensorFlow</span>
                 <span>React</span>
-                <span>ECG Analysis</span>
+                <span>Gatsby</span>
+                <span>Full-Stack</span>
               </div>
-            </Link>
+            </a>
 
-            <Link to="/portfolio/research-computing" className={styles.portfolioCard}>
-              <div className={styles.portfolioIcon}>
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                  <path d="M9 11H15" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round"/>
-                  <path d="M9 15H12" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round"/>
-                  <path d="M16 3H18C18.5304 3 19.0391 3.21071 19.4142 3.58579C19.7893 3.96086 20 4.46957 20 5V19C20 19.5304 19.7893 20.0391 19.4142 20.4142C19.0391 20.7893 18.5304 21 18 21H6C5.46957 21 4.96086 20.7893 4.58579 20.4142C4.21071 20.0391 4 19.5304 4 19V5C4 4.46957 4.21071 3.96086 4.58579 3.58579C4.96086 3.21071 5.46957 3 6 3H8" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round"/>
-                  <rect x="8" y="1" width="8" height="4" rx="1" ry="1" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round"/>
-                  <circle cx="12" cy="11" r="2" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
-              </div>
-              <h4 className={styles.portfolioCardTitle}>Research Computing</h4>
-              <p className={styles.portfolioCardDescription}>
-                Computational genomics, NLP analysis, and epigenetic research algorithms
-              </p>
-              <div className={styles.portfolioTechStack}>
-                <span>Python</span>
-                <span>R</span>
-                <span>NLP</span>
-                <span>Genomics</span>
-              </div>
-            </Link>
-
-            <Link to="/portfolio/cybersecurity" className={styles.portfolioCard}>
-              <div className={styles.portfolioIcon}>
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                  <path d="M12 22S8 18 8 13V7L12 5L16 7V13C16 18 12 22 12 22Z" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round"/>
-                  <path d="M10 11L12 13L15 10" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
-              </div>
-              <h4 className={styles.portfolioCardTitle}>Security & Privacy</h4>
-              <p className={styles.portfolioCardDescription}>
-                Adversarial ML, data poisoning, and privacy-preserving algorithms
-              </p>
-              <div className={styles.portfolioTechStack}>
-                <span>Python</span>
-                <span>Azure</span>
-                <span>Adversarial ML</span>
-                <span>RAG Systems</span>
-              </div>
-            </Link>
-
-            <Link to="/portfolio/full-stack" className={styles.portfolioCard}>
+            <a
+              href="https://github.com/snedmagdous/nyc-housing-violations-dashboard"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.portfolioCard}
+            >
               <div className={styles.portfolioIcon}>
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
                   <rect x="2" y="3" width="20" height="14" rx="2" ry="2" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round"/>
@@ -663,17 +638,113 @@ const ResumePage = () => {
                   <path d="M13 13H17" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round"/>
                 </svg>
               </div>
-              <h4 className={styles.portfolioCardTitle}>Full-Stack Applications</h4>
+              <h4 className={styles.portfolioCardTitle}>NYC Housing Violations Dashboard</h4>
               <p className={styles.portfolioCardDescription}>
-                Web applications, mobile development, and cloud deployment
+                Interactive dashboard analyzing NYC affordable housing violations to identify enforcement gaps and hold repeat offenders accountable
+              </p>
+              <div className={styles.portfolioTechStack}>
+                <span>Python</span>
+                <span>Data Analysis</span>
+                <span>Visualization</span>
+              </div>
+            </a>
+
+            <a
+              href="https://github.com/snedmagdous/dmr-detection-nhmm"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.portfolioCard}
+            >
+              <div className={styles.portfolioIcon}>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                  <path d="M9 11H15" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round"/>
+                  <path d="M9 15H12" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round"/>
+                  <path d="M16 3H18C18.5304 3 19.0391 3.21071 19.4142 3.58579C19.7893 3.96086 20 4.46957 20 5V19C20 19.5304 19.7893 20.0391 19.4142 20.4142C19.0391 20.7893 18.5304 21 18 21H6C5.46957 21 4.96086 20.7893 4.58579 20.4142C4.21071 20.0391 4 19.5304 4 19V5C4 4.46957 4.21071 3.96086 4.58579 3.58579C4.96086 3.21071 5.46957 3 6 3H8" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round"/>
+                  <rect x="8" y="1" width="8" height="4" rx="1" ry="1" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round"/>
+                  <circle cx="12" cy="11" r="2" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+              </div>
+              <h4 className={styles.portfolioCardTitle}>DMR Detection NHMM</h4>
+              <p className={styles.portfolioCardDescription}>
+                Hidden Markov Model pipeline for detecting differentially methylated regions in psychiatric epigenetics | Cornell CS 4775 research
+              </p>
+              <div className={styles.portfolioTechStack}>
+                <span>Python</span>
+                <span>HMM</span>
+                <span>Genomics</span>
+                <span>Research</span>
+              </div>
+            </a>
+
+            <a
+              href="https://github.com/snedmagdous/epigenomics-trauma-nlp"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.portfolioCard}
+            >
+              <div className={styles.portfolioIcon}>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                  <path d="M12 2L2 7L12 12L22 7L12 2Z" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round"/>
+                  <path d="M2 17L12 22L22 17" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round"/>
+                  <path d="M2 12L12 17L22 12" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+              </div>
+              <h4 className={styles.portfolioCardTitle}>Epigenomics Trauma NLP</h4>
+              <p className={styles.portfolioCardDescription}>
+                Automated NLP pipeline analyzing 100+ biomedical papers on trauma and epigenetics | Semantic term expansion, co-occurrence analysis, interactive visualizations
+              </p>
+              <div className={styles.portfolioTechStack}>
+                <span>Python</span>
+                <span>NLP</span>
+                <span>Epigenetics</span>
+              </div>
+            </a>
+
+            <div className={`${styles.portfolioCard} ${styles.comingSoonCard}`}>
+              <div className={styles.portfolioIcon}>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                  <path d="M19 14C20.49 12.54 22 10.79 22 8.5C22 5.42 19.58 3 16.5 3C14.76 3 13.26 3.94 12.62 5.36C12.26 5.94 11.74 5.94 11.38 5.36C10.74 3.94 9.24 3 7.5 3C4.42 3 2 5.42 2 8.5C2 10.79 3.51 12.54 5 14L12 21L19 14Z" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round"/>
+                  <path d="M12 6V12" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round"/>
+                  <path d="M9 9H15" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+              </div>
+              <h4 className={styles.portfolioCardTitle}>Healthcare AI Marketing Website</h4>
+              <p className={styles.portfolioCardDescription}>
+                Modern marketing website for healthcare AI startup | Video backgrounds, glassmorphism UI, performance-optimized | Built as Lead Developer
               </p>
               <div className={styles.portfolioTechStack}>
                 <span>React</span>
-                <span>Node.js</span>
-                <span>AWS</span>
-                <span>PostgreSQL</span>
+                <span>Video</span>
+                <span>UI/UX</span>
               </div>
-            </Link>
+              <div className={styles.comingSoonBadge}>Coming Soon</div>
+            </div>
+
+            <div className={`${styles.portfolioCard} ${styles.comingSoonCard}`}>
+              <div className={styles.portfolioIcon}>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                  <circle cx="12" cy="12" r="3" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round"/>
+                  <path d="M12 1V3" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round"/>
+                  <path d="M12 21V23" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round"/>
+                  <path d="M4.22 4.22L5.64 5.64" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round"/>
+                  <path d="M18.36 18.36L19.78 19.78" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round"/>
+                  <path d="M1 12H3" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round"/>
+                  <path d="M21 12H23" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round"/>
+                  <path d="M4.22 19.78L5.64 18.36" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round"/>
+                  <path d="M18.36 5.64L19.78 4.22" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+              </div>
+              <h4 className={styles.portfolioCardTitle}>Mindful Social Platform</h4>
+              <p className={styles.portfolioCardDescription}>
+                Social media management tool that curates content into a newsletter-style feed, reducing overstimulation from ads while connecting artists and creators with aligned interests worldwide
+              </p>
+              <div className={styles.portfolioTechStack}>
+                <span>Full-Stack</span>
+                <span>Social Media</span>
+                <span>Content Curation</span>
+              </div>
+              <div className={styles.comingSoonBadge}>Coming Soon</div>
+            </div>
           </div>
 
           <div className={styles.portfolioFooter}>

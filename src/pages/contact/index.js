@@ -12,7 +12,7 @@ const ContactPage = () => {
       language={language}
       setLanguage={setLanguage}
       hasVideoBackground={true}
-      videoSrc="https://pub-3f206994e69e42408f7908b2177b9ed9.r2.dev/about-1.mp4"
+      videoSrc="https://pub-3f206994e69e42408f7908b2177b9ed9.r2.dev/creative-writing.MP4"
       videoFilter="brightness(0.67) contrast(1.1) saturate(1.3)"
     >
       <section className={styles.contactPage}>

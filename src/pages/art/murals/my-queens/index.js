@@ -137,7 +137,7 @@ const MyQueensMuralPage = () => {
   }
 
   const mainMuralImage = {
-    src: '/images/murals/my-queens/mural.JPeG',
+    src: '/images/murals/my-queens/final.JPEG',
     title: 'In the Image of My Queens, I Stand',
     subtitle: '2025 • Southworks Factory, Ithaca, NY',
     description: 'A powerful representation of Indigenous Bedouin and Nubian women surrounded by ancestral geometric light, standing in fierce resistance on stolen land while connected to their traditional territories.',

@@ -282,8 +282,8 @@ const FilmPage = () => {
       <section className={styles.filmCategoriesPage}>
         {/* Back Navigation */}
         <div className={styles.backNavigation}>
-          <Link to="/" className={styles.backLink}>
-            Back to Homepage
+          <Link to="/portfolio" className={styles.backLink}>
+            Back to Portfolio
           </Link>
         </div>
 
@@ -382,7 +382,7 @@ const FilmPage = () => {
             <h4 className={styles.noteTitle}>Collaboration & Community</h4>
             <p>
               Every film project prioritizes community collaboration, ensuring that stories are told 
-              with consent, respect, and shared ownership. 
+              with consent, respect, and ownership. 
             </p>
           </div>
         </div>

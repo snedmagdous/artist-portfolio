@@ -139,11 +139,176 @@
   letter-spacing: 0.05em;
 }
 
+/* ======================
+   SELECTED WORKS SECTION
+   ====================== */
+
+.selectedWorksSection {
+  max-width: 1400px;
+  margin: 0 auto 8rem;
+  padding: 0 2rem;
+  position: relative;
+  z-index: 20;
+}
+
+.selectedWorksTitle {
+  font-family: 'Poppins', sans-serif;
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 200;
+  color: rgba(255, 255, 255, 0.9);
+  text-align: center;
+  margin-bottom: 4rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+}
+
+.selectedWorksGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+  gap: 3rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Poem Display Cards */
+.poemDisplayCard {
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 16px;
+  padding: 2.5rem;
+  min-height: 400px;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  position: relative;
+  overflow: hidden;
+}
+
+.poemDisplayCard::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg,
+    transparent,
+    rgba(255, 255, 255, 0.5),
+    transparent
+  );
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.poemDisplayCard:hover::before {
+  opacity: 1;
+}
+
+.poemDisplayCard:hover {
+  border-color: rgba(255, 255, 255, 0.4);
+  background: rgba(0, 0, 0, 0.5);
+  transform: translateY(-5px);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+.poemDisplayHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.poemDisplayTitle {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.8rem;
+  font-weight: 300;
+  color: white;
+  letter-spacing: 0.05em;
+  text-transform: lowercase;
+  margin: 0;
+}
+
+.playButton {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 0;
+}
+
+.playButton:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.6);
+  transform: scale(1.1);
+}
+
+.playButton:active {
+  transform: scale(0.95);
+}
+
+.playIcon {
+  width: 24px;
+  height: 24px;
+  color: white;
+}
+
+.poemDisplayContent {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.typingContainer {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.1rem;
+  line-height: 1.9;
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 300;
+  letter-spacing: 0.02em;
+}
+
+.typedLine {
+  margin-bottom: 0.5rem;
+  min-height: 1.9em;
+  animation: fadeIn 0.2s ease-in;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.poemPreview {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.5);
+  font-weight: 300;
+  font-style: italic;
+  text-align: center;
+  padding: 3rem 0;
+  letter-spacing: 0.02em;
+}
+
 /* Categories Container */
 .categoriesContainer {
   max-width: 4000px;
   width: 800px;
-  margin: 0 auto;
+  margin: 4rem auto 0;
   position: relative;
   z-index: 15;
 }
@@ -153,6 +318,11 @@
   grid-template-columns: repeat(2, 1fr);
   gap: 1px;
   background: rgba(255, 255, 255, 0.1);
+}
+
+.singleCategoryGrid {
+  display: flex;
+  justify-content: center;
 }
 
 /* Individual Category Cards */
@@ -1314,15 +1484,53 @@
    ====================== */
 
 @media (max-width: 768px) {
+  /* Selected Works Responsive */
+  .selectedWorksSection {
+    margin-bottom: 6rem;
+    padding: 0 1rem;
+  }
+
+  .selectedWorksTitle {
+    margin-bottom: 3rem;
+  }
+
+  .selectedWorksGrid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .poemDisplayCard {
+    padding: 2rem;
+    min-height: 350px;
+  }
+
+  .poemDisplayTitle {
+    font-size: 1.4rem;
+  }
+
+  .typingContainer {
+    font-size: 1rem;
+  }
+
+  .playButton {
+    width: 45px;
+    height: 45px;
+  }
+
+  .playIcon {
+    width: 20px;
+    height: 20px;
+  }
+
   .categoriesGrid {
     grid-template-columns: 1fr;
     gap: 1px;
   }
-  
+
   .categoryCard {
     height: 300px;
   }
-  
+
   .writingHeroSection {
     margin-bottom: 4rem;
   }
@@ -1361,7 +1569,35 @@
   .writingCategoriesPage {
     padding: 6vh 1rem 8vh;
   }
-  
+
+  /* Selected Works Smaller Screens */
+  .selectedWorksSection {
+    margin-bottom: 4rem;
+  }
+
+  .selectedWorksGrid {
+    gap: 1.5rem;
+  }
+
+  .poemDisplayCard {
+    padding: 1.5rem;
+    min-height: 300px;
+  }
+
+  .poemDisplayTitle {
+    font-size: 1.2rem;
+  }
+
+  .typingContainer {
+    font-size: 0.95rem;
+    line-height: 1.7;
+  }
+
+  .poemPreview {
+    font-size: 1rem;
+    padding: 2rem 0;
+  }
+
   .categoryCard {
     height: 250px;
   }

@@ -1,0 +1,382 @@
+/* Entrance Page Styles */
+
+.entrancePage {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 10000;
+  overflow: hidden;
+  transition: opacity 1.8s ease, transform 1.8s ease;
+}
+
+.entrancePage.animatingOut {
+  opacity: 0;
+  transform: scale(1.1);
+}
+
+/* Video Background */
+.videoBackground {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.backgroundVideo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  transform: translate(-50%, -50%);
+  object-fit: cover;
+  filter: brightness(0.55) contrast(1.6) saturate(1.9);
+  transition: filter 1.8s ease, transform 1.8s ease;
+}
+
+.animatingOut .backgroundVideo {
+  filter: brightness(0.7) contrast(1.4) saturate(1.5);
+  transform: translate(-50%, -50%) scale(1.05);
+}
+
+.videoOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at center, transparent 0%, rgba(0, 0, 0, 0.3) 100%);
+  pointer-events: none;
+}
+
+/* Social Links - Top Right */
+.socialLinks {
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+  display: flex;
+  gap: 1.5rem;
+  z-index: 10;
+  opacity: 0;
+  animation: fadeInDown 1s ease 0.5s forwards;
+}
+
+.socialIcon {
+  width: 32px;
+  height: 32px;
+  color: white;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.3));
+}
+
+.socialIcon svg {
+  width: 100%;
+  height: 100%;
+  fill: white;
+  transition: all 0.4s ease;
+}
+
+.socialIcon:hover {
+  transform: translateY(-3px) scale(1.1);
+  filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.8));
+}
+
+.socialIcon:hover svg {
+  fill: rgba(255, 255, 255, 1);
+}
+
+/* Center Content */
+.centerContent {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  z-index: 10;
+}
+
+.animatingOut .centerContent {
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(1.3);
+  transition: all 1.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Logo Animation */
+.logoContainer {
+  opacity: 0;
+  animation: fadeInScale 1.2s ease 0.2s forwards;
+}
+
+.animatedLogo {
+  filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.4));
+  animation: logoFloat 3s ease-in-out infinite;
+}
+
+.logoOuterCircle {
+  animation: pulseGlow 3s ease-in-out infinite;
+}
+
+.logoDiamond {
+  animation: rotateSlow 20s linear infinite;
+  transform-origin: center;
+}
+
+.logoInnerCircle {
+  animation: pulseScale 2s ease-in-out infinite alternate;
+}
+
+.logoFlowLeft,
+.logoFlowRight {
+  animation: flowPulse 2.5s ease-in-out infinite;
+}
+
+/* Studio Name */
+.studioName {
+  font-family: 'Poppins', sans-serif;
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 100;
+  color: white;
+  text-align: center;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  margin: 0;
+  opacity: 0;
+  animation: fadeInUp 1s ease 0.6s forwards;
+  text-shadow:
+    0 0 20px rgba(255, 255, 255, 0.5),
+    0 0 40px rgba(255, 255, 255, 0.3),
+    0 0 60px rgba(255, 255, 255, 0.2);
+  animation: fadeInUp 1s ease 0.6s forwards, textGlow 3s ease-in-out infinite;
+}
+
+.studioText {
+  display: block;
+  font-size: 0.4em;
+  letter-spacing: 0.3em;
+  margin-top: 0.5rem;
+  opacity: 0.9;
+}
+
+/* Enter Button */
+.enterButton {
+  position: relative;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  color: white;
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.2rem;
+  font-weight: 300;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  padding: 1.25rem 3.5rem;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  opacity: 0;
+  animation: fadeInUp 1s ease 1s forwards;
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.enterText {
+  position: relative;
+  z-index: 2;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+.buttonGlow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.3), transparent);
+  transform: translate(-50%, -50%);
+  transition: all 0.6s ease;
+  pointer-events: none;
+}
+
+.enterButton:hover {
+  transform: translateY(-5px);
+  border-color: rgba(255, 255, 255, 0.6);
+  background: rgba(255, 255, 255, 0.15);
+  box-shadow:
+    0 12px 40px rgba(0, 0, 0, 0.4),
+    0 0 40px rgba(255, 255, 255, 0.3),
+    inset 0 0 30px rgba(255, 255, 255, 0.1);
+}
+
+.enterButton:hover .buttonGlow {
+  width: 300%;
+  height: 300%;
+}
+
+.enterButton:active {
+  transform: translateY(-2px);
+}
+
+/* Animations */
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes textGlow {
+  0%, 100% {
+    text-shadow:
+      0 0 20px rgba(255, 255, 255, 0.5),
+      0 0 40px rgba(255, 255, 255, 0.3),
+      0 0 60px rgba(255, 255, 255, 0.2);
+  }
+  50% {
+    text-shadow:
+      0 0 30px rgba(255, 255, 255, 0.7),
+      0 0 60px rgba(255, 255, 255, 0.5),
+      0 0 90px rgba(255, 255, 255, 0.3);
+  }
+}
+
+@keyframes logoFloat {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    opacity: 0.8;
+    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.3));
+  }
+  50% {
+    opacity: 1;
+    filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.6));
+  }
+}
+
+@keyframes rotateSlow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes pulseScale {
+  from {
+    transform: scale(1);
+    opacity: 0.6;
+  }
+  to {
+    transform: scale(1.1);
+    opacity: 0.8;
+  }
+}
+
+@keyframes flowPulse {
+  0%, 100% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .socialLinks {
+    top: 1.5rem;
+    right: 1.5rem;
+    gap: 1rem;
+  }
+
+  .socialIcon {
+    width: 28px;
+    height: 28px;
+  }
+
+  .studioName {
+    font-size: clamp(1.8rem, 8vw, 3rem);
+    letter-spacing: 0.15em;
+  }
+
+  .enterButton {
+    font-size: 1rem;
+    padding: 1rem 2.5rem;
+    letter-spacing: 0.2em;
+  }
+
+  .logoContainer svg {
+    width: 90px;
+    height: 90px;
+  }
+}
+
+@media (max-width: 480px) {
+  .socialLinks {
+    top: 1rem;
+    right: 1rem;
+    gap: 0.8rem;
+  }
+
+  .socialIcon {
+    width: 24px;
+    height: 24px;
+  }
+
+  .studioName {
+    letter-spacing: 0.1em;
+  }
+
+  .enterButton {
+    font-size: 0.9rem;
+    padding: 0.9rem 2rem;
+  }
+
+  .logoContainer svg {
+    width: 75px;
+    height: 75px;
+  }
+}

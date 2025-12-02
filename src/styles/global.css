@@ -655,6 +655,11 @@ header * {
     margin-right: 0.5rem;
   }
 
+  /* Hide header social links on mobile */
+  .header-social-links {
+    display: none !important;
+  }
+
   /* Make pause button smaller on mobile */
   .global-pause-button {
     min-width: 36px !important;

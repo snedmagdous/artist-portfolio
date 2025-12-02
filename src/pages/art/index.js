@@ -128,7 +128,107 @@ const ArtPage = () => {
       document.removeEventListener('touchend', handleTouchEnd);
     };
   }, [currentSection, isScrolling]);
-  
+
+  // Featured Art Gallery - Curated selection of best pieces
+  const featuredArtworks = [
+    {
+      id: 'moon-daughter',
+      title: 'Moon Daughter',
+      year: '2024',
+      image: '/images/paintings/ancestral/moon-daughter.JPEG',
+      link: '/art/paintings',
+      category: 'Paintings'
+    },
+    {
+      id: 'my-queens-mural',
+      title: 'My Queens',
+      year: '2023',
+      image: '/images/murals/my-queens/final.JPEG',
+      link: '/art/murals',
+      category: 'Murals'
+    },
+    {
+      id: 'where-blue',
+      title: 'Blue',
+      year: '2024',
+      image: '/images/illustration/where/blue.JPEG',
+      link: '/art/illustrations',
+      category: 'Illustrations'
+    },
+    {
+      id: 'throne-of-fire',
+      title: 'Throne of Fire',
+      year: '2024',
+      image: '/images/paintings/ancestral/throne-of-fire.JPEG',
+      link: '/art/paintings',
+      category: 'Paintings'
+    },
+    {
+      id: 'atlas-collage',
+      title: 'Atlas',
+      year: '2024',
+      image: '/images/collage/atlas/final.jpg',
+      link: '/art/collages',
+      category: 'Collages'
+    },
+    {
+      id: 'love-rev-mural',
+      title: 'Love as Revolution',
+      year: '2023',
+      image: '/images/murals/love-rev/final.JPEG',
+      link: '/art/murals',
+      category: 'Murals'
+    },
+    {
+      id: 'portrait-michelle',
+      title: 'Michelle',
+      year: '2024',
+      image: '/images/portraits/michelle.JPEG',
+      link: '/art/paintings',
+      category: 'Paintings'
+    },
+    {
+      id: 'where-pink',
+      title: 'Pink',
+      year: '2024',
+      image: '/images/illustration/where/pink.JPEG',
+      link: '/art/illustrations',
+      category: 'Illustrations'
+    },
+    {
+      id: 'queens-mirror',
+      title: 'Mirror',
+      year: '2024',
+      image: '/images/paintings/queens/mirror.JPEG',
+      link: '/art/paintings',
+      category: 'Paintings'
+    },
+    {
+      id: 'monster-collage',
+      title: 'Monster',
+      year: '2024',
+      image: '/images/collage/monster/final.jpg',
+      link: '/art/collages',
+      category: 'Collages'
+    },
+    {
+      id: 'tikkun-mural',
+      title: 'Tikkun Olam',
+      year: '2023',
+      image: '/images/murals/tikkun/final.JPEG',
+      link: '/art/murals',
+      category: 'Murals'
+    },
+    {
+      id: 'ancestral-painting',
+      title: 'Ancestral',
+      year: '2024',
+      image: '/images/paintings/ancestral/ancestral.JPEG',
+      link: '/art/paintings',
+      category: 'Paintings'
+    }
+  ]
+
   const artCategories = [
     {
       id: 'paintings',
@@ -262,14 +362,39 @@ const ArtPage = () => {
       <section className={styles.artCategoriesPage}>
         {/* Back Navigation */}
         <div className={styles.backNavigation}>
-          <Link to="/" className={styles.backLink}>
-            Back to Homepage
+          <Link to="/portfolio" className={styles.backLink}>
+            Back to Portfolio
           </Link>
         </div>
 
         <div ref={heroSectionRef} className={styles.artHeroSection}>
           <h1 className={styles.artMainTitle}>Art Portfolio</h1>
           <p className={styles.artSubtitle}>Exploring Indigenous Futurism through visual arts</p>
+        </div>
+
+        {/* Featured Art Gallery */}
+        <div className={styles.featuredGallery}>
+          <h2 className={styles.galleryTitle}>Featured Works</h2>
+          <div className={styles.galleryGrid}>
+            {featuredArtworks.map((artwork) => (
+              <Link
+                key={artwork.id}
+                to={artwork.link}
+                className={styles.galleryItem}
+              >
+                <img
+                  src={artwork.image}
+                  alt={artwork.title}
+                  className={styles.galleryImage}
+                />
+                <div className={styles.galleryOverlay}>
+                  <h3 className={styles.galleryItemTitle}>{artwork.title}</h3>
+                  <p className={styles.galleryItemCategory}>{artwork.category}</p>
+                  <span className={styles.galleryItemYear}>{artwork.year}</span>
+                </div>
+              </Link>
+            ))}
+          </div>
         </div>
 
         <div ref={categoriesSectionRef} className={styles.categoriesContainer}>

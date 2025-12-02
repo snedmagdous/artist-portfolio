@@ -3,7 +3,301 @@ import React, { useState, useRef, useEffect } from "react";
 import { Link } from "gatsby"
 import "../styles/global.css"
 import "./index.css"
+import "./constellation.css"
 import Layout from "../components/Layout";
+
+// Constellation Highlights Component
+const ConstellationHighlights = () => {
+  const [hoveredNode, setHoveredNode] = useState(null);
+
+  // Highlight pieces data with organic star map positioning
+  const highlights = [
+    {
+      id: 'my-queens',
+      title: 'In the Image of My Queens, I Stand',
+      type: 'Mural',
+      description: 'Monumental mural honoring divine feminine lineage across past, present, and future',
+      link: '/art/murals/my-queens',
+      video: 'https://pub-3f206994e69e42408f7908b2177b9ed9.r2.dev/myqueens.MOV',
+      position: { x: 50, y: 30 }, // Central upper - largest node
+      size: 'large',
+      connections: ['ancestral-visions', 'divine-feminine', 'monster-collage', 'love-revolution']
+    },
+    {
+      id: 'ancestral-visions',
+      title: 'Ancestral Visions',
+      type: 'Painting Series',
+      description: 'Exploration of inherited wisdom and cultural memory through portraiture',
+      link: '/art/paintings',
+      video: 'https://pub-3f206994e69e42408f7908b2177b9ed9.r2.dev/paintings.MP4',
+      position: { x: 25, y: 45 }, // Left mid
+      size: 'medium',
+      connections: ['my-queens', 'divine-feminine', 'where-do-you-go', 'monster-collage']
+    },
+    {
+      id: 'divine-feminine',
+      title: 'Divine Feminine Portraits',
+      type: 'Portrait Series',
+      description: 'Celebrating sacred femininity through powerful portraiture',
+      link: '/art/paintings',
+      video: 'https://pub-3f206994e69e42408f7908b2177b9ed9.r2.dev/paintings.MP4',
+      position: { x: 75, y: 40 }, // Right mid
+      size: 'medium',
+      connections: ['my-queens', 'ancestral-visions', 'mamma-im-fine', 'love-revolution']
+    },
+    {
+      id: 'where-do-you-go',
+      title: 'Where Do You Go When There\'s Nowhere Left to Go?',
+      type: 'Illustration Series',
+      description: 'Dark illustrations mapping depersonalization and chronic pain',
+      link: '/art/illustrations/where-do-you-go',
+      video: 'https://pub-3f206994e69e42408f7908b2177b9ed9.r2.dev/illust.MP4',
+      position: { x: 20, y: 75 }, // Lower left
+      size: 'medium',
+      connections: ['ancestral-visions', 'monster-collage']
+    },
+    {
+      id: 'monster-collage',
+      title: 'The Monster in All of Us',
+      type: 'Collage Series',
+      description: 'Confronting the shadow self through mixed media collage',
+      link: '/art/collages',
+      video: 'https://pub-3f206994e69e42408f7908b2177b9ed9.r2.dev/collage.MP4',
+      position: { x: 45, y: 70 }, // Lower center
+      size: 'small',
+      connections: ['my-queens', 'ancestral-visions', 'where-do-you-go', 'love-revolution']
+    },
+    {
+      id: 'love-revolution',
+      title: 'Love as Revolution',
+      type: 'Documentary Film',
+      description: 'A documentary exploring Palestinian solidarity and intersectional liberation',
+      link: '/film/documentaries',
+      video: 'https://pub-3f206994e69e42408f7908b2177b9ed9.r2.dev/documentaries.MP4',
+      position: { x: 70, y: 75 }, // Lower right
+      size: 'large',
+      connections: ['my-queens', 'divine-feminine', 'monster-collage', 'mamma-im-fine']
+    },
+    {
+      id: 'mamma-im-fine',
+      title: 'Mamma, I\'m Fine',
+      type: 'Poetry',
+      description: 'A powerful poem on generational trauma and healing',
+      link: '/writing',
+      video: 'https://pub-3f206994e69e42408f7908b2177b9ed9.r2.dev/writing.MP4',
+      position: { x: 85, y: 55 }, // Right mid-lower
+      size: 'small',
+      connections: ['divine-feminine', 'love-revolution']
+    }
+  ];
+
+  return (
+    <section className="constellation-section">
+      <div className="constellation-container">
+        {/* Section Header */}
+        <div className="constellation-header">
+          <div className="section-indicator">
+            <span className="indicator-dot"></span>
+            <span className="indicator-text">Featured Works</span>
+          </div>
+          <h2 className="constellation-title">Constellation of Creations</h2>
+          <p className="constellation-subtitle">
+            Navigate through my most significant works — each piece a star in an interconnected universe of liberation, healing, and creative resistance
+          </p>
+        </div>
+
+        {/* Constellation Map */}
+        <div className="constellation-map">
+          {/* SVG Canvas for Connection Lines */}
+          <svg className="constellation-canvas" preserveAspectRatio="none" viewBox="0 0 100 100">
+            <defs>
+              {/* Glow filter */}
+              <filter id="constellationGlow">
+                <feGaussianBlur stdDeviation="1.5" result="coloredBlur"/>
+                <feMerge>
+                  <feMergeNode in="coloredBlur"/>
+                  <feMergeNode in="SourceGraphic"/>
+                </feMerge>
+              </filter>
+            </defs>
+
+            {/* Draw connection lines */}
+            {highlights.map((node) =>
+              node.connections.map((targetId) => {
+                const target = highlights.find(h => h.id === targetId);
+                if (!target) return null;
+
+                const isHighlighted = hoveredNode === node.id || hoveredNode === targetId;
+
+                return (
+                  <line
+                    key={`${node.id}-${targetId}`}
+                    x1={node.position.x}
+                    y1={node.position.y}
+                    x2={target.position.x}
+                    y2={target.position.y}
+                    className={`constellation-line ${isHighlighted ? 'highlighted' : ''}`}
+                    filter="url(#constellationGlow)"
+                  />
+                );
+              })
+            )}
+
+            {/* Decorative constellation branches - mini web constellations unfurling */}
+            {/* From My Queens (central node) - largest constellation */}
+            <line x1="50" y1="30" x2="52" y2="18" className={`constellation-branch ${hoveredNode === 'my-queens' ? 'highlighted' : ''}`} filter="url(#constellationGlow)" />
+            <line x1="50" y1="30" x2="58" y2="22" className={`constellation-branch ${hoveredNode === 'my-queens' ? 'highlighted' : ''}`} filter="url(#constellationGlow)" />
+            <line x1="50" y1="30" x2="42" y2="22" className={`constellation-branch ${hoveredNode === 'my-queens' ? 'highlighted' : ''}`} filter="url(#constellationGlow)" />
+            <line x1="50" y1="30" x2="48" y2="18" className={`constellation-branch ${hoveredNode === 'my-queens' ? 'highlighted' : ''}`} filter="url(#constellationGlow)" />
+            <line x1="52" y1="18" x2="55" y2="12" className={`constellation-branch ${hoveredNode === 'my-queens' ? 'highlighted' : ''}`} filter="url(#constellationGlow)" />
+            <line x1="52" y1="18" x2="50" y2="10" className={`constellation-branch ${hoveredNode === 'my-queens' ? 'highlighted' : ''}`} filter="url(#constellationGlow)" />
+            <line x1="58" y1="22" x2="62" y2="18" className={`constellation-branch ${hoveredNode === 'my-queens' ? 'highlighted' : ''}`} filter="url(#constellationGlow)" />
+            <line x1="58" y1="22" x2="60" y2="26" className={`constellation-branch ${hoveredNode === 'my-queens' ? 'highlighted' : ''}`} filter="url(#constellationGlow)" />
+            <line x1="42" y1="22" x2="38" y2="18" className={`constellation-branch ${hoveredNode === 'my-queens' ? 'highlighted' : ''}`} filter="url(#constellationGlow)" />
+            <line x1="42" y1="22" x2="40" y2="26" className={`constellation-branch ${hoveredNode === 'my-queens' ? 'highlighted' : ''}`} filter="url(#constellationGlow)" />
+            <circle cx="55" cy="12" r="0.3" fill="rgba(255, 255, 255, 0.6)" className={`constellation-branch ${hoveredNode === 'my-queens' ? 'highlighted' : ''}`} />
+            <circle cx="50" cy="10" r="0.25" fill="rgba(255, 255, 255, 0.5)" className={`constellation-branch ${hoveredNode === 'my-queens' ? 'highlighted' : ''}`} />
+            <circle cx="62" cy="18" r="0.25" fill="rgba(255, 255, 255, 0.5)" className={`constellation-branch ${hoveredNode === 'my-queens' ? 'highlighted' : ''}`} />
+            <circle cx="38" cy="18" r="0.25" fill="rgba(255, 255, 255, 0.5)" className={`constellation-branch ${hoveredNode === 'my-queens' ? 'highlighted' : ''}`} />
+            <circle cx="60" cy="26" r="0.2" fill="rgba(255, 255, 255, 0.4)" className={`constellation-branch ${hoveredNode === 'my-queens' ? 'highlighted' : ''}`} />
+            <circle cx="40" cy="26" r="0.2" fill="rgba(255, 255, 255, 0.4)" className={`constellation-branch ${hoveredNode === 'my-queens' ? 'highlighted' : ''}`} />
+
+            {/* From Ancestral Visions - web unfurling to left */}
+            <line x1="25" y1="45" x2="18" y2="42" className={`constellation-branch ${hoveredNode === 'ancestral-visions' ? 'highlighted' : ''}`} filter="url(#constellationGlow)" />
+            <line x1="25" y1="45" x2="20" y2="50" className={`constellation-branch ${hoveredNode === 'ancestral-visions' ? 'highlighted' : ''}`} filter="url(#constellationGlow)" />
+            <line x1="25" y1="45" x2="18" y2="48" className={`constellation-branch ${hoveredNode === 'ancestral-visions' ? 'highlighted' : ''}`} filter="url(#constellationGlow)" />
+            <line x1="18" y1="42" x2="14" y2="38" className={`constellation-branch ${hoveredNode === 'ancestral-visions' ? 'highlighted' : ''}`} filter="url(#constellationGlow)" />
+            <line x1="18" y1="42" x2="12" y2="42" className={`constellation-branch ${hoveredNode === 'ancestral-visions' ? 'highlighted' : ''}`} filter="url(#constellationGlow)" />
+            <line x1="20" y1="50" x2="16" y2="54" className={`constellation-branch ${hoveredNode === 'ancestral-visions' ? 'highlighted' : ''}`} filter="url(#constellationGlow)" />
+            <line x1="18" y1="48" x2="14" y2="50" className={`constellation-branch ${hoveredNode === 'ancestral-visions' ? 'highlighted' : ''}`} filter="url(#constellationGlow)" />
+            <circle cx="14" cy="38" r="0.3" fill="rgba(255, 255, 255, 0.6)" className={`constellation-branch ${hoveredNode === 'ancestral-visions' ? 'highlighted' : ''}`} />
+            <circle cx="12" cy="42" r="0.25" fill="rgba(255, 255, 255, 0.5)" className={`constellation-branch ${hoveredNode === 'ancestral-visions' ? 'highlighted' : ''}`} />
+            <circle cx="16" cy="54" r="0.25" fill="rgba(255, 255, 255, 0.5)" className={`constellation-branch ${hoveredNode === 'ancestral-visions' ? 'highlighted' : ''}`} />
+            <circle cx="14" cy="50" r="0.2" fill="rgba(255, 255, 255, 0.4)" className={`constellation-branch ${hoveredNode === 'ancestral-visions' ? 'highlighted' : ''}`} />
+
+            {/* From Divine Feminine - web unfurling to right */}
+            <line x1="75" y1="40" x2="82" y2="38" className={`constellation-branch ${hoveredNode === 'divine-feminine' ? 'highlighted' : ''}`} filter="url(#constellationGlow)" />
+            <line x1="75" y1="40" x2="80" y2="32" className={`constellation-branch ${hoveredNode === 'divine-feminine' ? 'highlighted' : ''}`} filter="url(#constellationGlow)" />
+            <line x1="75" y1="40" x2="82" y2="44" className={`constellation-branch ${hoveredNode === 'divine-feminine' ? 'highlighted' : ''}`} filter="url(#constellationGlow)" />
+            <line x1="82" y1="38" x2="88" y2="36" className={`constellation-branch ${hoveredNode === 'divine-feminine' ? 'highlighted' : ''}`} filter="url(#constellationGlow)" />
+            <line x1="82" y1="38" x2="86" y2="42" className={`constellation-branch ${hoveredNode === 'divine-feminine' ? 'highlighted' : ''}`} filter="url(#constellationGlow)" />
+            <line x1="80" y1="32" x2="84" y2="28" className={`constellation-branch ${hoveredNode === 'divine-feminine' ? 'highlighted' : ''}`} filter="url(#constellationGlow)" />
+            <line x1="82" y1="44" x2="86" y2="48" className={`constellation-branch ${hoveredNode === 'divine-feminine' ? 'highlighted' : ''}`} filter="url(#constellationGlow)" />
+            <circle cx="88" cy="36" r="0.3" fill="rgba(255, 255, 255, 0.6)" className={`constellation-branch ${hoveredNode === 'divine-feminine' ? 'highlighted' : ''}`} />
+            <circle cx="84" cy="28" r="0.25" fill="rgba(255, 255, 255, 0.5)" className={`constellation-branch ${hoveredNode === 'divine-feminine' ? 'highlighted' : ''}`} />
+            <circle cx="86" cy="42" r="0.2" fill="rgba(255, 255, 255, 0.4)" className={`constellation-branch ${hoveredNode === 'divine-feminine' ? 'highlighted' : ''}`} />
+            <circle cx="86" cy="48" r="0.25" fill="rgba(255, 255, 255, 0.5)" className={`constellation-branch ${hoveredNode === 'divine-feminine' ? 'highlighted' : ''}`} />
+
+            {/* From Love as Revolution (larger node) - elaborate web downward */}
+            <line x1="70" y1="75" x2="72" y2="82" className={`constellation-branch ${hoveredNode === 'love-revolution' ? 'highlighted' : ''}`} filter="url(#constellationGlow)" />
+            <line x1="70" y1="75" x2="78" y2="78" className={`constellation-branch ${hoveredNode === 'love-revolution' ? 'highlighted' : ''}`} filter="url(#constellationGlow)" />
+            <line x1="70" y1="75" x2="68" y2="82" className={`constellation-branch ${hoveredNode === 'love-revolution' ? 'highlighted' : ''}`} filter="url(#constellationGlow)" />
+            <line x1="70" y1="75" x2="76" y2="82" className={`constellation-branch ${hoveredNode === 'love-revolution' ? 'highlighted' : ''}`} filter="url(#constellationGlow)" />
+            <line x1="72" y1="82" x2="74" y2="88" className={`constellation-branch ${hoveredNode === 'love-revolution' ? 'highlighted' : ''}`} filter="url(#constellationGlow)" />
+            <line x1="72" y1="82" x2="70" y2="88" className={`constellation-branch ${hoveredNode === 'love-revolution' ? 'highlighted' : ''}`} filter="url(#constellationGlow)" />
+            <line x1="68" y1="82" x2="65" y2="88" className={`constellation-branch ${hoveredNode === 'love-revolution' ? 'highlighted' : ''}`} filter="url(#constellationGlow)" />
+            <line x1="78" y1="78" x2="82" y2="80" className={`constellation-branch ${hoveredNode === 'love-revolution' ? 'highlighted' : ''}`} filter="url(#constellationGlow)" />
+            <line x1="76" y1="82" x2="78" y2="88" className={`constellation-branch ${hoveredNode === 'love-revolution' ? 'highlighted' : ''}`} filter="url(#constellationGlow)" />
+            <circle cx="74" cy="88" r="0.3" fill="rgba(255, 255, 255, 0.6)" className={`constellation-branch ${hoveredNode === 'love-revolution' ? 'highlighted' : ''}`} />
+            <circle cx="70" cy="88" r="0.25" fill="rgba(255, 255, 255, 0.5)" className={`constellation-branch ${hoveredNode === 'love-revolution' ? 'highlighted' : ''}`} />
+            <circle cx="65" cy="88" r="0.25" fill="rgba(255, 255, 255, 0.5)" className={`constellation-branch ${hoveredNode === 'love-revolution' ? 'highlighted' : ''}`} />
+            <circle cx="78" cy="88" r="0.25" fill="rgba(255, 255, 255, 0.5)" className={`constellation-branch ${hoveredNode === 'love-revolution' ? 'highlighted' : ''}`} />
+            <circle cx="82" cy="80" r="0.2" fill="rgba(255, 255, 255, 0.4)" className={`constellation-branch ${hoveredNode === 'love-revolution' ? 'highlighted' : ''}`} />
+
+            {/* From Where Do You Go - web unfurling lower left */}
+            <line x1="20" y1="75" x2="14" y2="78" className={`constellation-branch ${hoveredNode === 'where-do-you-go' ? 'highlighted' : ''}`} filter="url(#constellationGlow)" />
+            <line x1="20" y1="75" x2="18" y2="82" className={`constellation-branch ${hoveredNode === 'where-do-you-go' ? 'highlighted' : ''}`} filter="url(#constellationGlow)" />
+            <line x1="20" y1="75" x2="14" y2="84" className={`constellation-branch ${hoveredNode === 'where-do-you-go' ? 'highlighted' : ''}`} filter="url(#constellationGlow)" />
+            <line x1="14" y1="78" x2="10" y2="80" className={`constellation-branch ${hoveredNode === 'where-do-you-go' ? 'highlighted' : ''}`} filter="url(#constellationGlow)" />
+            <line x1="14" y1="78" x2="8" y2="76" className={`constellation-branch ${hoveredNode === 'where-do-you-go' ? 'highlighted' : ''}`} filter="url(#constellationGlow)" />
+            <line x1="18" y1="82" x2="16" y2="88" className={`constellation-branch ${hoveredNode === 'where-do-you-go' ? 'highlighted' : ''}`} filter="url(#constellationGlow)" />
+            <line x1="14" y1="84" x2="10" y2="88" className={`constellation-branch ${hoveredNode === 'where-do-you-go' ? 'highlighted' : ''}`} filter="url(#constellationGlow)" />
+            <circle cx="10" cy="80" r="0.3" fill="rgba(255, 255, 255, 0.6)" className={`constellation-branch ${hoveredNode === 'where-do-you-go' ? 'highlighted' : ''}`} />
+            <circle cx="8" cy="76" r="0.25" fill="rgba(255, 255, 255, 0.5)" className={`constellation-branch ${hoveredNode === 'where-do-you-go' ? 'highlighted' : ''}`} />
+            <circle cx="16" cy="88" r="0.25" fill="rgba(255, 255, 255, 0.5)" className={`constellation-branch ${hoveredNode === 'where-do-you-go' ? 'highlighted' : ''}`} />
+            <circle cx="10" cy="88" r="0.2" fill="rgba(255, 255, 255, 0.4)" className={`constellation-branch ${hoveredNode === 'where-do-you-go' ? 'highlighted' : ''}`} />
+
+            {/* From Mamma I'm Fine */}
+            <line x1="85" y1="55" x2="90" y2="52" className={`constellation-branch ${hoveredNode === 'mamma-im-fine' ? 'highlighted' : ''}`} filter="url(#constellationGlow)" />
+            <line x1="85" y1="55" x2="92" y2="58" className={`constellation-branch ${hoveredNode === 'mamma-im-fine' ? 'highlighted' : ''}`} filter="url(#constellationGlow)" />
+            <line x1="90" y1="52" x2="94" y2="48" className={`constellation-branch ${hoveredNode === 'mamma-im-fine' ? 'highlighted' : ''}`} filter="url(#constellationGlow)" />
+            <line x1="92" y1="58" x2="95" y2="62" className={`constellation-branch ${hoveredNode === 'mamma-im-fine' ? 'highlighted' : ''}`} filter="url(#constellationGlow)" />
+            <circle cx="94" cy="48" r="0.3" fill="rgba(255, 255, 255, 0.6)" className={`constellation-branch ${hoveredNode === 'mamma-im-fine' ? 'highlighted' : ''}`} />
+            <circle cx="95" cy="62" r="0.2" fill="rgba(255, 255, 255, 0.5)" className={`constellation-branch ${hoveredNode === 'mamma-im-fine' ? 'highlighted' : ''}`} />
+
+            {/* From Monster Collage (center lower) */}
+            <line x1="45" y1="70" x2="42" y2="78" className={`constellation-branch ${hoveredNode === 'monster-collage' ? 'highlighted' : ''}`} filter="url(#constellationGlow)" />
+            <line x1="45" y1="70" x2="48" y2="77" className={`constellation-branch ${hoveredNode === 'monster-collage' ? 'highlighted' : ''}`} filter="url(#constellationGlow)" />
+            <line x1="45" y1="70" x2="38" y2="72" className={`constellation-branch ${hoveredNode === 'monster-collage' ? 'highlighted' : ''}`} filter="url(#constellationGlow)" />
+            <line x1="42" y1="78" x2="40" y2="84" className={`constellation-branch ${hoveredNode === 'monster-collage' ? 'highlighted' : ''}`} filter="url(#constellationGlow)" />
+            <line x1="48" y1="77" x2="50" y2="82" className={`constellation-branch ${hoveredNode === 'monster-collage' ? 'highlighted' : ''}`} filter="url(#constellationGlow)" />
+            <circle cx="40" cy="84" r="0.3" fill="rgba(255, 255, 255, 0.6)" className={`constellation-branch ${hoveredNode === 'monster-collage' ? 'highlighted' : ''}`} />
+            <circle cx="50" cy="82" r="0.25" fill="rgba(255, 255, 255, 0.5)" className={`constellation-branch ${hoveredNode === 'monster-collage' ? 'highlighted' : ''}`} />
+            <circle cx="38" cy="72" r="0.2" fill="rgba(255, 255, 255, 0.4)" className={`constellation-branch ${hoveredNode === 'monster-collage' ? 'highlighted' : ''}`} />
+          </svg>
+
+          {/* Constellation Nodes */}
+          {highlights.map((node, index) => (
+            <Link
+              key={node.id}
+              to={node.link}
+              className={`constellation-node ${node.size} ${hoveredNode === node.id ? 'active' : ''}`}
+              style={{
+                left: `${node.position.x}%`,
+                top: `${node.position.y}%`,
+                '--node-delay': `${index * 0.2}s`
+              }}
+              onMouseEnter={() => setHoveredNode(node.id)}
+              onMouseLeave={() => setHoveredNode(null)}
+            >
+              {/* Node Glow */}
+              <div className="node-glow"></div>
+
+              {/* Node Core */}
+              <div className="node-core">
+                <div className="node-image-wrapper">
+                  <video
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    className="node-video"
+                  >
+                    <source src={node.video} type="video/mp4" />
+                  </video>
+                </div>
+                <div className="node-pulse"></div>
+              </div>
+
+              {/* Node Info (appears on hover) */}
+              <div className="node-info">
+                <span className="node-type">{node.type}</span>
+                <h3 className="node-title">{node.title}</h3>
+                <p className="node-description">{node.description}</p>
+              </div>
+            </Link>
+          ))}
+
+          {/* Floating particles/stars */}
+          <div className="constellation-particles">
+            {[...Array(20)].map((_, i) => (
+              <div
+                key={i}
+                className="particle"
+                style={{
+                  left: `${Math.random() * 100}%`,
+                  top: `${Math.random() * 100}%`,
+                  '--particle-delay': `${Math.random() * 5}s`,
+                  '--particle-duration': `${3 + Math.random() * 4}s`
+                }}
+              />
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
 
 export default function Home() {
   const [language, setLanguage] = useState('EN');
@@ -484,7 +778,7 @@ export default function Home() {
               MĀYĀ MURRY<br /><span className="studio-text">STUDIO</span>
             </h1>
             <p className="arabic-text">استوديو مايا مرعي</p>
-            <p className="artist-bio">Interdisciplinary Artist • Filmmaker • Writer • Programmer</p>
+            <p className="artist-bio">Artist • Filmmaker • Programmer</p>
 
             <div className="cta-buttons">
               <button onClick={scrollToPortfolio} className="cta-button secondary">
@@ -518,7 +812,9 @@ export default function Home() {
               <span className="indicator-dot"></span>
               <span className="indicator-text">Portfolio</span>
             </div>
-            <h2 className="portfolio-title">My Portfolio</h2>
+            <Link to="/portfolio" className="portfolio-title-link">
+              <h2 className="portfolio-title">My Portfolio</h2>
+            </Link>
             <p className="portfolio-subtitle">
               Where I reimagine ways of living and being
             </p>
@@ -628,8 +924,11 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Constellation Highlights Section */}
+      <ConstellationHighlights />
+
       {/* Mailing List Section */}
-      <section id="contact-section" className="mailing-list-section" ref={mailingListSectionRef}>
+      <section className="mailing-list-section" ref={mailingListSectionRef}>
         <div className="mailing-list-container">
           <div className="mailing-list-header">
             <div className="section-indicator">
@@ -638,7 +937,7 @@ export default function Home() {
             </div>
             <h2 className="mailing-list-title">Join the Mailing List</h2>
             <p className="mailing-list-subtitle">
-              Be the first to know about new artwork, exhibitions, film screenings, and creative projects
+              Be the first to know about new artwork, exhibitions, and creative projects
             </p>
           </div>
 
@@ -687,6 +986,122 @@ export default function Home() {
               ✓ Thank you for subscribing! You'll hear from me soon.
             </div>
           )}
+        </div>
+      </section>
+
+      {/* Contact Section */}
+      <section id="contact-section" className="contact-section">
+        <div className="contact-container">
+          <div className="contact-header">
+            <div className="section-indicator">
+              <span className="indicator-dot"></span>
+              <span className="indicator-text">Get in Touch</span>
+            </div>
+            <h2 className="contact-title">Contact</h2>
+            <p className="contact-subtitle">
+              Let's create something meaningful together
+            </p>
+          </div>
+
+          {/* Contact Form */}
+          <form
+            className="contact-form"
+            name="homepage-contact"
+            method="POST"
+            data-netlify="true"
+            netlify-honeypot="bot-field"
+          >
+            <input type="hidden" name="form-name" value="homepage-contact" />
+            <div style={{ display: 'none' }}>
+              <label htmlFor="bot-field">Don't fill this out if you're human:</label>
+              <input name="bot-field" />
+            </div>
+
+            <div className="form-group">
+              <label htmlFor="name">Name</label>
+              <input type="text" id="name" name="name" required />
+            </div>
+
+            <div className="form-group">
+              <label htmlFor="email">Email</label>
+              <input type="email" id="email" name="email" required />
+            </div>
+
+            <div className="form-group">
+              <label htmlFor="subject">Subject</label>
+              <input type="text" id="subject" name="subject" required />
+            </div>
+
+            <div className="form-group">
+              <label htmlFor="message">Message</label>
+              <textarea id="message" name="message" rows="6" required></textarea>
+            </div>
+
+            <button type="submit" className="contact-submit-btn">
+              Send Message
+            </button>
+          </form>
+
+          {/* Other Ways to Connect */}
+          <div className="connect-section">
+            <h3 className="connect-title">Other Ways to Connect</h3>
+            <div className="connect-grid">
+              <a href="mailto:mayamurry9@gmail.com" className="connect-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1">
+                  <path d="M4 4H20C21.1 4 22 4.9 22 6V18C22 19.1 21.1 20 20 20H4C2.9 20 2 19.1 2 18V6C2 4.9 2.9 4 4 4Z"/>
+                  <polyline points="22,6 12,13 2,6"/>
+                </svg>
+                <span>mayamurry9@gmail.com</span>
+              </a>
+
+              <a href="https://www.linkedin.com/in/maya-murry" target="_blank" rel="noopener noreferrer" className="connect-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1">
+                  <path d="M16 8C17.5913 8 19.1174 8.63214 20.2426 9.75736C21.3679 10.8826 22 12.4087 22 14V21H18V14C18 13.4696 17.7893 12.9609 17.4142 12.5858C17.0391 12.2107 16.5304 12 16 12C15.4696 12 14.9609 12.2107 14.5858 12.5858C14.2107 12.9609 14 13.4696 14 14V21H10V14C10 12.4087 10.6321 10.8826 11.7574 9.75736C12.8826 8.63214 14.4087 8 16 8Z"/>
+                  <rect x="2" y="9" width="4" height="12"/>
+                  <circle cx="4" cy="4" r="2"/>
+                </svg>
+                <span>LinkedIn</span>
+              </a>
+
+              <a href="https://github.com/snedmagdous" target="_blank" rel="noopener noreferrer" className="connect-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1">
+                  <path d="M9 19C4 20.5 4 16.5 2 16M16 22V18.13C16.0375 17.6532 15.9731 17.1738 15.811 16.7238C15.6489 16.2738 15.3929 15.8634 15.06 15.52C18.2 15.17 21.5 13.98 21.5 8.52C21.4997 7.12383 20.9627 5.7812 20 4.77C20.4559 3.54851 20.4236 2.19835 19.91 1C19.91 1 18.73 0.650001 16 2.48C13.708 1.85882 11.292 1.85882 9 2.48C6.27 0.650001 5.09 1 5.09 1C4.57638 2.19835 4.54414 3.54851 5 4.77C4.03013 5.7887 3.49252 7.14346 3.5 8.55C3.5 13.97 6.8 15.16 9.94 15.55C9.611 15.89 9.35726 16.2954 9.19531 16.7399C9.03335 17.1844 8.96681 17.6581 9 18.13V22"/>
+                </svg>
+                <span>GitHub</span>
+              </a>
+
+              <a href="/maya-murry-creative-cv-2025.pdf" download className="connect-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1">
+                  <path d="M14 2H6C5.46957 2 4.96086 2.21071 4.58579 2.58579C4.21071 2.96086 4 3.46957 4 4V20C4 20.5304 4.21071 21.0391 4.58579 21.4142C4.96086 21.7893 5.46957 22 6 22H18C18.5304 22 19.0391 21.7893 19.4142 21.4142C19.7893 21.0391 20 20.5304 20 20V8L14 2Z"/>
+                  <polyline points="14,2 14,8 20,8"/>
+                  <path d="M12 11V17"/>
+                  <path d="M9 14L12 17L15 14"/>
+                </svg>
+                <span>Download Creative CV</span>
+              </a>
+
+              <a href="/maya-murry-technical-resume-2025.pdf" download className="connect-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1">
+                  <path d="M14 2H6C5.46957 2 4.96086 2.21071 4.58579 2.58579C4.21071 2.96086 4 3.46957 4 4V20C4 20.5304 4.21071 21.0391 4.58579 21.4142C4.96086 21.7893 5.46957 22 6 22H18C18.5304 22 19.0391 21.7893 19.4142 21.4142C19.7893 21.0391 20 20.5304 20 20V8L14 2Z"/>
+                  <polyline points="14,2 14,8 20,8"/>
+                  <path d="M12 11V17"/>
+                  <path d="M9 14L12 17L15 14"/>
+                </svg>
+                <span>Download Technical Resume</span>
+              </a>
+            </div>
+          </div>
+
+          {/* Commission Callout */}
+          <div className="commission-callout">
+            <h3 className="commission-callout-title">Interested in a Commission?</h3>
+            <p className="commission-callout-text">
+              I create custom murals, paintings, and digital artwork
+            </p>
+            <Link to="/commission" className="commission-callout-btn">
+              Learn More About Commissions
+            </Link>
+          </div>
         </div>
       </section>
       </div>

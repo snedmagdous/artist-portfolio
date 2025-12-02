@@ -1221,8 +1221,8 @@
 
 /* Categories Container */
 .categoriesContainer {
-  max-width: 4000px;
-  width: 800px;
+  max-width: 1200px;
+  width: 100%;
   margin: 0 auto;
   position: relative;
   z-index: 15;
@@ -1231,17 +1231,18 @@
 .categoriesGrid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 1px;
-  background: rgba(255, 255, 255, 0.1);
+  gap: 2rem;
+  background: transparent;
 }
 
 /* Individual Category Cards */
 .categoryCard {
   position: relative;
-  height: 400px;
-  background: rgba(0, 0, 0, 0.3);
-  backdrop-filter: blur(7px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  height: 350px;
+  background: rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
   text-decoration: none;
   overflow: hidden;
   transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
@@ -2884,5 +2885,169 @@
   .collageContent,
   .seriesContent {
     padding: 1.3rem 1rem;
+  }
+}
+
+/* ===========================
+   FEATURED ART GALLERY
+   =========================== */
+
+.featuredGallery {
+  max-width: 1400px;
+  margin: 6rem auto 8rem;
+  padding: 0 2rem;
+}
+
+.galleryTitle {
+  font-family: 'Poppins', sans-serif;
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 100;
+  color: white;
+  text-align: center;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 4rem;
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+  opacity: 0;
+  animation: fadeInUp 1s ease forwards;
+}
+
+.galleryGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+  opacity: 0;
+  animation: fadeInUp 1s ease 0.3s forwards;
+}
+
+.galleryItem {
+  position: relative;
+  display: block;
+  border-radius: 8px;
+  overflow: hidden;
+  background: rgba(0, 0, 0, 0.5);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5), inset 0 0 20px rgba(0, 0, 0, 0.3);
+  opacity: 0.85;
+  filter: brightness(0.8);
+}
+
+.galleryItem:hover {
+  transform: translateY(-10px) scale(1.02);
+  border-color: rgba(255, 255, 255, 0.5);
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.7), 0 0 40px rgba(255, 255, 255, 0.2);
+  z-index: 10;
+  opacity: 1;
+  filter: brightness(1);
+}
+
+.galleryImage {
+  width: 100%;
+  height: 350px;
+  object-fit: cover;
+  display: block;
+  transition: all 0.4s ease;
+}
+
+.galleryItem:hover .galleryImage {
+  transform: scale(1.08);
+}
+
+.galleryOverlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 1.5rem;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.95), transparent);
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.4s ease;
+}
+
+.galleryItem:hover .galleryOverlay {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.galleryItemTitle {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.2rem;
+  font-weight: 300;
+  color: white;
+  margin: 0 0 0.3rem 0;
+  letter-spacing: 0.05em;
+  text-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+}
+
+.galleryItemCategory {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.7);
+  font-weight: 300;
+  margin: 0 0 0.5rem 0;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.galleryItemYear {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.6);
+  font-weight: 300;
+  letter-spacing: 0.1em;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 1024px) {
+  .galleryGrid {
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+  }
+  .galleryImage {
+    height: 320px;
+  }
+}
+
+@media (max-width: 768px) {
+  .featuredGallery {
+    margin: 4rem auto 6rem;
+    padding: 0 1.5rem;
+  }
+  .galleryTitle {
+    margin-bottom: 3rem;
+  }
+  .galleryGrid {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1.2rem;
+  }
+  .galleryImage {
+    height: 280px;
+  }
+}
+
+@media (max-width: 480px) {
+  .featuredGallery {
+    margin: 3rem auto 5rem;
+    padding: 0 1rem;
+  }
+  .galleryGrid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  .galleryImage {
+    height: 300px;
   }
 }

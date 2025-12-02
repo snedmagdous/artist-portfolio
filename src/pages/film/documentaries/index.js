@@ -42,7 +42,7 @@ const DocumentariesPage = () => {
       snippet: 'Following multiple generations as they navigate between traditional practices and modern challenges, revealing the unbroken chain of Khmer knowledge.',
       videoSrc: 'https://pub-3f206994e69e42408f7908b2177b9ed9.r2.dev/ancestors-still-singing.MP4',
       fullVideoUrl: 'https://youtu.be/TaKNJesPXNI',
-      themes: ['Indigenous Sovereignty', 'Intergenerational Wisdom', 'Cultural Preservation', 'Resilience'],
+      themes: ['Intergenerational Wisdom', 'Cultural Preservation'],
       funding: [
         'American Indian & Indigenous Studies Department',
         'Southeast Asia Program', 
@@ -90,25 +90,7 @@ const DocumentariesPage = () => {
     }
   ]
 
-  // Handle video hover play/pause
-  const handleVideoHover = (index, isHovering) => {
-    const doc = documentaries[index]
-    // Skip hover functionality for YouTube embeds
-    if (doc.videoSrc.includes('youtube.com/embed')) {
-      return
-    }
-
-    const video = videoRefs.current[index]
-    if (video) {
-      if (isHovering) {
-        video.currentTime = 0
-        video.play().catch(e => console.log("Video play failed:", e))
-      } else {
-        video.pause()
-        video.currentTime = 0
-      }
-    }
-  }
+  // Videos now autoplay - no need for hover play/pause
 
   // Handle opening full documentary
   const openDocumentary = (doc, e) => {
@@ -118,24 +100,14 @@ const DocumentariesPage = () => {
   }
 
   useEffect(() => {
-    // Set up videos with proper properties (skip YouTube embeds)
+    // Set up videos with autoplay and loop (skip YouTube embeds)
     videoRefs.current.forEach((video, index) => {
       if (video && !documentaries[index].videoSrc.includes('youtube.com/embed')) {
         video.muted = true
-        video.loop = false
-        video.preload = 'metadata'
-
-        // Add event listener for when video ends
-        const handleVideoEnd = () => {
-          video.currentTime = 0
-        }
-
-        video.addEventListener('ended', handleVideoEnd)
-
-        // Cleanup event listener
-        return () => {
-          video.removeEventListener('ended', handleVideoEnd)
-        }
+        video.loop = true
+        video.preload = 'auto'
+        // Start playing automatically
+        video.play().catch(e => console.log("Video autoplay failed:", e))
       }
     })
   }, [])
@@ -179,8 +151,6 @@ const DocumentariesPage = () => {
                 
                 <div
                   className={styles.documentaryCard}
-                  onMouseEnter={() => handleVideoHover(index, true)}
-                  onMouseLeave={() => handleVideoHover(index, false)}
                   onClick={(e) => openDocumentary(doc, e)}
                   style={{ cursor: 'pointer' }}
                 >
@@ -200,9 +170,11 @@ const DocumentariesPage = () => {
                     ) : (
                       <video
                         ref={el => videoRefs.current[index] = el}
+                        autoPlay
+                        loop
                         muted
                         playsInline
-                        preload="metadata"
+                        preload="auto"
                         className={styles.documentaryVideo}
                         style={{
                           filter: 'brightness(0.8) contrast(0.9)'
@@ -238,8 +210,7 @@ const DocumentariesPage = () => {
                     </div>
                     
                     <p className={styles.documentaryDescription}>{doc.description}</p>
-                    <p className={styles.documentarySnippet}>"{doc.snippet}"</p>
-                    
+
                     {doc.awards && (
                       <div className={styles.awardBadge}>
                         🏆 {doc.awards}
