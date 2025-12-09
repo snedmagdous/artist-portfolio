@@ -99,6 +99,16 @@ header * {
   pointer-events: none !important;
 }
 
+/* Bounce animation keyframes */
+@keyframes videoBounce {
+  0%, 100% {
+    transform: translate(-50%, -50%) scale(1);
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.05);
+  }
+}
+
 .layout-video-background__video {
   position: absolute !important;
   top: 50% !important;
@@ -114,6 +124,8 @@ header * {
   pointer-events: none !important;
   /* Videos are always visible and autoplaying */
   opacity: 1 !important;
+  /* Add continuous bounce animation */
+  animation: videoBounce 20s ease-in-out infinite !important;
 }
 
 /* HEADER CONTENT STYLES */
@@ -497,6 +509,23 @@ header * {
 .social-icon:hover {
   fill: white;
   transform: scale(1.1) translateY(-2px);
+}
+
+/* Social media specific hover colors */
+.social-links a[href*="linkedin"]:hover .social-icon {
+  fill: #0077B5;
+}
+
+.social-links a[href*="github"]:hover .social-icon {
+  fill: #6e5494;
+}
+
+.social-links a[href*="instagram"]:hover .social-icon {
+  fill: #E4405F;
+}
+
+.social-links a[href*="tiktok"]:hover .social-icon {
+  fill: #00f2ea;
 }
 
 /* Header Controls - Prevent Layout Shift */

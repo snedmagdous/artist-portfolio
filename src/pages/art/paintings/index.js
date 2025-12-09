@@ -9,6 +9,8 @@ import * as styles from "../art.module.css"
 const PaintingsPage = () => {
   const [language, setLanguage] = useState('EN')
   const [hoveredSeries, setHoveredSeries] = useState(null)
+  const [modalOpen, setModalOpen] = useState(false)
+  const [selectedPainting, setSelectedPainting] = useState(null)
   const videoRefs = useRef({})
   
   const paintingSeries = [
@@ -21,6 +23,12 @@ const PaintingsPage = () => {
       medium: 'Oil on Canvas',
       status: 'completed',
       videoSrc: 'https://pub-3f206994e69e42408f7908b2177b9ed9.r2.dev/ancestral-visions.MP4',
+      images: [
+        { src: '/images/paintings/ancestral/ancestral.JPEG', title: 'Ancestral Witness' },
+        { src: '/images/paintings/ancestral/forest-prayers.JPEG', title: 'Forest Prayers' },
+        { src: '/images/paintings/ancestral/moon-daughter.JPEG', title: 'Moon Daughter' },
+        { src: '/images/paintings/ancestral/ITakeBackWhatIsMine-MayaMurry.JPEG', title: 'Fire Bearer' }
+      ],
       icon: (
         <svg viewBox="0 0 24 24" fill="none" className={styles.seriesIcon}>
           <circle cx="12" cy="12" r="4" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round"/>
@@ -40,11 +48,15 @@ const PaintingsPage = () => {
       id: 'digital-ceremony',
       title: 'Digital Ceremony',
       description: 'Traditional ceremonies reimagined in digital spaces, questioning the nature of sacred practice in virtual worlds. These works explore how ritual and technology can coexist in harmony.',
-      pieceCount: 3,
-      year: '2023',
-      medium: 'Oil & Acrylic on Canvas',
+      pieceCount: 2,
+      year: '2024',
+      medium: 'Oil on Canvas',
       status: 'ongoing',
       videoSrc: 'https://pub-3f206994e69e42408f7908b2177b9ed9.r2.dev/dig-ceremony.MP4',
+      images: [
+        { src: '/images/paintings/ceremony/protect.JPEG', title: 'SACRED CEREMONY' },
+        { src: '/images/paintings/ceremony/sacred.JPEG', title: 'LOVE ME THERE' }
+      ],
       icon: (
         <svg viewBox="0 0 24 24" fill="none" className={styles.seriesIcon}>
           <circle cx="12" cy="12" r="10" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round"/>
@@ -61,11 +73,15 @@ const PaintingsPage = () => {
       id: 'in-image-queens',
       title: 'In the Image of My Queens, I Stand',
       description: 'Dreamtime stories told through neon colors and cyberpunk aesthetics, bridging ancient wisdom with modern technology. Fluorescent pigments illuminate traditional narratives.',
-      pieceCount: 3,
+      pieceCount: 2,
       year: '2025',
       medium: 'Oil on Canvas',
       status: 'ongoing',
-      videoSrc: 'https://pub-3f206994e69e42408f7908b2177b9ed9.r2.dev/my-queens.MP4',
+      videoSrc: 'https://pub-3f206994e69e42408f7908b2177b9ed9.r2.dev/istand.MP4',
+      images: [
+        { src: '/images/paintings/queens/mirror.JPEG', title: 'Mirror of Now' },
+        { src: '/images/paintings/queens/unborn.JPEG', title: 'Unborn Daughters' }
+      ],
       icon: (
         <svg viewBox="0 0 24 24" fill="none" className={styles.seriesIcon}>
           <path d="M6 9L12 2L18 9" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round"/>
@@ -78,31 +94,12 @@ const PaintingsPage = () => {
         </svg>
       )
     },
-    // {
-    //   id: 'take-back-mine',
-    //   title: 'I take back what is mine',
-    //   description: 'Spiritual beings existing in quantum realms, exploring how indigenous spirituality might manifest in future dimensions. Each painting captures energy in motion.',
-    //   pieceCount: 5,
-    //   year: '2024',
-    //   medium: 'Oil on Canvas',
-    //   videoSrc: 'https://pub-3f206994e69e42408f7908b2177b9ed9.r2.dev/my-queens.MP4',
-    //   icon: (
-    //     <svg viewBox="0 0 24 24" fill="none" className={styles.seriesIcon}>
-    //       <path d="M12 2L22 12L12 22L2 12L12 2Z" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round"/>
-    //       <path d="M12 8L16 12L12 16L8 12L12 8Z" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round"/>
-    //       <path d="M12 2V8" strokeWidth="1" strokeLinecap="round"/>
-    //       <path d="M12 16V22" strokeWidth="1" strokeLinecap="round"/>
-    //       <path d="M2 12H8" strokeWidth="1" strokeLinecap="round"/>
-    //       <path d="M16 12H22" strokeWidth="1" strokeLinecap="round"/>
-    //     </svg>
-    //   )
-    // },
     {
       id: 'mamma-im-fine',
       title: 'Mamma, I\'m Fine',
       description: 'A powerful single piece exploring the complex emotions of reassurance and vulnerability, inspired by personal poetry and community murals that speak to the immigrant experience.',
       pieceCount: 1,
-      year: '2024',
+      year: '2026',
       medium: 'Oil on Canvas',
       status: 'ongoing',
       comingSoon: true,
@@ -134,6 +131,29 @@ const PaintingsPage = () => {
     }
   }
 
+  const openPaintingModal = (imageSrc, title, seriesTitle, year, medium) => {
+    setSelectedPainting({ imageSrc, title, seriesTitle, year, medium })
+    setModalOpen(true)
+  }
+
+  const closePaintingModal = () => {
+    setModalOpen(false)
+    setSelectedPainting(null)
+  }
+
+  // Get painting name from file path
+  const getPaintingName = (imagePath) => {
+    const fileName = imagePath.split('/').pop().split('.')[0]
+    // Convert kebab-case or camelCase to Title Case
+    return fileName
+      .replace(/-/g, ' ')
+      .replace(/([A-Z])/g, ' $1')
+      .split(' ')
+      .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+      .join(' ')
+      .trim()
+  }
+
   return (
     <Layout 
         language={language} 
@@ -141,7 +161,7 @@ const PaintingsPage = () => {
         hasVideoBackground={true}
         videoSrc="https://pub-3f206994e69e42408f7908b2177b9ed9.r2.dev/paintings.MP4"
         videoStyle={{
-            filter: 'brightness(0.4) contrast(1.1) saturate(1.15)' // Makes video 40% darker
+            filter: 'brightness(0.3) contrast(1.2) saturate(1.15)'
         }}
     >
       <section className={styles.subPage}>
@@ -197,47 +217,76 @@ const PaintingsPage = () => {
                   </div>
                 </div>
               ) : (
-                <Link
-                  key={series.id}
-                  to={`/art/paintings/${series.id}`}
-                  className={styles.seriesCard}
-                  onMouseEnter={() => handleMouseEnter(series.id)}
-                  onMouseLeave={() => handleMouseLeave(series.id)}
-                >
-                  <div className={styles.seriesImagePlaceholder}>
-                    {/* Status Badge */}
-                    <span className={`${styles.statusBadge} ${styles[series.status]}`}>
-                      {series.status === 'completed' ? 'Completed' : 'Ongoing'}
-                    </span>
+                <div key={series.id} className={styles.seriesWrapper}>
+                  <Link
+                    to={`/art/paintings/${series.id}`}
+                    className={styles.seriesCard}
+                    onMouseEnter={() => handleMouseEnter(series.id)}
+                    onMouseLeave={() => handleMouseLeave(series.id)}
+                  >
+                    <div className={styles.seriesImagePlaceholder}>
+                      {/* Status Badge */}
+                      <span className={`${styles.statusBadge} ${styles[series.status]}`}>
+                        {series.status === 'completed' ? 'Completed' : 'Ongoing'}
+                      </span>
 
-                    {/* Video Background */}
-                    <video
-                      ref={el => videoRefs.current[series.id] = el}
-                      className={`${styles.hoverVideo} ${hoveredSeries === series.id ? styles.videoVisible : ''}`}
-                      muted
-                      loop
-                      playsInline
-                    >
-                      <source src={series.videoSrc} type="video/mp4" />
-                    </video>
+                      {/* Video Background */}
+                      <video
+                        ref={el => videoRefs.current[series.id] = el}
+                        className={`${styles.hoverVideo} ${hoveredSeries === series.id ? styles.videoVisible : ''}`}
+                        muted
+                        loop
+                        playsInline
+                        preload="metadata"
+                      >
+                        <source src={series.videoSrc} type="video/mp4" />
+                      </video>
 
-                    {/* Series-specific icon */}
-                    {series.icon}
+                      {/* Series-specific icon */}
+                      {series.icon}
 
-                    <div className={styles.imageOverlay}>
-                      <span className={styles.pieceCount}>{series.pieceCount} pieces</span>
-                      <span className={styles.seriesYear}>{series.year}</span>
+                      <div className={styles.imageOverlay}>
+                        <span className={styles.pieceCount}>{series.pieceCount} pieces</span>
+                        <span className={styles.seriesYear}>{series.year}</span>
+                      </div>
                     </div>
-                  </div>
 
-                  <div className={styles.seriesContent}>
-                    <h3 className={styles.seriesTitle}>{series.title}</h3>
-                    <div className={styles.seriesMeta}>
-                      <span className={styles.seriesMedium}>{series.medium}</span>
+                    <div className={styles.seriesContent}>
+                      <h3 className={styles.seriesTitle}>{series.title}</h3>
+                      <div className={styles.seriesMeta}>
+                        <span className={styles.seriesMedium}>{series.medium}</span>
+                      </div>
+                      <p className={styles.seriesDescription}>{series.description}</p>
                     </div>
-                    <p className={styles.seriesDescription}>{series.description}</p>
-                  </div>
-                </Link>
+                  </Link>
+
+                  {/* Photo Gallery Below Card */}
+                  {series.images && series.images.length > 0 && (
+                    <div className={styles.seriesPhotoGallery}>
+                      {series.images.map((image, imgIndex) => (
+                        <div
+                          key={imgIndex}
+                          className={styles.galleryImageWrapper}
+                          onClick={() => openPaintingModal(image.src, image.title, series.title, series.year, series.medium)}
+                        >
+                          <img
+                            src={image.src}
+                            alt={`${series.title} - ${image.title}`}
+                            className={styles.galleryImage}
+                          />
+
+                          {/* Hover Overlay with Glaze Effect */}
+                          <div className={styles.galleryImageOverlay}>
+                            <div className={styles.galleryImageGlaze}></div>
+                            <div className={styles.galleryImageTitle}>
+                              {image.title}
+                            </div>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                </div>
               )
             ))}
           </div>
@@ -249,20 +298,41 @@ const PaintingsPage = () => {
             <h3 className={styles.statementTitle}>Artist Statement</h3>
             <div className={styles.statementText}>
               <p>
-                My paintings serve as bridges between worlds—ancestral and futuristic, traditional and technological, 
-                sacred and digital. Through canvas and pigment, I explore how indigenous wisdom can inform and 
-                transform our understanding of future possibilities.
+                My paintings serve as bridges between worlds. Through canvas and pigment, I explore how ancestral wisdom transforms our understanding 
+                of love, grief, and healing.
               </p>
-              <p>
-                Each brushstroke carries the weight of history while reaching toward tomorrow. In this practice, 
-                I find that the oldest stories become the most radical visions of what could be.
-              </p>
-            </div>
-            <div className={styles.statementSignature}>
-              <span>— Māyā Murry</span>
             </div>
           </div>
         </div>
+
+        {/* Painting Modal */}
+        {modalOpen && selectedPainting && (
+          <div className={styles.paintingModal} onClick={closePaintingModal}>
+            <div className={styles.paintingModalContent} onClick={(e) => e.stopPropagation()}>
+              <button className={styles.closeModalBtn} onClick={closePaintingModal}>×</button>
+
+              <div className={styles.paintingModalBody}>
+                <div className={styles.paintingModalImageContainer}>
+                  <img
+                    src={selectedPainting.imageSrc}
+                    alt={selectedPainting.title}
+                    className={styles.paintingModalImage}
+                  />
+                </div>
+
+                <div className={styles.paintingModalInfo}>
+                  <h2 className={styles.paintingModalTitle}>{selectedPainting.title}</h2>
+                  <p className={styles.paintingModalSeries}>From: {selectedPainting.seriesTitle}</p>
+                  <div className={styles.paintingModalMeta}>
+                    <span className={styles.paintingModalYear}>{selectedPainting.year}</span>
+                    <span className={styles.paintingModalDivider}>•</span>
+                    <span className={styles.paintingModalMedium}>{selectedPainting.medium}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
       </section>
     </Layout>
   )

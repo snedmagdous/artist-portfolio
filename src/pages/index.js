@@ -18,7 +18,7 @@ const ConstellationHighlights = () => {
       type: 'Mural',
       description: 'Monumental mural honoring divine feminine lineage across past, present, and future',
       link: '/art/murals/my-queens',
-      video: 'https://pub-3f206994e69e42408f7908b2177b9ed9.r2.dev/myqueens.MOV',
+      image: '/images/constellation/my-queens.jpg',
       position: { x: 50, y: 30 }, // Central upper - largest node
       size: 'large',
       connections: ['ancestral-visions', 'divine-feminine', 'monster-collage', 'love-revolution']
@@ -29,7 +29,7 @@ const ConstellationHighlights = () => {
       type: 'Painting Series',
       description: 'Exploration of inherited wisdom and cultural memory through portraiture',
       link: '/art/paintings',
-      video: 'https://pub-3f206994e69e42408f7908b2177b9ed9.r2.dev/paintings.MP4',
+      image: '/images/constellation/ancestral-visions.jpg',
       position: { x: 25, y: 45 }, // Left mid
       size: 'medium',
       connections: ['my-queens', 'divine-feminine', 'where-do-you-go', 'monster-collage']
@@ -40,7 +40,7 @@ const ConstellationHighlights = () => {
       type: 'Portrait Series',
       description: 'Celebrating sacred femininity through powerful portraiture',
       link: '/art/paintings',
-      video: 'https://pub-3f206994e69e42408f7908b2177b9ed9.r2.dev/paintings.MP4',
+      image: '/images/constellation/divine-feminine.jpg',
       position: { x: 75, y: 40 }, // Right mid
       size: 'medium',
       connections: ['my-queens', 'ancestral-visions', 'mamma-im-fine', 'love-revolution']
@@ -51,7 +51,7 @@ const ConstellationHighlights = () => {
       type: 'Illustration Series',
       description: 'Dark illustrations mapping depersonalization and chronic pain',
       link: '/art/illustrations/where-do-you-go',
-      video: 'https://pub-3f206994e69e42408f7908b2177b9ed9.r2.dev/illust.MP4',
+      image: '/images/constellation/where-do-you-go.jpg',
       position: { x: 20, y: 75 }, // Lower left
       size: 'medium',
       connections: ['ancestral-visions', 'monster-collage']
@@ -62,7 +62,7 @@ const ConstellationHighlights = () => {
       type: 'Collage Series',
       description: 'Confronting the shadow self through mixed media collage',
       link: '/art/collages',
-      video: 'https://pub-3f206994e69e42408f7908b2177b9ed9.r2.dev/collage.MP4',
+      image: '/images/constellation/monster-collage.jpg',
       position: { x: 45, y: 70 }, // Lower center
       size: 'small',
       connections: ['my-queens', 'ancestral-visions', 'where-do-you-go', 'love-revolution']
@@ -73,7 +73,7 @@ const ConstellationHighlights = () => {
       type: 'Documentary Film',
       description: 'A documentary exploring Palestinian solidarity and intersectional liberation',
       link: '/film/documentaries',
-      video: 'https://pub-3f206994e69e42408f7908b2177b9ed9.r2.dev/documentaries.MP4',
+      image: '/images/constellation/love-revolution.jpg',
       position: { x: 70, y: 75 }, // Lower right
       size: 'large',
       connections: ['my-queens', 'divine-feminine', 'monster-collage', 'mamma-im-fine']
@@ -84,7 +84,7 @@ const ConstellationHighlights = () => {
       type: 'Poetry',
       description: 'A powerful poem on generational trauma and healing',
       link: '/writing',
-      video: 'https://pub-3f206994e69e42408f7908b2177b9ed9.r2.dev/writing.MP4',
+      image: '/images/constellation/mamma-im-fine.jpg',
       position: { x: 85, y: 55 }, // Right mid-lower
       size: 'small',
       connections: ['divine-feminine', 'love-revolution']
@@ -256,15 +256,11 @@ const ConstellationHighlights = () => {
               {/* Node Core */}
               <div className="node-core">
                 <div className="node-image-wrapper">
-                  <video
-                    autoPlay
-                    loop
-                    muted
-                    playsInline
-                    className="node-video"
-                  >
-                    <source src={node.video} type="video/mp4" />
-                  </video>
+                  <img
+                    src={node.image}
+                    alt={node.title}
+                    className="node-image"
+                  />
                 </div>
                 <div className="node-pulse"></div>
               </div>
@@ -321,14 +317,29 @@ export default function Home() {
   const [email, setEmail] = useState('');
   const [subscribeSuccess, setSubscribeSuccess] = useState(false);
 
-  // Video background setup
+  // Video background setup with ping-pong loop
   useEffect(() => {
     if (videoRef.current) {
       const video = videoRef.current;
       video.defaultMuted = true;
       video.muted = true;
-      
-      // Ensure video plays immediately  
+      let playDirection = 1; // 1 for forward, -1 for reverse
+
+      // Ping-pong loop: play forward then reverse
+      const handleTimeUpdate = () => {
+        // Check if we've reached the end (forward)
+        if (playDirection === 1 && video.currentTime >= video.duration - 0.1) {
+          playDirection = -1;
+          video.playbackRate = -1.0; // Play in reverse
+        }
+        // Check if we've reached the beginning (reverse)
+        else if (playDirection === -1 && video.currentTime <= 0.1) {
+          playDirection = 1;
+          video.playbackRate = 1.0; // Play forward
+        }
+      };
+
+      // Ensure video plays immediately
       const playVideo = async () => {
         try {
           await video.play();
@@ -336,16 +347,20 @@ export default function Home() {
           console.log('Video autoplay failed:', error);
         }
       };
-      
+
       // Play video as soon as possible
       if (video.readyState >= 2) {
         playVideo();
       } else {
         video.addEventListener('loadeddata', playVideo);
       }
-      
+
+      // Add ping-pong listener
+      video.addEventListener('timeupdate', handleTimeUpdate);
+
       return () => {
         video.removeEventListener('loadeddata', playVideo);
+        video.removeEventListener('timeupdate', handleTimeUpdate);
       };
     }
   }, []);
@@ -760,10 +775,10 @@ export default function Home() {
           className="video-tag"
           ref={videoRef}
           style={{
-            filter: 'brightness(0.55) contrast(1.1) saturate(1.9)'
+            filter: 'brightness(0.35) contrast(1.2) saturate(2.0)'
           }}
         >
-          <source src="https://pub-3f206994e69e42408f7908b2177b9ed9.r2.dev/about-1.mp4" type="video/mp4" />
+          <source src="https://pub-3f206994e69e42408f7908b2177b9ed9.r2.dev/about.mp4" type="video/mp4" />
         </video>
       </div>
 
@@ -1034,7 +1049,7 @@ export default function Home() {
 
             <div className="form-group">
               <label htmlFor="message">Message</label>
-              <textarea id="message" name="message" rows="6" required></textarea>
+              <textarea id="message" name="message" rows="1" required></textarea>
             </div>
 
             <button type="submit" className="contact-submit-btn">
@@ -1042,64 +1057,11 @@ export default function Home() {
             </button>
           </form>
 
-          {/* Other Ways to Connect */}
-          <div className="connect-section">
-            <h3 className="connect-title">Other Ways to Connect</h3>
-            <div className="connect-grid">
-              <a href="mailto:mayamurry9@gmail.com" className="connect-item">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1">
-                  <path d="M4 4H20C21.1 4 22 4.9 22 6V18C22 19.1 21.1 20 20 20H4C2.9 20 2 19.1 2 18V6C2 4.9 2.9 4 4 4Z"/>
-                  <polyline points="22,6 12,13 2,6"/>
-                </svg>
-                <span>mayamurry9@gmail.com</span>
-              </a>
-
-              <a href="https://www.linkedin.com/in/maya-murry" target="_blank" rel="noopener noreferrer" className="connect-item">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1">
-                  <path d="M16 8C17.5913 8 19.1174 8.63214 20.2426 9.75736C21.3679 10.8826 22 12.4087 22 14V21H18V14C18 13.4696 17.7893 12.9609 17.4142 12.5858C17.0391 12.2107 16.5304 12 16 12C15.4696 12 14.9609 12.2107 14.5858 12.5858C14.2107 12.9609 14 13.4696 14 14V21H10V14C10 12.4087 10.6321 10.8826 11.7574 9.75736C12.8826 8.63214 14.4087 8 16 8Z"/>
-                  <rect x="2" y="9" width="4" height="12"/>
-                  <circle cx="4" cy="4" r="2"/>
-                </svg>
-                <span>LinkedIn</span>
-              </a>
-
-              <a href="https://github.com/snedmagdous" target="_blank" rel="noopener noreferrer" className="connect-item">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1">
-                  <path d="M9 19C4 20.5 4 16.5 2 16M16 22V18.13C16.0375 17.6532 15.9731 17.1738 15.811 16.7238C15.6489 16.2738 15.3929 15.8634 15.06 15.52C18.2 15.17 21.5 13.98 21.5 8.52C21.4997 7.12383 20.9627 5.7812 20 4.77C20.4559 3.54851 20.4236 2.19835 19.91 1C19.91 1 18.73 0.650001 16 2.48C13.708 1.85882 11.292 1.85882 9 2.48C6.27 0.650001 5.09 1 5.09 1C4.57638 2.19835 4.54414 3.54851 5 4.77C4.03013 5.7887 3.49252 7.14346 3.5 8.55C3.5 13.97 6.8 15.16 9.94 15.55C9.611 15.89 9.35726 16.2954 9.19531 16.7399C9.03335 17.1844 8.96681 17.6581 9 18.13V22"/>
-                </svg>
-                <span>GitHub</span>
-              </a>
-
-              <a href="/maya-murry-creative-cv-2025.pdf" download className="connect-item">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1">
-                  <path d="M14 2H6C5.46957 2 4.96086 2.21071 4.58579 2.58579C4.21071 2.96086 4 3.46957 4 4V20C4 20.5304 4.21071 21.0391 4.58579 21.4142C4.96086 21.7893 5.46957 22 6 22H18C18.5304 22 19.0391 21.7893 19.4142 21.4142C19.7893 21.0391 20 20.5304 20 20V8L14 2Z"/>
-                  <polyline points="14,2 14,8 20,8"/>
-                  <path d="M12 11V17"/>
-                  <path d="M9 14L12 17L15 14"/>
-                </svg>
-                <span>Download Creative CV</span>
-              </a>
-
-              <a href="/maya-murry-technical-resume-2025.pdf" download className="connect-item">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1">
-                  <path d="M14 2H6C5.46957 2 4.96086 2.21071 4.58579 2.58579C4.21071 2.96086 4 3.46957 4 4V20C4 20.5304 4.21071 21.0391 4.58579 21.4142C4.96086 21.7893 5.46957 22 6 22H18C18.5304 22 19.0391 21.7893 19.4142 21.4142C19.7893 21.0391 20 20.5304 20 20V8L14 2Z"/>
-                  <polyline points="14,2 14,8 20,8"/>
-                  <path d="M12 11V17"/>
-                  <path d="M9 14L12 17L15 14"/>
-                </svg>
-                <span>Download Technical Resume</span>
-              </a>
-            </div>
-          </div>
-
           {/* Commission Callout */}
           <div className="commission-callout">
             <h3 className="commission-callout-title">Interested in a Commission?</h3>
-            <p className="commission-callout-text">
-              I create custom murals, paintings, and digital artwork
-            </p>
             <Link to="/commission" className="commission-callout-btn">
-              Learn More About Commissions
+              Click Here
             </Link>
           </div>
         </div>

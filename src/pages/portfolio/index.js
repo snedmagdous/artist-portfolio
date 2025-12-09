@@ -57,8 +57,9 @@ const PortfolioPage = () => {
     {
       id: 'paintings',
       title: 'Paintings',
-      description: 'Expressive canvas works exploring ancestral wisdom, divine femininity, and cultural memory through portraiture',
+      description: 'Ancestral wisdom and divine femininity through portraiture',
       videoSrc: 'https://pub-3f206994e69e42408f7908b2177b9ed9.r2.dev/paintings.MP4',
+      videoFilter: 'brightness(0.8) contrast(0.9)',
       count: '25+ Works',
       link: '/art/paintings',
       icon: (
@@ -73,8 +74,9 @@ const PortfolioPage = () => {
     {
       id: 'murals',
       title: 'Murals',
-      description: 'Large-scale public art celebrating community, divine feminine lineage, and cultural resistance',
+      description: 'Large-scale public art celebrating community and resistance',
       videoSrc: 'https://pub-3f206994e69e42408f7908b2177b9ed9.r2.dev/myqueens.MOV',
+      videoFilter: 'brightness(0.75) contrast(1.0)',
       count: '4 Murals',
       link: '/art/murals',
       icon: (
@@ -93,8 +95,9 @@ const PortfolioPage = () => {
     {
       id: 'illustrations',
       title: 'Illustrations',
-      description: 'Digital art celebrating divine femininity and exploring themes of depersonalization and chronic pain through color',
+      description: 'Digital art exploring depersonalization through color',
       videoSrc: 'https://pub-3f206994e69e42408f7908b2177b9ed9.r2.dev/illust.MP4',
+      videoFilter: 'brightness(0.85) contrast(0.95)',
       count: '15+ Works',
       link: '/art/illustrations',
       icon: (
@@ -111,8 +114,9 @@ const PortfolioPage = () => {
     {
       id: 'collages',
       title: 'Collages',
-      description: 'Mixed media narratives confronting the shadow self and exploring internal monsters through layered compositions',
+      description: 'Mixed media confronting the shadow self',
       videoSrc: 'https://pub-3f206994e69e42408f7908b2177b9ed9.r2.dev/collage.MP4',
+      videoFilter: 'brightness(0.7) contrast(1.1)',
       count: '8+ Works',
       link: '/art/collages',
       icon: (
@@ -133,8 +137,9 @@ const PortfolioPage = () => {
     {
       id: 'documentaries',
       title: 'Documentaries',
-      description: 'Long-form explorations of Palestinian solidarity, intersectional liberation, and cultural preservation',
+      description: 'Palestinian solidarity and intersectional liberation',
       videoSrc: 'https://pub-3f206994e69e42408f7908b2177b9ed9.r2.dev/documentaries.MP4',
+      videoFilter: 'brightness(0.8) contrast(1.0)',
       count: '5 Films',
       duration: '15-45 min',
       link: '/film/documentaries',
@@ -151,8 +156,9 @@ const PortfolioPage = () => {
     {
       id: 'short-films',
       title: 'Short Films',
-      description: 'Narrative and experimental works blending traditional storytelling with speculative fiction and indigenous futurism',
+      description: 'Speculative fiction and indigenous futurism',
       videoSrc: 'https://pub-3f206994e69e42408f7908b2177b9ed9.r2.dev/short-films.MP4',
+      videoFilter: 'brightness(0.75) contrast(1.05)',
       count: '12 Films',
       duration: '3-15 min',
       link: '/film/short-films',
@@ -167,8 +173,9 @@ const PortfolioPage = () => {
     {
       id: 'micro-films',
       title: 'Micro Films',
-      description: 'Brief visual stories and digital experiments capturing moments of cultural significance in bite-sized formats',
+      description: 'Brief visual stories capturing cultural moments',
       videoSrc: 'https://pub-3f206994e69e42408f7908b2177b9ed9.r2.dev/micro-films.mp4',
+      videoFilter: 'brightness(0.8) contrast(0.95)',
       count: '24 Films',
       duration: '15-60 sec',
       link: '/film/micro-films',
@@ -623,7 +630,7 @@ const PortfolioPage = () => {
           className="video-tag"
           ref={videoRef}
           style={{
-            filter: 'brightness(0.40) contrast(1.0) saturate(1.2)'
+            filter: 'brightness(0.30) contrast(1.1) saturate(1.3)'
           }}
         >
           <source src="https://pub-3f206994e69e42408f7908b2177b9ed9.r2.dev/IMG_3893.MP4" type="video/mp4" />
@@ -669,7 +676,7 @@ const PortfolioPage = () => {
                     preload="metadata"
                     className={styles.filmVideo}
                     style={{
-                      filter: 'brightness(0.8) contrast(0.9)'
+                      filter: category.videoFilter || 'brightness(0.8) contrast(0.9)'
                     }}
                   >
                     <source src={category.videoSrc} type="video/mp4" />
@@ -723,7 +730,7 @@ const PortfolioPage = () => {
                     preload="metadata"
                     className={styles.filmVideo}
                     style={{
-                      filter: 'brightness(0.8) contrast(0.9)'
+                      filter: category.videoFilter || 'brightness(0.8) contrast(0.9)'
                     }}
                   >
                     <source src={category.videoSrc} type="video/mp4" />
@@ -747,7 +754,7 @@ const PortfolioPage = () => {
 
                   <div className={styles.filmCTA}>
                     <span className={styles.viewFilmsBtn}>
-                      Explore Films
+                      Explore Collection
                     </span>
                   </div>
                 </div>
@@ -759,7 +766,7 @@ const PortfolioPage = () => {
         {/* Featured Quote */}
         <div className={styles.featuredQuote}>
           <p className={styles.quoteText}>
-            "Every piece I create is an act of resistance, a meditation on freedom, and an invitation to imagine worlds where we are not defined by our wounds but by our capacity to dream."
+            "Every piece I create is an invitation to imagine worlds where we are not defined by our wounds but our capacity to evolve."
           </p>
           <p className={styles.quoteAuthor}>— Māyā Murry</p>
         </div>

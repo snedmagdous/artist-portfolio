@@ -166,7 +166,7 @@ const PalestineMuralPage = () => {
 
         {/* Hero Section */}
         <div className={styles.muralHero}>
-          <h1 className={styles.muralTitle}>The Sun Will Shine In A Free Palestine</h1>
+          <h1 className={styles.muralTitle}>The Sun Will Shine</h1>
           <div className={styles.muralMeta}>
             <span className={styles.metaItem}>Cornell Arts Quad Exhibition • 2024-2025</span>
             <span className={styles.metaItem}>8ft × 36ft • Exterior Acrylic Paint</span>

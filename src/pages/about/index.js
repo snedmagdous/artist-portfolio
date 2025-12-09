@@ -215,45 +215,6 @@ const AboutPage = () => {
           </div>
         </div>
 
-        {/* Indigenous Futurism Philosophy Section */}
-        <div className={styles.philosophySection}>
-          <div className={styles.philosophyCard}>
-            <h3 className={styles.philosophyTitle}>
-              <a
-                href="https://lithub.com/writing-toward-a-definition-of-indigenous-futurism/"
-                target="_blank"
-                rel="noopener noreferrer"
-                style={{ color: 'inherit', textDecoration: 'none' }}
-              >
-                Indigenous Futurism
-              </a>
-            </h3>
-            <blockquote className={styles.philosophyQuote}>
-              Originally introduced to me through science-fiction, Indigenous Futurism (المستقبلية الأصيلة) is a
-              movement that centers Indigenous ways of being as the architecture for tomorrow. It is a daily practice of
-              carving out time to reimagine what freedom should look like. Through art and writing, we open real, tangible
-              routes that guide us toward this future—creating small spaces each day for worlds that
-              should and will exist.
-              <br/><br/>
-              Each day, we must dream of building worlds where we lose the identities we built around our wounds,
-              worlds where liberation becomes a state of being, not just imagining. In my creative work, I explore
-              how this daily reimagining transforms resistance into regeneration, turning our visions into
-              inevitable realities that must be reckoned with.
-              <br/><br/>
-              As Walidah Imarisha puts it, "whenever we try to envision a world without war, without violence,
-              without prisons, without capitalism, we are engaging in speculative fiction. All organizing is
-              science fiction."
-            </blockquote>
-            <div style={{ marginTop: '2rem', textAlign: 'center' }}>
-              <p className={styles.philosophyQuote} style={{ fontSize: '1.4rem', fontStyle: 'normal' }}>
-                "We are not vanishing. We are becoming."
-              </p>
-              <p className={styles.philosophyQuote} style={{ fontSize: '1.3rem', direction: 'rtl', fontStyle: 'normal' }}>
-                "نحنا ننولد من جديد ولا نختفي في الأفق"
-              </p>
-            </div>
-          </div>
-        </div>
 
         {/* Digital Ancestralism Philosophy Section */}
         <div className={styles.philosophySection}>

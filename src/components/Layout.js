@@ -34,35 +34,36 @@ const Layout = ({
   console.log('Layout received:', { hasVideoBackground, videoSrc, videoStyle });
   const headerRef = useRef(null); 
 
-  // Video background setup with seamless loop
+  // Video background setup with ping-pong (forward-reverse) loop
   useEffect(() => {
     if (videoRef.current && hasVideoBackground && videoSrc) {
       const video = videoRef.current;
       video.defaultMuted = true;
       video.muted = true;
       video.playbackRate = playbackRate;
+      let playDirection = 1; // 1 for forward, -1 for reverse
 
-      // Seamless loop: fade transition at loop point
+      // Ping-pong loop: play forward then reverse
       const handleTimeUpdate = () => {
-        // Create smooth transition by fading slightly before end
-        const fadePoint = video.duration - 0.5; // Start fade 0.5s before end
-        if (video.currentTime >= fadePoint) {
-          const progress = (video.currentTime - fadePoint) / 0.5;
-          video.style.opacity = 1 - (progress * 0.2); // Subtle fade
-        } else {
-          video.style.opacity = 1;
+        // Check if we've reached the end (forward)
+        if (playDirection === 1 && video.currentTime >= video.duration - 0.1) {
+          playDirection = -1;
+          video.playbackRate = -playbackRate; // Play in reverse
+        }
+        // Check if we've reached the beginning (reverse)
+        else if (playDirection === -1 && video.currentTime <= 0.1) {
+          playDirection = 1;
+          video.playbackRate = playbackRate; // Play forward
         }
       };
 
       const handleEnded = () => {
-        // Smoothly restart from beginning
-        video.currentTime = 0;
-        video.style.opacity = 0.8;
-        video.play().catch(e => console.log("Video restart failed:", e));
-        // Fade back in
-        setTimeout(() => {
-          video.style.opacity = 1;
-        }, 50);
+        // Fallback in case timeupdate doesn't catch it
+        if (playDirection === 1) {
+          playDirection = -1;
+          video.playbackRate = -playbackRate;
+          video.play().catch(e => console.log("Reverse play failed:", e));
+        }
       };
 
       // Ensure video plays immediately (unless globally paused)
@@ -545,19 +546,19 @@ const Layout = ({
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Instagram"
+                className="header-social-link"
                 style={{
-                  color: 'white',
-                  opacity: 0.8,
+                  color: 'rgba(255, 255, 255, 0.8)',
                   transition: 'all 0.3s ease',
                   display: 'flex',
                   alignItems: 'center'
                 }}
                 onMouseEnter={(e) => {
-                  e.currentTarget.style.opacity = '1';
+                  e.currentTarget.style.color = '#E4405F';
                   e.currentTarget.style.transform = 'translateY(-2px)';
                 }}
                 onMouseLeave={(e) => {
-                  e.currentTarget.style.opacity = '0.8';
+                  e.currentTarget.style.color = 'rgba(255, 255, 255, 0.8)';
                   e.currentTarget.style.transform = 'translateY(0)';
                 }}
               >
@@ -571,19 +572,19 @@ const Layout = ({
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="TikTok"
+                className="header-social-link"
                 style={{
-                  color: 'white',
-                  opacity: 0.8,
+                  color: 'rgba(255, 255, 255, 0.8)',
                   transition: 'all 0.3s ease',
                   display: 'flex',
                   alignItems: 'center'
                 }}
                 onMouseEnter={(e) => {
-                  e.currentTarget.style.opacity = '1';
+                  e.currentTarget.style.color = '#00f2ea';
                   e.currentTarget.style.transform = 'translateY(-2px)';
                 }}
                 onMouseLeave={(e) => {
-                  e.currentTarget.style.opacity = '0.8';
+                  e.currentTarget.style.color = 'rgba(255, 255, 255, 0.8)';
                   e.currentTarget.style.transform = 'translateY(0)';
                 }}
               >
@@ -609,7 +610,7 @@ const Layout = ({
                   e.currentTarget.style.transform = 'translateY(-2px)';
                 }}
                 onMouseLeave={(e) => {
-                  e.currentTarget.style.opacity = '0.8';
+                  e.currentTarget.style.color = 'rgba(255, 255, 255, 0.8)';
                   e.currentTarget.style.transform = 'translateY(0)';
                 }}
               >
@@ -635,7 +636,7 @@ const Layout = ({
                   e.currentTarget.style.transform = 'translateY(-2px)';
                 }}
                 onMouseLeave={(e) => {
-                  e.currentTarget.style.opacity = '0.8';
+                  e.currentTarget.style.color = 'rgba(255, 255, 255, 0.8)';
                   e.currentTarget.style.transform = 'translateY(0)';
                 }}
               >

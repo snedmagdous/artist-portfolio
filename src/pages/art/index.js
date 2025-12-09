@@ -369,66 +369,10 @@ const ArtPage = () => {
 
         <div ref={heroSectionRef} className={styles.artHeroSection}>
           <h1 className={styles.artMainTitle}>Art Portfolio</h1>
-          <p className={styles.artSubtitle}>Exploring Indigenous Futurism through visual arts</p>
-        </div>
-
-        {/* Featured Art Gallery */}
-        <div className={styles.featuredGallery}>
-          <h2 className={styles.galleryTitle}>Featured Works</h2>
-          <div className={styles.galleryGrid}>
-            {featuredArtworks.map((artwork) => (
-              <Link
-                key={artwork.id}
-                to={artwork.link}
-                className={styles.galleryItem}
-              >
-                <img
-                  src={artwork.image}
-                  alt={artwork.title}
-                  className={styles.galleryImage}
-                />
-                <div className={styles.galleryOverlay}>
-                  <h3 className={styles.galleryItemTitle}>{artwork.title}</h3>
-                  <p className={styles.galleryItemCategory}>{artwork.category}</p>
-                  <span className={styles.galleryItemYear}>{artwork.year}</span>
-                </div>
-              </Link>
-            ))}
-          </div>
-        </div>
-
-        <div ref={categoriesSectionRef} className={styles.categoriesContainer}>
-          <div className={styles.categoriesGrid}>
-            {artCategories.map((category, index) => (
-              category.comingSoon ? (
-                <div
-                  key={category.id}
-                  className={`${styles.categoryCard} ${styles.comingSoonCard}`}
-                >
-                  <div className={styles.categoryContent}>
-                    {category.icon}
-                    <h3 className={styles.categoryTitle}>{category.title}</h3>
-                    <p className={styles.categoryDescription}>{category.description}</p>
-                    <p className={styles.comingSoonText}>
-                      Coming Soon<span className={styles.blinkingDots}>...</span>
-                    </p>
-                  </div>
-                </div>
-              ) : (
-                <Link
-                  key={category.id}
-                  to={category.link}
-                  className={styles.categoryCard}
-                >
-                  <div className={styles.categoryContent}>
-                    {category.icon}
-                    <h3 className={styles.categoryTitle}>{category.title}</h3>
-                    <p className={styles.categoryDescription}>{category.description}</p>
-                  </div>
-                </Link>
-              )
-            ))}
-          </div>
+          <p className={styles.artSubtitle}>Coming Soon</p>
+          <p className={styles.comingSoonMessage}>
+            This section is currently being curated. Check back soon to explore my visual artworks.
+          </p>
         </div>
       </section>
     </Layout>

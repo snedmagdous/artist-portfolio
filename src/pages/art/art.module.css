@@ -96,7 +96,7 @@
   position: absolute;
   width: 280px;
   height: 350px;
-  opacity: 0;
+  opacity: 0.4; /* Show by default at lower opacity */
   transform: scale(0.95);
   transition: all 1.2s cubic-bezier(0.23, 1, 0.32, 1);
   pointer-events: none;
@@ -116,9 +116,9 @@
   transform: translateY(-50%) scale(0.95);
 }
 
-/* Show preview on hover */
+/* Show preview more prominently on hover */
 .previewImageContainer.previewVisible {
-  opacity: 0.75;
+  opacity: 0.85; /* Increased from 0.75 for better visibility */
 }
 
 .timelineLeft .previewImageContainer.previewVisible {
@@ -134,17 +134,18 @@
   height: 100%;
   object-fit: cover;
   border-radius: 15px;
-  border: 2px solid rgba(255, 255, 255, 0.4);
+  border: 2px solid rgba(255, 255, 255, 0.3); /* Slightly softer border when not hovered */
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5),
-              0 0 50px rgba(255, 255, 255, 0.3),
-              0 0 80px rgba(255, 255, 255, 0.2),
-              0 0 120px rgba(255, 255, 255, 0.1);
-  filter: brightness(0.6);
+              0 0 40px rgba(255, 255, 255, 0.2),
+              0 0 60px rgba(255, 255, 255, 0.15),
+              0 0 100px rgba(255, 255, 255, 0.08);
+  filter: brightness(0.55); /* Slightly darker when not hovered */
   transition: all 1.2s ease;
 }
 
 .previewVisible .previewImage {
-  filter: brightness(0.65);
+  filter: brightness(0.7); /* Brighter on hover */
+  border: 2px solid rgba(255, 255, 255, 0.5); /* Brighter border on hover */
   box-shadow: 0 25px 70px rgba(0, 0, 0, 0.6),
               0 0 60px rgba(255, 255, 255, 0.4),
               0 0 100px rgba(255, 255, 255, 0.3),
@@ -204,15 +205,16 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  opacity: 0;
-  transition: opacity 1.2s ease;
+  opacity: 0.5; /* Show video thumbnail by default */
+  transition: opacity 1.2s ease, filter 1.2s ease;
   z-index: 2;
-  filter: brightness(0.8) contrast(1.1);
+  filter: brightness(0.6) contrast(1.1); /* Darker when not playing */
 }
 
 .timelineImageArea .hoverVideo.videoVisible {
   opacity: 1;
   z-index: 3;
+  filter: brightness(0.8) contrast(1.1); /* Brighter when playing */
 }
 
 .timelineStatus {
@@ -418,6 +420,26 @@
 
 .muralCardLink:hover .muralVideoBackground {
   opacity: 0.6; /* Adjust this value to control video visibility */
+}
+
+/* Static Mural Image Background */
+.muralImageBackground {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.5;
+  transition: opacity 0.4s ease, transform 0.4s ease;
+  z-index: 1;
+  filter: brightness(0.85) contrast(1.1);
+}
+
+.muralCardLink:hover .muralImageBackground {
+  opacity: 0.7;
+  transform: scale(1.02);
+  filter: brightness(0.95) contrast(1.15);
 }
 
 /* Content overlay that stays above video */
@@ -1205,9 +1227,20 @@
   color: rgba(255, 255, 255, 0.7);
   font-weight: 200;
   max-width: 600px;
-  margin: 0 auto;
+  margin: 0 auto 2rem;
   line-height: 1.8;
   letter-spacing: 0.05em;
+}
+
+.comingSoonMessage {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.6);
+  font-weight: 300;
+  max-width: 600px;
+  margin: 3rem auto 0;
+  line-height: 1.6;
+  letter-spacing: 0.03em;
 }
 
 .paintingsPageVideo {
@@ -1226,19 +1259,26 @@
   margin: 0 auto;
   position: relative;
   z-index: 15;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .categoriesGrid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 2rem;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
   background: transparent;
+  max-width: 900px;
+  margin: 0 auto;
 }
 
 /* Individual Category Cards */
 .categoryCard {
   position: relative;
-  height: 350px;
+  height: 200px;
+  width: 100%;
+  max-width: 200px;
   background: rgba(0, 0, 0, 0.2);
   backdrop-filter: blur(15px);
   border: 1px solid rgba(255, 255, 255, 0.2);
@@ -1288,9 +1328,9 @@
 }
 
 .categoryIcon {
-  width: 60px;
-  height: 60px;
-  margin: 0 auto 2rem;
+  width: 45px;
+  height: 45px;
+  margin: 0 auto 1.2rem;
   stroke: rgba(255, 255, 255, 0.6);
   transition: all 0.3s ease;
 }
@@ -1302,10 +1342,10 @@
 
 .categoryTitle {
   font-family: 'Poppins', sans-serif;
-  font-size: 1.8rem;
+  font-size: 1.3rem;
   font-weight: 200;
   color: white;
-  margin-bottom: 1rem;
+  margin-bottom: 0.7rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   transition: all 0.3s ease;
@@ -1313,11 +1353,11 @@
 
 .categoryDescription {
   font-family: 'Poppins', sans-serif;
-  font-size: 0.9rem;
+  font-size: 0.75rem;
   color: rgba(255, 255, 255, 0.6);
-  line-height: 1.6;
+  line-height: 1.5;
   font-weight: 300;
-  max-width: 250px;
+  max-width: 220px;
   margin: 0 auto;
   letter-spacing: 0.02em;
   transition: all 0.3s ease;
@@ -1577,6 +1617,106 @@
   gap: 3rem;
 }
 
+/* Series Wrapper - Contains card and gallery */
+.seriesWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem; /* Space between card and gallery */
+  margin-bottom: 3rem;
+}
+
+/* Photo Gallery Below Card */
+.seriesPhotoGallery {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem; /* Space between images */
+  width: 100%; /* Full width of card */
+  overflow: hidden;
+}
+
+.galleryImageWrapper {
+  flex: 1; /* Equal width distribution */
+  min-width: 0; /* Allow flex to shrink properly */
+  overflow: hidden;
+  position: relative;
+  background: rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.15); /* Faint white outline */
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer; /* Show it's clickable */
+}
+
+.galleryImageWrapper:hover {
+  border-color: rgba(255, 255, 255, 0.4);
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.galleryImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Fill the space while maintaining aspect ratio */
+  transition: transform 0.4s ease, filter 0.4s ease;
+  filter: brightness(0.9) contrast(1.1);
+}
+
+.galleryImageWrapper:hover .galleryImage {
+  transform: scale(1.05);
+  filter: brightness(1) contrast(1.2);
+}
+
+/* Gallery Image Hover Overlay */
+.galleryImageOverlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+  z-index: 5;
+}
+
+.galleryImageWrapper:hover .galleryImageOverlay {
+  opacity: 1;
+}
+
+.galleryImageGlaze {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.95) 0%,
+    rgba(0, 0, 0, 0.85) 20%,
+    rgba(0, 0, 0, 0.6) 40%,
+    rgba(0, 0, 0, 0.3) 60%,
+    transparent 100%
+  );
+  backdrop-filter: blur(8px);
+}
+
+.galleryImageTitle {
+  position: absolute;
+  bottom: 1rem;
+  left: 1rem;
+  right: 1rem;
+  color: white;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 300;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  text-align: center;
+  z-index: 6;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+}
+
 /* Series Cards - Horizontal Layout */
 .seriesCard {
   background: rgba(0, 0, 0, 0.2);
@@ -1658,14 +1798,15 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  opacity: 0;
+  opacity: 0.4; /* Changed from 0 to 0.4 to show thumbnail */
   transition: opacity 1.2s ease;
   z-index: 1;
-  filter: brightness(0.6) contrast(1.1);
+  filter: brightness(0.5) contrast(1.1); /* Darker when not hovered */
 }
 
 .videoVisible {
   opacity: 1;
+  filter: brightness(0.8) contrast(1.1); /* Brighter when playing */
 }
 
 .seriesCard:hover .seriesIcon {
@@ -1808,12 +1949,13 @@
 
 @media (max-width: 768px) {
   .categoriesGrid {
-    grid-template-columns: 1fr;
-    gap: 1px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
   }
-  
+
   .categoryCard {
-    height: 300px;
+    height: 200px;
+    max-width: none;
   }
   
   .artHeroSection {
@@ -1844,9 +1986,15 @@
   .artCategoriesPage {
     padding: 6vh 1rem 8vh;
   }
-  
+
+  .categoriesGrid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
   .categoryCard {
-    height: 250px;
+    height: 180px;
+    max-width: none;
   }
   
   .seriesContent {
@@ -2914,10 +3062,12 @@
 
 .galleryGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 2rem;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1.2rem;
   opacity: 0;
   animation: fadeInUp 1s ease 0.3s forwards;
+  max-width: 1260px;
+  margin: 0 auto;
 }
 
 .galleryItem {
@@ -2926,18 +3076,18 @@
   border-radius: 8px;
   overflow: hidden;
   background: rgba(0, 0, 0, 0.5);
-  border: 2px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.2);
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   cursor: pointer;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5), inset 0 0 20px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5), inset 0 0 10px rgba(0, 0, 0, 0.3);
   opacity: 0.85;
   filter: brightness(0.8);
 }
 
 .galleryItem:hover {
-  transform: translateY(-10px) scale(1.02);
+  transform: translateY(-8px) scale(1.02);
   border-color: rgba(255, 255, 255, 0.5);
-  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.7), 0 0 40px rgba(255, 255, 255, 0.2);
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.7), 0 0 30px rgba(255, 255, 255, 0.2);
   z-index: 10;
   opacity: 1;
   filter: brightness(1);
@@ -2945,7 +3095,7 @@
 
 .galleryImage {
   width: 100%;
-  height: 350px;
+  height: 260px;
   object-fit: cover;
   display: block;
   transition: all 0.4s ease;
@@ -2960,10 +3110,10 @@
   bottom: 0;
   left: 0;
   right: 0;
-  padding: 1.5rem;
+  padding: 1rem;
   background: linear-gradient(to top, rgba(0, 0, 0, 0.95), transparent);
   opacity: 0;
-  transform: translateY(20px);
+  transform: translateY(15px);
   transition: all 0.4s ease;
 }
 
@@ -2974,27 +3124,27 @@
 
 .galleryItemTitle {
   font-family: 'Poppins', sans-serif;
-  font-size: 1.2rem;
+  font-size: 0.95rem;
   font-weight: 300;
   color: white;
-  margin: 0 0 0.3rem 0;
+  margin: 0 0 0.2rem 0;
   letter-spacing: 0.05em;
   text-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
 }
 
 .galleryItemCategory {
   font-family: 'Poppins', sans-serif;
-  font-size: 0.85rem;
+  font-size: 0.7rem;
   color: rgba(255, 255, 255, 0.7);
   font-weight: 300;
-  margin: 0 0 0.5rem 0;
+  margin: 0 0 0.3rem 0;
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
 
 .galleryItemYear {
   font-family: 'Poppins', sans-serif;
-  font-size: 0.8rem;
+  font-size: 0.65rem;
   color: rgba(255, 255, 255, 0.6);
   font-weight: 300;
   letter-spacing: 0.1em;
@@ -3050,4 +3200,149 @@
   .galleryImage {
     height: 300px;
   }
+}
+
+/* Painting Modal */
+.paintingModal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.95);
+  backdrop-filter: blur(20px);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.paintingModalContent {
+  position: relative;
+  max-width: 90vw;
+  max-height: 90vh;
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(30px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  overflow: hidden;
+  animation: slideUp 0.4s ease;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.closeModalBtn {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  width: 40px;
+  height: 40px;
+  background: rgba(0, 0, 0, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  color: white;
+  font-size: 2rem;
+  line-height: 1;
+  cursor: pointer;
+  z-index: 10;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: Arial, sans-serif;
+}
+
+.closeModalBtn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.5);
+  transform: rotate(90deg);
+}
+
+.paintingModalBody {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+}
+
+.paintingModalImageContainer {
+  max-width: 100%;
+  max-height: 70vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+.paintingModalImage {
+  max-width: 100%;
+  max-height: 70vh;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.paintingModalInfo {
+  text-align: center;
+}
+
+.paintingModalTitle {
+  font-family: 'Poppins', sans-serif;
+  font-size: 2rem;
+  font-weight: 200;
+  color: white;
+  margin-bottom: 0.5rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.paintingModalSeries {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.7);
+  font-weight: 300;
+  letter-spacing: 0.05em;
+}
+
+.paintingModalMeta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.paintingModalYear,
+.paintingModalMedium {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.8);
+  font-weight: 300;
+  letter-spacing: 0.05em;
+}
+
+.paintingModalDivider {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.8rem;
 }

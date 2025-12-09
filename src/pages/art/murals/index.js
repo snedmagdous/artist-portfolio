@@ -7,8 +7,7 @@ import * as styles from "../art.module.css"
 
 const MuralsPage = () => {
   const [language, setLanguage] = useState('EN')
-  const videoRefs = useRef([])
-  
+
   const muralProjects = [
     {
       id: 'sun-will-shine-palestine',
@@ -20,8 +19,9 @@ const MuralsPage = () => {
       medium: 'Exterior acrylic paint',
       status: 'Complete',
       videoSrc: 'https://pub-3f206994e69e42408f7908b2177b9ed9.r2.dev/sun-will-shine.MP4',
+      imageSrc: '/images/murals/sunshine/mural.JPEG',
       collaborators: 'Ithaca Jewish Voice for Peace, Ithaca Collective for Justice in Palestine, Ithaca Mural Arts, & Various local social justice coalitions',
-      funding: 'Community-funded project raising $13,000+',
+      funding: 'Grassroots project raising $13,000+',
       icon: (
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="0.3">
           {/* Sun rays */}
@@ -44,8 +44,9 @@ const MuralsPage = () => {
       medium: 'Mixed media',
       status: 'Complete',
       videoSrc: 'https://pub-3f206994e69e42408f7908b2177b9ed9.r2.dev/tikkun-vor.MP4',
+      imageSrc: '/images/murals/tikkun/final.JPEG',
       collaborators: 'Center for Transformative Action, Ithaca Mural Arts, Michael Margolin, Jewish youth community at the Tikkun V\'or Synagogue',
-      funding: 'Community-funded project raising $2,000+',
+      funding: 'Center for Transformative Action project raising $2,000+',
       icon: (
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="0.3">
           {/* Star of David outline */}
@@ -68,8 +69,9 @@ const MuralsPage = () => {
       medium: 'House paints',
       status: 'Complete',
       videoSrc: 'https://pub-3f206994e69e42408f7908b2177b9ed9.r2.dev/love-rev-mural.MP4',
+      imageSrc: '/images/murals/love-rev/final.JPEG',
       collaborators: 'CSMA, Cornell Society for the Humanities, Ithaca Mural Arts',
-      funding: 'Community-funded project raising $3,000+ (including $1,500+ crowdsourced)',
+      funding: 'Society for the Humanities project raising $3,000+',
       icon: (
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="0.3">
           {/* Heart shape */}
@@ -91,10 +93,11 @@ const MuralsPage = () => {
       year: '2025',
       size: '37ft × 15ft',
       medium: 'Exterior acrylic paint',
-      status: 'Ongoing',
+      status: 'Complete',
       videoSrc: 'https://pub-3f206994e69e42408f7908b2177b9ed9.r2.dev/queens-mural.mp4',
+      imageSrc: '/images/murals/my-queens/final.JPEG',
       collaborators: 'Argos Inn, Ithaca\'s Community Arts Partnership, Center for Transformative Action, Ithaca Mural Arts, Meldrim\'s Paint Center',
-      funding: 'Grant-funded community project',
+      funding: 'NYS Council on the Arts community project',
       icon: (
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="0.3">
           {/* Geometric crown/headdress */}
@@ -109,39 +112,41 @@ const MuralsPage = () => {
           <circle cx="12" cy="8" r="0.5" fill="rgba(140, 140, 140, 0.4)"/>
         </svg>
       )
+    },
+    {
+      id: 'welcome-to-neshaminy',
+      title: 'Welcome to Neshaminy',
+      description: 'A collaborative community mural project working with high school youth to celebrate cultural diversity, belonging, and the power of intergenerational storytelling through public art.',
+      location: 'Neshaminy High School, Langhorne, PA',
+      year: '2026',
+      size: 'TBD',
+      medium: 'Exterior acrylic paint',
+      status: 'Ongoing',
+      imageSrc: '',
+      collaborators: 'Neshaminy High School, youth community members',
+      funding: 'Partnership with Neshaminy High School',
+      comingSoon: true,
+      icon: (
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="0.3">
+          {/* School building */}
+          <rect x="4" y="10" width="16" height="10" fill="rgba(140, 140, 140, 0.2)" strokeWidth="0.4"/>
+          <path d="M4 10L12 4L20 10" fill="rgba(140, 140, 140, 0.25)" strokeWidth="0.4"/>
+          {/* Windows */}
+          <rect x="7" y="13" width="2" height="2" fill="rgba(140, 140, 140, 0.3)"/>
+          <rect x="11" y="13" width="2" height="2" fill="rgba(140, 140, 140, 0.3)"/>
+          <rect x="15" y="13" width="2" height="2" fill="rgba(140, 140, 140, 0.3)"/>
+          <rect x="7" y="16" width="2" height="2" fill="rgba(140, 140, 140, 0.3)"/>
+          <rect x="11" y="16" width="2" height="2" fill="rgba(140, 140, 140, 0.3)"/>
+          <rect x="15" y="16" width="2" height="2" fill="rgba(140, 140, 140, 0.3)"/>
+          {/* Door */}
+          <rect x="10.5" y="16" width="3" height="4" fill="rgba(140, 140, 140, 0.35)"/>
+          {/* Welcome banner */}
+          <path d="M6 8L18 8" strokeWidth="0.5" opacity="0.7"/>
+        </svg>
+      )
     }
   ]
 
-  useEffect(() => {
-    const observerOptions = {
-      threshold: 0.5,
-      rootMargin: '0px'
-    }
-
-    const observerCallback = (entries) => {
-      entries.forEach((entry) => {
-        const video = entry.target
-        if (entry.isIntersecting) {
-          video.play().catch(e => console.log("Video play failed:", e))
-        } else {
-          video.pause()
-        }
-      })
-    }
-
-    const observer = new IntersectionObserver(observerCallback, observerOptions)
-    
-    videoRefs.current.forEach(video => {
-      if (video) observer.observe(video)
-    })
-
-    return () => {
-      videoRefs.current.forEach(video => {
-        if (video) observer.unobserve(video)
-      })
-    }
-  }, [])
-  
   return (
     <Layout 
       language={language} 
@@ -149,7 +154,7 @@ const MuralsPage = () => {
       hasVideoBackground={true}
       videoSrc="https://pub-3f206994e69e42408f7908b2177b9ed9.r2.dev/murals.MP4"
       videoStyle={{
-            filter: 'brightness(0.65) contrast(1.05) saturate(1.2)'
+            filter: 'brightness(0.35) contrast(1.10) saturate(1.2)'
         }}
     >
       <section className={styles.subPage}>
@@ -181,65 +186,109 @@ const MuralsPage = () => {
           <h2 className={styles.seriesHeading}>Mural Projects</h2>
           <div className={styles.muralGrid}>
             {muralProjects.map((mural, index) => (
-              <Link 
-                key={mural.id} 
-                to={`/art/murals/${mural.id}`} 
-                className={styles.muralCardLink}
-              >
-                <div className={styles.muralCard}>
-                  <div className={styles.muralVideoContainer}>
-                    {/* Background Video that fades in on hover */}
-                    <video
-                      ref={el => videoRefs.current[index] = el}
-                      muted
-                      loop
-                      playsInline
-                      className={styles.muralVideoBackground}
-                      style={{
-                        filter: 'brightness(0.9) contrast(0.9)'
-                      }}
-                    >
-                      <source src={mural.videoSrc} type="video/mp4" />
-                    </video>
-                    
-                    {/* Content overlay */}
-                    <div className={styles.muralVideoContent}>
-                      <div className={styles.muralIcon}>
-                        {mural.icon}
-                      </div>
+              mural.comingSoon ? (
+                <div key={mural.id} className={styles.muralCardLink}>
+                  <div className={`${styles.muralCard} ${styles.comingSoonCard}`}>
+                    <div className={styles.muralVideoContainer}>
+                      {/* Static Mural Image */}
+                      <img
+                        src={mural.imageSrc}
+                        alt={mural.title}
+                        className={styles.muralImageBackground}
+                      />
 
-                      <div className={styles.muralVideoOverlay}>
-                        <div className={styles.muralLocation}>{mural.location}</div>
-                        <div className={styles.muralSize}>{mural.size}</div>
-                        <div className={styles.muralStatus}>
-                          <span className={`${styles.statusBadge} ${styles[mural.status.toLowerCase().replace(' ', '')]}`}>
-                            {mural.status}
-                          </span>
+                      {/* Content overlay */}
+                      <div className={styles.muralVideoContent}>
+                        <div className={styles.muralIcon}>
+                          {mural.icon}
+                        </div>
+
+                        <div className={styles.muralVideoOverlay}>
+                          <div className={styles.muralLocation}>{mural.location}</div>
+                          <div className={styles.muralSize}>{mural.size}</div>
+                          <div className={styles.muralStatus}>
+                            <span className={`${styles.statusBadge} ${styles[mural.status.toLowerCase().replace(' ', '')]}`}>
+                              {mural.status}
+                            </span>
+                          </div>
                         </div>
                       </div>
                     </div>
-                  </div>
-                  
-                  <div className={styles.muralContent}>
-                    <h3 className={styles.muralTitle}>{mural.title}</h3>
-                    <div className={styles.muralMeta}>
-                      <span className={styles.muralYear}>{mural.year} • {mural.medium}</span>
-                      <span className={styles.muralCollaborators}>with {mural.collaborators}</span>
-                    </div>
-                    <p className={styles.muralDescription}>{mural.description}</p>
-                    
-                    {mural.funding && (
-                      <div className={styles.muralFunding}>
-                        <span className={styles.fundingText}>{mural.funding}</span>
+
+                    <div className={styles.muralContent}>
+                      <h3 className={styles.muralTitle}>{mural.title}</h3>
+                      <div className={styles.muralMeta}>
+                        <span className={styles.muralYear}>{mural.year} • {mural.medium}</span>
+                        <span className={styles.muralCollaborators}>with {mural.collaborators}</span>
                       </div>
-                    )}
-                    
-                    <div className={styles.viewMuralBtn}>
-                      View Process
+                      <p className={styles.muralDescription}>{mural.description}</p>
+
+                      {mural.funding && (
+                        <div className={styles.muralFunding}>
+                          <span className={styles.fundingText}>{mural.funding}</span>
+                        </div>
+                      )}
+
+                      <p className={styles.comingSoonText}>
+                        Coming Soon<span className={styles.blinkingDots}>...</span>
+                      </p>
                     </div>
                   </div>
                 </div>
-              </Link>
+              ) : (
+                <Link
+                  key={mural.id}
+                  to={`/art/murals/${mural.id}`}
+                  className={styles.muralCardLink}
+                >
+                  <div className={styles.muralCard}>
+                    <div className={styles.muralVideoContainer}>
+                      {/* Static Mural Image */}
+                      <img
+                        src={mural.imageSrc}
+                        alt={mural.title}
+                        className={styles.muralImageBackground}
+                      />
+
+                      {/* Content overlay */}
+                      <div className={styles.muralVideoContent}>
+                        <div className={styles.muralIcon}>
+                          {mural.icon}
+                        </div>
+
+                        <div className={styles.muralVideoOverlay}>
+                          <div className={styles.muralLocation}>{mural.location}</div>
+                          <div className={styles.muralSize}>{mural.size}</div>
+                          <div className={styles.muralStatus}>
+                            <span className={`${styles.statusBadge} ${styles[mural.status.toLowerCase().replace(' ', '')]}`}>
+                              {mural.status}
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className={styles.muralContent}>
+                      <h3 className={styles.muralTitle}>{mural.title}</h3>
+                      <div className={styles.muralMeta}>
+                        <span className={styles.muralYear}>{mural.year} • {mural.medium}</span>
+                        <span className={styles.muralCollaborators}>with {mural.collaborators}</span>
+                      </div>
+                      <p className={styles.muralDescription}>{mural.description}</p>
+
+                      {mural.funding && (
+                        <div className={styles.muralFunding}>
+                          <span className={styles.fundingText}>{mural.funding}</span>
+                        </div>
+                      )}
+
+                      <div className={styles.viewMuralBtn}>
+                        View Process
+                      </div>
+                    </div>
+                  </div>
+                </Link>
+              )
             ))}
           </div>
         </div>

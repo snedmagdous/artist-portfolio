@@ -1173,18 +1173,24 @@
 
 /* Categories Container */
 .categoriesContainer {
-  max-width: 1400px;
+  max-width: 1200px;
   margin: 0 auto;
   position: relative;
   z-index: 15;
   padding-top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .filmGrid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 1.2rem;
+  gap: 1.5rem;
   padding: 0 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  justify-items: center;
 }
 
 /* ======================
@@ -1196,13 +1202,17 @@
   background: rgba(0, 0, 0, 0.2);
   backdrop-filter: blur(15px);
   border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 0;
   text-decoration: none;
   overflow: hidden;
   transition: all 0.4s ease;
   position: relative;
-  min-height: 340px;
+  min-height: 320px;
+  width: 100%;
+  min-width: 340px;
   display: flex;
   flex-direction: column;
+  margin: 0 auto;
 }
 
 .filmCard:hover {
@@ -1214,7 +1224,7 @@
 /* Video Container */
 .filmVideoContainer {
   position: relative;
-  height: 180px;
+  height: 160px;
   overflow: hidden;
   padding: 0;
 }
@@ -1226,7 +1236,7 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  opacity: 0;
+  opacity: 0.5;
   transition: opacity 0.8s ease-in-out;
   z-index: 1;
   margin: 0;
@@ -1265,9 +1275,9 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 120px;
-  height: 120px;
-  color: rgba(160, 160, 160, 0.9);
+  width: 80px;
+  height: 80px;
+  color: rgba(160, 160, 160, 0.4);
   transition: opacity 0.4s ease;
   z-index: 5;
 }
@@ -1282,7 +1292,7 @@
 }
 
 .filmCard:hover .filmVideo {
-  opacity: 0.65;
+  opacity: 0.75;
 }
 
 /* Update film overlay positioning */
@@ -1760,17 +1770,19 @@
   overflow: hidden;
   width: 480px;
   max-width: 480px; /* Ensure consistent width */
+  min-height: 420px; /* Changed from max-height to min-height to allow content to expand */
   transition: all 0.4s ease;
   text-decoration: none;
-  display: block;
+  display: flex;
+  flex-direction: column; /* Stack video and content vertically */
 }
 
 .timelineLeft .documentaryCard {
-  margin-right: 180px;
+  margin-right: 580px;
 }
 
 .timelineRight .documentaryCard {
-  margin-left: 180px;
+  margin-left: 580px;
 }
 
 .documentaryCard:hover {
@@ -1782,7 +1794,7 @@
 /* Documentary Video Area */
 .documentaryVideoArea {
   position: relative;
-  height: 200px;
+  height: 220px;
   overflow: hidden;
 }
 
@@ -1790,13 +1802,13 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  opacity: 0;
+  opacity: 0.5;
   transition: opacity 1.5s ease-in-out, transform 0.4s ease;
 }
 
 .documentaryCard:hover .documentaryVideo {
   transform: scale(1.05);
-  opacity: 0.6;
+  opacity: 0.75;
 }
 
 .documentaryCard:hover .documentaryTitle {
@@ -1932,21 +1944,25 @@
 
 /* Documentary Content */
 .documentaryContent {
-  padding: 2.5rem;
+  padding: 1.5rem 2rem 2rem 2rem; /* Reduced top/side padding to fit more content */
+  flex: 1; /* Allow content to take up remaining space */
+  display: flex;
+  flex-direction: column;
 }
 
 .documentaryTitle {
   font-family: 'Poppins', sans-serif;
-  font-size: 1.6rem;
+  font-size: 1.4rem; /* Reduced from 1.6rem */
   font-weight: 200;
   color: white;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem; /* Reduced from 1.5rem */
   letter-spacing: 0.1em;
   text-transform: uppercase;
+  line-height: 1.3; /* Added for better spacing */
 }
 
 .documentaryMeta {
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem; /* Reduced from 1.5rem */
 }
 
 .documentaryThemes {
@@ -1970,21 +1986,21 @@
 
 .documentaryDescription {
   font-family: 'Poppins', sans-serif;
-  font-size: 0.95rem;
+  font-size: 0.9rem; /* Reduced from 0.95rem */
   color: rgba(255, 255, 255, 0.8);
-  line-height: 1.7;
+  line-height: 1.6; /* Reduced from 1.7 */
   font-weight: 300;
-  margin-bottom: 1rem;
+  margin-bottom: 0.8rem; /* Reduced from 1rem */
   letter-spacing: 0.02em;
 }
 
 .documentarySnippet {
   font-family: 'Poppins', sans-serif;
-  font-size: 0.85rem;
+  font-size: 0.8rem; /* Reduced from 0.85rem */
   color: rgba(255, 255, 255, 0.6);
-  line-height: 1.6;
+  line-height: 1.5; /* Reduced from 1.6 */
   font-weight: 300;
-  margin-bottom: 1.5rem;
+  margin-bottom: 0; /* Removed bottom margin to save space */
   letter-spacing: 0.02em;
   font-style: italic;
 }
@@ -2292,12 +2308,13 @@
 
 @media (max-width: 768px) {
   .filmGrid {
-    grid-template-columns: 1fr;
-    gap: 2rem;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
   }
-  
+
   .filmCard {
-    min-height: 450px;
+    min-height: 340px;
+    max-width: none;
   }
   
   .filmVideoContainer {
@@ -2322,11 +2339,17 @@
   .filmCategoriesPage {
     padding: 6vh 1rem 8vh;
   }
-  
-  .filmCard {
-    min-height: 400px;
+
+  .filmGrid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
   }
-  
+
+  .filmCard {
+    min-height: 340px;
+    max-width: none;
+  }
+
   .filmVideoContainer {
     height: 180px;
   }

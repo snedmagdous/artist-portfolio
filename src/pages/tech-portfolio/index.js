@@ -25,14 +25,13 @@ const TechPortfolioPage = () => {
       longDescription: 'A comprehensive digital portfolio that bridges art and technology, featuring dynamic video backgrounds, smooth animations, and responsive design. Built as a platform to showcase multidisciplinary creative work including documentary filmmaking, large-scale murals, poetry, and technical projects.',
       github: 'https://github.com/snedmagdous/artist-portfolio',
       demo: 'https://mayamurry.com',
+      screenshot: '/images/screenshots/resume.png',
       tech: ['React', 'Gatsby', 'CSS3', 'JavaScript', 'Responsive Design'],
       features: [
         'Dynamic video backgrounds with glassmorphism UI',
         'Responsive design optimized for all devices',
-        'Smooth scroll animations and transitions',
         'Film portfolio with categorized showcase',
-        'Integrated contact forms with Netlify',
-        'Performance-optimized image and video loading'
+        'Integrated contact forms with Netlify'
       ],
       icon: (
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
@@ -45,7 +44,7 @@ const TechPortfolioPage = () => {
     {
       id: 'nyc-housing',
       title: 'NYC Housing Violations Dashboard',
-      description: 'Interactive dashboard analyzing NYC affordable housing violations to identify enforcement gaps and hold repeat offenders accountable',
+      description: 'Interactive NYC housing violations dashboard to identify enforcement gaps and hold offenders accountable',
       longDescription: 'A data-driven tool designed to promote housing justice by analyzing patterns in NYC housing code violations. The dashboard reveals enforcement gaps, tracks repeat offenders, and provides actionable insights for tenant advocacy and policy reform.',
       github: 'https://github.com/snedmagdous/nyc-housing-violations-dashboard',
       demo: null,
@@ -54,9 +53,7 @@ const TechPortfolioPage = () => {
         'Analysis of 100,000+ housing violation records',
         'Interactive visualizations of violation patterns',
         'Identification of repeat offender landlords',
-        'Geographic mapping of enforcement gaps',
-        'Temporal analysis of violation trends',
-        'Data pipeline for NYC Open Data integration'
+        'Geographic mapping of enforcement gaps'
       ],
       icon: (
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
@@ -69,7 +66,7 @@ const TechPortfolioPage = () => {
     {
       id: 'dmr-detection',
       title: 'DMR Detection with Hidden Markov Models',
-      description: 'Hidden Markov Model pipeline for detecting differentially methylated regions in psychiatric epigenetics research',
+      description: 'Markov Model pipeline for detecting differentially methylated regions in psychiatric epigenetics research',
       longDescription: 'A computational biology research project that uses Hidden Markov Models to detect differentially methylated regions (DMRs) in genomic data. This work contributes to understanding epigenetic mechanisms in psychiatric disorders and trauma response.',
       github: 'https://github.com/snedmagdous/dmr-detection-nhmm',
       demo: null,
@@ -77,10 +74,7 @@ const TechPortfolioPage = () => {
       features: [
         'Non-homogeneous Hidden Markov Model implementation',
         'Statistical analysis of methylation patterns',
-        'Integration with genomic data processing pipelines',
-        'Visualization of DMR regions',
-        'Performance optimization for large datasets',
-        'Research-grade accuracy and validation'
+        'Integration with genomic data processing pipelines'
       ],
       icon: (
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
@@ -102,10 +96,7 @@ const TechPortfolioPage = () => {
       features: [
         'NLP analysis of trauma narratives and research literature',
         'Epigenetic data processing and analysis',
-        'Machine learning models for pattern recognition',
-        'Integration of social science and biological data',
-        'Visualization of multi-dimensional research findings',
-        'Contribution to trauma-informed care research'
+        'Machine learning models for pattern recognition'
       ],
       icon: (
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
@@ -155,6 +146,29 @@ const TechPortfolioPage = () => {
           <p className={styles.portfolioSubtitle}>
             Computational projects across AI, data science, and web development
           </p>
+          <div className={styles.heroButtons}>
+            <a
+              href="https://github.com/snedmagdous"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.heroGithubButton}
+            >
+              <svg viewBox="0 0 24 24" fill="currentColor" className={styles.heroGithubIcon}>
+                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+              </svg>
+              <span>View GitHub</span>
+            </a>
+            <a
+              href="#featured-projects"
+              className={styles.heroProjectsButton}
+            >
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" className={styles.heroProjectsIcon}>
+                <rect x="3" y="3" width="18" height="18" rx="2" strokeWidth="1.5"/>
+                <path d="M9 3v18M15 3v18M3 9h18M3 15h18" strokeWidth="1.5"/>
+              </svg>
+              <span>Featured Projects</span>
+            </a>
+          </div>
         </div>
 
         {/* GitHub Projects Grid */}
@@ -240,7 +254,15 @@ const TechPortfolioPage = () => {
               </div>
 
               <div className={styles.showcaseVisual}>
-                <div className={styles.comingSoonBadge}>Demo Coming Soon</div>
+                {project.screenshot ? (
+                  <img
+                    src={project.screenshot}
+                    alt={`${project.title} preview`}
+                    className={styles.showcaseImage}
+                  />
+                ) : (
+                  <div className={styles.comingSoonBadge}>Demo Coming Soon</div>
+                )}
               </div>
             </div>
           ))}
@@ -254,8 +276,8 @@ const TechPortfolioPage = () => {
             rel="noopener noreferrer"
             className={styles.githubLink}
           >
-            <svg viewBox="0 0 24 24" fill="none" className={styles.githubIcon} stroke="currentColor">
-              <path d="M9 19C4 20.5 4 16.5 2 16M22 16V22C22 22.5304 21.7893 23.0391 21.4142 23.4142C21.0391 23.7893 20.5304 24 20 24H16" strokeWidth="1"/>
+            <svg viewBox="0 0 24 24" fill="currentColor" className={styles.githubIcon}>
+              <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
             </svg>
             <span>View All Projects on GitHub</span>
           </a>

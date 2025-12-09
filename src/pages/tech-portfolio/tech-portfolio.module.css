@@ -12,6 +12,7 @@
   margin-bottom: 4rem;
   position: fixed;
   top: 8rem;
+  left: 2rem;
   z-index: 100;
 }
 
@@ -57,8 +58,8 @@
 /* Hero Section */
 .portfolioHero {
   text-align: center;
-  margin-bottom: 6rem;
-  padding: 8rem 2rem 4rem;
+  margin-bottom: 1rem;
+  padding: 8rem 2rem 2rem;
 }
 
 .portfolioTitle {
@@ -80,14 +81,63 @@
   color: rgba(255, 255, 255, 0.8);
   line-height: 1.6;
   letter-spacing: 0.05em;
+  margin-bottom: 2rem;
+}
+
+.heroButtons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.heroGithubButton,
+.heroProjectsButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 0.9rem 1.8rem;
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 30px;
+  color: rgba(255, 255, 255, 0.9);
+  text-decoration: none;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 300;
+  letter-spacing: 0.05em;
+  transition: all 0.3s ease;
+}
+
+.heroGithubButton:hover,
+.heroProjectsButton:hover {
+  border-color: rgba(255, 255, 255, 0.5);
+  background: rgba(255, 255, 255, 0.05);
+  transform: translateY(-3px);
+  color: white;
+}
+
+.heroGithubIcon,
+.heroProjectsIcon {
+  width: 20px;
+  height: 20px;
+}
+
+.heroGithubIcon {
+  fill: currentColor;
+}
+
+.heroProjectsIcon {
+  stroke: currentColor;
 }
 
 /* Projects Grid */
 .projectsGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
-  max-width: 1400px;
+  grid-template-columns: repeat(auto-fit, minmax(237px, 1fr));
+  gap: 1.425rem;
+  max-width: 1260px;
   margin: 0 auto 8rem;
   padding: 0 2rem;
 }
@@ -96,24 +146,24 @@
   background: rgba(0, 0, 0, 0.2);
   backdrop-filter: blur(15px);
   border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 15px;
-  padding: 2.5rem;
+  border-radius: 11px;
+  padding: 1.14rem;
   text-decoration: none;
   transition: all 0.4s ease;
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 0.95rem;
 }
 
 .projectCard:hover {
-  border-color: rgba(255, 255, 255, 0.3);
+  border-color: rgb(0, 191, 255);
   background: rgba(255, 255, 255, 0.05);
   transform: translateY(-10px);
 }
 
 .projectIcon {
-  width: 60px;
-  height: 60px;
+  width: 38px;
+  height: 38px;
   color: rgba(0, 255, 255, 0.8);
   stroke-width: 1.5;
 }
@@ -125,7 +175,7 @@
 
 .projectTitle {
   font-family: 'Poppins', sans-serif;
-  font-size: 1.5rem;
+  font-size: 1.045rem;
   font-weight: 400;
   color: white;
   margin: 0;
@@ -134,10 +184,10 @@
 
 .projectDescription {
   font-family: 'Poppins', sans-serif;
-  font-size: 1rem;
+  font-size: 0.8075rem;
   font-weight: 300;
   color: rgba(255, 255, 255, 0.7);
-  line-height: 1.6;
+  line-height: 1.5;
   margin: 0;
   flex: 1;
 }
@@ -145,16 +195,16 @@
 .techStack {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.5rem;
+  gap: 0.38rem;
 }
 
 .techBadge {
-  padding: 0.4rem 1rem;
+  padding: 0.285rem 0.665rem;
   background: rgba(0, 255, 255, 0.1);
   border: 1px solid rgba(0, 255, 255, 0.3);
-  border-radius: 15px;
+  border-radius: 11px;
   font-family: 'Poppins', sans-serif;
-  font-size: 0.75rem;
+  font-size: 0.6175rem;
   font-weight: 300;
   color: rgba(0, 255, 255, 0.9);
   text-transform: uppercase;
@@ -163,15 +213,15 @@
 
 .projectLinks {
   display: flex;
-  gap: 1rem;
+  gap: 0.76rem;
   align-items: center;
-  padding-top: 1rem;
+  padding-top: 0.76rem;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .viewGithub {
   font-family: 'Poppins', sans-serif;
-  font-size: 0.9rem;
+  font-size: 0.76rem;
   font-weight: 300;
   color: rgba(0, 255, 255, 0.9);
   letter-spacing: 0.05em;
@@ -185,12 +235,12 @@
 
 .viewDemo {
   font-family: 'Poppins', sans-serif;
-  font-size: 0.8rem;
+  font-size: 0.665rem;
   font-weight: 300;
   color: rgba(255, 255, 255, 0.6);
-  padding: 0.4rem 1rem;
+  padding: 0.285rem 0.76rem;
   border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 15px;
+  border-radius: 11px;
   transition: all 0.3s ease;
 }
 
@@ -212,7 +262,7 @@
   font-weight: 200;
   color: white;
   text-align: center;
-  margin-bottom: 4rem;
+  margin-bottom: 2.5rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
 }
@@ -220,14 +270,17 @@
 .projectShowcase {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 3rem;
-  margin-bottom: 6rem;
-  padding: 3rem;
+  gap: 2rem;
+  margin-bottom: 4rem;
+  padding: 1.8rem;
   background: rgba(0, 0, 0, 0.2);
   backdrop-filter: blur(15px);
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 20px;
   transition: all 0.4s ease;
+  max-width: 1120px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .projectShowcase:hover {
@@ -255,12 +308,12 @@
 .showcaseContent {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 1rem;
 }
 
 .showcaseIcon {
-  width: 80px;
-  height: 80px;
+  width: 60px;
+  height: 60px;
   color: rgba(0, 255, 255, 0.8);
   stroke-width: 1.5;
 }
@@ -272,7 +325,7 @@
 
 .showcaseTitle {
   font-family: 'Poppins', sans-serif;
-  font-size: 2rem;
+  font-size: 1.6rem;
   font-weight: 400;
   color: white;
   margin: 0;
@@ -281,23 +334,23 @@
 
 .showcaseLongDescription {
   font-family: 'Poppins', sans-serif;
-  font-size: 1.1rem;
+  font-size: 0.95rem;
   font-weight: 300;
   color: rgba(255, 255, 255, 0.8);
-  line-height: 1.8;
+  line-height: 1.6;
   margin: 0;
 }
 
 .showcaseFeatures {
-  margin-top: 1rem;
+  margin-top: 0.5rem;
 }
 
 .featuresTitle {
   font-family: 'Poppins', sans-serif;
-  font-size: 1rem;
+  font-size: 0.85rem;
   font-weight: 400;
   color: rgba(0, 255, 255, 0.9);
-  margin-bottom: 1rem;
+  margin-bottom: 0.6rem;
   text-transform: uppercase;
   letter-spacing: 0.1em;
 }
@@ -308,15 +361,15 @@
   margin: 0;
   display: flex;
   flex-direction: column;
-  gap: 0.8rem;
+  gap: 0.5rem;
 }
 
 .featureItem {
   font-family: 'Poppins', sans-serif;
-  font-size: 0.95rem;
+  font-size: 0.85rem;
   font-weight: 300;
   color: rgba(255, 255, 255, 0.7);
-  line-height: 1.6;
+  line-height: 1.5;
   padding-left: 1.5rem;
   position: relative;
 }
@@ -329,15 +382,15 @@
 }
 
 .showcaseTech {
-  margin-top: 1rem;
+  margin-top: 0.5rem;
 }
 
 .techTitle {
   font-family: 'Poppins', sans-serif;
-  font-size: 1rem;
+  font-size: 0.85rem;
   font-weight: 400;
   color: rgba(0, 255, 255, 0.9);
-  margin-bottom: 1rem;
+  margin-bottom: 0.6rem;
   text-transform: uppercase;
   letter-spacing: 0.1em;
 }
@@ -345,16 +398,16 @@
 .showcaseTechStack {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.8rem;
+  gap: 0.5rem;
 }
 
 .showcaseTechBadge {
-  padding: 0.6rem 1.2rem;
+  padding: 0.4rem 0.9rem;
   background: rgba(0, 255, 255, 0.1);
   border: 1px solid rgba(0, 255, 255, 0.3);
-  border-radius: 20px;
+  border-radius: 15px;
   font-family: 'Poppins', sans-serif;
-  font-size: 0.85rem;
+  font-size: 0.7rem;
   font-weight: 300;
   color: rgba(0, 255, 255, 0.9);
   text-transform: uppercase;
@@ -363,19 +416,19 @@
 
 .showcaseActions {
   display: flex;
-  gap: 1rem;
-  margin-top: 2rem;
+  gap: 0.8rem;
+  margin-top: 1.2rem;
 }
 
 .showcaseButton,
 .showcaseDemoButton {
-  padding: 1rem 2rem;
+  padding: 0.8rem 1.6rem;
   font-family: 'Poppins', sans-serif;
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   font-weight: 300;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  border-radius: 30px;
+  border-radius: 25px;
   text-decoration: none;
   transition: all 0.3s ease;
 }
@@ -414,11 +467,24 @@
   border-radius: 15px;
   min-height: 400px;
   position: relative;
+  overflow: hidden;
+}
+
+.showcaseImage {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 15px;
+  transition: transform 0.3s ease;
+}
+
+.projectShowcase:hover .showcaseImage {
+  transform: scale(1.05);
 }
 
 .comingSoonBadge {
   font-family: 'Poppins', sans-serif;
-  font-size: 1.2rem;
+  font-size: 1rem;
   font-weight: 300;
   color: rgba(255, 255, 255, 0.5);
   text-transform: uppercase;
@@ -460,7 +526,7 @@
 .githubIcon {
   width: 24px;
   height: 24px;
-  stroke: currentColor;
+  fill: currentColor;
 }
 
 /* Responsive Design */

@@ -116,6 +116,16 @@ body {
   background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 50%, #1a1a1a 100%) !important;
 }
 
+/* Bounce animation keyframes */
+@keyframes videoBounce {
+  0%, 100% {
+    transform: translate(-50%, -50%) scale(1);
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.05);
+  }
+}
+
 .video-tag {
   position: absolute !important;
   top: 50% !important;
@@ -129,6 +139,8 @@ body {
   z-index: -1 !important;
   /* Videos are always visible and autoplaying */
   opacity: 1 !important;
+  /* Add continuous bounce animation */
+  animation: videoBounce 20s ease-in-out infinite !important;
 }
 
 /* Optional: Add a subtle overlay to improve text readability */
@@ -1263,7 +1275,7 @@ body {
   background: transparent;
   position: relative;
   z-index: 2;
-  padding: 3rem 0;
+  padding: 1rem 0;
   text-align: center;
 }
 
@@ -1275,7 +1287,7 @@ body {
 
 .contact-header {
   text-align: center;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
 }
 
 .contact-title {
@@ -1283,7 +1295,7 @@ body {
   font-size: clamp(2.5rem, 6vw, 4rem);
   font-weight: 100;
   color: white;
-  margin-bottom: 1rem;
+  margin-bottom: 0rem;
   line-height: 1.2;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -1305,14 +1317,14 @@ body {
 .contact-form {
   display: flex;
   flex-direction: column;
-  gap: 1.2rem;
-  margin-bottom: 2.5rem;
+  gap: 0.1rem;
+  margin-bottom: 1.7rem;
 }
 
 .form-group {
   display: flex;
   flex-direction: column;
-  gap: 0.8rem;
+  gap: 0.5rem;
   text-align: left;
 }
 
@@ -1327,14 +1339,14 @@ body {
 
 .form-group input,
 .form-group textarea {
-  padding: 1.2rem;
+  padding: 1rem;
   border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 8px;
   font-family: 'Poppins', sans-serif;
   font-size: 1rem;
   font-weight: 300;
   background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(10px);
+  backdrop-filter: none;
   color: white;
   transition: all 0.3s ease;
   letter-spacing: 0.02em;
@@ -1373,7 +1385,7 @@ body {
 
 .form-group textarea {
   resize: vertical;
-  min-height: 150px;
+  min-height: 100px;
 }
 
 /* Submit Button - Futuristic Style */
@@ -1484,7 +1496,7 @@ body {
 
 .mailing-list-header {
   text-align: center;
-  margin-bottom: 3rem;
+  margin-bottom: 1rem;
 }
 
 .mailing-list-title {
@@ -1958,8 +1970,8 @@ body {
   padding: 6rem 2rem;
   position: relative;
   z-index: 1;
-  background: rgba(0, 0, 0, 0.3);
-  backdrop-filter: blur(10px);
+  background: transparent;
+  backdrop-filter: none;
 }
 
 .contact-container {
@@ -2055,7 +2067,7 @@ body {
   border-radius: 30px;
   cursor: pointer;
   transition: all 0.3s ease;
-  backdrop-filter: blur(10px);
+  backdrop-filter: none;
 }
 
 .contact-submit-btn:hover {
@@ -2090,9 +2102,9 @@ body {
   display: flex;
   align-items: center;
   gap: 1rem;
-  padding: 1.5rem;
+  padding: 1rem;
   background: rgba(0, 0, 0, 0.2);
-  backdrop-filter: blur(15px);
+  backdrop-filter: none;
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 10px;
   color: rgba(255, 255, 255, 0.8);
@@ -2117,19 +2129,51 @@ body {
   flex-shrink: 0;
 }
 
+/* Connect Item styles */
+.connect-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  background: rgba(0, 0, 0, 0.2);
+  backdrop-filter: none;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 300;
+  transition: all 0.3s ease;
+}
+
+.connect-item:hover {
+  border-color: rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.05);
+  transform: translateY(-3px);
+  color: white;
+}
+
+.connect-item svg {
+  width: 24px;
+  height: 24px;
+  stroke: currentColor;
+  flex-shrink: 0;
+}
+
 /* Commission Callout */
 .commission-callout {
   background: linear-gradient(135deg, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.2) 100%);
-  backdrop-filter: blur(15px);
+  backdrop-filter: none;
   border: 1px solid rgba(255, 255, 255, 0.15);
   border-radius: 15px;
-  padding: 3rem;
+  padding: 1.5rem 2rem;
   text-align: center;
 }
 
 .commission-callout-title {
   font-family: 'Poppins', sans-serif;
-  font-size: 1.8rem;
+  font-size: 1.3rem;
   font-weight: 300;
   color: white;
   margin-bottom: 1rem;
@@ -2148,7 +2192,8 @@ body {
   margin-right: auto;
 }
 
-.commission-button {
+.commission-button,
+.commission-callout-btn {
   display: inline-block;
   padding: 1rem 2.5rem;
   font-family: 'Poppins', sans-serif;
@@ -2164,7 +2209,8 @@ body {
   transition: all 0.3s ease;
 }
 
-.commission-button:hover {
+.commission-button:hover,
+.commission-callout-btn:hover {
   background: rgba(255, 255, 255, 0.2);
   border-color: rgba(255, 255, 255, 0.5);
   transform: translateY(-2px);

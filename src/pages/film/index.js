@@ -136,8 +136,9 @@ const FilmPage = () => {
     {
       id: 'documentaries',
       title: 'Documentaries',
-      description: 'Long-form explorations of indigenous communities, environmental justice, and cultural preservation in the digital age.',
+      description: 'Long-form explorations of cultural communities in the digital age.',
       videoSrc: 'https://pub-3f206994e69e42408f7908b2177b9ed9.r2.dev/documentaries.MP4',
+      videoFilter: 'brightness(0.8) contrast(1.0)',
       count: '5 Films',
       duration: '15-45 min',
       link: '/film/documentaries',
@@ -162,6 +163,7 @@ const FilmPage = () => {
       title: 'Short Films',
       description: 'Narrative and experimental works that blend traditional storytelling with speculative fiction and indigenous futurism.',
       videoSrc: 'https://pub-3f206994e69e42408f7908b2177b9ed9.r2.dev/short-films.MP4',
+      videoFilter: 'brightness(0.75) contrast(1.05)',
       count: '12 Films',
       duration: '3-15 min',
       link: '/film/short-films',
@@ -188,6 +190,7 @@ const FilmPage = () => {
       title: 'Micro Films',
       description: 'Brief visual stories and digital experiments that capture moments of cultural significance in bite-sized formats.',
       videoSrc: 'https://pub-3f206994e69e42408f7908b2177b9ed9.r2.dev/micro-films.mp4',
+      videoFilter: 'brightness(0.8) contrast(0.95)',
       count: '24 Films',
       duration: '15-60 sec',
       link: '/film/micro-films',
@@ -312,7 +315,7 @@ const FilmPage = () => {
                       frameBorder="0"
                       allow="autoplay; encrypted-media"
                       style={{
-                        filter: 'brightness(0.8) contrast(0.9)',
+                        filter: category.videoFilter || 'brightness(0.8) contrast(0.9)',
                         width: '100%',
                         height: '100%'
                       }}
@@ -325,7 +328,7 @@ const FilmPage = () => {
                       preload="metadata"
                       className={styles.filmVideo}
                       style={{
-                        filter: 'brightness(0.8) contrast(0.9)'
+                        filter: category.videoFilter || 'brightness(0.8) contrast(0.9)'
                       }}
                     >
                       <source src={category.videoSrc} type="video/mp4" />

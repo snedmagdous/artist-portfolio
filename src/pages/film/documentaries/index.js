@@ -18,7 +18,7 @@ const DocumentariesPage = () => {
       status: 'Community Screenings',
       format: 'Short Film, Experimental Documentary',
       role: 'Director, Editor, Producer',
-      description: 'An intimate exploration of how love functions as a radical act of resistance within social justice movements. The film weaves together personal narratives and community organizing to examine love as both a healing practice and revolutionary force.',
+      description: 'An intimate exploration of how murals function as a radical act of resistance within social justice movements.',
       snippet: 'The final minutes, where I speak about "letting the dead go home to learn what it means to love again," serve as Khadra\'s opening sequence, triggering deeper ancestral exploration.',
       videoSrc: 'https://pub-3f206994e69e42408f7908b2177b9ed9.r2.dev/love-rev-doc.mp4',
       fullVideoUrl: 'https://youtu.be/ZAWwKYqlJ-k',
@@ -38,7 +38,7 @@ const DocumentariesPage = () => {
       status: 'Festival Circuit',
       format: 'Narrative Documentary',
       role: 'Director, Cinematographer',
-      description: 'A meditation on intergenerational resilience within Indigenous communities, exploring how ancestral wisdom continues to guide contemporary struggles for sovereignty and cultural preservation.',
+      description: 'A meditation on intergenerational resilience and wisdom amongst two Khmer women.',
       snippet: 'Following multiple generations as they navigate between traditional practices and modern challenges, revealing the unbroken chain of Khmer knowledge.',
       videoSrc: 'https://pub-3f206994e69e42408f7908b2177b9ed9.r2.dev/ancestors-still-singing.MP4',
       fullVideoUrl: 'https://youtu.be/TaKNJesPXNI',
@@ -53,23 +53,23 @@ const DocumentariesPage = () => {
       festivals: ['Pending submissions'],
       awards: null
     },
-    {
-      id: 'khadra',
-      title: 'Khadra',
-      year: '2024',
-      duration: '45 min',
-      status: 'Pre-Production',
-      format: 'Experimental Memoir',
-      role: 'Director, Writer, Producer',
-      description: 'An experimental memoir tracing a Palestinian-Jordanian\'s spiritual journey across Arab diasporas to Palestine, weaving ancestral memory with magical realism to reimagine liberated futures.',
-      snippet: 'A cinematic narrative about Indigenous Futurism that explores the process of letting the dead go home to learn what it means to love again.',
-      videoSrc: 'https://pub-3f206994e69e42408f7908b2177b9ed9.r2.dev/khadra.MP4',
-      fullVideoUrl: null, // Still in production
-      themes: ['Palestinian Diaspora', 'Ancestral Memory', 'Magical Realism', 'Indigenous Futurism', 'Spiritual Journey'],
-      funding: ['Independent Production'],
-      festivals: ['Preparing for festival circuit'],
-      awards: null
-    },
+    // {
+    //   id: 'khadra',
+    //   title: 'Khadra',
+    //   year: '2024',
+    //   duration: '45 min',
+    //   status: 'Pre-Production',
+    //   format: 'Experimental Memoir',
+    //   role: 'Director, Writer, Producer',
+    //   description: 'An experimental memoir tracing a Palestinian-Jordanian\'s spiritual journey across Arab diasporas to Palestine, weaving ancestral memory with magical realism to reimagine liberated futures.',
+    //   snippet: 'A cinematic narrative about Indigenous Futurism that explores the process of letting the dead go home to learn what it means to love again.',
+    //   videoSrc: 'https://pub-3f206994e69e42408f7908b2177b9ed9.r2.dev/khadra.MP4',
+    //   fullVideoUrl: null, // Still in production
+    //   themes: ['Palestinian Diaspora', 'Ancestral Memory', 'Magical Realism', 'Indigenous Futurism', 'Spiritual Journey'],
+    //   funding: ['Independent Production'],
+    //   festivals: ['Preparing for festival circuit'],
+    //   awards: null
+    // },
     {
       id: 'nadaam-festival',
       title: 'Mongolian Nadaam Festival',
@@ -200,7 +200,7 @@ const DocumentariesPage = () => {
                   
                   <div className={styles.documentaryContent}>
                     <h3 className={styles.documentaryTitle}>{doc.title}</h3>
-                    
+
                     <div className={styles.documentaryMeta}>
                       <div className={styles.documentaryThemes}>
                         {doc.themes.slice(0, 3).map((theme, i) => (
@@ -208,7 +208,7 @@ const DocumentariesPage = () => {
                         ))}
                       </div>
                     </div>
-                    
+
                     <p className={styles.documentaryDescription}>{doc.description}</p>
 
                     {doc.awards && (
@@ -216,18 +216,6 @@ const DocumentariesPage = () => {
                         🏆 {doc.awards}
                       </div>
                     )}
-                    
-                    {doc.funding && (
-                      <div className={styles.festivalList}>
-                        <span className={styles.festivalLabel}>Funding:</span>
-                        {doc.funding.slice(0, 2).join(' • ')}
-                        {doc.funding.length > 2 && '...'}
-                      </div>
-                    )}
-                    
-                    <div className={styles.viewDocBtn}>
-                      <span>View Details</span>
-                    </div>
                   </div>
                 </div>
               </div>

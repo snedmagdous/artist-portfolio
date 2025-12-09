@@ -121,11 +121,11 @@ const IllustrationsPage = () => {
       title: 'Where do you go when there\'s nowhere left to go?',
       description: 'A dark illustration series mapping depersonalization and chronic pain through interconnected fragments of dissociation.',
       pieceCount: 8,
-      year: '2023-2024',
+      year: '2022',
       medium: 'Dark Illustration',
       type: 'Investigation Series',
       status: 'Complete',
-      videoSrc: 'https://pub-3f206994e69e42408f7908b2177b9ed9.r2.dev/my-queens.MP4',
+      videoSrc: 'https://pub-3f206994e69e42408f7908b2177b9ed9.r2.dev/where.mov',
       videoBrightness: 0.4,
       videoSaturation: 0.8,
       videoContrast: 1.3
@@ -135,7 +135,7 @@ const IllustrationsPage = () => {
       title: 'Constellation Code',
       description: 'Astronomical illustrations that reframe traditional star knowledge as programming languages for navigation in both physical and virtual space.',
       pieceCount: 16,
-      year: '2023',
+      year: '2026',
       medium: 'Digital & Print',
       type: 'Conceptual Series',
       status: 'In Progress',
@@ -220,6 +220,7 @@ const IllustrationsPage = () => {
                         muted
                         loop
                         playsInline
+                        preload="metadata"
                       >
                         <source src={project.videoSrc} type="video/mp4" />
                       </video>
@@ -265,6 +266,7 @@ const IllustrationsPage = () => {
                         muted
                         loop
                         playsInline
+                        preload="metadata"
                       >
                         <source src={project.videoSrc} type="video/mp4" />
                       </video>

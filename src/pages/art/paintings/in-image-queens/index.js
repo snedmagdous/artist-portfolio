@@ -13,7 +13,7 @@ const QueensImagePage = () => {
     {
       id: 'ancestral-throne',
       title: 'COMING SOON...',
-      year: '2023',
+      year: '2026',
       medium: 'Oil & Gold Leaf on Canvas',
       dimensions: '48" x 36"',
       image: '/images/paintings/queens/ancestral-throne.jpg',
@@ -26,7 +26,7 @@ const QueensImagePage = () => {
     {
       id: 'mirror-of-now',
       title: 'Mirror of Now',
-      year: '2024',
+      year: '2025',
       medium: 'Oil & Mixed Media on Canvas',
       dimensions: '36" x 48"',
       image: '/images/paintings/queens/mirror.jpeg',
@@ -39,7 +39,7 @@ const QueensImagePage = () => {
     {
       id: 'daughters-unborn',
       title: 'Daughters Unborn',
-      year: '2024',
+      year: '2025',
       medium: 'Oil & Luminescent Paint on Canvas',
       dimensions: '40" x 32"',
       image: '/images/paintings/queens/unborn.jpeg',
@@ -84,7 +84,7 @@ const QueensImagePage = () => {
           <h1 className={styles.seriesTitle}>In the Image of My Queens, I Stand</h1>
           <div className={styles.seriesInfo}>
             <span className={styles.seriesCount}>3 Pieces</span>
-            <span className={styles.seriesYear}>2023-2024</span>
+            <span className={styles.seriesYear}>2025-2026</span>
             <span className={styles.seriesMedium}>Oil & Mixed Media</span>
           </div>
           <p className={styles.seriesDescription}>
