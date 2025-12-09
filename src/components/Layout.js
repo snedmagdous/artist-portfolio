@@ -42,18 +42,30 @@ const Layout = ({
       video.muted = true;
       video.playbackRate = playbackRate;
       let playDirection = 1; // 1 for forward, -1 for reverse
+      let animationFrameId = null;
+
+      // Manually control reverse playback since negative playbackRate isn't supported
+      const updateVideoTime = () => {
+        if (playDirection === -1 && video.currentTime > 0.033) {
+          video.currentTime -= 0.033 * playbackRate; // Adjust speed based on playbackRate
+          animationFrameId = requestAnimationFrame(updateVideoTime);
+        } else if (playDirection === -1 && video.currentTime <= 0.033) {
+          // Reached the beginning, switch to forward
+          playDirection = 1;
+          video.currentTime = 0;
+          if (!isBackgroundPaused) {
+            video.play().catch(e => console.log("Play failed:", e));
+          }
+        }
+      };
 
       // Ping-pong loop: play forward then reverse
       const handleTimeUpdate = () => {
         // Check if we've reached the end (forward)
         if (playDirection === 1 && video.currentTime >= video.duration - 0.1) {
           playDirection = -1;
-          video.playbackRate = -playbackRate; // Play in reverse
-        }
-        // Check if we've reached the beginning (reverse)
-        else if (playDirection === -1 && video.currentTime <= 0.1) {
-          playDirection = 1;
-          video.playbackRate = playbackRate; // Play forward
+          video.pause();
+          animationFrameId = requestAnimationFrame(updateVideoTime);
         }
       };
 
@@ -61,8 +73,8 @@ const Layout = ({
         // Fallback in case timeupdate doesn't catch it
         if (playDirection === 1) {
           playDirection = -1;
-          video.playbackRate = -playbackRate;
-          video.play().catch(e => console.log("Reverse play failed:", e));
+          video.pause();
+          animationFrameId = requestAnimationFrame(updateVideoTime);
         }
       };
 
@@ -89,6 +101,9 @@ const Layout = ({
       video.addEventListener('ended', handleEnded);
 
       return () => {
+        if (animationFrameId) {
+          cancelAnimationFrame(animationFrameId);
+        }
         video.removeEventListener('loadeddata', playVideo);
         video.removeEventListener('timeupdate', handleTimeUpdate);
         video.removeEventListener('ended', handleEnded);

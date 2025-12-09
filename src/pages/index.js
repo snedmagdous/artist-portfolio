@@ -324,18 +324,28 @@ export default function Home() {
       video.defaultMuted = true;
       video.muted = true;
       let playDirection = 1; // 1 for forward, -1 for reverse
+      let animationFrameId = null;
+
+      // Manually control reverse playback since negative playbackRate isn't supported
+      const updateVideoTime = () => {
+        if (playDirection === -1 && video.currentTime > 0.033) {
+          video.currentTime -= 0.033; // Approximately 30fps
+          animationFrameId = requestAnimationFrame(updateVideoTime);
+        } else if (playDirection === -1 && video.currentTime <= 0.033) {
+          // Reached the beginning, switch to forward
+          playDirection = 1;
+          video.currentTime = 0;
+          video.play().catch(e => console.log("Play failed:", e));
+        }
+      };
 
       // Ping-pong loop: play forward then reverse
       const handleTimeUpdate = () => {
         // Check if we've reached the end (forward)
         if (playDirection === 1 && video.currentTime >= video.duration - 0.1) {
           playDirection = -1;
-          video.playbackRate = -1.0; // Play in reverse
-        }
-        // Check if we've reached the beginning (reverse)
-        else if (playDirection === -1 && video.currentTime <= 0.1) {
-          playDirection = 1;
-          video.playbackRate = 1.0; // Play forward
+          video.pause();
+          animationFrameId = requestAnimationFrame(updateVideoTime);
         }
       };
 
@@ -359,6 +369,9 @@ export default function Home() {
       video.addEventListener('timeupdate', handleTimeUpdate);
 
       return () => {
+        if (animationFrameId) {
+          cancelAnimationFrame(animationFrameId);
+        }
         video.removeEventListener('loadeddata', playVideo);
         video.removeEventListener('timeupdate', handleTimeUpdate);
       };
