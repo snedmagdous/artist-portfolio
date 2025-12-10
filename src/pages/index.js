@@ -9,6 +9,8 @@ import Layout from "../components/Layout";
 // Constellation Highlights Component
 const ConstellationHighlights = () => {
   const [hoveredNode, setHoveredNode] = useState(null);
+  const [selectedNode, setSelectedNode] = useState(null);
+  const [modalOpen, setModalOpen] = useState(false);
 
   // Highlight pieces data with organic star map positioning
   const highlights = [
@@ -18,7 +20,7 @@ const ConstellationHighlights = () => {
       type: 'Mural',
       description: 'Monumental mural honoring divine feminine lineage across past, present, and future',
       link: '/art/murals/my-queens',
-      image: '/images/constellation/my-queens.jpg',
+      image: '/images/murals/my-queens/final.jpeg',
       position: { x: 50, y: 30 }, // Central upper - largest node
       size: 'large',
       connections: ['ancestral-visions', 'divine-feminine', 'monster-collage', 'love-revolution']
@@ -29,7 +31,7 @@ const ConstellationHighlights = () => {
       type: 'Painting Series',
       description: 'Exploration of inherited wisdom and cultural memory through portraiture',
       link: '/art/paintings',
-      image: '/images/constellation/ancestral-visions.jpg',
+      image: '/images/paintings/ancestral/ancestral.jpeg',
       position: { x: 25, y: 45 }, // Left mid
       size: 'medium',
       connections: ['my-queens', 'divine-feminine', 'where-do-you-go', 'monster-collage']
@@ -40,7 +42,7 @@ const ConstellationHighlights = () => {
       type: 'Portrait Series',
       description: 'Celebrating sacred femininity through powerful portraiture',
       link: '/art/paintings',
-      image: '/images/constellation/divine-feminine.jpg',
+      image: '/images/portraits/sierra.jpeg',
       position: { x: 75, y: 40 }, // Right mid
       size: 'medium',
       connections: ['my-queens', 'ancestral-visions', 'mamma-im-fine', 'love-revolution']
@@ -51,7 +53,7 @@ const ConstellationHighlights = () => {
       type: 'Illustration Series',
       description: 'Dark illustrations mapping depersonalization and chronic pain',
       link: '/art/illustrations/where-do-you-go',
-      image: '/images/constellation/where-do-you-go.jpg',
+      image: '/images/illustration/where/blue.jpeg',
       position: { x: 20, y: 75 }, // Lower left
       size: 'medium',
       connections: ['ancestral-visions', 'monster-collage']
@@ -62,9 +64,9 @@ const ConstellationHighlights = () => {
       type: 'Collage Series',
       description: 'Confronting the shadow self through mixed media collage',
       link: '/art/collages',
-      image: '/images/constellation/monster-collage.jpg',
-      position: { x: 45, y: 70 }, // Lower center
-      size: 'small',
+      image: '/images/collage/monster/final.jpg',
+      position: { x: 45, y: 80 }, // Lower center
+      size: 'medium',
       connections: ['my-queens', 'ancestral-visions', 'where-do-you-go', 'love-revolution']
     },
     {
@@ -73,21 +75,43 @@ const ConstellationHighlights = () => {
       type: 'Documentary Film',
       description: 'A documentary exploring Palestinian solidarity and intersectional liberation',
       link: '/film/documentaries',
-      image: '/images/constellation/love-revolution.jpg',
-      position: { x: 70, y: 75 }, // Lower right
-      size: 'large',
+      image: '/images/constellation/love-rev.jpg',
+      position: { x: 85, y: 60 }, // Lower right
+      size: 'small',
       connections: ['my-queens', 'divine-feminine', 'monster-collage', 'mamma-im-fine']
     },
     {
-      id: 'mamma-im-fine',
-      title: 'Mamma, I\'m Fine',
-      type: 'Poetry',
-      description: 'A powerful poem on generational trauma and healing',
-      link: '/writing',
-      image: '/images/constellation/mamma-im-fine.jpg',
-      position: { x: 85, y: 55 }, // Right mid-lower
+      id: 'mirror-of-now',
+      title: 'Mirror of Now',
+      type: 'Painting',
+      description: 'A powerful painting on generational trauma and healing',
+      link: '/art/paintings',
+      image: '/images/paintings/queens/mirror.jpeg',
+      position: { x: 70, y: 75 }, // Right mid-lower
+      size: 'large',
+      connections: ['divine-feminine', 'love-revolution', 'ancestors-singing']
+    },
+    {
+      id: 'ancestors-singing',
+      title: 'Our Ancestors Are Still Singing',
+      type: 'Documentary Film',
+      description: 'A documentary exploring ancestral wisdom and cultural memory',
+      link: '/film/documentaries',
+      image: '/images/constellation/cambodia.jpg',
+      position: { x: 60, y: 53 },
       size: 'small',
-      connections: ['divine-feminine', 'love-revolution']
+      connections: ['my-queens', 'ancestral-visions', 'mirror-of-now']
+    },
+    {
+      id: 'where-illustration',
+      title: 'Where Do You Go When There\'s Nowhere to Go',
+      type: 'Illustration',
+      description: 'Purple illustration exploring depersonalization and chronic pain',
+      link: '/art/illustrations/where-do-you-go',
+      image: '/images/illustration/where/purple.jpg',
+      position: { x: 40, y: 55 },
+      size: 'small',
+      connections: ['ancestral-visions', 'where-do-you-go', 'monster-collage']
     }
   ];
 
@@ -234,13 +258,28 @@ const ConstellationHighlights = () => {
             <circle cx="40" cy="84" r="0.3" fill="rgba(255, 255, 255, 0.6)" className={`constellation-branch ${hoveredNode === 'monster-collage' ? 'highlighted' : ''}`} />
             <circle cx="50" cy="82" r="0.25" fill="rgba(255, 255, 255, 0.5)" className={`constellation-branch ${hoveredNode === 'monster-collage' ? 'highlighted' : ''}`} />
             <circle cx="38" cy="72" r="0.2" fill="rgba(255, 255, 255, 0.4)" className={`constellation-branch ${hoveredNode === 'monster-collage' ? 'highlighted' : ''}`} />
+
+            {/* From Ancestors Singing (small node, upper right area) */}
+            <line x1="60" y1="53" x2="63" y2="48" className={`constellation-branch ${hoveredNode === 'ancestors-singing' ? 'highlighted' : ''}`} filter="url(#constellationGlow)" />
+            <line x1="60" y1="53" x2="65" y2="55" className={`constellation-branch ${hoveredNode === 'ancestors-singing' ? 'highlighted' : ''}`} filter="url(#constellationGlow)" />
+            <line x1="63" y1="48" x2="66" y2="44" className={`constellation-branch ${hoveredNode === 'ancestors-singing' ? 'highlighted' : ''}`} filter="url(#constellationGlow)" />
+            <line x1="65" y1="55" x2="68" y2="57" className={`constellation-branch ${hoveredNode === 'ancestors-singing' ? 'highlighted' : ''}`} filter="url(#constellationGlow)" />
+            <circle cx="66" cy="44" r="0.25" fill="rgba(255, 255, 255, 0.6)" className={`constellation-branch ${hoveredNode === 'ancestors-singing' ? 'highlighted' : ''}`} />
+            <circle cx="68" cy="57" r="0.2" fill="rgba(255, 255, 255, 0.5)" className={`constellation-branch ${hoveredNode === 'ancestors-singing' ? 'highlighted' : ''}`} />
+
+            {/* From Where Illustration (small node, center area) */}
+            <line x1="40" y1="55" x2="37" y2="50" className={`constellation-branch ${hoveredNode === 'where-illustration' ? 'highlighted' : ''}`} filter="url(#constellationGlow)" />
+            <line x1="40" y1="55" x2="35" y2="58" className={`constellation-branch ${hoveredNode === 'where-illustration' ? 'highlighted' : ''}`} filter="url(#constellationGlow)" />
+            <line x1="37" y1="50" x2="34" y2="46" className={`constellation-branch ${hoveredNode === 'where-illustration' ? 'highlighted' : ''}`} filter="url(#constellationGlow)" />
+            <line x1="35" y1="58" x2="32" y2="61" className={`constellation-branch ${hoveredNode === 'where-illustration' ? 'highlighted' : ''}`} filter="url(#constellationGlow)" />
+            <circle cx="34" cy="46" r="0.25" fill="rgba(255, 255, 255, 0.6)" className={`constellation-branch ${hoveredNode === 'where-illustration' ? 'highlighted' : ''}`} />
+            <circle cx="32" cy="61" r="0.2" fill="rgba(255, 255, 255, 0.5)" className={`constellation-branch ${hoveredNode === 'where-illustration' ? 'highlighted' : ''}`} />
           </svg>
 
           {/* Constellation Nodes */}
           {highlights.map((node, index) => (
-            <Link
+            <div
               key={node.id}
-              to={node.link}
               className={`constellation-node ${node.size} ${hoveredNode === node.id ? 'active' : ''}`}
               style={{
                 left: `${node.position.x}%`,
@@ -249,6 +288,10 @@ const ConstellationHighlights = () => {
               }}
               onMouseEnter={() => setHoveredNode(node.id)}
               onMouseLeave={() => setHoveredNode(null)}
+              onClick={() => {
+                setSelectedNode(node);
+                setModalOpen(true);
+              }}
             >
               {/* Node Glow */}
               <div className="node-glow"></div>
@@ -267,11 +310,11 @@ const ConstellationHighlights = () => {
 
               {/* Node Info (appears on hover) */}
               <div className="node-info">
-                <span className="node-type">{node.type}</span>
+                <span className={`node-type ${node.type.toLowerCase().replace(/\s+/g, '-')}`}>{node.type}</span>
                 <h3 className="node-title">{node.title}</h3>
                 <p className="node-description">{node.description}</p>
               </div>
-            </Link>
+            </div>
           ))}
 
           {/* Floating particles/stars */}
@@ -291,6 +334,38 @@ const ConstellationHighlights = () => {
           </div>
         </div>
       </div>
+
+      {/* Modal */}
+      {modalOpen && selectedNode && (
+        <div className="constellation-modal-overlay" onClick={() => setModalOpen(false)}>
+          <div className="constellation-modal-content" onClick={(e) => e.stopPropagation()}>
+            <button className="constellation-modal-close" onClick={() => setModalOpen(false)}>×</button>
+
+            <div className="constellation-modal-image-container">
+              <img
+                src={selectedNode.image}
+                alt={selectedNode.title}
+                className="constellation-modal-image"
+              />
+            </div>
+
+            <div className="constellation-modal-info">
+              <span className={`node-type ${selectedNode.type.toLowerCase().replace(/\s+/g, '-')}`}>
+                {selectedNode.type}
+              </span>
+              <h2 className="constellation-modal-title">{selectedNode.title}</h2>
+              <p className="constellation-modal-description">{selectedNode.description}</p>
+
+              <Link
+                to={selectedNode.link}
+                className="constellation-modal-link"
+              >
+                View Full Project →
+              </Link>
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   );
 };
@@ -493,7 +568,6 @@ export default function Home() {
     {
       id: 'art',
       title: 'Art',
-      description: 'Visual expressions of identity and resistance',
       icon: (
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1">
           <path d="M12 2L13.09 8.26L20 9L13.09 9.74L12 16L10.91 9.74L4 9L10.91 8.26L12 2Z"/>
@@ -526,7 +600,6 @@ export default function Home() {
     {
       id: 'film',
       title: 'Film',
-      description: 'Cinematic storytelling and visual narratives',
       icon: (
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1">
           <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
@@ -554,65 +627,15 @@ export default function Home() {
       ]
     },
     {
-      id: 'writing',
-      title: 'Writing',
-      description: 'Words that heal, resist, and transform',
-      icon: (
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1">
-          <path d="M14 2H6C5.45 2 5 2.45 5 3V21C5 21.55 5.45 22 6 22H18C18.55 22 19 21.55 19 21V7L14 2Z"/>
-          <polyline points="14,2 14,8 20,8"/>
-          <line x1="16" y1="13" x2="8" y2="13"/>
-          <line x1="16" y1="17" x2="8" y2="17"/>
-          <polyline points="10,9 9,9 8,9"/>
-        </svg>
-      ),
-      link: '/writing',
-      subcategories: [
-        {
-          id: 'poetry',
-          title: 'Poetry',
-          link: '/writing/poetry'
-        },
-        {
-          id: 'creative-writing',
-          title: 'Creative Writing',
-          link: '/writing/creative-writing'
-        },
-        {
-          id: 'novel-writing',
-          title: 'Novel Writing',
-          link: '/writing/novel-writing'
-        },
-        {
-          id: 'video-essays',
-          title: 'Video Essays',
-          link: '/writing/video-essays'
-        }
-      ]
-    },
-    {
       id: 'coding',
       title: 'Coding',
-      description: 'Technology for liberation and social impact',
       icon: (
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1">
           <path d="M16 18L22 12L16 6"/>
           <path d="M8 6L2 12L8 18"/>
         </svg>
       ),
-      link: '/resume',
-      subcategories: [
-        {
-          id: 'technical-resume',
-          title: 'Technical Resume',
-          link: '/resume'
-        },
-        {
-          id: 'creative-resume',
-          title: 'Creative Resume',
-          link: '/resume'
-        }
-      ]
+      link: '/tech-portfolio',
     }
   ]
 
@@ -721,42 +744,6 @@ export default function Home() {
         </svg>
       ),
       link: '/writing/poetry'
-    },
-    {
-      id: 'creative-writing',
-      title: 'Creative Writing',
-      description: 'Imaginative prose and storytelling',
-      icon: (
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1">
-          <path d="M12 20H21"/>
-          <path d="M16.5 3.5A2.121 2.121 0 0 1 19 6L7 18L3 19L4 15L16.5 3.5Z"/>
-        </svg>
-      ),
-      link: '/writing/creative-writing'
-    },
-    {
-      id: 'novel-writing',
-      title: 'Novel Writing',
-      description: 'Long-form narratives and world-building',
-      icon: (
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1">
-          <path d="M4 19.5C4 18.837 4.263 18.201 4.732 17.732C5.201 17.263 5.837 17 6.5 17H20"/>
-          <path d="M6.5 2H20V22H6.5C5.837 22 5.201 21.737 4.732 21.268C4.263 20.799 4 20.163 4 19.5V4.5C4 3.837 4.263 3.201 4.732 2.732C5.201 2.263 5.837 2 6.5 2Z"/>
-        </svg>
-      ),
-      link: '/writing/novel-writing'
-    },
-    {
-      id: 'video-essays',
-      title: 'Video Essays',
-      description: 'Visual analysis and commentary',
-      icon: (
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1">
-          <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
-          <path d="M10 9L14 12L10 15V9Z"/>
-        </svg>
-      ),
-      link: '/writing/video-essays'
     },
     // Technology
     {

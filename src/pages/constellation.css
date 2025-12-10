@@ -22,7 +22,7 @@
 /* Header Styles */
 .constellation-header {
   text-align: center;
-  margin-bottom: 6rem;
+  margin-bottom: 1rem;
   position: relative;
   z-index: 10;
 }
@@ -236,6 +236,16 @@
   border-radius: 50%;
 }
 
+ .node-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center center; /* Change this to reposition photos */
+    display: block;
+    filter: brightness(0.75) saturate(1.1);
+    transition: all 0.4s ease;
+  }
+
 .node-video {
   width: 100%;
   height: 100%;
@@ -308,15 +318,51 @@
   display: inline-block;
   font-family: 'Poppins', sans-serif;
   font-size: 0.75rem;
-  color: rgba(157, 0, 255, 1);
   font-weight: 400;
   text-transform: uppercase;
   letter-spacing: 0.1em;
   margin-bottom: 0.5rem;
   padding: 0.3rem 0.8rem;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+}
+
+/* Category-specific colors */
+.node-type.mural {
+  color: rgba(255, 107, 107, 1); /* Coral red */
+  background: rgba(255, 107, 107, 0.15);
+  border: 1px solid rgba(255, 107, 107, 0.3);
+}
+
+.node-type.painting-series,
+.node-type.portrait-series {
+  color: rgba(255, 184, 108, 1); /* Warm orange */
+  background: rgba(255, 184, 108, 0.15);
+  border: 1px solid rgba(255, 184, 108, 0.3);
+}
+
+.node-type.illustration-series {
+  color: rgba(157, 0, 255, 1); /* Purple */
   background: rgba(157, 0, 255, 0.15);
   border: 1px solid rgba(157, 0, 255, 0.3);
-  border-radius: 12px;
+}
+
+.node-type.collage-series {
+  color: rgba(255, 105, 180, 1); /* Hot pink */
+  background: rgba(255, 105, 180, 0.15);
+  border: 1px solid rgba(255, 105, 180, 0.3);
+}
+
+.node-type.documentary-film {
+  color: rgba(100, 255, 218, 1); /* Turquoise */
+  background: rgba(100, 255, 218, 0.15);
+  border: 1px solid rgba(100, 255, 218, 0.3);
+}
+
+.node-type.poetry {
+  color: rgba(255, 223, 0, 1); /* Gold */
+  background: rgba(255, 223, 0, 0.15);
+  border: 1px solid rgba(255, 223, 0, 0.3);
 }
 
 .node-title {
@@ -412,7 +458,7 @@
   }
 
   .constellation-header {
-    margin-bottom: 4rem;
+    margin-bottom: 1rem;
   }
 
   .constellation-map {
@@ -486,5 +532,200 @@
 
   .node-description {
     font-size: 0.8rem;
+  }
+}
+
+/* ==========================================
+   CONSTELLATION MODAL
+   ========================================== */
+
+.constellation-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.95);
+  backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+  padding: 2rem;
+  animation: modalFadeIn 0.3s ease-out;
+}
+
+@keyframes modalFadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.constellation-modal-content {
+  position: relative;
+  background: rgba(0, 0, 0, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 16px;
+  max-width: 900px;
+  width: 100%;
+  max-height: 90vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  animation: modalSlideUp 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
+}
+
+@keyframes modalSlideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(50px) scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.constellation-modal-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  width: 40px;
+  height: 40px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  color: white;
+  font-size: 2rem;
+  line-height: 1;
+  cursor: pointer;
+  z-index: 10;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+
+.constellation-modal-close:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: rotate(90deg);
+}
+
+.constellation-modal-image-container {
+  width: 100%;
+  height: 400px;
+  overflow: hidden;
+  position: relative;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.constellation-modal-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.constellation-modal-info {
+  padding: 2rem;
+  overflow-y: auto;
+  max-height: calc(90vh - 400px);
+}
+
+.constellation-modal-title {
+  font-family: 'Poppins', sans-serif;
+  font-size: 2rem;
+  font-weight: 300;
+  color: white;
+  margin: 1rem 0;
+  letter-spacing: 0.02em;
+  line-height: 1.3;
+}
+
+.constellation-modal-description {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.8);
+  font-weight: 300;
+  line-height: 1.8;
+  margin: 1.5rem 0;
+  letter-spacing: 0.01em;
+}
+
+.constellation-modal-link {
+  display: inline-block;
+  padding: 1rem 2rem;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 8px;
+  color: white;
+  text-decoration: none;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  transition: all 0.3s ease;
+  margin-top: 1rem;
+}
+
+.constellation-modal-link:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.6);
+  transform: translateX(5px);
+}
+
+/* Responsive Modal Styles */
+@media (max-width: 768px) {
+  .constellation-modal-overlay {
+    padding: 1rem;
+  }
+
+  .constellation-modal-content {
+    max-height: 95vh;
+  }
+
+  .constellation-modal-image-container {
+    height: 300px;
+  }
+
+  .constellation-modal-info {
+    padding: 1.5rem;
+    max-height: calc(95vh - 300px);
+  }
+
+  .constellation-modal-title {
+    font-size: 1.5rem;
+  }
+
+  .constellation-modal-description {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .constellation-modal-image-container {
+    height: 250px;
+  }
+
+  .constellation-modal-info {
+    padding: 1rem;
+    max-height: calc(95vh - 250px);
+  }
+
+  .constellation-modal-title {
+    font-size: 1.3rem;
+  }
+
+  .constellation-modal-description {
+    font-size: 0.95rem;
+  }
+
+  .constellation-modal-link {
+    padding: 0.8rem 1.5rem;
+    font-size: 0.9rem;
   }
 }
