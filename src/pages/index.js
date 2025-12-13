@@ -771,7 +771,7 @@ export default function Home() {
           loop
           muted
           playsInline
-          preload="auto"
+          preload="metadata"
           className="video-tag"
           ref={videoRef}
           style={{

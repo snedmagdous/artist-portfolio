@@ -21,7 +21,7 @@ const EntrancePage = ({ onEnter, videoSrc }) => {
           autoPlay
           muted
           playsInline
-          preload="auto"
+          preload="metadata"
           className={styles.backgroundVideo}
         >
           <source src={videoSrc} type="video/mp4" />

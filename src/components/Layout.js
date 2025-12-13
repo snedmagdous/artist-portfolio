@@ -346,7 +346,7 @@ const Layout = ({
               autoPlay
               muted
               playsInline
-              preload="auto"
+              preload="metadata"
               className="layout-video-background__video"
               style={{
                 position: 'absolute',

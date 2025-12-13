@@ -174,7 +174,7 @@ const DocumentariesPage = () => {
                         loop
                         muted
                         playsInline
-                        preload="auto"
+                        preload="metadata"
                         className={styles.documentaryVideo}
                         style={{
                           filter: 'brightness(0.8) contrast(0.9)'
