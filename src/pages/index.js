@@ -83,7 +83,7 @@ const ConstellationHighlights = () => {
     {
       id: 'mirror-of-now',
       title: 'Mirror of Now',
-      type: 'Painting',
+      type: 'Painting Series',
       description: 'A powerful painting on generational trauma and healing',
       link: '/art/paintings',
       image: '/images/paintings/queens/mirror.jpeg',
@@ -105,7 +105,7 @@ const ConstellationHighlights = () => {
     {
       id: 'where-illustration',
       title: 'Where Do You Go When There\'s Nowhere to Go',
-      type: 'Illustration',
+      type: 'Illustration Series',
       description: 'Purple illustration exploring depersonalization and chronic pain',
       link: '/art/illustrations/where-do-you-go',
       image: '/images/illustration/where/purple.jpg',
@@ -802,9 +802,16 @@ export default function Home() {
               <Link to="/about" className="cta-button white">
                 About
               </Link>
-              <Link to="/contact" className="cta-button secondary">
+              <button
+                onClick={() => {
+                  document.getElementById('contact-section').scrollIntoView({
+                    behavior: 'smooth'
+                  });
+                }}
+                className="cta-button secondary"
+              >
                 Contact
-              </Link>
+              </button>
             </div>
 
             <Link to="/shop" className="shop-button">

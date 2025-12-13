@@ -755,7 +755,7 @@ const Layout = ({
                 <Link to="/about" onClick={handleFooterPageClick("/about")}>About</Link>
                 <Link to="/commission" onClick={handleFooterPageClick("/commission")}>Commission</Link>
                 <Link to="/shop" onClick={handleFooterPageClick("/shop")}>Shop</Link>
-                <Link to="/contact" onClick={handleFooterPageClick("/contact")}>Contact</Link>
+                <a href="/" onClick={handleFooterContactClick}>Contact</a>
               </div>
             <div className="links-column">
               <h3>Portfolio</h3>
