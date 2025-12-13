@@ -25,7 +25,7 @@ const MyQueensMuralPage = () => {
       date: 'July 2025',
       title: 'Grant Funding & Fundraising Model',
       description: 'Receiving grant funding while establishing mural as fundraiser with proceeds split between different local charities.',
-      image: '/images/murals/my-queens/grant-funding.jpg',
+      image: '/images/murals/my-queens/mural.JPEG',
       details: 'This dual funding model allows for artistic creation while directly supporting humanitarian relief efforts for communities experiencing displacement and occupation.'
     },
     {
@@ -33,7 +33,7 @@ const MyQueensMuralPage = () => {
       date: 'July 15, 2025',
       title: 'Cornell Community Partnerships',
       description: 'Partnering with Cornell\'s Black Students United, Pan-African Muslim Student Association, and progressive organizations for authentic representation.',
-      image: '/images/murals/my-queens/cornell-partnerships.jpg',
+      image: '/images/murals/my-queens/mural.JPEG',
       details: 'These partnerships ensure the mural accurately represents Indigenous Bedouin and Nubian women while incorporating other Indigenous features through community guidance and cultural consultation.'
     },
     {
@@ -41,7 +41,7 @@ const MyQueensMuralPage = () => {
       date: 'August 2025',
       title: 'Indigenous Cultural Research',
       description: 'Deep research into Bedouin and Nubian traditions, geometries, and ancestral protection symbols with community advisors.',
-      image: '/images/murals/my-queens/cultural-research.jpg',
+      image: '/images/murals/my-queens/mural.JPEG',
       details: 'Working with cultural advisors to ensure respectful and accurate representation of traditional patterns, spiritual symbolism, and the connection between these Indigenous communities and their ancestral lands.'
     },
     {
@@ -49,7 +49,7 @@ const MyQueensMuralPage = () => {
       date: 'August 10, 2025',
       title: 'Land Acknowledgment Integration',
       description: 'Incorporating acknowledgment that the mural stands on stolen Haudenosaunee land, connecting Indigenous struggles across continents.',
-      image: '/images/murals/my-queens/land-acknowledgment.jpg',
+      image: '/images/murals/my-queens/mural.JPEG',
       details: 'This element emphasizes the global nature of Indigenous land displacement and creates solidarity between Haudenosaunee, Bedouin, and Nubian peoples who have all experienced colonization.'
     },
     {
@@ -57,7 +57,7 @@ const MyQueensMuralPage = () => {
       date: 'August 20, 2025',
       title: 'Collaborative Design Process',
       description: 'Community-guided design sessions creating surreal geometric light representing ancestral protection and resistance.',
-      image: '/images/murals/my-queens/design-process.jpg',
+      image: '/images/murals/my-queens/mural.JPEG',
       details: 'The geometric light patterns draw from traditional Bedouin and Nubian art forms while creating a surreal, protective aura that represents ancestors watching over and empowering contemporary Indigenous women.'
     },
     {
@@ -65,7 +65,7 @@ const MyQueensMuralPage = () => {
       date: 'September 1, 2025',
       title: 'Nature-Infused Resistance Elements',
       description: 'Incorporating indigenous plants, desert landscapes, and Nile imagery as symbols of connection to stolen and threatened lands.',
-      image: '/images/murals/my-queens/nature-elements.jpg',
+      image: '/images/murals/my-queens/mural.JPEG',
       details: 'Natural elements represent the deep connection Indigenous peoples have to their lands, and how this connection persists despite displacement, occupation, and colonization.'
     },
     {
@@ -73,7 +73,7 @@ const MyQueensMuralPage = () => {
       date: 'September 5, 2025',
       title: 'The Queens - Bedouin & Nubian Women',
       description: 'Painting the central figures: Indigenous Bedouin and Nubian women standing close together in fierce solidarity.',
-      image: '/images/murals/my-queens/queens-portraits.jpg',
+      image: '/images/murals/my-queens/mural.JPEG',
       details: 'These figures represent the strength, resilience, and beauty of Indigenous women who maintain their identity and resistance despite systemic attempts to erase their cultures and claim their lands.'
     },
     {
@@ -81,7 +81,7 @@ const MyQueensMuralPage = () => {
       date: 'September 10, 2025',
       title: 'Ancestral Geometric Light',
       description: 'Adding the surreal geometric light patterns representing ancestors protecting and empowering the Queens.',
-      image: '/images/murals/my-queens/ancestral-light.jpg',
+      image: '/images/murals/my-queens/mural.JPEG',
       details: 'These geometric patterns blend traditional Bedouin and Nubian artistic motifs into flowing, luminous forms that create a spiritual protection around the central figures.'
     },
     {
@@ -89,7 +89,7 @@ const MyQueensMuralPage = () => {
       date: 'September 15, 2025',
       title: 'Symbols of Land & Resistance',
       description: 'Integrating symbols representing connection to land, resistance to occupation, and Indigenous sovereignty.',
-      image: '/images/murals/my-queens/resistance-symbols.jpg',
+      image: '/images/murals/my-queens/mural.JPEG',
       details: 'These symbols connect the struggles of Bedouin peoples facing Israeli occupation, Nubian communities displaced by dams, and all Indigenous peoples fighting for land rights and cultural survival.'
     },
     {
@@ -97,7 +97,7 @@ const MyQueensMuralPage = () => {
       date: 'September 20, 2025',
       title: 'Community Collaborative Elements',
       description: 'Cornell student organizations and community members add personal touches representing solidarity and shared resistance.',
-      image: '/images/murals/my-queens/community-additions.jpg',
+      image: '/images/murals/my-queens/mural.JPEG',
       details: 'Community contributors add elements that connect their own liberation struggles to those of the Indigenous women featured, creating a tapestry of intersectional resistance.'
     },
     {
@@ -105,7 +105,7 @@ const MyQueensMuralPage = () => {
       date: 'September 25, 2025',
       title: 'Final Details & Protective Elements',
       description: 'Adding final protective elements, traditional patterns, and ensuring accurate cultural representation.',
-      image: '/images/murals/my-queens/final-details.jpg',
+      image: '/images/murals/my-queens/mural.JPEG',
       details: 'Final touches include intricate traditional patterns, protective amulets, and ensuring every cultural element has been reviewed and approved by community advisors.'
     },
     {
@@ -113,7 +113,7 @@ const MyQueensMuralPage = () => {
       date: 'October 7, 2025',
       title: 'Completion on October 7th',
       description: 'Completing the mural on October 7th as a statement of solidarity with all Indigenous peoples facing occupation.',
-      image: '/images/murals/my-queens/completion.jpg',
+      image: '/images/murals/my-queens/final.JPEG',
       details: 'The October 7th completion date connects this work to ongoing resistance while honoring all Indigenous peoples fighting for their right to exist on their ancestral lands.'
     },
     {
@@ -121,7 +121,7 @@ const MyQueensMuralPage = () => {
       date: 'October 2025',
       title: 'Ongoing Fundraising for refugee support',
       description: 'Continuing fundraising efforts with proceeds supporting humanitarian aid for local & international Black & Indigenous communities.',
-      image: '/images/murals/my-queens/fundraising.jpg',
+      image: '/images/murals/my-queens/final.JPEG',
       details: 'The mural serves as both artistic statement and practical solidarity, with ongoing fundraising demonstrating how art can directly support communities facing displacement and violence.'
     }
   ]
