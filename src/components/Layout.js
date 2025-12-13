@@ -34,49 +34,13 @@ const Layout = ({
   console.log('Layout received:', { hasVideoBackground, videoSrc, videoStyle });
   const headerRef = useRef(null); 
 
-  // Video background setup with ping-pong (forward-reverse) loop
+  // Video background setup - simple autoplay with loop
   useEffect(() => {
     if (videoRef.current && hasVideoBackground && videoSrc) {
       const video = videoRef.current;
       video.defaultMuted = true;
       video.muted = true;
       video.playbackRate = playbackRate;
-      let playDirection = 1; // 1 for forward, -1 for reverse
-      let animationFrameId = null;
-
-      // Manually control reverse playback since negative playbackRate isn't supported
-      const updateVideoTime = () => {
-        if (playDirection === -1 && video.currentTime > 0.033) {
-          video.currentTime -= 0.033 * playbackRate; // Adjust speed based on playbackRate
-          animationFrameId = requestAnimationFrame(updateVideoTime);
-        } else if (playDirection === -1 && video.currentTime <= 0.033) {
-          // Reached the beginning, switch to forward
-          playDirection = 1;
-          video.currentTime = 0;
-          if (!isBackgroundPaused) {
-            video.play().catch(e => console.log("Play failed:", e));
-          }
-        }
-      };
-
-      // Ping-pong loop: play forward then reverse
-      const handleTimeUpdate = () => {
-        // Check if we've reached the end (forward)
-        if (playDirection === 1 && video.currentTime >= video.duration - 0.1) {
-          playDirection = -1;
-          video.pause();
-          animationFrameId = requestAnimationFrame(updateVideoTime);
-        }
-      };
-
-      const handleEnded = () => {
-        // Fallback in case timeupdate doesn't catch it
-        if (playDirection === 1) {
-          playDirection = -1;
-          video.pause();
-          animationFrameId = requestAnimationFrame(updateVideoTime);
-        }
-      };
 
       // Ensure video plays immediately (unless globally paused)
       const playVideo = async () => {
@@ -96,72 +60,12 @@ const Layout = ({
         video.addEventListener('loadeddata', playVideo);
       }
 
-      // Add seamless loop listeners
-      video.addEventListener('timeupdate', handleTimeUpdate);
-      video.addEventListener('ended', handleEnded);
-
       return () => {
-        if (animationFrameId) {
-          cancelAnimationFrame(animationFrameId);
-        }
         video.removeEventListener('loadeddata', playVideo);
-        video.removeEventListener('timeupdate', handleTimeUpdate);
-        video.removeEventListener('ended', handleEnded);
       };
     }
   }, [hasVideoBackground, videoSrc, playbackRate, isBackgroundPaused]);
 
-  // Apply seamless loop to all videos on the page
-  useEffect(() => {
-    const applySeamlessLoopToAllVideos = () => {
-      const allVideos = document.querySelectorAll('video[autoplay][muted]');
-
-      allVideos.forEach(video => {
-        if (video.getAttribute('data-seamless-initialized')) return;
-        video.setAttribute('data-seamless-initialized', 'true');
-
-        // Smooth transition effect at loop point
-        const handleTimeUpdate = () => {
-          if (video.duration && video.currentTime) {
-            const fadePoint = video.duration - 0.5;
-            if (video.currentTime >= fadePoint) {
-              const progress = (video.currentTime - fadePoint) / 0.5;
-              video.style.opacity = 1 - (progress * 0.2);
-            } else if (video.style.opacity !== '1') {
-              video.style.opacity = 1;
-            }
-          }
-        };
-
-        const handleEnded = () => {
-          video.currentTime = 0;
-          video.style.opacity = 0.8;
-          video.play().catch(e => console.log("Video restart failed:", e));
-          setTimeout(() => {
-            video.style.opacity = 1;
-          }, 50);
-        };
-
-        video.addEventListener('timeupdate', handleTimeUpdate);
-        video.addEventListener('ended', handleEnded);
-
-        // Remove loop attribute if present (we're handling it manually for smoother transition)
-        video.removeAttribute('loop');
-      });
-    };
-
-    // Apply seamless loop immediately and after delays to catch dynamically loaded videos
-    applySeamlessLoopToAllVideos();
-    const timeoutId1 = setTimeout(applySeamlessLoopToAllVideos, 500);
-    const timeoutId2 = setTimeout(applySeamlessLoopToAllVideos, 1500);
-    const timeoutId3 = setTimeout(applySeamlessLoopToAllVideos, 3000);
-
-    return () => {
-      clearTimeout(timeoutId1);
-      clearTimeout(timeoutId2);
-      clearTimeout(timeoutId3);
-    };
-  }, []);
 
   // Auto-pause all videos when global pause state is active
   useEffect(() => {
@@ -344,6 +248,7 @@ const Layout = ({
             <video
               ref={videoRef}
               autoPlay
+              loop
               muted
               playsInline
               preload="metadata"
