@@ -613,15 +613,15 @@ const Layout = ({
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="LinkedIn"
+                className="header-social-link"
                 style={{
-                  color: 'white',
-                  opacity: 0.8,
+                  color: 'rgba(255, 255, 255, 0.8)',
                   transition: 'all 0.3s ease',
                   display: 'flex',
                   alignItems: 'center'
                 }}
                 onMouseEnter={(e) => {
-                  e.currentTarget.style.opacity = '1';
+                  e.currentTarget.style.color = '#0077B5';
                   e.currentTarget.style.transform = 'translateY(-2px)';
                 }}
                 onMouseLeave={(e) => {
@@ -639,15 +639,15 @@ const Layout = ({
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="GitHub"
+                className="header-social-link"
                 style={{
-                  color: 'white',
-                  opacity: 0.8,
+                  color: 'rgba(255, 255, 255, 0.8)',
                   transition: 'all 0.3s ease',
                   display: 'flex',
                   alignItems: 'center'
                 }}
                 onMouseEnter={(e) => {
-                  e.currentTarget.style.opacity = '1';
+                  e.currentTarget.style.color = '#ffffff';
                   e.currentTarget.style.transform = 'translateY(-2px)';
                 }}
                 onMouseLeave={(e) => {
