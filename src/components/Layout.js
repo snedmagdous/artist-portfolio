@@ -552,7 +552,7 @@ const Layout = ({
                   alignItems: 'center'
                 }}
                 onMouseEnter={(e) => {
-                  e.currentTarget.style.color = '#ffffff';
+                  e.currentTarget.style.color = '#bd93f9';
                   e.currentTarget.style.transform = 'translateY(-2px)';
                 }}
                 onMouseLeave={(e) => {
