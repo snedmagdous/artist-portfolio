@@ -130,7 +130,7 @@ const AboutPage = () => {
           filter: 'brightness(0.67) contrast(1.1) saturate(1.3)'
         }}
       >
-        <source src="https://pub-3f206994e69e42408f7908b2177b9ed9.r2.dev/about.mp4" type="video/mp4" />
+        <source src="https://pub-3f206994e69e42408f7908b2177b9ed9.r2.dev/about_pingpong_optimized.mp4" type="video/mp4" />
       </video>
       <div className="video-overlay"></div>
     </div>
