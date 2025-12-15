@@ -569,7 +569,7 @@ export default function Home() {
       id: 'my-queens-mural',
       title: 'In the Image of My Queens, I Stand',
       type: 'Mural',
-      description: 'Monumental mural honoring divine feminine lineage across past, present, and future',
+      description: 'Monumental mural honoring divine feminine lineage and celebrating Black womanhood',
       link: '/art/murals/my-queens',
       image: '/images/murals/my-queens/final.jpeg',
       size: 'large'
