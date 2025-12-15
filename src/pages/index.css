@@ -816,6 +816,10 @@ body {
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+.recent-work-item.small .recent-work-overlay {
+  padding: 1.5rem;
+}
+
 .recent-work-type {
   display: inline-block;
   font-family: 'Poppins', sans-serif;

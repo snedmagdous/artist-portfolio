@@ -891,6 +891,30 @@ export default function Home() {
                   </div>
                 </Link>
               ))}
+
+            {/* Small featured item - NYC Violations Dashboard */}
+            {recentWorkItems
+              .filter(item => item.size === 'small' && item.id === 'nyc-violations')
+              .map(item => (
+                <Link
+                  key={item.id}
+                  to={item.link}
+                  className={`recent-work-item ${item.size}`}
+                >
+                  <div className="recent-work-image-container">
+                    <img
+                      src={item.image}
+                      alt={item.title}
+                      className="recent-work-image"
+                    />
+                  </div>
+                  <div className="recent-work-overlay">
+                    <span className="recent-work-type">{item.type}</span>
+                    <h3 className="recent-work-item-title">{item.title}</h3>
+                    <p className="recent-work-description">{item.description}</p>
+                  </div>
+                </Link>
+              ))}
           </div>
         </div>
       </section>
