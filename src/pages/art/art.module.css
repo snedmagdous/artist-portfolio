@@ -1627,21 +1627,19 @@
 
 /* Photo Gallery Below Card */
 .seriesPhotoGallery {
-  display: flex;
-  flex-direction: row;
-  gap: 1rem; /* Space between images */
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 2 columns */
+  gap: 2rem; /* Space between images */
   width: 100%; /* Full width of card */
-  overflow: hidden;
+  margin-top: 2rem;
+  padding: 0 1rem;
 }
 
 .galleryImageWrapper {
-  flex: 1; /* Equal width distribution */
-  min-width: 0; /* Allow flex to shrink properly */
-  overflow: hidden;
+  overflow: visible; /* Allow full image to show */
   position: relative;
-  background: rgba(0, 0, 0, 0.2);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.15); /* Faint white outline */
+  background: transparent;
+  border: none; /* Remove border */
   transition: all 0.3s ease;
   display: flex;
   align-items: center;
@@ -1650,17 +1648,18 @@
 }
 
 .galleryImageWrapper:hover {
-  border-color: rgba(255, 255, 255, 0.4);
   transform: translateY(-5px);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
 }
 
 .galleryImage {
   width: 100%;
-  height: 100%;
-  object-fit: cover; /* Fill the space while maintaining aspect ratio */
+  height: auto; /* Allow natural height */
+  object-fit: contain; /* Show full image without cropping */
   transition: transform 0.4s ease, filter 0.4s ease;
   filter: brightness(0.9) contrast(1.1);
+  display: block;
+  max-width: 100%; /* Ensure it doesn't overflow container */
 }
 
 .galleryImageWrapper:hover .galleryImage {
@@ -1715,6 +1714,22 @@
   text-align: center;
   z-index: 6;
   text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+}
+
+/* Mobile responsive styles for painting gallery */
+@media (max-width: 768px) {
+  .seriesPhotoGallery {
+    grid-template-columns: 1fr; /* Single column on mobile */
+    gap: 1.5rem;
+    padding: 0 0.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .seriesPhotoGallery {
+    gap: 1rem;
+    margin-top: 1.5rem;
+  }
 }
 
 /* Series Cards - Horizontal Layout */
