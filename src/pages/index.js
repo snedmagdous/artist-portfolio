@@ -822,9 +822,25 @@ export default function Home() {
         </main>
       </section>
 
+      {/* Recent Work Section */}
+      <section className="recent-work-section">
+        <div className="recent-work-container">
+          <div className="recent-work-header">
+            <div className="section-indicator">
+              <span className="indicator-dot"></span>
+              <span className="indicator-text">Latest</span>
+            </div>
+            <h2 className="recent-work-title">Most Recent Work</h2>
+            <p className="recent-work-subtitle">
+              Fresh creations pushing boundaries of art and activism
+            </p>
+          </div>
+        </div>
+      </section>
+
       {/* Portfolio Section */}
-      <section 
-        id="portfolio-section" 
+      <section
+        id="portfolio-section"
         className="portfolio-section"
         ref={portfolioSectionRef}
       >
