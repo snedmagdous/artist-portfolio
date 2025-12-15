@@ -236,16 +236,12 @@ const AboutPage = () => {
           <p className={styles.contactSubtitle}>
             Have a project in mind or want to collaborate? Let's connect.
           </p>
-          <button
-            onClick={() => {
-              if (typeof window !== 'undefined') {
-                window.location.href = '/#contact-section';
-              }
-            }}
+          <Link
+            to="/#contact-section"
             className={styles.contactPageButton}
           >
             Get in Touch
-          </button>
+          </Link>
         </div>
 
         {/* Contact Links */}
