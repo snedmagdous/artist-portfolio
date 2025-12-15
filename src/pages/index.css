@@ -752,6 +752,38 @@ body {
   margin: 0 auto;
 }
 
+/* Recent Work Grid Layout */
+.recent-work-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  min-height: 600px;
+}
+
+.recent-work-item {
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+}
+
+.recent-work-item.large {
+  grid-row: 1 / 3;
+  grid-column: 1;
+}
+
+.recent-work-item.small {
+  grid-column: 2;
+}
+
 /* Portfolio Section - Futuristic Style */
 .portfolio-section {
   background: transparent;
