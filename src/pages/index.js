@@ -667,6 +667,18 @@ export default function Home() {
         </svg>
       ),
       link: '/tech-portfolio',
+      subcategories: [
+        {
+          id: 'projects',
+          title: 'Projects',
+          link: '/tech-portfolio'
+        },
+        {
+          id: 'resume',
+          title: 'Resume',
+          link: '/resume'
+        }
+      ]
     }
   ]
 
