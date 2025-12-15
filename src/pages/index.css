@@ -712,6 +712,45 @@ body {
 .definition-content:hover::before {
   left: 100%;
 }
+/* Recent Work Section */
+.recent-work-section {
+  background: transparent;
+  position: relative;
+  z-index: 2;
+  padding: 6rem 0;
+  margin-top: -1px;
+}
+
+.recent-work-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.recent-work-header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.recent-work-title {
+  font-family: 'Poppins', sans-serif;
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.95);
+  margin: 0.5rem 0 1rem 0;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+}
+
+.recent-work-subtitle {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.6;
+  max-width: 600px;
+  margin: 0 auto;
+}
 
 /* Portfolio Section - Futuristic Style */
 .portfolio-section {
