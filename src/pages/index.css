@@ -885,9 +885,9 @@ body {
 
 /* Recent Work Hover Effects */
 .recent-work-item:hover {
-  transform: translateY(-8px);
+  transform: translateY(-10px);
   border-color: rgba(255, 255, 255, 0.3);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
 }
 
 .recent-work-item:hover .recent-work-image {
