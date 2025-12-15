@@ -1296,10 +1296,14 @@
   .categorySection:last-of-type .filmGrid {
     grid-template-columns: 1fr;
     gap: 1.5rem;
+    padding: 0 1rem;
   }
 
-  .filmCard {
-    max-width: none;
+  .filmCard,
+  .categorySection:first-of-type .filmCard,
+  .categorySection:last-of-type .filmCard {
+    max-width: 100%;
+    width: 100%;
   }
 
   .categorySection {
