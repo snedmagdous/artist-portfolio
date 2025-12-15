@@ -887,7 +887,7 @@ export default function Home() {
               <span className="indicator-dot"></span>
               <span className="indicator-text">Latest</span>
             </div>
-            <h2 className="recent-work-title">Most Recent Work</h2>
+            <h2 className="recent-work-title">Recent Work</h2>
             <p className="recent-work-subtitle">
               Fresh creations pushing boundaries of art and activism
             </p>
