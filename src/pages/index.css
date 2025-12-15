@@ -865,6 +865,32 @@ body {
   font-size: 0.9rem;
 }
 
+/* Recent Work Hover Effects */
+.recent-work-item:hover {
+  transform: translateY(-8px);
+  border-color: rgba(255, 255, 255, 0.3);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.recent-work-item:hover .recent-work-image {
+  transform: scale(1.1);
+}
+
+.recent-work-item:hover .recent-work-overlay {
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.98) 0%,
+    rgba(0, 0, 0, 0.9) 60%,
+    rgba(0, 0, 0, 0.1) 100%
+  );
+}
+
+.recent-work-item:hover .recent-work-type {
+  background: rgba(255, 255, 255, 0.25);
+  border-color: rgba(255, 255, 255, 0.4);
+  box-shadow: 0 4px 12px rgba(255, 255, 255, 0.2);
+}
+
 /* Portfolio Section - Futuristic Style */
 .portfolio-section {
   background: transparent;
