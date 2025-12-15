@@ -1843,11 +1843,11 @@ body {
   }
 
   .recent-work-item.large {
-    min-height: 350px;
+    min-height: 380px;
   }
 
   .recent-work-item.small {
-    min-height: 250px;
+    min-height: 280px;
   }
 
   .recent-work-overlay {
