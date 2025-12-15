@@ -1025,22 +1025,25 @@
 .filmGrid {
   display: grid !important;
   grid-template-columns: repeat(4, 1fr);
-  gap: 1.5rem;
+  gap: 2rem;
   max-width: 1200px;
   margin: 0 auto;
   justify-content: center;
 }
 
-/* Art section has 4 cards in ONE ROW */
+/* Art section has 2x2 grid - 2 rows of 2 cards each */
 .categorySection:first-of-type .filmGrid {
-  grid-template-columns: repeat(4, 1fr) !important;
+  grid-template-columns: repeat(2, 1fr) !important;
+  max-width: 900px;
+  gap: 2.5rem;
 }
 
-/* Film section has 3 cards in ONE ROW - centered */
+/* Film section has 3 cards in ONE ROW - centered and wider */
 .categorySection:last-of-type .filmGrid {
   grid-template-columns: repeat(3, 1fr) !important;
-  max-width: 850px;
+  max-width: 1100px;
   justify-items: center;
+  gap: 2rem;
 }
 
 /* Film Cards */
@@ -1057,8 +1060,20 @@
   display: flex;
   flex-direction: column;
   width: 100%;
-  max-width: 280px;
+  max-width: 320px;
   margin: 0 auto;
+}
+
+/* Art cards - bigger square cards for 2x2 layout */
+.categorySection:first-of-type .filmCard {
+  max-width: 420px;
+  min-height: 400px;
+}
+
+/* Film cards - wider for horizontal layout */
+.categorySection:last-of-type .filmCard {
+  max-width: 350px;
+  min-height: 340px;
 }
 
 .filmCard:hover {
