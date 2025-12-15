@@ -866,6 +866,32 @@ export default function Home() {
               Fresh creations pushing boundaries of art and activism
             </p>
           </div>
+
+          <div className="recent-work-grid">
+            {/* Large featured item - My Queens Mural */}
+            {recentWorkItems
+              .filter(item => item.size === 'large')
+              .map(item => (
+                <Link
+                  key={item.id}
+                  to={item.link}
+                  className={`recent-work-item ${item.size}`}
+                >
+                  <div className="recent-work-image-container">
+                    <img
+                      src={item.image}
+                      alt={item.title}
+                      className="recent-work-image"
+                    />
+                  </div>
+                  <div className="recent-work-overlay">
+                    <span className="recent-work-type">{item.type}</span>
+                    <h3 className="recent-work-item-title">{item.title}</h3>
+                    <p className="recent-work-description">{item.description}</p>
+                  </div>
+                </Link>
+              ))}
+          </div>
         </div>
       </section>
 
