@@ -1,7 +1,7 @@
 // src/pages/art/murals/sun-will-shine-palestine/index.js
 
 import React, { useState, useRef, useEffect } from "react"
-import { Link } from "gatsby"
+import { Link, navigate } from "gatsby"
 import Layout from "../../../../components/Layout"
 import * as styles from "./palestine-mural.module.css"
 
@@ -9,13 +9,40 @@ const PalestineMuralPage = () => {
   const [language, setLanguage] = useState('EN')
   const [hoveredStep, setHoveredStep] = useState(null)
   const [selectedStep, setSelectedStep] = useState(null)
+  const [previousPageName, setPreviousPageName] = useState('Previous Page')
   const videoRef = useRef(null);
-  
+
   // Background video setup
   useEffect(() => {
     if (videoRef.current) {
       videoRef.current.defaultMuted = true;
       videoRef.current.muted = true;
+    }
+  }, []);
+
+  // Determine the previous page name from referrer
+  useEffect(() => {
+    if (typeof window !== 'undefined' && document.referrer) {
+      const referrerUrl = new URL(document.referrer)
+      const path = referrerUrl.pathname
+
+      // Map common paths to friendly names
+      const pathNameMap = {
+        '/': 'Home',
+        '/portfolio': 'Portfolio',
+        '/art': 'Art',
+        '/art/murals': 'Murals',
+        '/art/paintings': 'Paintings',
+        '/art/illustrations': 'Illustrations',
+        '/art/collages': 'Collages',
+        '/film': 'Film',
+        '/film/documentaries': 'Documentaries',
+        '/tech-portfolio': 'Tech Portfolio',
+        '/about': 'About'
+      }
+
+      const friendlyName = pathNameMap[path] || 'Previous Page'
+      setPreviousPageName(friendlyName)
     }
   }, []);
   
@@ -162,6 +189,19 @@ const PalestineMuralPage = () => {
           <Link to="/art/murals" className={styles.backLink}>
             Back to Murals
           </Link>
+          <button
+            onClick={() => navigate(-1)}
+            className={styles.backLink}
+            style={{
+              background: 'none',
+              border: 'none',
+              cursor: 'pointer',
+              marginTop: '0.5rem',
+              display: 'block'
+            }}
+          >
+            Back to {previousPageName}
+          </button>
         </div>
 
         {/* Hero Section */}

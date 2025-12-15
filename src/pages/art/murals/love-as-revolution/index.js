@@ -1,7 +1,7 @@
 // src/pages/art/murals/love-as-revolution/index.js
 
-import React, { useState } from "react"
-import { Link } from "gatsby"
+import React, { useState, useEffect } from "react"
+import { Link, navigate } from "gatsby"
 import Layout from "../../../../components/Layout"
 import * as styles from "./love-revolution-mural.module.css"
 
@@ -10,6 +10,33 @@ const LoveRevolutionMuralPage = () => {
   const [hoveredStep, setHoveredStep] = useState(null)
   const [modalOpen, setModalOpen] = useState(false)
   const [selectedImage, setSelectedImage] = useState(null)
+  const [previousPageName, setPreviousPageName] = useState('Previous Page')
+
+  // Determine the previous page name from referrer
+  useEffect(() => {
+    if (typeof window !== 'undefined' && document.referrer) {
+      const referrerUrl = new URL(document.referrer)
+      const path = referrerUrl.pathname
+
+      // Map common paths to friendly names
+      const pathNameMap = {
+        '/': 'Home',
+        '/portfolio': 'Portfolio',
+        '/art': 'Art',
+        '/art/murals': 'Murals',
+        '/art/paintings': 'Paintings',
+        '/art/illustrations': 'Illustrations',
+        '/art/collages': 'Collages',
+        '/film': 'Film',
+        '/film/documentaries': 'Documentaries',
+        '/tech-portfolio': 'Tech Portfolio',
+        '/about': 'About'
+      }
+
+      const friendlyName = pathNameMap[path] || 'Previous Page'
+      setPreviousPageName(friendlyName)
+    }
+  }, [])
   
   const timelineSteps = [
     {
@@ -168,6 +195,19 @@ const LoveRevolutionMuralPage = () => {
           <Link to="/art/murals" className={styles.backLink}>
             Back to Murals
           </Link>
+          <button
+            onClick={() => navigate(-1)}
+            className={styles.backLink}
+            style={{
+              background: 'none',
+              border: 'none',
+              cursor: 'pointer',
+              marginTop: '0.5rem',
+              display: 'block'
+            }}
+          >
+            Back to {previousPageName}
+          </button>
         </div>
 
         {/* Hero Section */}
