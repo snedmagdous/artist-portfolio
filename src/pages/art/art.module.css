@@ -1641,10 +1641,8 @@
   background: transparent;
   border: none; /* Remove border */
   transition: all 0.3s ease;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   cursor: pointer; /* Show it's clickable */
+  width: 100%; /* Take full column width */
 }
 
 .galleryImageWrapper:hover {
@@ -1653,13 +1651,13 @@
 }
 
 .galleryImage {
-  width: 100%;
-  height: auto; /* Allow natural height */
+  width: 100%; /* Fill column width */
+  height: auto; /* Maintain natural aspect ratio */
   object-fit: contain; /* Show full image without cropping */
   transition: transform 0.4s ease, filter 0.4s ease;
   filter: brightness(0.9) contrast(1.1);
   display: block;
-  max-width: 100%; /* Ensure it doesn't overflow container */
+  max-height: none; /* No height restriction */
 }
 
 .galleryImageWrapper:hover .galleryImage {
