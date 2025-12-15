@@ -749,15 +749,16 @@ body {
 .recent-work-title {
   font-family: 'Poppins', sans-serif;
   font-size: clamp(2.5rem, 5vw, 4rem);
-  font-weight: 700;
-  color: rgba(255, 255, 255, 0.95);
+  font-weight: 100;
+  color: white;
   margin: 0.5rem 0 1rem 0;
-  letter-spacing: -0.02em;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
+  text-shadow: 0 0 30px rgba(255, 255, 255, 0.3);
 }
 
 .recent-work-subtitle {
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Avenir', sans-serif;
   font-size: 1.1rem;
   font-weight: 300;
   color: rgba(255, 255, 255, 0.7);
@@ -851,13 +852,13 @@ body {
 }
 
 .recent-work-item-title {
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Avenir', sans-serif;
   font-size: 1.8rem;
-  font-weight: 700;
+  font-weight: 500;
   color: rgba(255, 255, 255, 0.95);
   margin: 0.8rem 0;
   line-height: 1.2;
-  letter-spacing: -0.01em;
+  letter-spacing: 0.02em;
 }
 
 .recent-work-item.small .recent-work-item-title {
@@ -865,7 +866,7 @@ body {
 }
 
 .recent-work-description {
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Avenir', sans-serif;
   font-size: 1rem;
   font-weight: 300;
   color: rgba(255, 255, 255, 0.8);
