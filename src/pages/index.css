@@ -1798,7 +1798,7 @@ body {
 /* Recent Work Responsive Styles */
 @media (max-width: 768px) {
   .recent-work-section {
-    padding: 4rem 0;
+    padding: 4.5rem 0;
   }
 
   .recent-work-grid {
