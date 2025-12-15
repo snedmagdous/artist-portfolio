@@ -790,13 +790,27 @@ export default function Home() {
     },
     // Technology
     {
-      id: 'coding',
-      title: 'Coding',
+      id: 'projects',
+      title: 'Projects',
       description: 'Technology for liberation and social impact',
       icon: (
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1">
           <path d="M16 18L22 12L16 6"/>
           <path d="M8 6L2 12L8 18"/>
+        </svg>
+      ),
+      link: '/tech-portfolio'
+    },
+    {
+      id: 'resume',
+      title: 'Resume',
+      description: 'Professional experience and skills',
+      icon: (
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1">
+          <path d="M14 2H6C5.45 2 5 2.45 5 3V21C5 21.55 5.45 22 6 22H18C18.55 22 19 21.55 19 21V7L14 2Z"/>
+          <polyline points="14,2 14,8 20,8"/>
+          <line x1="16" y1="13" x2="8" y2="13"/>
+          <line x1="16" y1="17" x2="8" y2="17"/>
         </svg>
       ),
       link: '/resume'
