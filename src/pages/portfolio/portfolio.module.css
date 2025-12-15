@@ -1262,18 +1262,26 @@
 }
 
 @media (max-width: 1024px) {
-  /* Art section: 2 cards per row on tablets */
+  /* Art section: keep 2x2 grid on tablets */
   .categorySection:first-of-type .filmGrid {
     grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    max-width: 700px;
   }
 
-  /* Film section: keep 3 in a row but allow wrapping if needed */
+  /* Film section: 3 cards responsive */
   .categorySection:last-of-type .filmGrid {
     grid-template-columns: repeat(3, 1fr);
+    max-width: 900px;
+    padding: 0 2rem;
   }
 
-  .filmCard {
-    max-width: none;
+  .categorySection:first-of-type .filmCard {
+    max-width: 340px;
+  }
+
+  .categorySection:last-of-type .filmCard {
+    max-width: 300px;
   }
 
   .categorySection {
