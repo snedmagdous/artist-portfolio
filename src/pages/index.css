@@ -773,7 +773,7 @@ body {
   display: grid;
   grid-template-columns: 2fr 1fr;
   grid-template-rows: 1fr 1fr;
-  gap: 2rem;
+  gap: 2.5rem;
   max-width: 1400px;
   margin: 0 auto;
   padding: 0 2rem;
