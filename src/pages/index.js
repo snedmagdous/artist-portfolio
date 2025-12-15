@@ -563,6 +563,37 @@ export default function Home() {
     });
   }
 
+  // Recent work featured items
+  const recentWorkItems = [
+    {
+      id: 'my-queens-mural',
+      title: 'In the Image of My Queens, I Stand',
+      type: 'Mural',
+      description: 'Monumental mural honoring divine feminine lineage across past, present, and future',
+      link: '/art/murals/my-queens',
+      image: '/images/murals/my-queens/final.jpeg',
+      size: 'large'
+    },
+    {
+      id: 'nyc-violations',
+      title: 'NYC Violations Dashboard',
+      type: 'Web Development',
+      description: 'Interactive data visualization for NYC housing violations',
+      link: '/tech-portfolio',
+      image: '/images/tech/nyc-violations.png',
+      size: 'small'
+    },
+    {
+      id: 'love-revolution',
+      title: 'Love as Revolution',
+      type: 'Documentary',
+      description: 'A documentary exploring Palestinian solidarity and intersectional liberation',
+      link: '/film/documentaries/love-rev',
+      image: '/images/constellation/love-rev.jpg',
+      size: 'small'
+    }
+  ];
+
   // Main categories for navigation
   const mainCategories = [
     {
