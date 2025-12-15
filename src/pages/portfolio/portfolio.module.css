@@ -1072,6 +1072,10 @@
   min-height: 400px;
 }
 
+.categorySection:first-of-type .filmVideoContainer {
+  height: 220px;
+}
+
 /* Film cards - wider for horizontal layout */
 .categorySection:last-of-type .filmCard {
   max-width: 380px;
