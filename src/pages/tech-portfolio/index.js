@@ -48,6 +48,7 @@ const TechPortfolioPage = () => {
       longDescription: 'A data-driven tool designed to promote housing justice by analyzing patterns in NYC housing code violations. The dashboard reveals enforcement gaps, tracks repeat offenders, and provides actionable insights for tenant advocacy and policy reform.',
       github: 'https://github.com/snedmagdous/nyc-housing-violations-dashboard',
       demo: null,
+      screenshot: '/images/tech/nyc-dashboard.png',
       tech: ['Python', 'Pandas', 'React', 'Jupyter', 'FastAPI', 'ML'],
       features: [
         'Analysis of 100,000+ housing violation records',
