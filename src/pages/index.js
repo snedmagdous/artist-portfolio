@@ -30,7 +30,7 @@ const ConstellationHighlights = () => {
       title: 'Ancestral Visions',
       type: 'Painting Series',
       description: 'Exploration of inherited wisdom and cultural memory through portraiture',
-      link: '/art/paintings',
+      link: '/art/paintings/ancestral-visions',
       image: '/images/paintings/ancestral/ancestral.jpeg',
       position: { x: 25, y: 45 }, // Left mid
       size: 'medium',
@@ -41,7 +41,7 @@ const ConstellationHighlights = () => {
       title: 'Divine Feminine Portraits',
       type: 'Portrait Series',
       description: 'Celebrating sacred femininity through powerful portraiture',
-      link: '/art/paintings',
+      link: '/art/illustrations/divine-feminine',
       image: '/images/portraits/sierra.jpeg',
       position: { x: 75, y: 40 }, // Right mid
       size: 'medium',
@@ -63,7 +63,7 @@ const ConstellationHighlights = () => {
       title: 'The Monster in All of Us',
       type: 'Collage Series',
       description: 'Confronting the shadow self through mixed media collage',
-      link: '/art/collages',
+      link: '/art/collages/monster',
       image: '/images/collage/monster/final.jpg',
       position: { x: 45, y: 80 }, // Lower center
       size: 'medium',
@@ -73,8 +73,8 @@ const ConstellationHighlights = () => {
       id: 'love-revolution',
       title: 'Love as Revolution',
       type: 'Documentary Film',
-      description: 'A documentary exploring Palestinian solidarity and intersectional liberation',
-      link: '/film/documentaries',
+      description: 'A documentary exploring murals as a medium for liberation and social change',
+      link: '/film/documentaries/love-rev',
       image: '/images/constellation/love-rev.jpg',
       position: { x: 85, y: 60 }, // Lower right
       size: 'small',
@@ -85,7 +85,7 @@ const ConstellationHighlights = () => {
       title: 'Mirror of Now',
       type: 'Painting Series',
       description: 'A powerful painting on generational trauma and healing',
-      link: '/art/paintings',
+      link: '/art/paintings/in-image-queens',
       image: '/images/paintings/queens/mirror.jpeg',
       position: { x: 70, y: 75 }, // Right mid-lower
       size: 'large',
@@ -96,7 +96,7 @@ const ConstellationHighlights = () => {
       title: 'Our Ancestors Are Still Singing',
       type: 'Documentary Film',
       description: 'A documentary exploring ancestral wisdom and cultural memory',
-      link: '/film/documentaries',
+      link: '/film/documentaries/still-singing',
       image: '/images/constellation/cambodia.jpg',
       position: { x: 60, y: 53 },
       size: 'small',
@@ -569,10 +569,12 @@ export default function Home() {
       id: 'my-queens-mural',
       title: 'In the Image of My Queens, I Stand',
       type: 'Mural',
-      description: 'Monumental mural honoring divine feminine lineage and celebrating Black womanhood',
+      description: 'Monumental mural honoring divine feminine lineage in Upstate NY',
       link: '/art/murals/my-queens',
       image: '/images/murals/my-queens/final.jpeg',
-      size: 'large'
+      size: 'large',
+      imagePosition: 'center center', // Control image position: 'left top', 'center center', 'right bottom', etc.
+      imageFilter: 'brightness(1) contrast(1) saturate(1)' // Control filters
     },
     {
       id: 'nyc-violations',
@@ -580,8 +582,10 @@ export default function Home() {
       type: 'Web Development',
       description: 'Interactive data visualization for NYC housing violations',
       link: '/tech-portfolio',
-      image: '/images/tech/nyc-violations.png',
-      size: 'small'
+      image: '/images/tech/nyc-dashboard.png',
+      size: 'small',
+      imagePosition: 'center center',
+      imageFilter: 'brightness(1) contrast(1) saturate(1)'
     },
     {
       id: 'love-revolution',
@@ -590,7 +594,9 @@ export default function Home() {
       description: 'A documentary exploring Palestinian solidarity and intersectional liberation',
       link: '/film/documentaries/love-rev',
       image: '/images/constellation/love-rev.jpg',
-      size: 'small'
+      size: 'small',
+      imagePosition: 'center center',
+      imageFilter: 'brightness(1) contrast(1) saturate(1)'
     }
   ];
 
@@ -908,6 +914,10 @@ export default function Home() {
                       src={item.image}
                       alt={item.title}
                       className="recent-work-image"
+                      style={{
+                        objectPosition: item.imagePosition,
+                        filter: item.imageFilter
+                      }}
                     />
                   </div>
                   <div className="recent-work-overlay">
@@ -932,6 +942,10 @@ export default function Home() {
                       src={item.image}
                       alt={item.title}
                       className="recent-work-image"
+                      style={{
+                        objectPosition: item.imagePosition,
+                        filter: item.imageFilter
+                      }}
                     />
                   </div>
                   <div className="recent-work-overlay">
@@ -956,6 +970,10 @@ export default function Home() {
                       src={item.image}
                       alt={item.title}
                       className="recent-work-image"
+                      style={{
+                        objectPosition: item.imagePosition,
+                        filter: item.imageFilter
+                      }}
                     />
                   </div>
                   <div className="recent-work-overlay">

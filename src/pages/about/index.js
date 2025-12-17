@@ -127,7 +127,7 @@ const AboutPage = () => {
         className="video-tag"
         ref={videoRef}
         style={{
-          filter: 'brightness(0.67) contrast(1.1) saturate(1.3)'
+            filter: 'brightness(0.35) contrast(1.2) saturate(2.0)'
         }}
       >
         <source src="https://pub-3f206994e69e42408f7908b2177b9ed9.r2.dev/about_pingpong_optimized.mp4" type="video/mp4" />

@@ -142,7 +142,7 @@ const TechPortfolioPage = () => {
 
         {/* Hero Section */}
         <div className={styles.portfolioHero}>
-          <h1 className={styles.portfolioTitle}>Technical Portfolio</h1>
+          <h1 className={styles.portfolioTitle}>Tech Projects</h1>
           <p className={styles.portfolioSubtitle}>
             Computational projects across AI, data science, and web development
           </p>
