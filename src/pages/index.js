@@ -987,6 +987,9 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Constellation Highlights Section */}
+      <ConstellationHighlights />
+
       {/* Portfolio Section */}
       <section
         id="portfolio-section"
@@ -1110,9 +1113,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
-      {/* Constellation Highlights Section */}
-      <ConstellationHighlights />
 
       {/* Mailing List Section */}
       <section className="mailing-list-section" ref={mailingListSectionRef}>
