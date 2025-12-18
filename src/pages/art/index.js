@@ -352,7 +352,7 @@ const ArtPage = () => {
             filter: 'brightness(0.67) contrast(1.04) saturate(1.8)'
           }}
         >
-          <source src="https://pub-3f206994e69e42408f7908b2177b9ed9.r2.dev/art.MP4" type="video/mp4" />
+          <source src="https://pub-3f206994e69e42408f7908b2177b9ed9.r2.dev/art_pingpong_optimized.mp4" type="video/mp4" />
         </video>
         <div className="video-overlay"></div>
       </div>

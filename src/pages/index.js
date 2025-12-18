@@ -569,7 +569,7 @@ export default function Home() {
       id: 'my-queens-mural',
       title: 'In the Image of My Queens, I Stand',
       type: 'Mural',
-      description: 'Monumental mural honoring divine feminine lineage in Upstate NY',
+      description: 'Monumental mural honoring divine feminine lineage, funded by NYS Council on the Arts',
       link: '/art/murals/my-queens',
       image: '/images/murals/my-queens/mural.jpeg',
       size: 'large',
@@ -598,22 +598,22 @@ export default function Home() {
       id: 'where-do-you-go',
       title: 'Where Do You Go When There\'s Nowhere Left to Go?',
       type: 'Illustration Series',
-      description: 'Dark illustrations mapping depersonalization and chronic pain',
+      description: 'Dark illustrations mapping depersonalization and pain',
       link: '/art/illustrations/where-do-you-go',
       image: '/images/illustration/where/blue.jpeg',
       size: 'small',
-      imagePosition: 'center bottom',
+      imagePosition: 'left bottom',
       imageFilter: 'brightness(0.9) contrast(1) saturate(1.2)'
     },
     {
       id: 'love-revolution',
       title: 'Love as Revolution',
       type: 'Documentary',
-      description: 'A documentary exploring intersectional solidarity through murals',
+      description: 'A documentary exploring liberation through murals',
       link: '/film/documentaries/love-rev',
-      image: '/images/constellation/love-rev-still.jpg',
+      image: '/images/constellation/love-rev-still.png',
       size: 'small',
-      imagePosition: 'center center',
+      imagePosition: 'left top',
       imageFilter: 'brightness(0.6) contrast(1) saturate(1.1)'
     }
   ];

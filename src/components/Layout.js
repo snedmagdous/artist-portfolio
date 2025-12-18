@@ -353,7 +353,7 @@ const Layout = ({
               onClick={handleNavClick("/portfolio")}
               style={{ position: 'relative', overflow: 'hidden' }}
             >
-              <span className="nav-dot"></span> Art
+              <span className="nav-dot"></span> Portfolio
             </Link>
 
             <Link
@@ -665,7 +665,7 @@ const Layout = ({
                 className="mobile-nav-link"
                 onClick={handleMobileNavClick("/portfolio")}
               >
-                <span className="nav-dot"></span> Art
+                <span className="nav-dot"></span> Portfolio
               </Link>
 
               <Link

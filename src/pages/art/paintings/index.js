@@ -14,33 +14,28 @@ const PaintingsPage = () => {
   const videoRefs = useRef({})
   
   const paintingSeries = [
-    {
-      id: 'ancestral-visions',
-      title: 'Ancestral Visions',
-      description: 'A series exploring the connection between past and future through traditional imagery merged with futuristic elements. Each canvas becomes a portal where ancestral wisdom meets technological possibility.',
-      pieceCount: 4,
-      year: '2024',
+     {
+      id: 'in-image-queens',
+      title: 'In the Image of My Queens, I Stand',
+      description: 'Dreamtime stories told through neon colors and cyberpunk aesthetics, bridging ancient wisdom with modern technology. Fluorescent pigments illuminate traditional narratives.',
+      pieceCount: 2,
+      year: '2025',
       medium: 'Oil on Canvas',
-      status: 'completed',
-      videoSrc: 'https://pub-3f206994e69e42408f7908b2177b9ed9.r2.dev/ancestral-visions.MP4',
+      status: 'ongoing',
+      videoSrc: 'https://pub-3f206994e69e42408f7908b2177b9ed9.r2.dev/istand.MP4',
       images: [
-        { src: '/images/paintings/ancestral/ancestral.JPEG', title: 'Ancestral Witness' },
-        { src: '/images/paintings/ancestral/forest-prayers.JPEG', title: 'Forest Prayers' },
-        { src: '/images/paintings/ancestral/moon-daughter.JPEG', title: 'Moon Daughter' },
-        { src: '/images/paintings/ancestral/ITakeBackWhatIsMine-MayaMurry.JPEG', title: 'Fire Bearer' }
+        { src: '/images/paintings/queens/mirror.JPEG', title: 'Mirror of Now' },
+        { src: '/images/paintings/queens/unborn.JPEG', title: 'Unborn Daughters' }
       ],
       icon: (
         <svg viewBox="0 0 24 24" fill="none" className={styles.seriesIcon}>
-          <circle cx="12" cy="12" r="4" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round"/>
-          <circle cx="12" cy="12" r="2" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round"/>
-          <path d="M12 1V3" strokeWidth="1" strokeLinecap="round"/>
-          <path d="M12 21V23" strokeWidth="1" strokeLinecap="round"/>
-          <path d="M4.22 4.22L5.64 5.64" strokeWidth="1" strokeLinecap="round"/>
-          <path d="M18.36 18.36L19.78 19.78" strokeWidth="1" strokeLinecap="round"/>
-          <path d="M1 12H3" strokeWidth="1" strokeLinecap="round"/>
-          <path d="M21 12H23" strokeWidth="1" strokeLinecap="round"/>
-          <path d="M4.22 19.78L5.64 18.36" strokeWidth="1" strokeLinecap="round"/>
-          <path d="M18.36 5.64L19.78 4.22" strokeWidth="1" strokeLinecap="round"/>
+          <path d="M6 9L12 2L18 9" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round"/>
+          <path d="M5 22H19" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round"/>
+          <path d="M8 22V18C8 16.8954 8.89543 16 10 16H14C15.1046 16 16 16.8954 16 18V22" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round"/>
+          <circle cx="9" cy="7" r="1" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round"/>
+          <circle cx="12" cy="5.5" r="1" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round"/>
+          <circle cx="15" cy="7" r="1" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round"/>
+          <path d="M7 12L12 9L17 12" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round"/>
         </svg>
       )
     },
@@ -70,27 +65,32 @@ const PaintingsPage = () => {
       )
     },
     {
-      id: 'in-image-queens',
-      title: 'In the Image of My Queens, I Stand',
-      description: 'Dreamtime stories told through neon colors and cyberpunk aesthetics, bridging ancient wisdom with modern technology. Fluorescent pigments illuminate traditional narratives.',
-      pieceCount: 2,
-      year: '2025',
+      id: 'ancestral-visions',
+      title: 'Ancestral Visions',
+      description: 'A series exploring the connection between past and future through traditional imagery merged with futuristic elements. Each canvas becomes a portal where ancestral wisdom meets technological possibility.',
+      pieceCount: 4,
+      year: '2024',
       medium: 'Oil on Canvas',
-      status: 'ongoing',
-      videoSrc: 'https://pub-3f206994e69e42408f7908b2177b9ed9.r2.dev/istand.MP4',
+      status: 'completed',
+      videoSrc: 'https://pub-3f206994e69e42408f7908b2177b9ed9.r2.dev/ancestral-visions_pingpong_optimized.mp4',
       images: [
-        { src: '/images/paintings/queens/mirror.JPEG', title: 'Mirror of Now' },
-        { src: '/images/paintings/queens/unborn.JPEG', title: 'Unborn Daughters' }
+        { src: '/images/paintings/ancestral/ancestral.JPEG', title: 'Ancestral Witness' },
+        { src: '/images/paintings/ancestral/forest-prayers.JPEG', title: 'Forest Prayers' },
+        { src: '/images/paintings/ancestral/moon-daughter.JPEG', title: 'Moon Daughter' },
+        { src: '/images/paintings/ancestral/ITakeBackWhatIsMine-MayaMurry.JPEG', title: 'Fire Bearer' }
       ],
       icon: (
         <svg viewBox="0 0 24 24" fill="none" className={styles.seriesIcon}>
-          <path d="M6 9L12 2L18 9" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round"/>
-          <path d="M5 22H19" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round"/>
-          <path d="M8 22V18C8 16.8954 8.89543 16 10 16H14C15.1046 16 16 16.8954 16 18V22" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round"/>
-          <circle cx="9" cy="7" r="1" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round"/>
-          <circle cx="12" cy="5.5" r="1" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round"/>
-          <circle cx="15" cy="7" r="1" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round"/>
-          <path d="M7 12L12 9L17 12" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round"/>
+          <circle cx="12" cy="12" r="4" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round"/>
+          <circle cx="12" cy="12" r="2" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round"/>
+          <path d="M12 1V3" strokeWidth="1" strokeLinecap="round"/>
+          <path d="M12 21V23" strokeWidth="1" strokeLinecap="round"/>
+          <path d="M4.22 4.22L5.64 5.64" strokeWidth="1" strokeLinecap="round"/>
+          <path d="M18.36 18.36L19.78 19.78" strokeWidth="1" strokeLinecap="round"/>
+          <path d="M1 12H3" strokeWidth="1" strokeLinecap="round"/>
+          <path d="M21 12H23" strokeWidth="1" strokeLinecap="round"/>
+          <path d="M4.22 19.78L5.64 18.36" strokeWidth="1" strokeLinecap="round"/>
+          <path d="M18.36 5.64L19.78 4.22" strokeWidth="1" strokeLinecap="round"/>
         </svg>
       )
     },
@@ -103,7 +103,7 @@ const PaintingsPage = () => {
       medium: 'Oil on Canvas',
       status: 'ongoing',
       comingSoon: true,
-      videoSrc: 'https://pub-3f206994e69e42408f7908b2177b9ed9.r2.dev/art.MP4',
+      videoSrc: 'https://pub-3f206994e69e42408f7908b2177b9ed9.r2.dev/arts_pingpong_optimized.mp4',
       icon: (
         <svg viewBox="0 0 24 24" fill="none" className={styles.seriesIcon}>
           <path d="M20.84 4.61A5.5 5.5 0 0 0 16.5 2.5C14.76 2.5 13.25 3.42 12 4.84C10.75 3.42 9.24 2.5 7.5 2.5A5.5 5.5 0 0 0 3.16 4.61C2.42 5.35 2 6.36 2 7.5C2 8.64 2.42 9.65 3.16 10.39L12 19.23L20.84 10.39C21.58 9.65 22 8.64 22 7.5C22 6.36 21.58 5.35 20.84 4.61Z" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round"/>
@@ -159,7 +159,7 @@ const PaintingsPage = () => {
         language={language} 
         setLanguage={setLanguage}
         hasVideoBackground={true}
-        videoSrc="https://pub-3f206994e69e42408f7908b2177b9ed9.r2.dev/paintings.MP4"
+        videoSrc="https://pub-3f206994e69e42408f7908b2177b9ed9.r2.dev/paintings_pingpong_optimized.mp4"
         videoStyle={{
             filter: 'brightness(0.3) contrast(1.2) saturate(1.15)'
         }}
