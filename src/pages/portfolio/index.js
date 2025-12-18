@@ -58,7 +58,7 @@ const PortfolioPage = () => {
       id: 'paintings',
       title: 'Paintings',
       description: 'Ancestral wisdom and divine femininity through portraiture',
-      videoSrc: 'https://pub-3f206994e69e42408f7908b2177b9ed9.r2.dev/paintings.MP4',
+      videoSrc: 'https://pub-3f206994e69e42408f7908b2177b9ed9.r2.dev/paintings_pingpong_optimized.mp4',
       videoFilter: 'brightness(0.8) contrast(1.2) saturate(1.3)',
       count: '25+ Works',
       link: '/art/paintings',
@@ -681,59 +681,72 @@ const PortfolioPage = () => {
             <Link to="/film" className={styles.navButton}>
               Film
             </Link>
-            <Link to="/writing/poetry" className={styles.navButton}>
-              Writing
-            </Link>
+            <span className={`${styles.navButton} ${styles.navButtonDisabled}`}>
+              Writing (Coming Soon)
+            </span>
           </div>
         </div>
 
         {/* Two Column Square Card Layout */}
         <div className={styles.squareCardsContainer}>
-          {allCategories.map((category, index) => (
-            <Link
-              key={category.id}
-              to={category.link}
-              className={styles.squareCard}
-              onMouseEnter={() => category.videoSrc ? handleVideoHover(index, true) : null}
-              onMouseLeave={() => category.videoSrc ? handleVideoHover(index, false) : null}
-            >
-              <div className={styles.squareCardInner}>
-                {category.videoSrc ? (
-                  <>
-                    <video
-                      ref={el => videoRefs.current[index] = el}
-                      muted
-                      playsInline
-                      preload="metadata"
-                      className={styles.squareVideo}
-                      style={{
-                        filter: category.videoFilter || 'brightness(0.8) contrast(0.9)'
-                      }}
-                    >
-                      <source src={category.videoSrc} type="video/mp4" />
-                    </video>
-                    <div className={styles.squareOverlay}>
+          {allCategories.map((category, index) => {
+            const isComingSoon = category.id === 'poetry'
+            const CardWrapper = isComingSoon ? 'div' : Link
+            const cardProps = isComingSoon
+              ? { className: `${styles.squareCard} ${styles.comingSoon}` }
+              : {
+                  to: category.link,
+                  className: styles.squareCard,
+                  onMouseEnter: () => category.videoSrc ? handleVideoHover(index, true) : null,
+                  onMouseLeave: () => category.videoSrc ? handleVideoHover(index, false) : null
+                }
+
+            return (
+              <CardWrapper
+                key={category.id}
+                {...cardProps}
+              >
+                {isComingSoon && (
+                  <div className={styles.comingSoonBadge}>Coming Soon</div>
+                )}
+                <div className={styles.squareCardInner}>
+                  {category.videoSrc ? (
+                    <>
+                      <video
+                        ref={el => videoRefs.current[index] = el}
+                        muted
+                        playsInline
+                        preload="metadata"
+                        className={styles.squareVideo}
+                        style={{
+                          filter: category.videoFilter || 'brightness(0.8) contrast(0.9)'
+                        }}
+                      >
+                        <source src={category.videoSrc} type="video/mp4" />
+                      </video>
+                      <div className={styles.squareOverlay}>
+                        <div className={styles.squareIcon}>
+                          {category.icon}
+                        </div>
+                      </div>
+                    </>
+                  ) : (
+                    <div className={styles.squarePlaceholder}>
                       <div className={styles.squareIcon}>
                         {category.icon}
                       </div>
                     </div>
-                  </>
-                ) : (
-                  <div className={styles.squarePlaceholder}>
-                    <div className={styles.squareIcon}>
-                      {category.icon}
-                    </div>
-                  </div>
-                )}
+                  )}
 
-                <div className={styles.squareContent}>
-                  <h3 className={styles.squareTitle}>{category.title}</h3>
-                  <p className={styles.squareDescription}>{category.description}</p>
-                  <div className={styles.squareCount}>{category.count || category.duration || ''}</div>
+                  <div className={styles.squareContent}>
+                    <h3 className={styles.squareTitle}>{category.title}</h3>
+                    <p className={styles.squareDescription}>{category.description}</p>
+                    <div className={styles.squareCount}>{category.count || category.duration || ''}</div>
+                  </div>
                 </div>
-              </div>
-            </Link>
-          ))}
+              </CardWrapper>
+            )
+          })}
         </div>
 
         {/* Featured Quote */}
