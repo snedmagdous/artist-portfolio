@@ -923,6 +923,35 @@ body {
   transition: all 0.3s ease;
 }
 
+/* Category-specific colors matching constellation */
+.recent-work-item:nth-child(1) .recent-work-type {
+  /* Mural - Coral red */
+  color: rgba(255, 107, 107, 1);
+  background: rgba(255, 107, 107, 0.15);
+  border: 1px solid rgba(255, 107, 107, 0.3);
+}
+
+.recent-work-item:nth-child(2) .recent-work-type {
+  /* Web Development - Deep sky blue */
+  color: rgba(0, 191, 255, 1);
+  background: rgba(0, 191, 255, 0.15);
+  border: 1px solid rgba(0, 191, 255, 0.3);
+}
+
+.recent-work-item:nth-child(3) .recent-work-type {
+  /* Illustration Series - Purple */
+  color: rgba(157, 0, 255, 1);
+  background: rgba(157, 0, 255, 0.15);
+  border: 1px solid rgba(157, 0, 255, 0.3);
+}
+
+.recent-work-item:nth-child(4) .recent-work-type {
+  /* Documentary - Turquoise */
+  color: rgba(100, 255, 218, 1);
+  background: rgba(100, 255, 218, 0.15);
+  border: 1px solid rgba(100, 255, 218, 0.3);
+}
+
 .recent-work-item-title {
   font-family: 'Avenir', sans-serif;
   font-size: 1.8rem;
@@ -986,9 +1015,29 @@ body {
 }
 
 .recent-work-item:hover .recent-work-type {
-  background: rgba(255, 255, 255, 0.25);
-  border-color: rgba(255, 255, 255, 0.4);
   box-shadow: 0 4px 12px rgba(255, 255, 255, 0.2);
+  filter: brightness(1.2);
+}
+
+/* Maintain category colors on hover */
+.recent-work-item:nth-child(1):hover .recent-work-type {
+  background: rgba(255, 107, 107, 0.25);
+  border-color: rgba(255, 107, 107, 0.5);
+}
+
+.recent-work-item:nth-child(2):hover .recent-work-type {
+  background: rgba(0, 191, 255, 0.25);
+  border-color: rgba(0, 191, 255, 0.5);
+}
+
+.recent-work-item:nth-child(3):hover .recent-work-type {
+  background: rgba(157, 0, 255, 0.25);
+  border-color: rgba(157, 0, 255, 0.5);
+}
+
+.recent-work-item:nth-child(4):hover .recent-work-type {
+  background: rgba(100, 255, 218, 0.25);
+  border-color: rgba(100, 255, 218, 0.5);
 }
 
 /* Portfolio Section - Futuristic Style */
