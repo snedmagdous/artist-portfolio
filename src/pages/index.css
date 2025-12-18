@@ -847,7 +847,7 @@ body {
   align-items: center;
   justify-content: flex-end;
   padding-right: 2rem;
-  background: linear-gradient(135deg, rgba(40, 40, 60, 0.5), rgba(60, 40, 80, 0.5));
+  background: rgba(0, 0, 0, 0.4);
   backdrop-filter: blur(20px);
 }
 
