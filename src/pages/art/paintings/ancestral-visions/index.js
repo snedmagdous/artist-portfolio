@@ -94,7 +94,7 @@ const AncestralVisionsPage = () => {
       language={language}
       setLanguage={setLanguage}
       hasVideoBackground={true}
-      videoSrc="https://pub-3f206994e69e42408f7908b2177b9ed9.r2.dev/ancestral-visions.MP4"
+      videoSrc="https://pub-3f206994e69e42408f7908b2177b9ed9.r2.dev/ancestral-visions_pingpong_optimized.mp4"
       videoStyle={{
         filter: 'brightness(0.24) contrast(1.16) saturate(1.2)'
       }}
