@@ -772,7 +772,7 @@ body {
 .recent-work-grid {
   display: grid;
   grid-template-columns: 2fr 1fr;
-  grid-template-rows: 1fr 1fr;
+  grid-template-rows: 4.8fr 1fr 1fr; /* Mural (reduced by 1/5 from 6fr to 4.8fr), NYC dashboard (1fr = 1/6 of original 6fr), remaining row */
   gap: 2.5rem;
   max-width: 1400px;
   margin: 0 auto;
@@ -783,7 +783,7 @@ body {
 .recent-work-item {
   position: relative;
   overflow: hidden;
-  border-radius: 16px;
+  border-radius: 8px;
   background: rgba(255, 255, 255, 0.03);
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.1);
@@ -793,12 +793,20 @@ body {
 }
 
 .recent-work-item.large {
-  grid-row: 1 / 3;
+  grid-row: 1;
   grid-column: 1;
+  min-height: 400px;
 }
 
 .recent-work-item.small {
   grid-column: 2;
+}
+
+.recent-work-item.mini {
+  grid-column: 1;
+  grid-row: 2;
+  min-height: 80px;
+  max-height: 120px;
 }
 
 .recent-work-image-container {
@@ -816,6 +824,39 @@ body {
   object-fit: cover;
   transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
   will-change: transform;
+}
+
+/* Icon container for items without images */
+.recent-work-icon-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, rgba(40, 40, 60, 0.5), rgba(60, 40, 80, 0.5));
+  backdrop-filter: blur(20px);
+}
+
+.recent-work-icon {
+  width: 60px;
+  height: 60px;
+  color: rgba(255, 255, 255, 0.6);
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.3));
+}
+
+.recent-work-icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.recent-work-item:hover .recent-work-icon {
+  color: rgba(255, 255, 255, 0.9);
+  transform: scale(1.1);
+  filter: drop-shadow(0 0 25px rgba(255, 255, 255, 0.6));
 }
 
 .recent-work-overlay {
@@ -836,6 +877,10 @@ body {
 
 .recent-work-item.small .recent-work-overlay {
   padding: 1.5rem;
+}
+
+.recent-work-item.mini .recent-work-overlay {
+  padding: 1rem;
 }
 
 .recent-work-type {
@@ -869,6 +914,10 @@ body {
   font-size: 1.3rem;
 }
 
+.recent-work-item.mini .recent-work-item-title {
+  font-size: 1rem;
+}
+
 .recent-work-description {
   font-family: 'Avenir', sans-serif;
   font-size: 1rem;
@@ -882,6 +931,15 @@ body {
 
 .recent-work-item.small .recent-work-description {
   font-size: 0.9rem;
+}
+
+.recent-work-item.mini .recent-work-description {
+  font-size: 0.8rem;
+}
+
+.recent-work-item.mini .recent-work-type {
+  font-size: 0.7rem;
+  padding: 0.35rem 0.9rem;
 }
 
 /* Recent Work Hover Effects */
@@ -1820,6 +1878,18 @@ body {
     min-height: 300px;
   }
 
+  .recent-work-item.mini {
+    grid-column: 1;
+    grid-row: auto;
+    min-height: 180px;
+    max-height: none;
+  }
+
+  .recent-work-icon {
+    width: 50px;
+    height: 50px;
+  }
+
   .recent-work-overlay {
     padding: 1.5rem;
   }
@@ -1830,6 +1900,10 @@ body {
 
   .recent-work-item.small .recent-work-item-title {
     font-size: 1.2rem;
+  }
+
+  .recent-work-item.mini .recent-work-item-title {
+    font-size: 0.95rem;
   }
 }
 
@@ -1850,6 +1924,16 @@ body {
     min-height: 280px;
   }
 
+  .recent-work-item.mini {
+    min-height: 160px;
+    max-height: none;
+  }
+
+  .recent-work-icon {
+    width: 45px;
+    height: 45px;
+  }
+
   .recent-work-overlay {
     padding: 1.2rem;
   }
@@ -1860,6 +1944,10 @@ body {
 
   .recent-work-item.small .recent-work-item-title {
     font-size: 1.1rem;
+  }
+
+  .recent-work-item.mini .recent-work-item-title {
+    font-size: 0.9rem;
   }
 
   .recent-work-description {

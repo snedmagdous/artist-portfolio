@@ -571,32 +571,50 @@ export default function Home() {
       type: 'Mural',
       description: 'Monumental mural honoring divine feminine lineage in Upstate NY',
       link: '/art/murals/my-queens',
-      image: '/images/murals/my-queens/final.jpeg',
+      image: '/images/murals/my-queens/mural.jpeg',
       size: 'large',
-      imagePosition: 'center center', // Control image position: 'left top', 'center center', 'right bottom', etc.
-      imageFilter: 'brightness(1) contrast(1) saturate(1)' // Control filters
+      imagePosition: '50% bottom', // Control image position: 'left top', 'center center', 'right bottom', etc.
+      imageFilter: 'brightness(0.6) contrast(0.96) saturate(1.1)' // Control filters
     },
     {
       id: 'nyc-violations',
-      title: 'NYC Violations Dashboard',
+      title: 'NYC Housing Violations Dashboard',
       type: 'Web Development',
-      description: 'Interactive data visualization for NYC housing violations',
+      description: 'Interactive dashboard analyzing housing violations to promote tenant advocacy',
       link: '/tech-portfolio',
-      image: '/images/tech/nyc-dashboard.png',
+      image: null,
+      size: 'mini',
+      imagePosition: null,
+      imageFilter: null,
+      icon: (
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+          <rect x="2" y="3" width="20" height="14" rx="2" strokeWidth="1"/>
+          <path d="M7 7L10 10L7 13" strokeWidth="1"/>
+          <path d="M13 13H17" strokeWidth="1"/>
+        </svg>
+      )
+    },
+    {
+      id: 'where-do-you-go',
+      title: 'Where Do You Go When There\'s Nowhere Left to Go?',
+      type: 'Illustration Series',
+      description: 'Dark illustrations mapping depersonalization and chronic pain',
+      link: '/art/illustrations/where-do-you-go',
+      image: '/images/illustration/where/blue.jpeg',
       size: 'small',
-      imagePosition: 'center center',
-      imageFilter: 'brightness(1) contrast(1) saturate(1)'
+      imagePosition: 'center bottom',
+      imageFilter: 'brightness(0.9) contrast(1) saturate(1.2)'
     },
     {
       id: 'love-revolution',
       title: 'Love as Revolution',
       type: 'Documentary',
-      description: 'A documentary exploring Palestinian solidarity and intersectional liberation',
+      description: 'A documentary exploring intersectional solidarity through murals',
       link: '/film/documentaries/love-rev',
-      image: '/images/constellation/love-rev.jpg',
+      image: '/images/constellation/love-rev-still.jpg',
       size: 'small',
       imagePosition: 'center center',
-      imageFilter: 'brightness(1) contrast(1) saturate(1)'
+      imageFilter: 'brightness(0.6) contrast(1) saturate(1.1)'
     }
   ];
 
@@ -779,21 +797,21 @@ export default function Home() {
       link: '/film/micro-films'
     },
     // Writing Subcategories
-    {
-      id: 'poetry',
-      title: 'Poetry',
-      description: 'Verses of resistance and healing',
-      icon: (
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1">
-          <path d="M14 2H6C5.45 2 5 2.45 5 3V21C5 21.55 5.45 22 6 22H18C18.55 22 19 21.55 19 21V7L14 2Z"/>
-          <polyline points="14,2 14,8 20,8"/>
-          <line x1="16" y1="13" x2="8" y2="13"/>
-          <line x1="16" y1="17" x2="8" y2="17"/>
-          <polyline points="10,9 9,9 8,9"/>
-        </svg>
-      ),
-      link: '/writing/poetry'
-    },
+    // {
+    //   id: 'poetry',
+    //   title: 'Poetry',
+    //   description: 'Verses of resistance and healing',
+    //   icon: (
+    //     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1">
+    //       <path d="M14 2H6C5.45 2 5 2.45 5 3V21C5 21.55 5.45 22 6 22H18C18.55 22 19 21.55 19 21V7L14 2Z"/>
+    //       <polyline points="14,2 14,8 20,8"/>
+    //       <line x1="16" y1="13" x2="8" y2="13"/>
+    //       <line x1="16" y1="17" x2="8" y2="17"/>
+    //       <polyline points="10,9 9,9 8,9"/>
+    //     </svg>
+    //   ),
+    //   link: '/writing/poetry'
+    // },
     // Technology
     {
       id: 'projects',
@@ -928,26 +946,64 @@ export default function Home() {
                 </Link>
               ))}
 
-            {/* Small featured item - NYC Violations Dashboard */}
+            {/* Mini featured item - NYC Violations Dashboard */}
             {recentWorkItems
-              .filter(item => item.size === 'small' && item.id === 'nyc-violations')
+              .filter(item => item.size === 'mini' && item.id === 'nyc-violations')
               .map(item => (
                 <Link
                   key={item.id}
                   to={item.link}
                   className={`recent-work-item ${item.size}`}
                 >
-                  <div className="recent-work-image-container">
-                    <img
-                      src={item.image}
-                      alt={item.title}
-                      className="recent-work-image"
-                      style={{
-                        objectPosition: item.imagePosition,
-                        filter: item.imageFilter
-                      }}
-                    />
+                  {item.image ? (
+                    <div className="recent-work-image-container">
+                      <img
+                        src={item.image}
+                        alt={item.title}
+                        className="recent-work-image"
+                        style={{
+                          objectPosition: item.imagePosition,
+                          filter: item.imageFilter
+                        }}
+                      />
+                    </div>
+                  ) : item.icon && (
+                    <div className="recent-work-icon-container">
+                      <div className="recent-work-icon">
+                        {item.icon}
+                      </div>
+                    </div>
+                  )}
+                  <div className="recent-work-overlay">
+                    <span className="recent-work-type">{item.type}</span>
+                    <h3 className="recent-work-item-title">{item.title}</h3>
+                    <p className="recent-work-description">{item.description}</p>
                   </div>
+                </Link>
+              ))}
+
+            {/* Small featured item - Where Do You Go Illustrations */}
+            {recentWorkItems
+              .filter(item => item.size === 'small' && item.id === 'where-do-you-go')
+              .map(item => (
+                <Link
+                  key={item.id}
+                  to={item.link}
+                  className={`recent-work-item ${item.size}`}
+                >
+                  {item.image && (
+                    <div className="recent-work-image-container">
+                      <img
+                        src={item.image}
+                        alt={item.title}
+                        className="recent-work-image"
+                        style={{
+                          objectPosition: item.imagePosition,
+                          filter: item.imageFilter
+                        }}
+                      />
+                    </div>
+                  )}
                   <div className="recent-work-overlay">
                     <span className="recent-work-type">{item.type}</span>
                     <h3 className="recent-work-item-title">{item.title}</h3>
@@ -965,17 +1021,19 @@ export default function Home() {
                   to={item.link}
                   className={`recent-work-item ${item.size}`}
                 >
-                  <div className="recent-work-image-container">
-                    <img
-                      src={item.image}
-                      alt={item.title}
-                      className="recent-work-image"
-                      style={{
-                        objectPosition: item.imagePosition,
-                        filter: item.imageFilter
-                      }}
-                    />
-                  </div>
+                  {item.image && (
+                    <div className="recent-work-image-container">
+                      <img
+                        src={item.image}
+                        alt={item.title}
+                        className="recent-work-image"
+                        style={{
+                          objectPosition: item.imagePosition,
+                          filter: item.imageFilter
+                        }}
+                      />
+                    </div>
+                  )}
                   <div className="recent-work-overlay">
                     <span className="recent-work-type">{item.type}</span>
                     <h3 className="recent-work-item-title">{item.title}</h3>
