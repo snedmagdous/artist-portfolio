@@ -77,7 +77,7 @@ const PaintingsPage = () => {
         { src: '/images/paintings/ancestral/ancestral.JPEG', title: 'Ancestral Witness' },
         { src: '/images/paintings/ancestral/forest-prayers.JPEG', title: 'Forest Prayers' },
         { src: '/images/paintings/ancestral/moon-daughter.JPEG', title: 'Moon Daughter' },
-        { src: '/images/paintings/ancestral/ITakeBackWhatIsMine-MayaMurry.JPEG', title: 'Fire Bearer' }
+        { src: '/images/paintings/ancestral/fire-bearer.JPEG', title: 'Fire Bearer' }
       ],
       icon: (
         <svg viewBox="0 0 24 24" fill="none" className={styles.seriesIcon}>

@@ -43,7 +43,7 @@ const AncestralVisionsPage = () => {
       year: '2024',
       medium: 'Oil on Canvas',
       dimensions: '36" x 48"',
-      image: '/images/paintings/ancestral/throne-of-fire.jpeg',
+      image: '/images/paintings/ancestral/fire-bearer.jpeg',
       description: 'Inspired by multi-armed Indian goddesses, this painting shows a woman luminous white eyes, energetically in control of her body and the environment, sunset, and fire around her. This represents a reclamation of rage — allowing oneself to feel anger in order to exorcise it and release all versions of the self once created for survival. The Arabic text "استعيد ما يخصني" translates to "I return what is mine."',
       symbolism: 'Multiple arms suggest the goddess\'s ability to handle multiple aspects of transformation simultaneously. Fire represents purification through destruction, while the swirling background shows reality bending to her will.',
       inspiration: 'The recognition that anger, when properly channeled, becomes a tool for reclaiming what has been lost or stolen from us.',
