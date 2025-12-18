@@ -955,8 +955,146 @@
   font-weight: 300;
   color: rgba(255, 255, 255, 0.8);
   text-align: center;
-  margin-bottom: 4rem;
+  margin-bottom: 2rem;
   letter-spacing: 0.05em;
+}
+
+/* Navigation Buttons */
+.navButtons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin-bottom: 4rem;
+}
+
+.navButton {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+  padding: 0.8rem 2rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 25px;
+  color: rgba(255, 255, 255, 0.7);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.navButton:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.4);
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(255, 255, 255, 0.1);
+}
+
+/* Two Column Layout */
+.twoColumnLayout {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 3rem;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.artColumn,
+.filmColumn {
+  display: flex;
+  flex-direction: column;
+}
+
+.columnTitleLink {
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  padding: 1rem 2.5rem;
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(15px);
+  border: 1.5px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50px;
+  margin: 0 auto 2rem;
+  transition: all 0.3s ease;
+  align-self: center;
+}
+
+.columnTitleLink:hover {
+  border-color: rgba(255, 255, 255, 0.6);
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(255, 255, 255, 0.2);
+}
+
+.columnTitle {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.8rem;
+  font-weight: 200;
+  color: white;
+  margin: 0;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+/* Art Grid - Bigger Cards */
+.artGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+}
+
+.artCard {
+  /* Same as filmCard but bigger */
+}
+
+/* Poetry Placeholder */
+.poetryPlaceholder {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(80, 60, 100, 0.3), rgba(40, 30, 60, 0.3));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .twoColumnLayout {
+    grid-template-columns: 1fr;
+  }
+
+  .artGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .navButtons {
+    flex-direction: column;
+    width: 100%;
+    max-width: 300px;
+    margin: 0 auto 3rem;
+  }
+
+  .navButton {
+    width: 100%;
+  }
+
+  .artGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .twoColumnLayout {
+    padding: 0 1rem;
+  }
 }
 
 /* Category Sections */
@@ -1322,5 +1460,285 @@
 
   .portfolioMainTitle {
     padding-top: 6rem;
+  }
+}
+
+/* ======================
+   TWO-COLUMN SQUARE CARD LAYOUT
+   ====================== */
+
+/* Square Cards Container - Clean two-column grid */
+.squareCardsContainer {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  max-width: 1100px;
+  margin: 2rem auto 6rem;
+  padding: 0 2rem;
+}
+
+/* Square Card Base */
+.squareCard {
+  position: relative;
+  width: 100%;
+  height: 380px;
+  text-decoration: none;
+  transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  overflow: hidden;
+}
+
+.squareCard:hover {
+  transform: translateY(-10px);
+  border-color: rgba(255, 255, 255, 0.4);
+  background: rgba(0, 0, 0, 0.2);
+  box-shadow:
+    0 20px 60px rgba(0, 0, 0, 0.6),
+    0 0 60px rgba(255, 255, 255, 0.1);
+}
+
+/* Square Card Inner */
+.squareCardInner {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Square Video Background */
+.squareVideo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.8;
+  transition: all 0.8s ease;
+  z-index: 1;
+}
+
+.squareCard:hover .squareVideo {
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+/* Square Overlay for gradient effect */
+.squareOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    135deg,
+    rgba(0, 0, 0, 0.7) 0%,
+    rgba(0, 0, 0, 0.3) 50%,
+    rgba(0, 0, 0, 0.7) 100%
+  );
+  z-index: 2;
+  transition: all 0.4s ease;
+}
+
+.squareCard:hover .squareOverlay {
+  background: linear-gradient(
+    135deg,
+    rgba(0, 0, 0, 0.4) 0%,
+    rgba(0, 0, 0, 0.1) 50%,
+    rgba(0, 0, 0, 0.4) 100%
+  );
+}
+
+/* Square Placeholder (for poetry card without video) */
+.squarePlaceholder {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(80, 60, 100, 0.4), rgba(40, 30, 60, 0.4));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+/* Square Icon - Centered, disappears on hover */
+.squareIcon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80px;
+  height: 80px;
+  color: rgba(160, 160, 160, 0.5);
+  transition: all 0.5s ease;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 1;
+}
+
+.squareIcon svg {
+  width: 100%;
+  height: 100%;
+  filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.3));
+}
+
+.squareCard:hover .squareIcon {
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0.8);
+}
+
+/* Square Content - Text overlay at bottom, visible by default */
+.squareContent {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 2rem 1.5rem 1.5rem;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.95) 0%,
+    rgba(0, 0, 0, 0.7) 70%,
+    transparent 100%
+  );
+  z-index: 10;
+  opacity: 1;
+  transform: translateY(0);
+  transition: all 0.3s ease;
+  text-align: center;
+}
+
+/* Shiny glaze effect on hover */
+.squareCard::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.3) 50%,
+    transparent 100%
+  );
+  z-index: 5;
+  transition: left 0.7s ease;
+  pointer-events: none;
+}
+
+.squareCard:hover::before {
+  left: 100%;
+}
+
+/* Additional shimmer overlay on hover */
+.squareCard::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(
+    circle at center,
+    rgba(255, 255, 255, 0.15) 0%,
+    transparent 70%
+  );
+  z-index: 4;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  pointer-events: none;
+}
+
+.squareCard:hover::after {
+  opacity: 1;
+}
+
+.squareTitle {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.3rem;
+  font-weight: 400;
+  color: white;
+  margin: 0 0 0.5rem 0;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+}
+
+.squareDescription {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.5;
+  margin: 0 0 0.8rem 0;
+  letter-spacing: 0.03em;
+}
+
+.squareCount {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.65rem;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.6);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding: 0.4rem 0.9rem;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
+  display: inline-block;
+}
+
+/* Responsive Design for Square Cards */
+@media (max-width: 1024px) {
+  .squareCardsContainer {
+    gap: 1.5rem;
+    max-width: 900px;
+  }
+
+  .squareCard {
+    height: 350px;
+  }
+}
+
+@media (max-width: 768px) {
+  .squareCardsContainer {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    padding: 0 1.5rem;
+    margin: 2rem auto 5rem;
+  }
+
+  .squareCard {
+    height: 380px;
+  }
+}
+
+@media (max-width: 480px) {
+  .squareCardsContainer {
+    padding: 0 1rem;
+    margin: 1.5rem auto 4rem;
+  }
+
+  .squareCard {
+    height: 340px;
+  }
+
+  .squareTitle {
+    font-size: 1.1rem;
+  }
+
+  .squareDescription {
+    font-size: 0.75rem;
+  }
+
+  .squareIcon {
+    width: 60px;
+    height: 60px;
   }
 }

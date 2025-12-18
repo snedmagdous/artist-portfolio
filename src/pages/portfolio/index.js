@@ -59,7 +59,7 @@ const PortfolioPage = () => {
       title: 'Paintings',
       description: 'Ancestral wisdom and divine femininity through portraiture',
       videoSrc: 'https://pub-3f206994e69e42408f7908b2177b9ed9.r2.dev/paintings.MP4',
-      videoFilter: 'brightness(0.8) contrast(0.9)',
+      videoFilter: 'brightness(0.8) contrast(1.2) saturate(1.3)',
       count: '25+ Works',
       link: '/art/paintings',
       icon: (
@@ -188,6 +188,25 @@ const PortfolioPage = () => {
       )
     }
   ]
+
+  // Poetry category
+  const poetryCategory = {
+    id: 'poetry',
+    title: 'Poetry',
+    description: 'Words that heal and transform through verse',
+    videoSrc: null, // No video for now
+    count: 'Collection',
+    link: '/writing/poetry',
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="0.3">
+        <path d="M14 2H6C5.45 2 5 2.45 5 3V21C5 21.55 5.45 22 6 22H18C18.55 22 19 21.55 19 21V7L14 2Z"/>
+        <polyline points="14,2 14,8 20,8" strokeWidth="0.4"/>
+        <line x1="16" y1="13" x2="8" y2="13" strokeWidth="0.3"/>
+        <line x1="16" y1="17" x2="8" y2="17" strokeWidth="0.3"/>
+        <polyline points="10,9 9,9 8,9" strokeWidth="0.3"/>
+      </svg>
+    )
+  }
 
   // OLD Gallery items - keeping for reference, will remove later
   const artGalleryItems = [
@@ -602,17 +621,18 @@ const PortfolioPage = () => {
         </svg>
       ),
       subcategories: [
-        { title: 'Poetry', link: '/writing/poetry' },
-        { title: 'Creative Writing', link: '/writing/creative-writing' },
-        { title: 'Novel Writing', link: '/writing/novel-writing' },
-        { title: 'Video Essays', link: '/writing/video-essays' }
+        { title: 'Poetry', link: '/writing/poetry' }
       ],
       stats: 'Published Works'
     }
   ]
 
-  // Combine all categories for display
-  const allCategories = [...artCategories, ...filmCategories]
+  // Combine all categories into one mixed array for beehive layout
+  const allCategories = [
+    ...artCategories,
+    ...filmCategories,
+    poetryCategory
+  ]
 
   return (
     <Layout
@@ -620,7 +640,7 @@ const PortfolioPage = () => {
       setLanguage={setLanguage}
       hasVideoBackground={false}
     >
-      {/* Video Background - Same system as film page */}
+      {/* Video Background */}
       <div className="video-background">
         <video
           autoPlay
@@ -652,115 +672,68 @@ const PortfolioPage = () => {
           <p className={styles.portfolioMainSubtitle}>
             Where I reimagine ways of living and being
           </p>
-        </div>
 
-        {/* Art Section */}
-        <div className={styles.categorySection}>
-          <Link to="/art" className={styles.sectionTitleLink}>
-            <h2 className={styles.sectionTitle}>Art</h2>
-          </Link>
-          <div className={styles.filmGrid}>
-            {artCategories.map((category, index) => (
-              <Link
-                key={category.id}
-                to={category.link}
-                className={styles.filmCard}
-                onMouseEnter={() => handleVideoHover(index, true)}
-                onMouseLeave={() => handleVideoHover(index, false)}
-              >
-                <div className={styles.filmVideoContainer}>
-                  <video
-                    ref={el => videoRefs.current[index] = el}
-                    muted
-                    playsInline
-                    preload="metadata"
-                    className={styles.filmVideo}
-                    style={{
-                      filter: category.videoFilter || 'brightness(0.8) contrast(0.9)'
-                    }}
-                  >
-                    <source src={category.videoSrc} type="video/mp4" />
-                  </video>
-
-                  <div className={styles.filmVideoContent}>
-                    <div className={styles.filmIcon}>
-                      {category.icon}
-                    </div>
-
-                    <div className={styles.filmVideoOverlay}>
-                      <div className={styles.filmCount}>{category.count}</div>
-                    </div>
-                  </div>
-                </div>
-
-                <div className={styles.filmContent}>
-                  <h3 className={styles.filmTitle}>{category.title}</h3>
-                  <p className={styles.filmDescription}>{category.description}</p>
-
-                  <div className={styles.filmCTA}>
-                    <span className={styles.viewFilmsBtn}>
-                      Explore Collection
-                    </span>
-                  </div>
-                </div>
-              </Link>
-            ))}
+          {/* Navigation Buttons */}
+          <div className={styles.navButtons}>
+            <Link to="/art" className={styles.navButton}>
+              Art
+            </Link>
+            <Link to="/film" className={styles.navButton}>
+              Film
+            </Link>
+            <Link to="/writing/poetry" className={styles.navButton}>
+              Writing
+            </Link>
           </div>
         </div>
 
-        {/* Film Section */}
-        <div className={styles.categorySection}>
-          <Link to="/film" className={styles.sectionTitleLink}>
-            <h2 className={styles.sectionTitle}>Film</h2>
-          </Link>
-          <div className={styles.filmGrid}>
-            {filmCategories.map((category, index) => (
-              <Link
-                key={category.id}
-                to={category.link}
-                className={styles.filmCard}
-                onMouseEnter={() => handleVideoHover(index + artCategories.length, true)}
-                onMouseLeave={() => handleVideoHover(index + artCategories.length, false)}
-              >
-                <div className={styles.filmVideoContainer}>
-                  <video
-                    ref={el => videoRefs.current[index + artCategories.length] = el}
-                    muted
-                    playsInline
-                    preload="metadata"
-                    className={styles.filmVideo}
-                    style={{
-                      filter: category.videoFilter || 'brightness(0.8) contrast(0.9)'
-                    }}
-                  >
-                    <source src={category.videoSrc} type="video/mp4" />
-                  </video>
-
-                  <div className={styles.filmVideoContent}>
-                    <div className={styles.filmIcon}>
+        {/* Two Column Square Card Layout */}
+        <div className={styles.squareCardsContainer}>
+          {allCategories.map((category, index) => (
+            <Link
+              key={category.id}
+              to={category.link}
+              className={styles.squareCard}
+              onMouseEnter={() => category.videoSrc ? handleVideoHover(index, true) : null}
+              onMouseLeave={() => category.videoSrc ? handleVideoHover(index, false) : null}
+            >
+              <div className={styles.squareCardInner}>
+                {category.videoSrc ? (
+                  <>
+                    <video
+                      ref={el => videoRefs.current[index] = el}
+                      muted
+                      playsInline
+                      preload="metadata"
+                      className={styles.squareVideo}
+                      style={{
+                        filter: category.videoFilter || 'brightness(0.8) contrast(0.9)'
+                      }}
+                    >
+                      <source src={category.videoSrc} type="video/mp4" />
+                    </video>
+                    <div className={styles.squareOverlay}>
+                      <div className={styles.squareIcon}>
+                        {category.icon}
+                      </div>
+                    </div>
+                  </>
+                ) : (
+                  <div className={styles.squarePlaceholder}>
+                    <div className={styles.squareIcon}>
                       {category.icon}
                     </div>
-
-                    <div className={styles.filmVideoOverlay}>
-                      <div className={styles.filmCount}>{category.count}</div>
-                      <div className={styles.filmDuration}>{category.duration}</div>
-                    </div>
                   </div>
-                </div>
+                )}
 
-                <div className={styles.filmContent}>
-                  <h3 className={styles.filmTitle}>{category.title}</h3>
-                  <p className={styles.filmDescription}>{category.description}</p>
-
-                  <div className={styles.filmCTA}>
-                    <span className={styles.viewFilmsBtn}>
-                      Explore Collection
-                    </span>
-                  </div>
+                <div className={styles.squareContent}>
+                  <h3 className={styles.squareTitle}>{category.title}</h3>
+                  <p className={styles.squareDescription}>{category.description}</p>
+                  <div className={styles.squareCount}>{category.count || category.duration || ''}</div>
                 </div>
-              </Link>
-            ))}
-          </div>
+              </div>
+            </Link>
+          ))}
         </div>
 
         {/* Featured Quote */}
