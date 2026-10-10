@@ -30,7 +30,15 @@
       "Bash(git pull:*)",
       "Bash(tree:*)",
       "WebFetch(domain:github.com)",
-      "Bash(cd:*)"
+      "Bash(cd:*)",
+      "Bash(ffmpeg:*)",
+      "Bash(where.exe:*)",
+      "Bash(\"C:\\Users\\snedm\\AppData\\Local\\Microsoft\\WinGet\\Packages\\Gyan.FFmpeg_Microsoft.Winget.Source_8wekyb3d8bbwe\\ffmpeg-8.0.1-full_build\\bin\\ffmpeg.exe\" -version)",
+      "Bash(alias:*)",
+      "Bash(winget install:*)",
+      "Bash(git reset:*)",
+      "Bash(timeout 20 bash:*)",
+      "Bash(for file in *.mp4)"
     ],
     "deny": []
   }

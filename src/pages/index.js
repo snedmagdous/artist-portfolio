@@ -816,7 +816,7 @@ export default function Home() {
     {
       id: 'projects',
       title: 'Projects',
-      description: 'Technology for liberation and social impact',
+      description: 'Technology for liberation',
       icon: (
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1">
           <path d="M16 18L22 12L16 6"/>
@@ -828,7 +828,7 @@ export default function Home() {
     {
       id: 'resume',
       title: 'Resume',
-      description: 'Professional experience and skills',
+      description: 'Professional experience',
       icon: (
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1">
           <path d="M14 2H6C5.45 2 5 2.45 5 3V21C5 21.55 5.45 22 6 22H18C18.55 22 19 21.55 19 21V7L14 2Z"/>
@@ -871,9 +871,9 @@ export default function Home() {
         <main className="hero-content">
           <div className="hero-text">
             <h1 className="main-title">
-              MĀYĀ MURRY<br /><span className="studio-text">STUDIO</span>
+              MĀYĀ MAZEN<br /><span className="studio-text">STUDIO</span>
             </h1>
-            <p className="arabic-text">استوديو مايا مرعي</p>
+            <p className="arabic-text">استوديو مايا مازن</p>
             <p className="artist-bio">Artist • Filmmaker • Programmer</p>
 
             <div className="cta-buttons">
@@ -1064,7 +1064,7 @@ export default function Home() {
               <h2 className="portfolio-title">My Portfolio</h2>
             </Link>
             <p className="portfolio-subtitle">
-              Where I reimagine ways of living and being
+              Where I reimagine ways of being
             </p>
 
             {/* Main Category Navigation with Hover Dropdowns */}
