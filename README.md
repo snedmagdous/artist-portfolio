@@ -10,14 +10,6 @@ A multidimensional portfolio showcasing the intersection of technology, art, and
 
 **Live Site**: [mayamurry.com](https://mayamurry.com)
 
----
-
-## 🎨 Preview
-
-
-
----
-
 ## 🌟 About This Project
 
 This portfolio website displays my interndiscinplinary work:
