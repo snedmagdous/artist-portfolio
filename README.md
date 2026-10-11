@@ -14,7 +14,7 @@ A multidimensional portfolio showcasing the intersection of technology, art, and
 
 ## 🎨 Preview
 
-![Homepage Preview](static/images/screenshots/homepage.png)
+
 
 ---
 
